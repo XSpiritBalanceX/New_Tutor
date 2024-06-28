@@ -5,6 +5,7 @@ import { ToastContainer, Zoom } from "react-toastify";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import { translate } from "@i18n";
+import WrapperHeader from "@components/header/WrapperHeader";
 
 const App = () => {
   const locale = useAppSelector(tutorSelectors.localeSelect);
@@ -27,6 +28,7 @@ const App = () => {
         transition={Zoom}
       />
       <ScrollToTop />
+      <WrapperHeader />
       <RouterComponent />
     </>
   );

@@ -1,3 +1,10 @@
 {
-  "translate": {}
+  "translate": {
+    "header": {
+      "findTeacher": "Найти преподавателя",
+      "becomeTeacher": "Стать преподавателем",
+      "signInButton": "Войти",
+      "signUpButton": "Зарегистрироваться"
+    }
+  }
 }

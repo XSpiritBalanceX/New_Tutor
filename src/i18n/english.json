@@ -1,3 +1,10 @@
 {
-  "translate": {}
+  "translate": {
+    "header": {
+      "findTeacher": "Find a teacher",
+      "becomeTeacher": "Become a teacher",
+      "signInButton": "Sign in",
+      "signUpButton": "Sign up"
+    }
+  }
 }
