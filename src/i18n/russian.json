@@ -5,6 +5,28 @@
       "becomeTeacher": "Стать преподавателем",
       "signInButton": "Войти",
       "signUpButton": "Зарегистрироваться"
+    },
+    "footer": {
+      "aboutCompany": "О компании",
+      "aboutUs": "О нас",
+      "findTutor": "Найти репетитора",
+      "askQuestion": "Задать вопрос",
+      "tutors": "Преподаватели",
+      "english": "Английского",
+      "spanish": "Испанского",
+      "german": "Немецкого",
+      "chinese": "Китайского",
+      "russian": "Русского",
+      "portuguese": "Португальского",
+      "hebrew": "Иврита",
+      "japanese": "Японского",
+      "greek": "Греческого",
+      "arab": "Арабского",
+      "more": "Ещё",
+      "contactUs": "Связаться с нами",
+      "termsOfUs": "Условия использования",
+      "privacyPolicy": "Политика конфиденциальности",
+      "becomeTeacher": "Стать преподавателем"
     }
   }
 }

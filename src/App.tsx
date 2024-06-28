@@ -6,6 +6,7 @@ import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import { translate } from "@i18n";
 import WrapperHeader from "@components/header/WrapperHeader";
+import Footer from "@components/footer/Footer";
 
 const App = () => {
   const locale = useAppSelector(tutorSelectors.localeSelect);
@@ -30,6 +31,7 @@ const App = () => {
       <ScrollToTop />
       <WrapperHeader />
       <RouterComponent />
+      <Footer />
     </>
   );
 };
