@@ -1,0 +1,6 @@
+@import "variables";
+
+body {
+  margin: 0;
+  background-color: map-get($theme-colors, "white");
+}
