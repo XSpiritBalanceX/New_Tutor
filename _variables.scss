@@ -1,0 +1,102 @@
+@use "sass:map";
+
+$theme-colors: (
+  "main-blue": #5e66a7,
+  "white-blue": #e7e7ff,
+  "white": #fefeff,
+  "black": #161618,
+  "gray": #a2a2a2,
+  "white-gray": #b6b6bb,
+  "light-gray": #f5f5f5,
+  "red": red,
+  "light-red": #ffd9d7,
+  "white-yellow": #f8ffa5,
+  "orange": #fc8d0c,
+  "light-green": #ddffe5,
+  "green": #18b53b,
+  "shadow": rgba(62, 62, 62, 0.324),
+  "gray-shadow": #fefeffb1,
+  "light-violet": rgba(231, 231, 255, 0.4),
+  "text": (
+    "grey": #a1a1a1,
+    "light": #b6b6bb,
+    "dark": #a2a2a2,
+    "dark-gray": #6b6868,
+  ),
+  "border": (
+    "hover": #9098d9,
+    "pressed": #2c3475,
+    "disable": #e6e6e9,
+  ),
+  "box-shadow": (
+    "header": (
+      0px 8px 20px rgba(201, 207, 255, 0.2),
+    ),
+    "shadow": (
+      3px 12px 24px rgba(129, 137, 197, 0.2),
+    ),
+    "form": (
+      0px 12px 24px rgba(129, 137, 197, 0.2),
+    ),
+  ),
+  "gradient": linear-gradient(111deg, #3642a6 0%, #c3caff 96.4%),
+);
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+%text-main {
+  font-family: "Rubik", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  @media all and (max-width: 40em) {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.5px;
+  }
+}
+
+%h1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28.8px;
+  @media all and (max-width: 40em) {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28.6px;
+  }
+}
+
+%h2 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+%h3 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19.2px;
+}
+
+%text-small {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15.4px;
+}

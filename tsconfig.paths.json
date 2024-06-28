@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@pages/*": ["./pages/*"],
+      "@components/*": ["./components/*"],
+      "@i18n": ["./i18n/index.tsx"],
+      "@store/*": ["./store/*"],
+      "@assets/*": ["./assets/*"],
+      "@axiosApi/*": ["./axiosApi/*"],
+      "@api/*": ["./api/*"],
+      "@utils/*": ["./utils/*"],
+      "@hook/*": ["./hook/*"]
+    }
+  }
+}
