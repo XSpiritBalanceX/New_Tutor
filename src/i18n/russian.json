@@ -43,6 +43,8 @@
       "or": "или",
       "signInWith": "Войдите с помощью",
       "login": "Вход",
+      "signInButton": "Войти",
+      "signInReg": "Зарегистрироваться",
       "registration": "Регистрация",
       "registrationAs": "Зарегистрироваться как:",
       "student": "Ученик",

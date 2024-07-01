@@ -58,15 +58,14 @@
       @extend %text-main;
       padding: 10px 20px;
       border-radius: 100px;
-      border: solid 2px map-get($theme-colors, "main-blue");
     }
     .loginLink {
       margin: 0 20px;
-      color: map-get($theme-colors, "main-blue");
+      @extend %button-2;
     }
     .registrationLink {
-      background-color: map-get($theme-colors, "main-blue");
-      color: map-get($theme-colors, "white");
+      @extend %button-1;
+      border: solid 1px map-get($theme-colors, "main-blue");
     }
   }
 }

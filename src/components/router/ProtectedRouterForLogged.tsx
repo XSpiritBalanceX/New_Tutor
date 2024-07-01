@@ -9,7 +9,7 @@ interface IProtectedRouterForLoggedProps {
 const ProtectedRouterForLogged = ({ children }: IProtectedRouterForLoggedProps) => {
   const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
-  if (!isLogin) {
+  if (isLogin) {
     return <Navigate to={"/"} replace />;
   }
   return children;

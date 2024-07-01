@@ -2,6 +2,7 @@ import { Container, Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { translate } from "@i18n";
 import mainPicture from "@assets/mainPicture.svg";
+import SignInForm from "@components/signIn/SignInForm";
 import "./AuthPage.scss";
 
 const AuthPage = () => {
@@ -19,6 +20,7 @@ const AuthPage = () => {
         <p className="secondTag">{t("taglineTwo")}</p>
         <img src={mainPicture} alt="main" />
       </Box>
+      <Box className="formsBox">{pathname === "/login" && <SignInForm />}</Box>
     </Container>
   );
 };

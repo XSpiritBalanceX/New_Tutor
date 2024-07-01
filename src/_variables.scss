@@ -49,6 +49,34 @@ $theme-colors: (
   @return $map;
 }
 
+%button-1 {
+  background-color: #5e66a7;
+  color: #fefeff;
+  border: solid 1px #5e66a7;
+  &:hover {
+    border: solid 1px #9098d9;
+    background-color: #9098d9;
+  }
+  &:active {
+    border: solid 1px #2c3475;
+    background-color: #2c3475;
+  }
+}
+
+%button-2 {
+  background-color: #fefeff;
+  color: #5e66a7;
+  border: solid 2px #5e66a7;
+  &:hover {
+    border: solid 2px #9098d9;
+    color: #9098d9;
+  }
+  &:active {
+    border: solid 2px #2c3475;
+    color: #2c3475;
+  }
+}
+
 %text-main {
   font-family: "Rubik", sans-serif;
   font-style: normal;

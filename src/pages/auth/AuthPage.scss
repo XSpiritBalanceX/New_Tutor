@@ -1,11 +1,12 @@
 @import "../../variables";
 
 .containerAuthPage {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   display: flex !important;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   .titleBox {
     margin: 100px 0 60px 0;
     max-width: 576px;
@@ -51,5 +52,12 @@
     img {
       margin-left: 20px;
     }
+  }
+  .formsBox {
+    max-width: 450px;
+    width: 100%;
+    padding: 50px 50px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "form");
+    height: auto;
   }
 }
