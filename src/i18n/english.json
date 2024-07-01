@@ -67,7 +67,7 @@
       "reqSurname": "Surname required",
       "reqDateOfBirth": "Enter date of birth (DD.MM.YYYY)",
       "formDate": "Date of birth in DD.MM.YYYY format",
-      "notValidDateOfBirth": "Invalid date, format DD.MM.YYYY",
+      "notValidDateOfBirth": "Incorrect date",
       "greatThan": "You must be at least 18 years of age",
       "reqLettLow": "Password must contain at least 1 latin lowercase letter",
       "reqLettUpp": "Password must contain at least 1 latin capital letter",
@@ -75,7 +75,9 @@
       "reqNumb": "Password must contain at least 1 number",
       "passDontMatch": "Password mismatch",
       "haveToAgree": "You must agree",
-      "errSignIn": "An error has occurred. Check your details."
+      "errSignIn": "An error has occurred. Check your details.",
+      "errName": "Invalid field filled. 3 to 20 characters",
+      "chooseCountry": "Please indicate your country"
     }
   }
 }
