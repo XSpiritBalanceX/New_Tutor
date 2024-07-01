@@ -59,5 +59,15 @@
     padding: 50px 50px;
     box-shadow: map-deep-get($theme-colors, "box-shadow", "form");
     height: auto;
+    position: relative;
+    .loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background-color: map-get($theme-colors, "gray-shadow");
+    }
   }
 }

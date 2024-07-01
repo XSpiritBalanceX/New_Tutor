@@ -7,6 +7,7 @@ import * as tutorSelectors from "@store/selectors";
 import { translate } from "@i18n";
 import WrapperHeader from "@components/header/WrapperHeader";
 import Footer from "@components/footer/Footer";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const locale = useAppSelector(tutorSelectors.localeSelect);

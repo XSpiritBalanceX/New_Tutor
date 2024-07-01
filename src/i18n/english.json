@@ -74,7 +74,8 @@
       "wrongFormatPassword": "Only numbers and letters of the Latin alphabet",
       "reqNumb": "Password must contain at least 1 number",
       "passDontMatch": "Password mismatch",
-      "haveToAgree": "You must agree"
+      "haveToAgree": "You must agree",
+      "errSignIn": "An error has occurred. Check your details."
     }
   }
 }

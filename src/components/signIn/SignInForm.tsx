@@ -10,6 +10,10 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
 import ControlledInput from "@components/fields/ControlledInput";
 import ControlledPassword from "@components/fields/ControlledPassword";
+import { useAppDispatch } from "@store/hook";
+import { loginUser } from "@store/tutorSlice";
+import { signIn } from "@api/auth/signIn";
+import { toast } from "react-toastify";
 import "./SignInForm.scss";
 
 interface ISignIn {
@@ -19,6 +23,8 @@ interface ISignIn {
 
 const SignInForm = () => {
   const { t } = translate("translate", { keyPrefix: "authPage" });
+
+  const dispath = useAppDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,8 +43,16 @@ const SignInForm = () => {
     formState: { errors },
   } = useForm<ISignIn>({ resolver: yupResolver(validationSchema) });
 
-  const submitSignIn = (data: ISignIn) => {
-    console.log(data);
+  const submitSignIn = async (data: ISignIn) => {
+    try {
+      setIsLoading(true);
+      const response = await signIn(data);
+      console.log(response);
+    } catch (err: any) {
+      toast.error(t("errSignIn"));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const authButtons = [
@@ -48,7 +62,7 @@ const SignInForm = () => {
   ];
 
   return (
-    <form onSubmit={handleSubmit(submitSignIn)} className="signInForm">
+    <form onSubmit={handleSubmit(submitSignIn)} className={"signInForm"}>
       {isLoading && <Loader />}
       <p className="signInTitle">{t("login")}</p>
       <Box className="signInFieldBox">
