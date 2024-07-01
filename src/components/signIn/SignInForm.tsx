@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Box } from "@mui/material";
+import { Button, Box, FormLabel } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { translate } from "@i18n";
 import Loader from "@components/loader/Loader";
@@ -8,6 +8,8 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
+import ControlledInput from "@components/fields/ControlledInput";
+import ControlledPassword from "@components/fields/ControlledPassword";
 import "./SignInForm.scss";
 
 interface ISignIn {
@@ -21,15 +23,19 @@ const SignInForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().required(t("reqEmail")).email("wrongEmail"),
+    email: Yup.string().required(t("reqEmail")).email(t("wrongEmail")),
     password: Yup.string()
-      .required("reqPassword")
+      .required(t("reqPassword"))
       .min(8, t("passMin"))
       .max(32, t("passMax"))
       .matches(/^[a-zA-Z0-9]+$/, t("wrongFormatPassword")),
   });
 
-  const { control, handleSubmit } = useForm<ISignIn>({ resolver: yupResolver(validationSchema) });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignIn>({ resolver: yupResolver(validationSchema) });
 
   const submitSignIn = (data: ISignIn) => {
     console.log(data);
@@ -45,6 +51,19 @@ const SignInForm = () => {
     <form onSubmit={handleSubmit(submitSignIn)} className="signInForm">
       {isLoading && <Loader />}
       <p className="signInTitle">{t("login")}</p>
+      <Box className="signInFieldBox">
+        <FormLabel className={`signInLabel ${errors.email ? "errorLabel" : ""}`}>{t("email")}</FormLabel>
+        <ControlledInput name="email" control={control} error={errors.email?.message} placeholder={t("email")} />
+      </Box>
+      <Box className="signInFieldBox">
+        <FormLabel className={`signInLabel ${errors.password ? "errorLabel" : ""}`}>{t("password")}</FormLabel>
+        <ControlledPassword
+          name="password"
+          control={control}
+          error={errors.password?.message}
+          placeholder={t("email")}
+        />
+      </Box>
       <Box className="linkForgotBox">
         <NavLink to={"/resetpassword"} className={"linkForgot"}>
           {t("forgotPassw")}

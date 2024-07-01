@@ -8,9 +8,23 @@
     margin: 0 0 20px 0;
     text-align: center;
   }
+  .signInFieldBox {
+    margin-bottom: 10px;
+    .signInLabel {
+      @extend %h3;
+      color: map-get($theme-colors, "black");
+    }
+    .signInLabel.errorLabel {
+      color: map-get($theme-colors, "red");
+    }
+    .controlledFieldBox {
+      margin-top: 5px;
+    }
+  }
   .linkForgotBox {
     display: flex;
     justify-content: flex-end;
+    margin-top: -15px;
   }
   .linkForgot,
   .linkReg {
