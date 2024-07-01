@@ -1,8 +1,12 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import ProtectedRouterForLogged from "./ProtectedRouterForLogged";
+import AuthPage from "@pages/auth/AuthPage";
 
 const RouterComponent = () => {
-  const unprotectedRoutes = [{ path: "", element: <div></div> }];
+  const unprotectedRoutes = [
+    { path: "/login", element: <AuthPage /> },
+    { path: "/registration", element: <AuthPage /> },
+  ];
 
   const protectedRoutes = [{ path: "", element: <div></div> }];
   return (
