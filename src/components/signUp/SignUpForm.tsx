@@ -10,6 +10,7 @@ import {
   Checkbox,
   TextField,
   MenuItem,
+  InputAdornment,
 } from "@mui/material";
 import { translate } from "@i18n";
 import Loader from "@components/loader/Loader";
@@ -51,15 +52,16 @@ const SignUpForm = () => {
     first_name: Yup.string().required(t("reqName")).min(3, t("errName")).max(20, t("errName")),
     last_name: Yup.string().required(t("reqSurname")).min(3, t("errName")).max(20, t("errName")),
     date_of_birthday: Yup.string().when("user_type", {
-      is: (val: string) => val === "0",
+      is: (val: string) => val === "1",
       then: () =>
         Yup.string()
-          .notRequired()
           .test("valid-date", t("notValidDateOfBirth"), (value) => {
+            if (!value) return true;
             const dob = moment(value, "DD.MM.YYYY");
             return !dob.isValid() ? false : true;
           })
           .test("less-18", t("greatThan"), (value) => {
+            if (!value) return true;
             const minAge = 18;
             const currentDate = moment();
             const dob = moment(value, "DD.MM.YYYY");
@@ -136,12 +138,12 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitSignUp)}>
+    <form onSubmit={handleSubmit(submitSignUp)} className="signUpForm">
       {isLoading && <Loader />}
-      <p>{t("registration")}</p>
-      <p>{t("registrationAs")}</p>
-      <Box>
-        <RadioGroup>
+      <p className="signUpFormTitle">{t("registration")}</p>
+      <p className={`signUpAsTitle ${errors.user_type ? "errorLabel" : ""}`}>{t("registrationAs")}</p>
+      <Box className="radioBtnBox">
+        <RadioGroup className="radioBtnSignUpGroup">
           {usersTypes.map((el, ind) => (
             <FormControlLabel
               key={ind}
@@ -152,18 +154,20 @@ const SignUpForm = () => {
             />
           ))}
         </RadioGroup>
-        <FormHelperText className="errorMessage">{errors.user_type?.message}</FormHelperText>
+        <FormHelperText className="errorMessage errorRadioGroup">{errors.user_type?.message}</FormHelperText>
       </Box>
       {fieldsName.map((el, ind) => (
-        <Box key={ind}>
-          <FormLabel className={`signInLabel ${el.error ? "errorLabel" : ""}`}>{t(el.label)}</FormLabel>
+        <Box key={ind} className="signUpFieldBox">
+          <FormLabel className={`signUpLabel ${el.error ? "errorLabel" : ""}`}>{t(el.label)}</FormLabel>
           <ControlledInput control={control} name={el.name} error={el.error} placeholder={t(el.label)} />
         </Box>
       ))}
-      <Box>
-        <FormLabel className={`signInLabel ${errors.email ? "errorLabel" : ""}`}>
+      <Box className="signUpFieldBox dateOfBirthBox">
+        <FormLabel className={`signUpLabel ${errors.date_of_birthday ? "errorLabel" : ""}`}>
           {t("dateOfBirth")}
-          <span>{watch("user_type") && watch("user_type") === "1" && ` (${t("notNecess")})`}</span>
+          <span className="notNesses">
+            {watch("user_type") && watch("user_type") === "1" && ` (${t("notNecess")})`}
+          </span>
         </FormLabel>
         <InputMask
           mask="__.__.____"
@@ -176,13 +180,22 @@ const SignUpForm = () => {
         <FormHelperText className="errorMessage">{errors && errors.date_of_birthday?.message}</FormHelperText>
       </Box>
       {watch("user_type") && watch("user_type") === "1" && (
-        <Box>
-          <FormLabel className={`signInLabel ${errors.email ? "errorLabel" : ""}`}>{t("countrylabel")}</FormLabel>
+        <Box className="signUpFieldBox">
+          <FormLabel className={`signUpLabel ${errors.country ? "errorLabel" : ""}`}>{t("countrylabel")}</FormLabel>
           <TextField
             value={watch("country") || ""}
             onChange={handleChangeCountry}
             select={true}
-            placeholder={t("chCountry")}
+            label={t("chCountry")}
+            className="countryField"
+            error={!!errors.country}
+            InputProps={{
+              endAdornment: !!errors.country && (
+                <InputAdornment position="end" className="errorIcon">
+                  <WarningAmberRoundedIcon className="errorIcon" />
+                </InputAdornment>
+              ),
+            }}
           >
             {listOfCountries.map((el, ind) => (
               <MenuItem key={ind} value={el.id}>
@@ -190,29 +203,32 @@ const SignUpForm = () => {
               </MenuItem>
             ))}
           </TextField>
+          <FormHelperText className="errorMessage">{errors && errors.country?.message}</FormHelperText>
         </Box>
       )}
-      <Box>
-        <FormLabel className={`signInLabel ${errors.email ? "errorLabel" : ""}`}>{t("email")}</FormLabel>
+      <Box className="signUpFieldBox">
+        <FormLabel className={`signUpLabel ${errors.email ? "errorLabel" : ""}`}>{t("email")}</FormLabel>
         <ControlledInput control={control} name={"email"} placeholder={t("email")} error={errors.email?.message} />
       </Box>
       {passwordFields.map((el, ind) => (
-        <Box key={ind}>
-          <FormLabel className={`signInLabel ${el.error ? "errorLabel" : ""}`}>{t(el.label)}</FormLabel>
+        <Box key={ind} className="signUpFieldBox">
+          <FormLabel className={`signUpLabel ${el.error ? "errorLabel" : ""}`}>{t(el.label)}</FormLabel>
           <ControlledPassword control={control} name={el.name} placeholder={t(el.label)} error={el.error} />
         </Box>
       ))}
-      <Box>
+      <Box className="policyBox">
         <FormControlLabel control={<Checkbox />} {...register("policy")} label={""} />
-        <Box>
-          <p>{t("agreeWith")}</p>
-          <NavLink to={"/terms"}>{t("termsOfUse")}</NavLink>
+        <Box className="policyTitleBox">
+          <p>{t("agreeWith")}</p> <NavLink to={"/terms"}>{t("termsOfUse")}</NavLink>
           <p>{t("and")}</p>
           <NavLink to={"/policy"}>{t("privacyPolicyAgree")}</NavLink>
         </Box>
+        <FormHelperText className="errorMessage">{errors && errors.policy?.message}</FormHelperText>
       </Box>
-      <Button type="submit">{t("signInReg")}</Button>
-      <Box>
+      <Button type="submit" className="buttonSubmitSignUp">
+        {t("signInReg")}
+      </Button>
+      <Box className="navigationBox">
         <p>{t("haveAcc")}</p>
         <NavLink to={"/login"}>{t("signInButton")}</NavLink>
       </Box>
