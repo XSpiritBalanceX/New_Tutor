@@ -77,7 +77,9 @@
       "haveToAgree": "You must agree",
       "errSignIn": "An error has occurred. Check your details.",
       "errName": "Invalid field filled. 3 to 20 characters",
-      "chooseCountry": "Please indicate your country"
+      "chooseCountry": "Please indicate your country",
+      "countrylabel": "Where are you from?",
+      "chCountry": "Choose the country"
     }
   }
 }

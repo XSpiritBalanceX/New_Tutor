@@ -1,5 +1,16 @@
 import { useState } from "react";
-import { Box, Button, FormControlLabel, Radio, FormHelperText, RadioGroup, FormLabel, Checkbox } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  Radio,
+  FormHelperText,
+  RadioGroup,
+  FormLabel,
+  Checkbox,
+  TextField,
+  MenuItem,
+} from "@mui/material";
 import { translate } from "@i18n";
 import Loader from "@components/loader/Loader";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,6 +22,9 @@ import ControlledInput from "@components/fields/ControlledInput";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import ControlledPassword from "@components/fields/ControlledPassword";
 import { NavLink } from "react-router-dom";
+import { listOfCountries } from "@utils/listOfCountries";
+import { useAppSelector } from "@store/hook";
+import * as tutorSelectors from "@store/selectors";
 import "./SignUpForm.scss";
 
 interface ISignUp {
@@ -29,6 +43,8 @@ const SignUpForm = () => {
   const { t } = translate("translate", { keyPrefix: "authPage" });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const locale = useAppSelector(tutorSelectors.localeSelect);
 
   const validationSchema = Yup.object().shape({
     user_type: Yup.string().oneOf(["0", "1"]).required(t("choosePath")),
@@ -115,6 +131,10 @@ const SignUpForm = () => {
     setValue("date_of_birthday", value);
   };
 
+  const handleChangeCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue("country", e.target.value);
+  };
+
   return (
     <form onSubmit={handleSubmit(submitSignUp)}>
       {isLoading && <Loader />}
@@ -155,10 +175,26 @@ const SignUpForm = () => {
         {errors.date_of_birthday && <WarningAmberRoundedIcon className="errorIcon" />}
         <FormHelperText className="errorMessage">{errors && errors.date_of_birthday?.message}</FormHelperText>
       </Box>
-      {watch("user_type") && watch("user_type") === "1" && "countryField"}
+      {watch("user_type") && watch("user_type") === "1" && (
+        <Box>
+          <FormLabel className={`signInLabel ${errors.email ? "errorLabel" : ""}`}>{t("countrylabel")}</FormLabel>
+          <TextField
+            value={watch("country") || ""}
+            onChange={handleChangeCountry}
+            select={true}
+            placeholder={t("chCountry")}
+          >
+            {listOfCountries.map((el, ind) => (
+              <MenuItem key={ind} value={el.id}>
+                {locale === "ru" ? el.russianLabel : el.englishLabel}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
+      )}
       <Box>
         <FormLabel className={`signInLabel ${errors.email ? "errorLabel" : ""}`}>{t("email")}</FormLabel>
-        <ControlledPassword control={control} name={"email"} placeholder={t("email")} error={errors.email?.message} />
+        <ControlledInput control={control} name={"email"} placeholder={t("email")} error={errors.email?.message} />
       </Box>
       {passwordFields.map((el, ind) => (
         <Box key={ind}>
