@@ -80,6 +80,26 @@
       "chooseCountry": "Please indicate your country",
       "countrylabel": "Where are you from?",
       "chCountry": "Choose the country"
+    },
+    "mainPage": {
+      "title": "platform for online learning of foreign languages",
+      "titleWords": "With the help of our platform, you will find experienced teachers from all over the world and will be able to study online at a convenient time of the day from anywhere.",
+      "findTeacher": "Find a teacher",
+      "whyTitle": "Why is it worth learning a language with us?",
+      "experTeacher": "Experienced teachers",
+      "aboutExperTeacher": "On the platform you will find professional teachers and native speakers",
+      "convenSchedule": "Convenient schedule",
+      "aboutConvenSchedule": "Choose your own convenient time for learning a language",
+      "affordPrices": "Affordable prices",
+      "aboutAffordPrices": "Choose your own convenient time for learning a language",
+      "freeLesson": "Free lesson",
+      "aboutFreeLesson": "Take a free trial language lesson with a teacher",
+      "howLearning": "How to learn a language?",
+      "oneRegister": "Register",
+      "twoChooseTeacher": "Choose a teacher",
+      "threeChooseLesson": "Take a trial lesson",
+      "free": "for free",
+      "fourImprove": "Improve your knowledge"
     }
   }
 }
