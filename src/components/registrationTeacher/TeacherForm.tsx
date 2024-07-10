@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import Loader from "@components/loader/Loader";
 import { useLocation } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
+import TeacherRow from "@components/teacherRow/TeacherRow";
 import "./TeacherForm.scss";
 
 interface ITeacherForm {
@@ -66,6 +67,27 @@ const TeacherForm = () => {
     });
   };
 
+  const handleDecreaseRow = (id: number) => {
+    setCountOfLanguage((value) => {
+      return value - 1;
+    });
+    remove(id);
+    setInitialValues(getValues());
+  };
+
+  const teacherFormRow: Array<JSX.Element> = Array(countOfLanguage)
+    .fill(null)
+    .map((_, ind) => (
+      <TeacherRow
+        key={["TeacherRow", ind].join("_")}
+        id={ind}
+        control={control}
+        watch={watch}
+        errors={errors}
+        cbHandleDeleteLanguage={handleDecreaseRow}
+      />
+    ));
+
   return (
     <>
       {isLoading && <Loader />}
@@ -78,6 +100,7 @@ const TeacherForm = () => {
         </Box>
         {!isSchedule && (
           <form onSubmit={handleSubmit(submitTeacherForm)}>
+            {teacherFormRow}
             <Box className="addLanguageButtonBox">
               <Button type="button" onClick={handleIncreaseRow}>
                 <Box className="addBox">
