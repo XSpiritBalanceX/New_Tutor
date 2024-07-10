@@ -100,6 +100,36 @@
       "threeChooseLesson": "Take a trial lesson",
       "free": "for free",
       "fourImprove": "Improve your knowledge"
+    },
+    "registrationPage": {
+      "registration": "Регистрация",
+      "upload": "Upload a photo",
+      "errorFileSizeImage": "The file size is too large, no more than 2 MB.",
+      "errorTypeImage": "File format is JPG or PNG only.",
+      "delete": "Delete",
+      "hintPhoto": "JPG or PNG format. Maximum size 2 MB",
+      "languageForLearning": "Language to learn",
+      "chooseLanguage": "Choose language",
+      "levelOfLanguage": "Proficiency level",
+      "chooseLevel": "Select level",
+      "goalForLearning": "Purpose of study",
+      "typeText": "Enter text",
+      "addLanguageLearning": "Add a language to study",
+      "errLevel": "Please indicate your level of proficiency",
+      "errChooseLanguage": "Specify language",
+      "errGoal": "Complete the learning objective",
+      "next": "Next",
+      "languageForTeaching": "Language of teaching",
+      "uploadCertificate": "Download your certificate/diploma",
+      "hintCertificate1": "JPG or PNG format. Maximum size 2 MB.",
+      "hintCertificate2": "You can upload a maximum of 5 files",
+      "errLengthFileList": "You cannot upload more than 5 photos",
+      "coastOfLesson": "Lesson cost (USD)",
+      "typeCoast": "Enter price",
+      "errFillField": "Fill in the field",
+      "hintCoast": "The service commission is 10% of the cost of the lesson",
+      "professSkills": "Describe your professional skills",
+      "addLanguageTeaching": "Add teaching language"
     }
   }
 }

@@ -3,6 +3,7 @@ import ProtectedRouterForLogged from "./ProtectedRouterForLogged";
 import ProtectedRouter from "./ProtectedRouter";
 import MainPage from "@pages/main/MainPage";
 import AuthPage from "@pages/auth/AuthPage";
+import RegistrationPage from "@pages/registration/RegistrationPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [{ path: "/", element: <MainPage /> }];
@@ -12,7 +13,7 @@ const RouterComponent = () => {
     { path: "/registration", element: <AuthPage /> },
   ];
 
-  const authRoutes = [{ path: "", element: <div></div> }];
+  const authRoutes = [{ path: "/registration/:user", element: <RegistrationPage /> }];
   return (
     <Routes>
       {unprotectedRoutes.map((el, ind) => (
@@ -21,8 +22,11 @@ const RouterComponent = () => {
       {unauthRoutes.map((el, ind) => (
         <Route key={ind} path={el.path} element={<ProtectedRouterForLogged>{el.element}</ProtectedRouterForLogged>} />
       ))}
-      {authRoutes.map((el, ind) => (
+      {/* {authRoutes.map((el, ind) => (
         <Route key={ind} path={el.path} element={<ProtectedRouter>{el.element}</ProtectedRouter>} />
+      ))} */}
+      {authRoutes.map((el, ind) => (
+        <Route key={ind} path={el.path} element={el.element} />
       ))}
       <Route path="*" element={<Navigate to={"/"} />} />
     </Routes>
