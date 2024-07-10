@@ -21,6 +21,14 @@
     .errorIcon {
       margin-right: 5px;
     }
+    .errorIcon,
+    .errorMessage {
+      color: map-get($theme-colors, "red");
+    }
+    .errorMessage {
+      @extend %text-small;
+      margin-bottom: 10px;
+    }
     .MuiFormLabel-root.MuiFormLabel-filled,
     .MuiFormLabel-root.Mui-focused {
       display: none;
@@ -77,6 +85,68 @@
       border-radius: 100px;
       padding: 10px 20px;
       margin-bottom: 20px;
+    }
+  }
+  .teacherCertificateBox {
+    .addCertificateBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .labelCertificate {
+        width: 46px;
+        height: 46px;
+        margin: 0 10px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        background-color: map-get($theme-colors, "main-blue");
+        color: map-get($theme-colors, "white");
+        @extend %button-1;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      p {
+        margin: 0;
+        max-width: 300px;
+        @extend %text-small;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .certificateBox {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin: 0 0 10px 0;
+      img {
+        width: 80px;
+        height: 80px;
+        margin: 0 10px 0 0;
+      }
+      .certificateNameSizeBox {
+        margin: 3px 5px 0 0;
+        .certificateName,
+        .certificateSize {
+          @extend %text-small;
+        }
+        .certificateName {
+          margin: 0 0 10px 0;
+        }
+        .certificateSize {
+          color: map-get($theme-colors, "gray");
+        }
+      }
+      .deleteCertificateButton {
+        padding: 0;
+        min-width: 24px;
+        height: 24px;
+        width: 24px;
+        color: map-get($theme-colors, "gray");
+        svg {
+          font-size: 17px;
+        }
+      }
     }
   }
 }

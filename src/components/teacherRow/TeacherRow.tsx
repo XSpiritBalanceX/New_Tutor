@@ -1,21 +1,15 @@
 import { Box, FormLabel, Button, TextField, InputAdornment, FormHelperText } from "@mui/material";
 import { translate } from "@i18n";
-import { Controller, Control, FieldValues, Path, PathValue, UseFormWatch } from "react-hook-form";
+import { Controller, FieldValues, Path, PathValue } from "react-hook-form";
 import ControlledSelect from "@components/fields/ControlledSelect";
 import ControlledInput from "@components/fields/ControlledInput";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import { language, level } from "@utils/listOfLanguagesLevels";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
+import { ITeacherRowProps } from "./TypesTeacherRow";
+import Certificates from "./Certificates";
 import "./TeacherRow.scss";
-
-interface ITeacherRowProps<T extends FieldValues> {
-  id: number;
-  control: Control<T>;
-  watch: UseFormWatch<T>;
-  errors: any;
-  cbHandleDeleteLanguage: (id: number) => void;
-}
 
 const TeacherRow = <T extends FieldValues>({
   id,
@@ -23,6 +17,7 @@ const TeacherRow = <T extends FieldValues>({
   watch,
   errors,
   cbHandleDeleteLanguage,
+  setValue,
 }: ITeacherRowProps<T>) => {
   const { t } = translate("translate", { keyPrefix: "registrationPage" });
 
@@ -60,7 +55,7 @@ const TeacherRow = <T extends FieldValues>({
         </Box>
       </Box>
       <Box className="secondRowTeacher">
-        <Box>certificate</Box>
+        <Certificates id={id} watch={watch} setValue={setValue} />
         <Box className="teacherFieldBox">
           <FormLabel className="teacherFormLabel">{t("coastOfLesson")}</FormLabel>
           <ControlledInput

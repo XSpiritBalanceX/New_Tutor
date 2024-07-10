@@ -33,7 +33,7 @@ const TeacherForm = () => {
           level: Yup.string().required(t("errLevel")),
           description: Yup.string().required(t("errFillField")),
           price: Yup.number().required(t("errFillField")).typeError(t("typeCoast")),
-          certificate: Yup.mixed<File[]>().default([]).required(t("errCertificate")),
+          certificate: Yup.mixed<File[]>().nullable().default([]).required(t("errCertificate")),
         }),
       )
       .required(),
@@ -85,6 +85,7 @@ const TeacherForm = () => {
         watch={watch}
         errors={errors}
         cbHandleDeleteLanguage={handleDecreaseRow}
+        setValue={setValue}
       />
     ));
 
