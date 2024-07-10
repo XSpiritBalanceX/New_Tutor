@@ -82,7 +82,6 @@ const StudentForm = () => {
     <>
       {isLoading && <Loader />}
       <Box className="registrationStudentBox">
-        <p className="titleRegister">{t("registration")}</p>
         <form onSubmit={handleSubmit(submitStudentRegistration)}>
           {studentFormRow}
           <Box className="addLanguageButtonBox">

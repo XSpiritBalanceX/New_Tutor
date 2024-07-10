@@ -130,7 +130,8 @@
       "errFillField": "Fill in the field",
       "hintCoast": "The service commission is 10% of the cost of the lesson",
       "professSkills": "Describe your professional skills",
-      "addLanguageTeaching": "Add teaching language"
+      "addLanguageTeaching": "Add teaching language",
+      "errCertificate": "Add your certificates/diplomas"
     }
   }
 }

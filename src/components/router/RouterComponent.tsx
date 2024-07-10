@@ -13,7 +13,10 @@ const RouterComponent = () => {
     { path: "/registration", element: <AuthPage /> },
   ];
 
-  const authRoutes = [{ path: "/registration/:user", element: <RegistrationPage /> }];
+  const authRoutes = [
+    { path: "/registration/:user", element: <RegistrationPage /> },
+    { path: "/registration/teacher/schedule", element: <RegistrationPage /> },
+  ];
   return (
     <Routes>
       {unprotectedRoutes.map((el, ind) => (

@@ -1,15 +1,20 @@
 import { Container } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import StudentForm from "@components/registrationStudent/StudentForm";
+import TeacherForm from "@components/registrationTeacher/TeacherForm";
+import { translate } from "@i18n";
 import "./RegistrationPage.scss";
 
 const RegistrationPage = () => {
-  const { user } = useParams();
+  const { t } = translate("translate", { keyPrefix: "registrationPage" });
+
+  const { pathname } = useLocation();
 
   return (
     <Container className="registrationPageContainer">
-      {user === "student" && <StudentForm />}
-      {user === "teacher" && <div>teacher form</div>}
+      <p className="titleRegister">{t("registration")}</p>
+      {pathname.includes("student") && <StudentForm />}
+      {pathname.includes("teacher") && <TeacherForm />}
     </Container>
   );
 };
