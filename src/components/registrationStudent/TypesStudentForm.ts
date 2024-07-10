@@ -1,6 +1,6 @@
 export type TStudentLanguage = {
-  language: number;
-  level: number;
+  language: string;
+  level: string;
   description: string;
 };
 

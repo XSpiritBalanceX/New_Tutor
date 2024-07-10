@@ -107,6 +107,7 @@
       "errorFileSizeImage": "The file size is too large, no more than 2 MB.",
       "errorTypeImage": "File format is JPG or PNG only.",
       "delete": "Delete",
+      "deleteLanguage": "Delete language",
       "hintPhoto": "JPG or PNG format. Maximum size 2 MB",
       "languageForLearning": "Language to learn",
       "chooseLanguage": "Choose language",

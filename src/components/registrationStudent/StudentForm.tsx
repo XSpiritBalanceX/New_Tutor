@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -14,14 +14,15 @@ const StudentForm = () => {
   const { t } = translate("translate", { keyPrefix: "registrationPage" });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [countOfLanguage, setCountOfLanguage] = useState(1);
+  const [initialValues, setInitialValues] = useState(JSON.parse(sessionStorage.getItem("tutor_student_form") || "{}"));
+  const [countOfLanguage, setCountOfLanguage] = useState<number>(initialValues.learning_languages?.length || 1);
 
   const validationSchema = Yup.object().shape({
     learning_languages: Yup.array()
       .of(
         Yup.object({
-          language: Yup.number().required(t("errChooseLanguage")),
-          level: Yup.number().required(t("errLevel")),
+          language: Yup.string().required(t("errChooseLanguage")),
+          level: Yup.string().required(t("errLevel")),
           description: Yup.string().required(t("errGoal")),
         }),
       )
@@ -30,32 +31,52 @@ const StudentForm = () => {
 
   const {
     control,
-    register,
     handleSubmit,
-    setError,
     watch,
     getValues,
-    setValue,
     formState: { errors },
   } = useForm<IStudentFormInformation>({
     resolver: yupResolver(validationSchema),
+    values: initialValues,
   });
+
+  const { remove } = useFieldArray({ control, name: "learning_languages" });
 
   const submitStudentRegistration = (data: IStudentFormInformation) => {
     console.log(data);
   };
-
-  const studentFormRow: Array<JSX.Element> = Array(countOfLanguage)
-    .fill(null)
-    .map((_, ind) => (
-      <StudentRow key={["StudentRow", ind].join("_")} id={ind} errors={errors} control={control} watch={watch} />
-    ));
 
   const handleIncreaseRow = () => {
     setCountOfLanguage((value) => {
       return value + 1;
     });
   };
+
+  useEffect(() => {
+    sessionStorage.setItem("tutor_student_form", JSON.stringify(watch()));
+    // eslint-disable-next-line
+  }, [watch()]);
+
+  const handleDecreaseRow = (id: number) => {
+    setCountOfLanguage((value) => {
+      return value - 1;
+    });
+    remove(id);
+    setInitialValues(getValues());
+  };
+
+  const studentFormRow: Array<JSX.Element> = Array(countOfLanguage)
+    .fill(null)
+    .map((_, ind) => (
+      <StudentRow
+        key={["StudentRow", ind].join("_")}
+        id={ind}
+        errors={errors}
+        control={control}
+        watch={watch}
+        cbHandleDeleteLanguage={handleDecreaseRow}
+      />
+    ));
 
   return (
     <>
