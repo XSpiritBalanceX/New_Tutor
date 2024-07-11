@@ -8,6 +8,7 @@ import Loader from "@components/loader/Loader";
 import { IStudentFormInformation, TStudentLanguage } from "./TypesStudentForm";
 import StudentRow from "@components/studentRow/StudentRow";
 import AddIcon from "@mui/icons-material/Add";
+import UserAvatar from "@components/avatar/UserAvatar";
 import "./StudentForm.scss";
 
 const StudentForm = () => {
@@ -82,6 +83,7 @@ const StudentForm = () => {
     <>
       {isLoading && <Loader />}
       <Box className="registrationStudentBox">
+        <UserAvatar />
         <form onSubmit={handleSubmit(submitStudentRegistration)}>
           {studentFormRow}
           <Box className="addLanguageButtonBox">

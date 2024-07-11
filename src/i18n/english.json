@@ -132,6 +132,13 @@
       "professSkills": "Describe your professional skills",
       "addLanguageTeaching": "Add teaching language",
       "errCertificate": "Add your certificates/diplomas"
+    },
+    "userAvatar": {
+      "upload": "Upload a photo",
+      "delete": "Delete",
+      "hintPhoto": "JPG or PNG format. Maximum size 2 MB",
+      "errorFileSizeImage": "The file size is too large, no more than 2 MB.",
+      "errorTypeImage": "File format is JPG or PNG only."
     }
   }
 }
