@@ -1,0 +1,61 @@
+@import "../../variables";
+
+.teacherScheduleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 720px;
+  width: 100%;
+  .submitButton {
+    text-transform: none;
+    @extend %button-1;
+    padding: 10px 20px;
+    border-radius: 100px;
+    margin: 40px 0 0 0;
+  }
+  .scheduleContainer {
+    max-width: 640px;
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+    .timeTitle,
+    .durationTitle {
+      text-align: center;
+    }
+    .timeTitle {
+      @extend %h2;
+      margin: 0 0 10px 0;
+    }
+    .durationTitle {
+      @extend %h3;
+      margin: 0;
+      color: map-get($theme-colors, "main-blue");
+    }
+    .timeZoneBox {
+      margin: 20px 0;
+      p {
+        @extend %h3;
+        margin: 0 0 5px 0;
+      }
+      .timeZoneField {
+        max-width: 360px;
+        div:nth-child(3) {
+          border-radius: 5px;
+          border-color: map-get($theme-colors, "black");
+          @extend %text-main;
+          &:active {
+            border: solid 2px map-get($theme-colors, "main-blue");
+            box-shadow: none;
+          }
+          > div:nth-child(2) {
+            span {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

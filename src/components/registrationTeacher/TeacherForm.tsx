@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import TeacherRow from "@components/teacherRow/TeacherRow";
 import UserAvatar from "@components/avatar/UserAvatar";
+import TeacherSchedule from "./TeacherSchedule";
 import "./TeacherForm.scss";
 
 interface ITeacherForm {
@@ -101,8 +102,8 @@ const TeacherForm = () => {
           <Box className={`lastLine ${isSchedule ? "activeLine" : "lineInStep"}`} />
           <Box className={`${isSchedule ? "activeNumberOfStep" : "numberOfStep"}`}>2</Box>
         </Box>
-        <UserAvatar />
-        {!isSchedule && (
+        {!isSchedule && <UserAvatar />}
+        {!isSchedule ? (
           <form onSubmit={handleSubmit(submitTeacherForm)}>
             {teacherFormRow}
             <Box className="addLanguageButtonBox">
@@ -117,6 +118,8 @@ const TeacherForm = () => {
               <Button type="submit">{t("next")}</Button>
             </Box>
           </form>
+        ) : (
+          <TeacherSchedule />
         )}
       </Box>
     </>

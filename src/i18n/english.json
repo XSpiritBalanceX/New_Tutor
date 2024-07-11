@@ -139,6 +139,14 @@
       "hintPhoto": "JPG or PNG format. Maximum size 2 MB",
       "errorFileSizeImage": "The file size is too large, no more than 2 MB.",
       "errorTypeImage": "File format is JPG or PNG only."
+    },
+    "teacherSchedule": {
+      "chooseTime": "Choose a time for the lesson",
+      "durationOfLesson": "Lesson duration is 55 minutes",
+      "chooseTimeZone": "Select your time zone",
+      "endRegister": "Complete registration",
+      "apply": "Apply",
+      "errBusy": "You cannot make changes to the schedule. You already have a lesson scheduled for this time. To reschedule a class, go to "
     }
   }
 }
