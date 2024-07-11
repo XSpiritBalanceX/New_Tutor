@@ -66,7 +66,7 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
       <FormLabel className="teacherFormLabel">{t("uploadCertificate")}</FormLabel>
       {certificates.map(
         (el, ind) =>
-          el && (
+          el instanceof File && (
             <Box key={ind} className="certificateBox">
               <img src={URL.createObjectURL(el)} alt="certificate" />
               <Box className="certificateNameSizeBox">

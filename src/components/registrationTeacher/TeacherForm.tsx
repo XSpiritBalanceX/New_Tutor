@@ -48,6 +48,7 @@ const TeacherForm = () => {
     formState: { errors },
   } = useForm<ITeacherForm>({
     resolver: yupResolver(validationSchema),
+    values: initialValues,
   });
 
   const { remove } = useFieldArray({ control, name: "teaching_languages" });
