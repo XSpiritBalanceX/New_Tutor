@@ -7,11 +7,15 @@ import * as tutorSelectors from "@store/selectors";
 import { translate } from "@i18n";
 import WrapperHeader from "@components/header/WrapperHeader";
 import Footer from "@components/footer/Footer";
+import moment from "moment";
+import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const locale = useAppSelector(tutorSelectors.localeSelect);
   const { i18n } = translate();
+
+  moment.locale(locale);
 
   useEffect(() => {
     i18n.changeLanguage(locale);
