@@ -4,7 +4,20 @@
       "findTeacher": "Найти преподавателя",
       "becomeTeacher": "Стать преподавателем",
       "signInButton": "Войти",
-      "signUpButton": "Зарегистрироваться"
+      "signUpButton": "Зарегистрироваться",
+      "balance": "Баланс ({{currency}})",
+      "withdraw": "Вывести",
+      "myLessons": "Мои уроки",
+      "allLessons": "Все уроки",
+      "videoLesson": "Видеоурок",
+      "inviteFriend": "Пригласить друга",
+      "generalSettings": "Общие настройки",
+      "changePhone": "Изменение номера",
+      "languages": "Языки",
+      "schedule": "Расписание",
+      "changePassword": "Изменение пароля",
+      "payments": "Оплаты/подписки",
+      "logOut": "Выйти"
     },
     "footer": {
       "aboutCompany": "О компании",

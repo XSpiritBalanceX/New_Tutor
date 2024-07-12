@@ -4,7 +4,20 @@
       "findTeacher": "Find a teacher",
       "becomeTeacher": "Become a teacher",
       "signInButton": "Sign in",
-      "signUpButton": "Sign up"
+      "signUpButton": "Sign up",
+      "balance": "Balance ({{currency}})",
+      "withdraw": "Withdraw",
+      "myLessons": "My lessons",
+      "allLessons": "All lessons",
+      "videoLesson": "Video lesson",
+      "inviteFriend": "To invite a friend",
+      "generalSettings": "General settings",
+      "changePhone": "Change of number",
+      "languages": "Languages",
+      "schedule": "Schedule",
+      "changePassword": "Change password",
+      "payments": "Payments/subscriptions",
+      "logOut": "Log out"
     },
     "footer": {
       "aboutCompany": "About company",
