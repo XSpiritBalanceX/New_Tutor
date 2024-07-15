@@ -7,6 +7,7 @@
       "signUpButton": "Зарегистрироваться",
       "balance": "Баланс ({{currency}})",
       "withdraw": "Вывести",
+      "topUpBalance": "Пополнить",
       "myLessons": "Мои уроки",
       "allLessons": "Все уроки",
       "videoLesson": "Видеоурок",

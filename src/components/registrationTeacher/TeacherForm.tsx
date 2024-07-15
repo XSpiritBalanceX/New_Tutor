@@ -5,11 +5,12 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import Loader from "@components/loader/Loader";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import TeacherRow from "@components/teacherRow/TeacherRow";
 import UserAvatar from "@components/avatar/UserAvatar";
 import TeacherSchedule from "./TeacherSchedule";
+import { USER_TYPE, REGISTER_STATE } from "@axiosApi/axiosAPI";
 import "./TeacherForm.scss";
 
 interface ITeacherForm {
@@ -20,8 +21,21 @@ const TeacherForm = () => {
   const { t } = translate("translate", { keyPrefix: "registrationPage" });
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const isSchedule = pathname.includes("schedule");
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
+  const registerStep = localStorage.getItem(REGISTER_STATE);
+
+  useEffect(() => {
+    isStudent && navigate("/");
+    if (pathname === "/registration/teacher") {
+      registerStep !== "STEP1" && navigate("/");
+      registerStep === "STEP2" && navigate("/registration/teacher/schedule");
+    }
+    // eslint-disable-next-line
+  }, [isStudent, registerStep]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [initialValues, setInitialValues] = useState(JSON.parse(sessionStorage.getItem("tutor_teacher_form") || "{}"));

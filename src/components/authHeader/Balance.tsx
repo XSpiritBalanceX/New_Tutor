@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Box, TextField, InputAdornment, MenuItem, Button } from "@mui/material";
 import { translate } from "@i18n";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
 import "./AuthHeader.scss";
 
 const Balance = () => {
   const { t } = translate("translate", { keyPrefix: "header" });
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const [currentCurrency, setCurrentCurrency] = useState("$");
   const [money, setMoney] = useState<string | number>("");
@@ -51,7 +54,7 @@ const Balance = () => {
         ))}
       </TextField>
       <Button type="button" onClick={handleWithdrawMoney} className="withdrawButton">
-        {t("withdraw")}
+        {t(isStudent ? "topUpBalance" : "withdraw")}
       </Button>
     </Box>
   );

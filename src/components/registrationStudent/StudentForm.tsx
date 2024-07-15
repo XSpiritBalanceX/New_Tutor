@@ -9,10 +9,20 @@ import { IStudentFormInformation, TStudentLanguage } from "./TypesStudentForm";
 import StudentRow from "@components/studentRow/StudentRow";
 import AddIcon from "@mui/icons-material/Add";
 import UserAvatar from "@components/avatar/UserAvatar";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { useNavigate } from "react-router-dom";
 import "./StudentForm.scss";
 
 const StudentForm = () => {
   const { t } = translate("translate", { keyPrefix: "registrationPage" });
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    !isStudent && navigate("/");
+    // eslint-disable-next-line
+  }, [isStudent]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [initialValues, setInitialValues] = useState(JSON.parse(sessionStorage.getItem("tutor_student_form") || "{}"));

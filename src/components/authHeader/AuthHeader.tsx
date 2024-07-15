@@ -10,6 +10,7 @@ import Balance from "./Balance";
 import classNames from "classnames";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PersonalControls from "./PersonalControls";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
 import "./AuthHeader.scss";
 
 const AuthHeader = () => {
@@ -20,6 +21,7 @@ const AuthHeader = () => {
   const dispatch = useAppDispatch();
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const languagesApp = [
     {
@@ -63,9 +65,11 @@ const AuthHeader = () => {
                 <NavLink to={"/"}>{t("videoLesson")}</NavLink>
               </Box>
             )}
-            <NavLink to={"/search/1"} className="nav-link">
-              {t("findTeacher")}
-            </NavLink>
+            {isStudent && (
+              <NavLink to={"/search/1"} className="nav-link">
+                {t("findTeacher")}
+              </NavLink>
+            )}
             <NavLink to={"/invitation"} className="nav-link">
               {t("inviteFriend")}
             </NavLink>
