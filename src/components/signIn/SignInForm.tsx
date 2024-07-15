@@ -58,7 +58,7 @@ const SignInForm = () => {
           refreshToken: response.data.refresh_token,
           expiresIn: decode.exp,
           user_type: decode.user_type,
-          register_state: decode.register_state,
+          register_state: decode.register_state || "",
         }),
       );
       navigate("/");

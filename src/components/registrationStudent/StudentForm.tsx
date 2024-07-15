@@ -5,11 +5,11 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import Loader from "@components/loader/Loader";
-import { IStudentFormInformation, TStudentLanguage } from "./TypesStudentForm";
+import { IStudentFormInformation } from "./TypesStudentForm";
 import StudentRow from "@components/studentRow/StudentRow";
 import AddIcon from "@mui/icons-material/Add";
 import UserAvatar from "@components/avatar/UserAvatar";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE, REGISTER_STATE } from "@axiosApi/axiosAPI";
 import { useNavigate } from "react-router-dom";
 import { createStudentLanguages } from "@api/student/createStudentLanguages";
 import { toast } from "react-toastify";
@@ -22,14 +22,16 @@ const StudentForm = () => {
   const { t } = translate("translate", { keyPrefix: "registrationPage" });
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
+  const registerStep = localStorage.getItem(REGISTER_STATE);
   const navigate = useNavigate();
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
 
   useEffect(() => {
     !isStudent && navigate("/");
+    !registerStep && navigate("/");
     // eslint-disable-next-line
-  }, [isStudent]);
+  }, [isStudent, registerStep]);
 
   const [isLoading, setIsLoading] = useState(false);
   const [initialValues, setInitialValues] = useState(JSON.parse(sessionStorage.getItem("tutor_student_form") || "{}"));

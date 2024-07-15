@@ -12,6 +12,7 @@ const TeacherSchedule = () => {
 
   useEffect(() => {
     registerStep === "STEP1" && navigate("/registration/teacher");
+    !registerStep && navigate("/");
     // eslint-disable-next-line
   }, [registerStep]);
 
