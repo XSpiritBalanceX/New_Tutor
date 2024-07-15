@@ -9,10 +9,14 @@ export const refreshToken = async (): Promise<string> => {
     const tokenAccess = localStorage.getItem("tutor_access_token");
     const decodeAccess: IToken = jwtDecode(tokenAccess!);
 
-    const result = await axios.post(`${BASE_URL}/auth/refreshToken`, {
-      refresh_token: refreshToken,
-      user_type: decodeAccess.user_type,
-    });
+    const result = await axios.post(
+      `${BASE_URL}/auth/refreshToken`,
+      {
+        refresh_token: refreshToken,
+        user_type: Number(decodeAccess.user_type),
+      },
+      { headers: { Authorization: `Bearer ${tokenAccess}` } },
+    );
 
     const decodeToken: IToken = jwtDecode(result.data.access_token);
     const newAccessToken = result.data.access_token;

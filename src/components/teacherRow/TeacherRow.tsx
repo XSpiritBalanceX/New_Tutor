@@ -5,7 +5,7 @@ import ControlledSelect from "@components/fields/ControlledSelect";
 import ControlledInput from "@components/fields/ControlledInput";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
-import { language, level } from "@utils/listOfLanguagesLevels";
+import { language, level, TLanguages, TLevel } from "@utils/listOfLanguagesLevels";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import { ITeacherRowProps } from "./TypesTeacherRow";
 import Certificates from "./Certificates";
@@ -23,9 +23,6 @@ const TeacherRow = <T extends FieldValues>({
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
 
-  const languageCurrent = locale === "en" ? language.english : language.russian;
-  const levelCurrent = locale === "en" ? level.english : level.russian;
-
   const handleDeleteLanguage = () => {
     cbHandleDeleteLanguage(id);
   };
@@ -40,7 +37,7 @@ const TeacherRow = <T extends FieldValues>({
             control={control}
             label={t("chooseLanguage")}
             error={errors.teaching_languages?.[id]?.language?.message}
-            options={languageCurrent}
+            options={language[locale as keyof TLanguages]}
           />
         </Box>
         <Box className="teacherFieldBox">
@@ -50,7 +47,7 @@ const TeacherRow = <T extends FieldValues>({
             control={control}
             label={t("chooseLanguage")}
             error={errors.teaching_languages?.[id]?.level?.message}
-            options={levelCurrent}
+            options={level[locale as keyof TLevel]}
           />
         </Box>
       </Box>

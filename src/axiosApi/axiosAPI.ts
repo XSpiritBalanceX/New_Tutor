@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { jwtDecode } from "jwt-decode";
+import moment from "moment";
 
 interface IToken {
   user_type: number;
@@ -75,14 +76,19 @@ class AxiosAPI {
 
   async fetchToken() {
     const refreshToken = this.getItem(REFRESH_TOKEN_KEY);
+    const token = this.getItem(TOKEN_KEY);
     const userType = this.getItem(USER_TYPE);
     if (!refreshToken) throw Error("some err");
 
     try {
-      const result = await axios.post(`${BASE_URL}/auth/refreshToken`, {
-        refresh_token: refreshToken,
-        user_type: userType,
-      });
+      const result = await axios.post(
+        `${BASE_URL}/auth/refreshToken`,
+        {
+          refresh_token: refreshToken,
+          user_type: Number(userType),
+        },
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
 
       const decodeToken: IToken = jwtDecode(result.data.access_token);
       const tokenExpires = decodeToken.exp;
@@ -110,10 +116,10 @@ axiosInstance.interceptors.request.use(
     return new Promise(async (resolve) => {
       try {
         const token = axiosAPI.getItem(TOKEN_KEY);
-        const expTime = Number(axiosAPI.getItem(TOKEN_EXPIRES_KEY) ?? "0") ?? 0;
-        const curTime = Math.floor(Date.now() / 1000);
-        const threeMinutes = 3 * 60;
-        if (token && expTime && expTime - curTime <= threeMinutes) {
+        const expTime = moment.unix(Number(localStorage.getItem("tutor_tokenExpires") ?? "0") ?? 0);
+        const currentTime = moment();
+        const threeMinutes = 3;
+        if (token && expTime.isAfter(currentTime) && expTime.diff(currentTime, "minutes") <= threeMinutes) {
           await axiosAPI.fetchToken();
         }
         const updToken = axiosAPI.getItem(TOKEN_KEY);

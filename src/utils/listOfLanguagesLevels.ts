@@ -1,5 +1,15 @@
-export const language = {
-  english: [
+export type TLanguages = {
+  en: string[];
+  ru: string[];
+};
+
+export type TLevel = {
+  en: string[];
+  ru: string[];
+};
+
+export const language: TLanguages = {
+  en: [
     "English",
     "Spanish",
     "French",
@@ -52,7 +62,7 @@ export const language = {
     "Tamil",
     "Indonesian",
   ],
-  russian: [
+  ru: [
     "Английский",
     "Испанский",
     "Французский",
@@ -107,8 +117,8 @@ export const language = {
   ],
 };
 
-export const languageInCases = {
-  english: [
+export const languageInCases: TLanguages = {
+  en: [
     "English",
     "Spanish",
     "French",
@@ -161,7 +171,7 @@ export const languageInCases = {
     "Tamil",
     "Indonesian",
   ],
-  russian: [
+  ru: [
     "английского",
     "испанского",
     "французского",
@@ -216,8 +226,8 @@ export const languageInCases = {
   ],
 };
 
-export const level = {
-  russian: [
+export const level: TLevel = {
+  ru: [
     "A0 - Стартовый",
     "A1 - Начальный",
     "A2 - Ниже среднего",
@@ -226,7 +236,7 @@ export const level = {
     "C1 - Продвинутый",
     "C2 - Профессиональный",
   ],
-  english: [
+  en: [
     "A0 - Starter",
     "A1 - Beginner",
     "A2 - Pre-Intermediate",

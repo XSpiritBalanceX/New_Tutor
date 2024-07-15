@@ -11,6 +11,11 @@ import AddIcon from "@mui/icons-material/Add";
 import UserAvatar from "@components/avatar/UserAvatar";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import { useNavigate } from "react-router-dom";
+import { createStudentLanguages } from "@api/student/createStudentLanguages";
+import { toast } from "react-toastify";
+import { language, TLanguages } from "@utils/listOfLanguagesLevels";
+import { useAppSelector } from "@store/hook";
+import * as tutorSelectors from "@store/selectors";
 import "./StudentForm.scss";
 
 const StudentForm = () => {
@@ -18,6 +23,8 @@ const StudentForm = () => {
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
   const navigate = useNavigate();
+
+  const locale = useAppSelector(tutorSelectors.localeSelect);
 
   useEffect(() => {
     !isStudent && navigate("/");
@@ -53,8 +60,24 @@ const StudentForm = () => {
 
   const { remove } = useFieldArray({ control, name: "learning_languages" });
 
-  const submitStudentRegistration = (data: IStudentFormInformation) => {
-    console.log(data);
+  const submitStudentRegistration = async (data: IStudentFormInformation) => {
+    const sentData = data.learning_languages.map((el) => {
+      return { language: Number(el.language), level: Number(el.level), description: el.description };
+    });
+    try {
+      setIsLoading(true);
+      await createStudentLanguages({ create: sentData });
+      sessionStorage.removeItem("tutor_student_form");
+      navigate("/user");
+    } catch (err: any) {
+      if (err.response.status === 400) {
+        const languageCurrent = language[locale as keyof TLanguages];
+        const errLanguage = err.response.data.message.match(/\d+/);
+        toast.error(t("errExistingLanguages", { language: languageCurrent[errLanguage[0]] }));
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleIncreaseRow = () => {
