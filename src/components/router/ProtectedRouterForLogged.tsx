@@ -7,10 +7,9 @@ interface IProtectedRouterForLoggedProps {
 }
 
 const ProtectedRouterForLogged = ({ children }: IProtectedRouterForLoggedProps) => {
-  const token = localStorage.getItem("tutor_access_token");
   const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
-  if (!token || !isLogin) {
+  if (isLogin) {
     return <Navigate to={"/"} replace />;
   }
   return children;

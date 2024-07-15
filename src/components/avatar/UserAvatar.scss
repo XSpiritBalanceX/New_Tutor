@@ -1,0 +1,45 @@
+@import "../../variables";
+
+.avatarBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 0 30px 0;
+  border-bottom: solid 1px map-deep-get($theme-colors, "border", "disable");
+  .userAvatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+  }
+  .controlsAvatarBox {
+    display: flex;
+    flex-direction: column;
+    .uploadAvatar,
+    .deleteAvatar {
+      @extend %text-main;
+      padding: 10px 20px;
+      border-radius: 100px;
+    }
+    .uploadAvatar {
+      @extend %button-1;
+      margin-right: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .deleteAvatar {
+      @extend %button-2;
+      text-transform: none;
+    }
+    .hintText {
+      @extend %text-small;
+      margin: 20px 0 0 0;
+      color: map-get($theme-colors, "gray");
+    }
+    .errorMessage {
+      color: map-get($theme-colors, "red");
+      margin: 5px 0 0 0;
+      @extend %text-small;
+    }
+  }
+}

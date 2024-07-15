@@ -1,0 +1,76 @@
+@import "../../variables";
+
+.studentRowBox {
+  padding: 30px 0 10px 0;
+  border-bottom: solid 1px map-deep-get($theme-colors, "border", "disable");
+  display: flex;
+  flex-direction: column;
+  .languageLevelBoxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 880px;
+  }
+  .studentFieldBox {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 380px;
+    width: 100%;
+    .MuiFormLabel-root.MuiFormLabel-filled,
+    .MuiFormLabel-root.Mui-focused {
+      display: none;
+    }
+    .MuiInputBase-root {
+      fieldset {
+        legend {
+          display: none;
+        }
+      }
+    }
+    .errorIcon {
+      margin-right: 5px;
+    }
+    .studentFormLabel {
+      @extend %h3;
+      margin: 0 0 10px 0;
+      color: map-get($theme-colors, "black");
+    }
+  }
+  .goalBox {
+    max-width: 880px;
+    width: 100%;
+    .errorIcon,
+    .errorMessage {
+      color: map-get($theme-colors, "red");
+    }
+    .errorMessage {
+      @extend %text-small;
+      margin-bottom: 10px;
+    }
+    .controlledField {
+      .MuiInputBase-root.Mui-error {
+        border: none;
+        fieldset {
+          border: solid 2px map-get($theme-colors, "red");
+        }
+      }
+      .MuiInputBase-root.Mui-focused {
+        border: none;
+        fieldset {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+    }
+  }
+  .deleteLanguageBox {
+    button {
+      text-transform: none;
+      @extend %text-main;
+      @extend %button-2;
+      border-radius: 100px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+    }
+  }
+}

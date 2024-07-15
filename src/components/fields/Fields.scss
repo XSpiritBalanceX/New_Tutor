@@ -1,0 +1,59 @@
+@import "../../variables";
+
+.controlledFieldBox {
+  width: 100%;
+  .errorIcon,
+  .errorMessage {
+    color: map-get($theme-colors, "red");
+  }
+  .errorMessage {
+    @extend %text-small;
+    margin-bottom: 10px;
+  }
+  .controlledField,
+  .passwordField {
+    width: 100%;
+    height: 40px;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 5px;
+    .MuiFormLabel-root {
+      margin-top: -3px;
+      @extend %text-main;
+      color: map-get($theme-colors, "gray");
+    }
+    .MuiFormLabel-root.MuiFormLabel-filled {
+      @extend %text-main;
+      margin-top: 0;
+    }
+    .MuiFormLabel-root.MuiFormLabel-filled.Mui-focused,
+    .MuiFormLabel-root.Mui-focused {
+      color: map-get($theme-colors, "main-blue");
+      @extend %text-main;
+    }
+    .MuiInputBase-root.MuiInputBase-formControl {
+      height: 40px;
+      border-radius: 5px;
+      @extend %text-main;
+      input {
+        height: 40px;
+        padding: 0 15px;
+        color: map-get($theme-colors, "black");
+      }
+      fieldset {
+        border: solid 1px map-get($theme-colors, "gray");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "main-blue");
+      }
+    }
+  }
+}

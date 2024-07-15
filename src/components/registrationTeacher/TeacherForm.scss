@@ -1,0 +1,79 @@
+@import "../../variables";
+
+.teacherFormBox {
+  .stepsBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 40px 0;
+    .numberOfStep,
+    .activeNumberOfStep {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @extend %h1;
+    }
+    .activeNumberOfStep,
+    .activeLine {
+      background-color: map-get($theme-colors, "main-blue");
+      color: map-get($theme-colors, "white");
+    }
+    .numberOfStep,
+    .lineInStep {
+      background-color: map-get($theme-colors, "white-blue");
+      color: map-get($theme-colors, "main-blue");
+    }
+    .activeLine,
+    .lineInStep {
+      width: 115px;
+      height: 2px;
+    }
+    .firstLine {
+      margin-left: 5px;
+    }
+    .lastLine {
+      margin-right: 5px;
+    }
+  }
+  .addLanguageButtonBox {
+    margin: 20px 0 30px 0;
+    button {
+      text-transform: none;
+      @extend %text-main;
+      color: map-get($theme-colors, "black");
+      padding: 0;
+      .addBox {
+        background-color: map-get($theme-colors, "main-blue");
+        color: map-get($theme-colors, "white");
+        margin-right: 10px;
+        border-radius: 100%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .submitButtonBox {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      text-transform: none;
+      @extend %text-main;
+      @extend %button-1;
+      border-radius: 100px;
+      padding: 10px 20px;
+    }
+  }
+  .teacherScheduleBox {
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

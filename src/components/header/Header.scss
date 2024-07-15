@@ -1,0 +1,71 @@
+@import "../../variables";
+
+.wrapperHeaderBox {
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "header");
+  background-color: map-get($theme-colors, "white");
+}
+
+.headerContainer {
+  max-width: 1200px;
+  padding: 30px 20px 20px 20px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+  .firstLinksBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      margin-right: 70px;
+    }
+    .nav-link {
+      @extend %text-main;
+      color: map-get($theme-colors, "black");
+    }
+    .nav-link.active {
+      color: map-get($theme-colors, "main-blue");
+    }
+    .findTeacherLink {
+      margin-right: 20px;
+    }
+  }
+  .secondLinksBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .languageField {
+      height: 25px;
+      .MuiInputBase-root {
+        height: 25px;
+        fieldset {
+          display: none;
+        }
+        .MuiSelect-select {
+          @extend %text-small;
+          padding-top: 5px;
+          padding-bottom: 0;
+          color: map-get($theme-colors, "gray");
+        }
+      }
+    }
+    .nav-link {
+      @extend %text-main;
+      padding: 10px 20px;
+      border-radius: 100px;
+    }
+    .loginLink {
+      margin: 0 20px;
+      @extend %button-2;
+    }
+    .registrationLink {
+      @extend %button-1;
+      border: solid 1px map-get($theme-colors, "main-blue");
+    }
+  }
+}

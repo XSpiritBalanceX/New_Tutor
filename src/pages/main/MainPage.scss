@@ -1,0 +1,186 @@
+@import "../../variables";
+
+.mainPageContainer {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  .firstMainPageBox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 130px 0 0 0;
+    min-height: 430px;
+    .titleFirstBox {
+      margin: 0 0 10px 0;
+      @extend %h1;
+      color: map-get($theme-colors, "main-blue");
+      max-width: 599px;
+      span {
+        background-color: map-get($theme-colors, "main-blue");
+        color: map-get($theme-colors, "white");
+        padding: 4px 15px;
+        border-radius: 4px;
+        margin-right: 15px;
+      }
+    }
+    .mainPicture {
+      position: absolute;
+      right: 0;
+      top: 0;
+      max-width: 680px;
+    }
+    .titleWords {
+      max-width: 599px;
+      margin: 0 0 10px 0;
+      @extend %text-main;
+    }
+    a {
+      text-decoration: none;
+      @extend %button-1;
+      width: 210px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @extend %text-main;
+      border-radius: 100px;
+    }
+  }
+  .secondMainPageBox {
+    margin: 100px 0 0 0;
+    .title {
+      margin: 0 0 20px 0;
+      @extend %h1;
+    }
+    .picturesBox {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .learningBox {
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 38px 26px 38px 20px;
+        img {
+          margin-left: 20px;
+        }
+        .learningTitle {
+          margin: 0 0 10px 0;
+          @extend %h2;
+        }
+        .learningText {
+          margin: 0;
+          @extend %text-main;
+        }
+      }
+      .learningBox_1 {
+        margin: 0 20px 30px 0;
+      }
+      .learningBox_2 {
+        margin: 0 0 30px 0;
+      }
+      .learningBox_3 {
+        margin: 0 20px 0 0;
+      }
+      .learningBox_1,
+      .learningBox_4 {
+        flex-basis: 51%;
+      }
+      .learningBox_2,
+      .learningBox_3 {
+        flex-basis: 39%;
+      }
+    }
+  }
+  .thirdMainPageBox {
+    margin: 100px 0;
+    .title {
+      margin: 0 0 30px 0;
+      @extend %h1;
+    }
+    .howToLearnPicturesBox {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .howToLearnBox {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .stepsBox {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .stepsNumberBox {
+            position: relative;
+            margin: 0 10px 0 0;
+            .numberAbove,
+            .numberUnder {
+              @extend %h1;
+              font-size: 36px;
+              line-height: 120%;
+              margin: 0;
+            }
+            .numberAbove {
+              color: map-get($theme-colors, "white");
+              position: absolute;
+            }
+            .numberUnder {
+              color: map-get($theme-colors, "main-blue");
+              -webkit-text-stroke: 3px map-get($theme-colors, "main-blue");
+            }
+          }
+          .stepTitle {
+            @extend %h2;
+            color: map-get($theme-colors, "main-blue");
+          }
+          span {
+            background-color: map-get($theme-colors, "main-blue");
+            color: map-get($theme-colors, "white");
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 0 0 0 4px;
+            @extend %h2;
+          }
+        }
+        .stepsPicturesBox {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+      .howToLearnBox_2 {
+        margin-top: 30px;
+        width: 38%;
+        .stepsPicturesBox {
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+          .arrowPicture {
+            transform: rotate(20deg);
+            align-self: flex-end;
+            margin-top: -20px;
+          }
+        }
+      }
+      .howToLearnBox_3 {
+        order: 1;
+        .stepsBox {
+          width: 100%;
+          justify-content: center;
+        }
+        .stepsPicturesBox {
+          .arrowPicture {
+            order: -1;
+            margin-top: 80px;
+          }
+        }
+      }
+      .howToLearnBox_4 {
+        width: 50%;
+        align-items: flex-end;
+        margin: 60px 0 0 0;
+      }
+    }
+  }
+}
