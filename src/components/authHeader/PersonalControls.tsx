@@ -5,10 +5,14 @@ import user from "@assets/user.svg";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import { NavLink } from "react-router-dom";
+import { useAppDispatch } from "@store/hook";
+import { loginUser } from "@store/tutorSlice";
 import "./AuthHeader.scss";
 
 const PersonalControls = () => {
   const { t } = translate("translate", { keyPrefix: "header" });
+
+  const dispatch = useAppDispatch();
 
   const [isOpenPersonalMenu, setIsOpenPersonalMenu] = useState(false);
 
@@ -17,7 +21,16 @@ const PersonalControls = () => {
   };
 
   const handleLogOut = () => {
-    console.log("log out");
+    dispatch(
+      loginUser({
+        isLogin: false,
+        token: "",
+        refreshToken: "",
+        expiresIn: 0,
+        user_type: 0,
+        register_state: "",
+      }),
+    );
   };
 
   return (

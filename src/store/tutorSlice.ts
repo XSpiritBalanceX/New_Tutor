@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TOKEN_KEY, REFRESH_TOKEN_KEY, TOKEN_EXPIRES_KEY, USER_TYPE } from "@axiosApi/axiosAPI";
+import { TOKEN_KEY, REFRESH_TOKEN_KEY, TOKEN_EXPIRES_KEY, USER_TYPE, REGISTER_STATE } from "@axiosApi/axiosAPI";
 
 type MainState = {
   locale: string;
@@ -30,6 +30,7 @@ const tutorSlice = createSlice({
         refreshToken: string;
         expiresIn: number;
         user_type: number;
+        register_state: string;
       }>,
     ) {
       state.isLogin = action.payload.isLogin;
@@ -38,11 +39,13 @@ const tutorSlice = createSlice({
         localStorage.setItem(REFRESH_TOKEN_KEY, action.payload.refreshToken);
         localStorage.setItem(TOKEN_EXPIRES_KEY, String(action.payload.expiresIn));
         localStorage.setItem(USER_TYPE, String(action.payload.user_type));
+        localStorage.setItem(REGISTER_STATE, action.payload.register_state);
       } else {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(REFRESH_TOKEN_KEY);
         localStorage.removeItem(TOKEN_EXPIRES_KEY);
         localStorage.removeItem(USER_TYPE);
+        localStorage.removeItem(REGISTER_STATE);
       }
     },
   },

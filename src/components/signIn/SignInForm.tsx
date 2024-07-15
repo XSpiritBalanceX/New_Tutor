@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Box, FormLabel } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { translate } from "@i18n";
 import Loader from "@components/loader/Loader";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,6 +14,8 @@ import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/tutorSlice";
 import { signIn } from "@api/auth/signIn";
 import { toast } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
+import { IToken } from "@axiosApi/TypesAPI";
 import "./SignInForm.scss";
 
 interface ISignIn {
@@ -24,7 +26,8 @@ interface ISignIn {
 const SignInForm = () => {
   const { t } = translate("translate", { keyPrefix: "authPage" });
 
-  const dispath = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -47,7 +50,18 @@ const SignInForm = () => {
     try {
       setIsLoading(true);
       const response = await signIn(data);
-      console.log(response);
+      const decode: IToken = jwtDecode(response.data.access_token);
+      dispatch(
+        loginUser({
+          isLogin: true,
+          token: response.data.access_token,
+          refreshToken: response.data.refresh_token,
+          expiresIn: decode.exp,
+          user_type: decode.user_type,
+          register_state: decode.register_state,
+        }),
+      );
+      navigate("/");
     } catch (err: any) {
       toast.error(t("errSignIn"));
     } finally {

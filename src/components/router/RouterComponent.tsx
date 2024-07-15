@@ -25,11 +25,8 @@ const RouterComponent = () => {
       {unauthRoutes.map((el, ind) => (
         <Route key={ind} path={el.path} element={<ProtectedRouterForLogged>{el.element}</ProtectedRouterForLogged>} />
       ))}
-      {/* {authRoutes.map((el, ind) => (
-        <Route key={ind} path={el.path} element={<ProtectedRouter>{el.element}</ProtectedRouter>} />
-      ))} */}
       {authRoutes.map((el, ind) => (
-        <Route key={ind} path={el.path} element={el.element} />
+        <Route key={ind} path={el.path} element={<ProtectedRouter>{el.element}</ProtectedRouter>} />
       ))}
       <Route path="*" element={<Navigate to={"/"} />} />
     </Routes>

@@ -6,13 +6,14 @@ interface IToken {
   exp: number;
 }
 
-export const BASE_URL = "http://212.193.62.231:8080";
-export const HOST = "212.193.62.231";
+export const BASE_URL = "http://212.193.48.254:8080";
+export const HOST = "212.193.48.254";
 export const TOKEN_KEY = "tutor_access_token";
 export const REFRESH_TOKEN_KEY = "tutor_refresh_token";
 export const TOKEN_EXPIRES_KEY = "tutor_tokenExpires";
 export const LOGIN_KEY = "tutor_login";
 export const USER_TYPE = "tutor_user_type";
+export const REGISTER_STATE = "tutor_register_state";
 
 class AxiosAPI {
   //@ts-ignore
@@ -83,10 +84,10 @@ class AxiosAPI {
         user_type: userType,
       });
 
-      const decodeToken: IToken = jwtDecode(result.data.access);
+      const decodeToken: IToken = jwtDecode(result.data.access_token);
       const tokenExpires = decodeToken.exp;
 
-      this.setItem(TOKEN_KEY, result.data.access);
+      this.setItem(TOKEN_KEY, result.data.access_token);
       this.setItem(TOKEN_EXPIRES_KEY, tokenExpires.toString());
     } catch (err: any) {
       if (err.response.status === 401) {

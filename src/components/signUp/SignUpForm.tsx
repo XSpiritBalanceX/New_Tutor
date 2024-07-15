@@ -22,10 +22,16 @@ import moment from "moment";
 import ControlledInput from "@components/fields/ControlledInput";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import ControlledPassword from "@components/fields/ControlledPassword";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { listOfCountries } from "@utils/listOfCountries";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import { signUp } from "@api/auth/signUp";
+import { toast } from "react-toastify";
+import { useAppDispatch } from "@store/hook";
+import { loginUser } from "@store/tutorSlice";
+import { jwtDecode } from "jwt-decode";
+import { IToken } from "@axiosApi/TypesAPI";
 import "./SignUpForm.scss";
 
 interface ISignUp {
@@ -46,6 +52,9 @@ const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     user_type: Yup.string().oneOf(["0", "1"]).required(t("choosePath")),
@@ -109,8 +118,38 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm<ISignUp>({ resolver: yupResolver(validationSchema) });
 
-  const submitSignUp = (data: ISignUp) => {
-    console.log(data);
+  const submitSignUp = async (data: ISignUp) => {
+    const sentData = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+      user_type: Number(data.user_type),
+      country: data.country ? Number(data.country) : null,
+      date_of_birthday: data.date_of_birthday ? moment(data.date_of_birthday, "DD.MM.YYYY").format("YYYY-MM-DD") : null,
+    };
+    try {
+      setIsLoading(true);
+      const response = await signUp(sentData);
+      const decode: IToken = jwtDecode(response.data.access_token);
+      dispatch(
+        loginUser({
+          isLogin: true,
+          token: response.data.access_token,
+          refreshToken: response.data.refresh_token,
+          expiresIn: decode.exp,
+          user_type: decode.user_type,
+          register_state: decode.register_state,
+        }),
+      );
+      setTimeout(() => {
+        data.user_type === "0" ? navigate("/registration/student") : navigate("/registration/teacher");
+      }, 500);
+    } catch (err: any) {
+      toast.error(t("errSignIn"));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const usersTypes = [
