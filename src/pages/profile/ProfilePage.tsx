@@ -4,15 +4,43 @@ import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRig
 import LocationElement from "./LocationElement";
 import { useParams } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
+import ProfileSettings from "@components/profileSettings/ProfileSettings";
+import { useGetProfileQuery } from "@store/requestApi/profileApi";
+import Loader from "@components/loader/Loader";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
 import "./ProfilePage.scss";
+
+type TProfileOptions = {
+  settings: JSX.Element;
+  language: JSX.Element;
+  number: JSX.Element;
+  schedule: JSX.Element;
+  password: JSX.Element;
+  payment: JSX.Element;
+};
 
 const ProfilePage = () => {
   const { t } = translate("translate", { keyPrefix: "profilePage" });
 
   const { element } = useParams();
 
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
+
+  const { data, error, isLoading } = useGetProfileQuery({ isStudent });
+  console.log(data);
+
+  const profileOptions: TProfileOptions = {
+    settings: <ProfileSettings />,
+    language: <Box>language</Box>,
+    number: <Box>number</Box>,
+    schedule: <Box>schedule</Box>,
+    password: <Box>password</Box>,
+    payment: <Box>payment</Box>,
+  };
+
   return (
     <Container className="profilePageContainer">
+      {isLoading && <Loader />}
       <Box className="locationBox">
         <p className="myProfile">{t("myProfile")}</p>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
@@ -20,6 +48,7 @@ const ProfilePage = () => {
       </Box>
       <Box className="profilePageContent">
         <ProfileMenu />
+        {profileOptions[element as keyof TProfileOptions]}
       </Box>
     </Container>
   );
