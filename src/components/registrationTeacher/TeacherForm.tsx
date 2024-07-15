@@ -112,6 +112,7 @@ const TeacherForm = () => {
         localStorage.setItem(TOKEN_KEY, responseToken);
         localStorage.setItem(TOKEN_EXPIRES_KEY, decode.exp.toString());
         localStorage.setItem(REGISTER_STATE, decode.register_state);
+        sessionStorage.removeItem("tutor_teacher_form");
         navigate("/registration/teacher/schedule");
       }
     } catch (err: any) {

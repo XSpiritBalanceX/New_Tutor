@@ -162,7 +162,8 @@
       "chooseTimeZone": "Select your time zone",
       "endRegister": "Complete registration",
       "apply": "Apply",
-      "errBusy": "You cannot make changes to the schedule. You already have a lesson scheduled for this time. To reschedule a class, go to "
+      "errBusy": "You cannot make changes to the schedule. You already have a lesson scheduled for this time. To reschedule a class, go to ",
+      "errDate": "You have already published a lesson on {{date}}."
     }
   }
 }

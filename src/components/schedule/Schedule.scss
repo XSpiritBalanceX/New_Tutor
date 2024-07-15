@@ -6,12 +6,19 @@
   align-items: flex-end;
   max-width: 720px;
   width: 100%;
+  position: relative;
   .submitButton {
     text-transform: none;
     @extend %button-1;
     padding: 10px 20px;
     border-radius: 100px;
     margin: 40px 0 0 0;
+  }
+  .errorDateBox {
+    width: 100%;
+    margin-top: 20px;
+    color: map-get($theme-colors, "red");
+    @extend %text-main;
   }
   .scheduleContainer {
     max-width: 640px;
