@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Avatar, Badge, Button } from "@mui/material";
 import { translate } from "@i18n";
 import user from "@assets/user.svg";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/tutorSlice";
 import "./AuthHeader.scss";
@@ -13,8 +13,14 @@ const PersonalControls = () => {
   const { t } = translate("translate", { keyPrefix: "header" });
 
   const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
 
   const [isOpenPersonalMenu, setIsOpenPersonalMenu] = useState(false);
+
+  useEffect(() => {
+    setIsOpenPersonalMenu(false);
+    // eslint-disable-next-line
+  }, [pathname]);
 
   const handleOpenPersonalMenu = () => {
     setIsOpenPersonalMenu(!isOpenPersonalMenu);
@@ -50,22 +56,22 @@ const PersonalControls = () => {
       </Button>
       {isOpenPersonalMenu && (
         <Box className="personalMenuBox">
-          <NavLink to={"/user/setting"} className="nav-link">
+          <NavLink to={"/profile/settings"} className="nav-link">
             {t("generalSettings")}
           </NavLink>
-          <NavLink to={"/user/number"} className="nav-link">
+          <NavLink to={"/profile/number"} className="nav-link">
             {t("changePhone")}
           </NavLink>
-          <NavLink to={"/user/language"} className="nav-link">
+          <NavLink to={"/profile/language"} className="nav-link">
             {t("languages")}
           </NavLink>
-          <NavLink to={"/user/schedule"} className="nav-link">
+          <NavLink to={"/profile/schedule"} className="nav-link">
             {t("schedule")}
           </NavLink>
-          <NavLink to={"/user/password"} className="nav-link">
+          <NavLink to={"/profile/password"} className="nav-link">
             {t("changePassword")}
           </NavLink>
-          <NavLink to={"/user/payment"} className="nav-link">
+          <NavLink to={"/profile/payment"} className="nav-link">
             {t("payments")}
           </NavLink>
           <Button type="button" onClick={handleLogOut} className="logOutButton">

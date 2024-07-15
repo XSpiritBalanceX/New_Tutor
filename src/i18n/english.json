@@ -164,6 +164,15 @@
       "apply": "Apply",
       "errBusy": "You cannot make changes to the schedule. You already have a lesson scheduled for this time. To reschedule a class, go to ",
       "errDate": "You have already published a lesson on {{date}}."
+    },
+    "profilePage": {
+      "myProfile": "Мой профиль",
+      "generalSettings": "General settings",
+      "changeNumber": "Change of number",
+      "languages": "Languages",
+      "schedule": "Расписание",
+      "changePassword": "Change Password",
+      "payments": "Payments/subscriptions"
     }
   }
 }
