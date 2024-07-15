@@ -8,6 +8,7 @@ import ProfileSettings from "@components/profileSettings/ProfileSettings";
 import { useGetProfileQuery } from "@store/requestApi/profileApi";
 import Loader from "@components/loader/Loader";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
+import CustomError from "@components/error/CustomError";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -27,7 +28,6 @@ const ProfilePage = () => {
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const { data, error, isLoading } = useGetProfileQuery({ isStudent });
-  console.log(data);
 
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,
@@ -38,7 +38,9 @@ const ProfilePage = () => {
     payment: <Box>payment</Box>,
   };
 
-  return (
+  return error ? (
+    <CustomError />
+  ) : (
     <Container className="profilePageContainer">
       {isLoading && <Loader />}
       <Box className="locationBox">

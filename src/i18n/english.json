@@ -173,6 +173,11 @@
       "schedule": "Расписание",
       "changePassword": "Change Password",
       "payments": "Payments/subscriptions"
+    },
+    "errorPage": {
+      "title": "Page not found",
+      "text": "The page you requested was not found. We are already working on this. In the meantime, you can return to the main page.",
+      "button": "Go back to the main page"
     }
   }
 }
