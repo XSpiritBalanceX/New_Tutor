@@ -146,7 +146,8 @@
       "professSkills": "Describe your professional skills",
       "addLanguageTeaching": "Add teaching language",
       "errCertificate": "Add your certificates/diplomas",
-      "errExistingLanguages": "Language {{language}} already exist"
+      "errExistingLanguages": "Language {{language}} already exist",
+      "errReq": "Возникла непредвиденная ошибка"
     },
     "userAvatar": {
       "upload": "Upload a photo",

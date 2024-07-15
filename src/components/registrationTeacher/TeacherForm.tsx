@@ -10,7 +10,16 @@ import AddIcon from "@mui/icons-material/Add";
 import TeacherRow from "@components/teacherRow/TeacherRow";
 import UserAvatar from "@components/avatar/UserAvatar";
 import TeacherSchedule from "./TeacherSchedule";
-import { USER_TYPE, REGISTER_STATE } from "@axiosApi/axiosAPI";
+import { USER_TYPE, REGISTER_STATE, TOKEN_KEY, TOKEN_EXPIRES_KEY } from "@axiosApi/axiosAPI";
+import { createTeacherLanguages } from "@api/teacher/createTeacherLanguages";
+import { uploadTeacherDocs } from "@api/teacher/uploadTeacherDocs";
+import { refreshToken } from "@api/auth/refreshToken";
+import { toast } from "react-toastify";
+import { language, TLanguages } from "@utils/listOfLanguagesLevels";
+import { useAppSelector } from "@store/hook";
+import * as tutorSelectors from "@store/selectors";
+import { jwtDecode } from "jwt-decode";
+import { IToken } from "@axiosApi/TypesAPI";
 import "./TeacherForm.scss";
 
 interface ITeacherForm {
@@ -19,6 +28,8 @@ interface ITeacherForm {
 
 const TeacherForm = () => {
   const { t } = translate("translate", { keyPrefix: "registrationPage" });
+
+  const locale = useAppSelector(tutorSelectors.localeSelect);
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -74,8 +85,46 @@ const TeacherForm = () => {
     // eslint-disable-next-line
   }, [watch()]);
 
-  const submitTeacherForm = (data: ITeacherForm) => {
-    console.log(data);
+  const submitTeacherForm = async (data: ITeacherForm) => {
+    const sentData = data.teaching_languages.map((el) => {
+      return { language: Number(el.language), level: Number(el.level), description: el.description, price: el.price };
+    });
+
+    const formData = new FormData();
+    const allCertificate: FormData[] = [];
+    data.teaching_languages.forEach((el) => {
+      if (Array.isArray(el.certificate)) {
+        el.certificate.forEach((item) => {
+          formData.append("photo", item);
+          allCertificate.push(formData);
+        });
+      }
+    });
+
+    try {
+      setIsLoading(true);
+      const response = await createTeacherLanguages({ create: sentData });
+      const responseCertificate =
+        allCertificate.length !== 0 ? await uploadTeacherDocs(allCertificate, response.data.created_ids) : true;
+      if (response && responseCertificate) {
+        const responseToken = await refreshToken();
+        const decode: IToken = jwtDecode(responseToken);
+        localStorage.setItem(TOKEN_KEY, responseToken);
+        localStorage.setItem(TOKEN_EXPIRES_KEY, decode.exp.toString());
+        localStorage.setItem(REGISTER_STATE, decode.register_state);
+        navigate("/registration/teacher/schedule");
+      }
+    } catch (err: any) {
+      if (err.response.status === 400) {
+        const languageCurrent = language[locale as keyof TLanguages];
+        const errLanguage = err.response.data.message.match(/\d+/);
+        errLanguage
+          ? toast.error(t("errExistingLanguages", { language: languageCurrent[errLanguage[0]] }))
+          : toast.error(t("errReq"));
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleIncreaseRow = () => {
