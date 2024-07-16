@@ -15,7 +15,7 @@ const ProfileSettings = () => {
 
   return (
     <Box className="profileContainer">
-      <UserAvatar photo={isStudent ? studentInformation.user.photo : teacherInformation.photo} />
+      <UserAvatar photo={isStudent ? studentInformation?.user?.photo : teacherInformation?.photo} />
       {isStudent ? <ProfileStudent /> : <ProfileTeacher />}
     </Box>
   );
