@@ -172,7 +172,21 @@
       "languages": "Languages",
       "schedule": "Расписание",
       "changePassword": "Change Password",
-      "payments": "Payments/subscriptions"
+      "payments": "Payments/subscriptions",
+      "reqDateOfBirth": "Enter your date of birth (DD.MM.YYYY)",
+      "notValidDateOfBirth": "Incorrect date",
+      "greatThan": "You cannot be under 18 years old",
+      "chooseCountry": "Please indicate your country",
+      "reqEmail": "Email required",
+      "wrongEmail": "Invalid email",
+      "reqName": "Name required",
+      "reqSurname": "Last name required",
+      "errName": "Invalid field filled in. From 3 to 20 characters",
+      "errLevel": "Please indicate your level of proficiency",
+      "errChooseLanguage": "Specify language",
+      "errGoal": "Complete the learning objective",
+      "addLanguageLearning": "Add a language to study",
+      "apply": "Apply"
     },
     "errorPage": {
       "title": "Page not found",

@@ -28,7 +28,7 @@ interface ISchedule {
   time_end: string;
 }
 
-interface IProfileInformation {
+export interface IProfileInformation {
   user: IUserInformation;
   languages: ILanguage[];
   schedules?: ISchedule[];

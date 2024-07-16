@@ -27,7 +27,7 @@ const ProfilePage = () => {
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
-  const { data, error, isLoading } = useGetProfileQuery({ isStudent });
+  const { error, isLoading } = useGetProfileQuery({ isStudent });
 
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,

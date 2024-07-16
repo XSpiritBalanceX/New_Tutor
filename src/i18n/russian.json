@@ -172,7 +172,21 @@
       "languages": "Языки",
       "schedule": "Расписание",
       "changePassword": "Изменение пароля",
-      "payments": "Оплаты/подписки"
+      "payments": "Оплаты/подписки",
+      "reqDateOfBirth": "Укажите дату рождения (ДД.ММ.ГГГГ)",
+      "notValidDateOfBirth": "Неверно указанная дата",
+      "greatThan": "Вам не может быть меньше 18 лет",
+      "chooseCountry": "Укажите страну",
+      "reqEmail": "Email обязателен",
+      "wrongEmail": "Неверный email",
+      "reqName": "Имя обязательно",
+      "reqSurname": "Фамилия обязательна",
+      "errName": "Неверное заполненное поле. От 3 до 20 символов",
+      "errLevel": "Укажите уровень владения",
+      "errChooseLanguage": "Укажите язык",
+      "errGoal": "Заполните цель изучения",
+      "addLanguageLearning": "Добавить язык для изучения",
+      "apply": "Применить"
     },
     "errorPage": {
       "title": "Страница не найдена",
