@@ -1,4 +1,4 @@
-import { Control, FieldErrors, UseFormWatch } from "react-hook-form";
+import { Control, FieldErrors, UseFormWatch, UseFormSetValue } from "react-hook-form";
 
 type TStudentLanguage = {
   id?: number;
@@ -12,12 +12,18 @@ type TUserInformation = {
   last_name: string;
   date_of_birthday: string;
   email: string;
-  country: string;
 };
 
 export interface IStudentFormInformation {
   user_information: TUserInformation;
   learning_languages: TStudentLanguage[];
+}
+
+export interface IStudentInformationProps {
+  control: Control<IStudentFormInformation>;
+  errors: FieldErrors<IStudentFormInformation>;
+  setValue: UseFormSetValue<IStudentFormInformation>;
+  watch: UseFormWatch<IStudentFormInformation>;
 }
 
 export interface IStudentLanguagesProps {

@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { translate } from "@i18n";
 import moment from "moment";
 import StudentLanguages from "./StudentLanguages";
+import StudentInformation from "./StudentInformation";
 import { IStudentFormInformation } from "./TypesProfileStudent";
 import "./ProfileStudent.scss";
 
@@ -17,7 +18,7 @@ const ProfileStudent = () => {
   const studentInformation = useAppSelector(tutorSelectors.studentInformationSelect);
 
   const [initialValues, setInitialValues] = useState<IStudentFormInformation>({
-    user_information: { first_name: "", last_name: "", date_of_birthday: "", email: "", country: "" },
+    user_information: { first_name: "", last_name: "", date_of_birthday: "", email: "" },
     learning_languages: [],
   });
   const [countOfLanguage, setCountOfLanguage] = useState<number>(initialValues.learning_languages.length || 1);
@@ -34,7 +35,6 @@ const ProfileStudent = () => {
           ? moment(studentInformation.user.date_of_birthday, "YYYY-MM-DD").format("DD.MM.YYYY")
           : "",
         email: studentInformation.user.email,
-        country: studentInformation.user.country ? studentInformation.user.country.toString() : "",
       };
       setInitialValues({ user_information: compiledDataUser, learning_languages: compiledDataLanguages });
       setCountOfLanguage(compiledDataLanguages.length);
@@ -61,7 +61,6 @@ const ProfileStudent = () => {
           const age = currentDate.diff(dob, "years");
           return age >= minAge;
         }),
-      country: Yup.string().required(t("chooseCountry")),
       email: Yup.string().required(t("reqEmail")).email(t("wrongEmail")),
     }),
     learning_languages: Yup.array()
@@ -80,6 +79,7 @@ const ProfileStudent = () => {
     control,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<IStudentFormInformation>({
     resolver: yupResolver(validationSchema),
@@ -97,6 +97,7 @@ const ProfileStudent = () => {
   return (
     <Box className="studentProfileBox">
       <form onSubmit={handleSubmit(submitStudentProfile)}>
+        <StudentInformation control={control} errors={errors} setValue={setValue} watch={watch} />
         <StudentLanguages
           control={control}
           countOfLanguage={countOfLanguage}

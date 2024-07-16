@@ -2,6 +2,76 @@
 
 .studentProfileBox {
   width: 100%;
+  .studentProfileInformationBox {
+    margin: 30px 0 0 0;
+    padding-bottom: 30px;
+    border-bottom: solid 1px map-deep-get($theme-colors, "border", "disable");
+    .doubleFields {
+      max-width: 820px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0 0 10px 0;
+    }
+    .studentProfileFieldBox {
+      max-width: 380px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .studentProfileLabel {
+        @extend %h3;
+        margin: 0 0 5px 0;
+        color: map-get($theme-colors, "black");
+      }
+      .studentProfileLabel.errorLabel {
+        color: map-get($theme-colors, "red");
+      }
+      .dataField {
+        all: unset;
+        height: 40px;
+        background-color: map-get($theme-colors, "white");
+        border-radius: 5px;
+        border: solid 1px map-get($theme-colors, "gray");
+        padding: 0 15px;
+        @extend %text-main;
+        &::placeholder {
+          color: map-get($theme-colors, "gray");
+          @extend %text-main;
+        }
+        &:focus {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+      .dataField.errorField {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+      .errorMessage {
+        color: map-get($theme-colors, "red");
+        @extend %text-small;
+      }
+    }
+    .dateOfBirthBox {
+      position: relative;
+      .errorIcon {
+        position: absolute;
+        right: 12px;
+        top: 33px;
+        color: map-get($theme-colors, "red");
+      }
+    }
+    .fieldWithOpenModal {
+      margin-top: -65px;
+    }
+    .fieldWithoutOpenModal {
+      margin-top: 0;
+    }
+  }
+  .studentRowBox {
+    .languageLevelBoxes,
+    .goalBox {
+      max-width: 820px;
+    }
+  }
   .addLanguagesButtonBox {
     display: flex;
     flex-direction: row;
@@ -22,7 +92,7 @@
   .submitButtonBox {
     display: flex;
     justify-content: flex-end;
-    padding-right: 20px;
+    padding-right: 70px;
     margin: 30px 0 0 0;
     button {
       @extend %text-main;

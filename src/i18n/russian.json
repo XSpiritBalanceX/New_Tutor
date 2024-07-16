@@ -186,7 +186,14 @@
       "errChooseLanguage": "Укажите язык",
       "errGoal": "Заполните цель изучения",
       "addLanguageLearning": "Добавить язык для изучения",
-      "apply": "Применить"
+      "apply": "Применить",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "dateOfBirth": "Дата рождения",
+      "email": "Электронная почта",
+      "phoneNumber": "Номер телефона",
+      "titleConfirmEmail": "Ваша электронная почта не подтверждёна. Пожалуйста перейдите в почту.",
+      "buttonConfirmEmail": "Прислать подтверждение ещё раз"
     },
     "errorPage": {
       "title": "Страница не найдена",

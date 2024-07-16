@@ -186,7 +186,14 @@
       "errChooseLanguage": "Specify language",
       "errGoal": "Complete the learning objective",
       "addLanguageLearning": "Add a language to study",
-      "apply": "Apply"
+      "apply": "Apply",
+      "firstName": "Имя",
+      "lastName": "Surname",
+      "dateOfBirth": "Date of Birth",
+      "email": "Email",
+      "phoneNumber": "Phone number",
+      "titleConfirmEmail": "Your email has not been verified. Please go to your email.",
+      "buttonConfirmEmail": "Send confirmation again"
     },
     "errorPage": {
       "title": "Page not found",
