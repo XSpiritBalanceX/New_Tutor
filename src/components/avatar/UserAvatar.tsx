@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Box, Button, Avatar, FormHelperText } from "@mui/material";
 import { translate } from "@i18n";
 import user from "@assets/user.svg";
+import { uploadAvatar } from "@api/user/uploadAvatar";
+import { toast } from "react-toastify";
 import "./UserAvatar.scss";
 
 interface IUserAvatarProps {
@@ -33,7 +35,19 @@ const UserAvatar = ({ photo }: IUserAvatarProps) => {
     const newPhoto = files && files[0];
     if (newPhoto) {
       const isValid = handleCheckPhoto(newPhoto);
-      isValid && setPicture(newPhoto);
+      isValid && handleSentPhoto(newPhoto);
+    }
+  };
+
+  const handleSentPhoto = async (photo: File) => {
+    const formData = new FormData();
+    formData.append("photo", photo);
+    try {
+      await uploadAvatar(formData);
+      setPicture(photo);
+      toast.success(t("messageSucUpload"));
+    } catch (err: any) {
+      toast.error("messageErrUpload");
     }
   };
 

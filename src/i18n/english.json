@@ -154,7 +154,9 @@
       "delete": "Delete",
       "hintPhoto": "JPG or PNG format. Maximum size 2 MB",
       "errorFileSizeImage": "The file size is too large, no more than 2 MB.",
-      "errorTypeImage": "File format is JPG or PNG only."
+      "errorTypeImage": "File format is JPG or PNG only.",
+      "messageSucUpload": "The photo was successfully uploaded",
+      "messageErrUpload": "An unexpected error occurred"
     },
     "teacherSchedule": {
       "chooseTime": "Choose a time for the lesson",

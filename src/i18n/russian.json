@@ -154,7 +154,9 @@
       "delete": "Удалить",
       "hintPhoto": "Формат JPG или PNG. Максимальный размер 2 MB",
       "errorFileSizeImage": "Размер файла слишком большой, не более 2 MБ.",
-      "errorTypeImage": "Формат файла только JPG или PNG."
+      "errorTypeImage": "Формат файла только JPG или PNG.",
+      "messageSucUpload": "Фотография была успешно загружена",
+      "messageErrUpload": "Возникла непредвиденная ошибка"
     },
     "teacherSchedule": {
       "chooseTime": "Выберите время для занятий",
