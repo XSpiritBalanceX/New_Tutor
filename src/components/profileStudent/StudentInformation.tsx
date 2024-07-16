@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { Box, FormLabel, FormHelperText } from "@mui/material";
 import { IStudentInformationProps } from "./TypesProfileStudent";
 import ControlledInput from "@components/fields/ControlledInput";
@@ -22,7 +22,7 @@ const StudentInformation = ({ control, errors, setValue, watch, is_verify_email 
     setIsVerifyEmail(true);
   };
 
-  const handleDateOfBirth = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleDateOfBirth = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
     setValue("user_information.date_of_birthday", value);
   };

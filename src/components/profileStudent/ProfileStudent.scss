@@ -33,7 +33,17 @@
         border-radius: 5px;
         border: solid 1px map-get($theme-colors, "gray");
         padding: 0 15px;
-        @extend %text-main;
+        font-family: "Rubik", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        @media all and (max-width: 40em) {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 16.5px;
+        }
         &::placeholder {
           color: map-get($theme-colors, "gray");
           @extend %text-main;

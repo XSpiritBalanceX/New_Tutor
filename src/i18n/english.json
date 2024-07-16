@@ -195,7 +195,9 @@
       "titleConfirmEmail": "Your email has not been verified. Please go to your email.",
       "buttonConfirmEmail": "Send confirmation again",
       "messageSucRequest": "Data updated successfully",
-      "messageErrRequest": "An unexpected error occurred"
+      "messageErrRequest": "An unexpected error occurred",
+      "countryLabel": "Where are you from?",
+      "chCountry": "Choose the country"
     },
     "errorPage": {
       "title": "Page not found",

@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { requestHandler } from "../requestHandler";
 
-interface IUserInformation {
+export interface IUserInformation {
   id: number;
   first_name: string;
   last_name: string;

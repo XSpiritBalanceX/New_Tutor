@@ -195,7 +195,9 @@
       "titleConfirmEmail": "Ваша электронная почта не подтверждёна. Пожалуйста перейдите в почту.",
       "buttonConfirmEmail": "Прислать подтверждение ещё раз",
       "messageSucRequest": "Данные успешно обновлены",
-      "messageErrRequest": "Возникла непредвиденная ошибка"
+      "messageErrRequest": "Возникла непредвиденная ошибка",
+      "countryLabel": "Откуда вы?",
+      "chCountry": "Выберите страну"
     },
     "errorPage": {
       "title": "Страница не найдена",
