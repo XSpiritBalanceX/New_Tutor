@@ -21,6 +21,12 @@ interface ILanguage {
   files?: { id: number; file: string }[];
 }
 
+interface INewLanguage {
+  language: number;
+  level: number;
+  description: string;
+}
+
 interface ISchedule {
   id: number;
   day: number;
@@ -57,7 +63,15 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    updateStudentLanguages: builder.mutation<void, { newLanguages: INewLanguage[]; updateLanguages: ILanguage[] }>({
+      query: (params) => ({
+        url: "/student/learning/languages",
+        method: "POST",
+        body: { create: params.newLanguages, update: params.updateLanguages },
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
-export const { useGetProfileQuery, useDeleteStudentLanguageMutation } = profileApi;
+export const { useGetProfileQuery, useDeleteStudentLanguageMutation, useUpdateStudentLanguagesMutation } = profileApi;

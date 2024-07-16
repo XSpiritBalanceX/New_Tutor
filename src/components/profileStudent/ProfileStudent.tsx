@@ -9,8 +9,10 @@ import { translate } from "@i18n";
 import moment from "moment";
 import StudentLanguages from "./StudentLanguages";
 import StudentInformation from "./StudentInformation";
-import { IStudentFormInformation, TStudentLanguage } from "./TypesProfileStudent";
+import { IStudentFormInformation, TStudentLanguage, TNewLanguage, TUpdatedLanguage } from "./TypesProfileStudent";
 import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
+import { useUpdateStudentLanguagesMutation } from "@store/requestApi/profileApi";
+import { toast } from "react-toastify";
 import "./ProfileStudent.scss";
 
 const ProfileStudent = () => {
@@ -25,6 +27,8 @@ const ProfileStudent = () => {
   const [countOfLanguage, setCountOfLanguage] = useState<number>(initialValues.learning_languages.length || 1);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState<null | TStudentLanguage>(null);
+
+  const [updateStudentLanguages] = useUpdateStudentLanguagesMutation();
 
   useEffect(() => {
     if (studentInformation) {
@@ -92,7 +96,26 @@ const ProfileStudent = () => {
   const { remove } = useFieldArray({ control, name: "learning_languages" });
 
   const submitStudentProfile = (data: IStudentFormInformation) => {
-    console.log(data);
+    const newLanguages: TNewLanguage[] = [];
+    const updatedLanguages: TUpdatedLanguage[] = [];
+    if (JSON.stringify(initialValues.learning_languages) !== JSON.stringify(watch("learning_languages"))) {
+      data.learning_languages.forEach((el) => {
+        if (!el.id) {
+          newLanguages.push({ language: Number(el.language), level: Number(el.level), description: el.description });
+        } else {
+          updatedLanguages.push({
+            id: el.id,
+            language: Number(el.language),
+            level: Number(el.level),
+            description: el.description,
+          });
+        }
+      });
+      updateStudentLanguages({ newLanguages: newLanguages, updateLanguages: updatedLanguages })
+        .unwrap()
+        .then(() => toast.success(t("messageSucRequest")))
+        .catch(() => toast.error(t("messageErrRequest")));
+    }
   };
 
   const handleCloseModal = () => {

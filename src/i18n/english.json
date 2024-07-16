@@ -193,7 +193,9 @@
       "email": "Email",
       "phoneNumber": "Phone number",
       "titleConfirmEmail": "Your email has not been verified. Please go to your email.",
-      "buttonConfirmEmail": "Send confirmation again"
+      "buttonConfirmEmail": "Send confirmation again",
+      "messageSucRequest": "Data updated successfully",
+      "messageErrRequest": "An unexpected error occurred"
     },
     "errorPage": {
       "title": "Page not found",

@@ -34,3 +34,16 @@ export interface IStudentLanguagesProps {
   cbHandleCountOfRow: (value: number) => void;
   cbHandleDeleteLanguage: (id: number) => void;
 }
+
+export type TNewLanguage = {
+  language: number;
+  level: number;
+  description: string;
+};
+
+export type TUpdatedLanguage = {
+  id: number;
+  language: number;
+  level: number;
+  description: string;
+};
