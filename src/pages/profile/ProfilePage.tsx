@@ -14,6 +14,7 @@ import {
   useUpdateStudentLanguagesMutation,
   useUpdateUserInformationMutation,
 } from "@store/requestApi/profileApi";
+import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -39,7 +40,7 @@ const ProfilePage = () => {
 
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,
-    language: <Box>language</Box>,
+    language: <SettingTeacherLanguages />,
     number: <Box>number</Box>,
     schedule: <Box>schedule</Box>,
     password: <Box>password</Box>,

@@ -199,7 +199,8 @@
       "messageSucRequest": "Данные успешно обновлены",
       "messageErrRequest": "Возникла непредвиденная ошибка",
       "countryLabel": "Откуда вы?",
-      "chCountry": "Выберите страну"
+      "chCountry": "Выберите страну",
+      "addLanguageTeaching": "Добавить язык преподавания"
     },
     "errorPage": {
       "title": "Страница не найдена",

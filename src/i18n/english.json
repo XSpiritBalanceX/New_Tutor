@@ -199,7 +199,8 @@
       "messageSucRequest": "Data updated successfully",
       "messageErrRequest": "An unexpected error occurred",
       "countryLabel": "Where are you from?",
-      "chCountry": "Choose the country"
+      "chCountry": "Choose the country",
+      "addLanguageTeaching": "Add teaching language"
     },
     "errorPage": {
       "title": "Page not found",

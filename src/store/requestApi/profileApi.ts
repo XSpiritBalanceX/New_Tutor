@@ -47,6 +47,15 @@ type TUpdateUser = {
   country: number | null;
 };
 
+export type TTeacherLanguage = {
+  id: number;
+  language: number;
+  level: number;
+  description: string;
+  price: number;
+  files: { id: number; file: string }[];
+};
+
 export const profileApi = createApi({
   reducerPath: "profileApi",
   baseQuery: requestHandler,
