@@ -1,6 +1,6 @@
 import { Control, FieldErrors, UseFormWatch, UseFormSetValue } from "react-hook-form";
 
-type TStudentLanguage = {
+export type TStudentLanguage = {
   id?: number;
   language: string;
   level: string;
@@ -32,4 +32,5 @@ export interface IStudentLanguagesProps {
   errors: FieldErrors<IStudentFormInformation>;
   watch: UseFormWatch<IStudentFormInformation>;
   cbHandleCountOfRow: (value: number) => void;
+  cbHandleDeleteLanguage: (id: number) => void;
 }

@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { translate } from "@i18n";
 import moment from "moment";
 import StudentLanguages from "./StudentLanguages";
 import StudentInformation from "./StudentInformation";
-import { IStudentFormInformation } from "./TypesProfileStudent";
+import { IStudentFormInformation, TStudentLanguage } from "./TypesProfileStudent";
+import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
 import "./ProfileStudent.scss";
 
 const ProfileStudent = () => {
@@ -22,6 +23,8 @@ const ProfileStudent = () => {
     learning_languages: [],
   });
   const [countOfLanguage, setCountOfLanguage] = useState<number>(initialValues.learning_languages.length || 1);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState<null | TStudentLanguage>(null);
 
   useEffect(() => {
     if (studentInformation) {
@@ -86,16 +89,41 @@ const ProfileStudent = () => {
     values: initialValues,
   });
 
+  const { remove } = useFieldArray({ control, name: "learning_languages" });
+
   const submitStudentProfile = (data: IStudentFormInformation) => {
     console.log(data);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+    setCurrentLanguage(null);
   };
 
   const handleCountRow = (value: number) => {
     setCountOfLanguage(value);
   };
 
+  const handleDeleteLanguage = (id: number) => {
+    const language = initialValues.learning_languages.find((_, ind) => ind === id);
+    if (language) {
+      setCurrentLanguage(language);
+      setIsOpenModal(true);
+    } else {
+      setCountOfLanguage((value) => {
+        return value - 1;
+      });
+      remove(id);
+    }
+  };
+
   return (
     <Box className="studentProfileBox">
+      <DeleteLanguageNotification
+        isOpen={isOpenModal}
+        cbCloseModal={handleCloseModal}
+        currentLanguage={currentLanguage}
+      />
       <form onSubmit={handleSubmit(submitStudentProfile)}>
         <StudentInformation control={control} errors={errors} setValue={setValue} watch={watch} />
         <StudentLanguages
@@ -104,6 +132,7 @@ const ProfileStudent = () => {
           errors={errors}
           watch={watch}
           cbHandleCountOfRow={handleCountRow}
+          cbHandleDeleteLanguage={handleDeleteLanguage}
         />
         <Box className="submitButtonBox">
           <Button type="submit">{t("apply")}</Button>

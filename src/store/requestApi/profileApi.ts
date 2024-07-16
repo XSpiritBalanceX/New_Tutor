@@ -49,7 +49,15 @@ export const profileApi = createApi({
       },
       providesTags: ["Profile"],
     }),
+    deleteStudentLanguage: builder.mutation<void, number[]>({
+      query: (id) => ({
+        url: "/student/learning/languages",
+        method: "POST",
+        body: { delete: id },
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
-export const { useGetProfileQuery } = profileApi;
+export const { useGetProfileQuery, useDeleteStudentLanguageMutation } = profileApi;

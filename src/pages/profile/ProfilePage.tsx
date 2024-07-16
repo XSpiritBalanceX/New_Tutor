@@ -9,6 +9,7 @@ import { useGetProfileQuery } from "@store/requestApi/profileApi";
 import Loader from "@components/loader/Loader";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import CustomError from "@components/error/CustomError";
+import { useDeleteStudentLanguageMutation } from "@store/requestApi/profileApi";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -28,6 +29,7 @@ const ProfilePage = () => {
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const { error, isLoading } = useGetProfileQuery({ isStudent });
+  const [, { isLoading: loadingDeleteLangStudent }] = useDeleteStudentLanguageMutation();
 
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,
@@ -42,7 +44,7 @@ const ProfilePage = () => {
     <CustomError />
   ) : (
     <Container className="profilePageContainer">
-      {isLoading && <Loader />}
+      {(isLoading || loadingDeleteLangStudent) && <Loader />}
       <Box className="locationBox">
         <p className="myProfile">{t("myProfile")}</p>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

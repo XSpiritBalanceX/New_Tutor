@@ -1,22 +1,25 @@
 import { Button, Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useFieldArray } from "react-hook-form";
 import { IStudentLanguagesProps } from "./TypesProfileStudent";
 import StudentRow from "@components/studentRow/StudentRow";
 import { translate } from "@i18n";
 
-const StudentLanguages = ({ control, countOfLanguage, errors, watch, cbHandleCountOfRow }: IStudentLanguagesProps) => {
+const StudentLanguages = ({
+  control,
+  countOfLanguage,
+  errors,
+  watch,
+  cbHandleCountOfRow,
+  cbHandleDeleteLanguage,
+}: IStudentLanguagesProps) => {
   const { t } = translate("translate", { keyPrefix: "profilePage" });
-
-  const { remove } = useFieldArray({ control, name: "learning_languages" });
 
   const handleIncreaseRow = () => {
     cbHandleCountOfRow(countOfLanguage + 1);
   };
 
   const handleDecreaseRow = (id: number) => {
-    cbHandleCountOfRow(countOfLanguage - 1);
-    remove(id);
+    cbHandleDeleteLanguage(id);
   };
 
   const studentFormRow: Array<JSX.Element> = Array(countOfLanguage)

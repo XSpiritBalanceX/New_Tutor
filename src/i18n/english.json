@@ -199,6 +199,16 @@
       "title": "Page not found",
       "text": "The page you requested was not found. We are already working on this. In the meantime, you can return to the main page.",
       "button": "Go back to the main page"
+    },
+    "notification": {
+      "deleteLanguage": {
+        "title": "Removing a language",
+        "text": "Are you sure you want to remove the language?",
+        "delete": "Remove language",
+        "cancel": "Cancel",
+        "messageSucDelete": "Language {{language}} was successfully removed",
+        "messageErrDelete": "An unexpected error occurred"
+      }
     }
   }
 }
