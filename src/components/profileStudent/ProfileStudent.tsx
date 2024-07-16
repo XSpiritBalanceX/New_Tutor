@@ -11,7 +11,7 @@ import StudentLanguages from "./StudentLanguages";
 import StudentInformation from "./StudentInformation";
 import { IStudentFormInformation, TStudentLanguage, TNewLanguage, TUpdatedLanguage } from "./TypesProfileStudent";
 import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
-import { useUpdateStudentLanguagesMutation } from "@store/requestApi/profileApi";
+import { useUpdateStudentLanguagesMutation, useUpdateUserInformationMutation } from "@store/requestApi/profileApi";
 import { toast } from "react-toastify";
 import "./ProfileStudent.scss";
 
@@ -21,7 +21,7 @@ const ProfileStudent = () => {
   const studentInformation = useAppSelector(tutorSelectors.studentInformationSelect);
 
   const [initialValues, setInitialValues] = useState<IStudentFormInformation>({
-    user_information: { first_name: "", last_name: "", date_of_birthday: "", email: "" },
+    user_information: { first_name: "", last_name: "", date_of_birthday: "", email: "", country: "" },
     learning_languages: [],
   });
   const [countOfLanguage, setCountOfLanguage] = useState<number>(initialValues.learning_languages.length || 1);
@@ -29,6 +29,7 @@ const ProfileStudent = () => {
   const [currentLanguage, setCurrentLanguage] = useState<null | TStudentLanguage>(null);
 
   const [updateStudentLanguages] = useUpdateStudentLanguagesMutation();
+  const [updateUserInformation] = useUpdateUserInformationMutation();
 
   useEffect(() => {
     if (studentInformation) {
@@ -42,6 +43,7 @@ const ProfileStudent = () => {
           ? moment(studentInformation.user.date_of_birthday, "YYYY-MM-DD").format("DD.MM.YYYY")
           : "",
         email: studentInformation.user.email,
+        country: studentInformation.user.country ? studentInformation.user.country.toString() : "",
       };
       setInitialValues({ user_information: compiledDataUser, learning_languages: compiledDataLanguages });
       setCountOfLanguage(compiledDataLanguages.length);
@@ -69,6 +71,7 @@ const ProfileStudent = () => {
           return age >= minAge;
         }),
       email: Yup.string().required(t("reqEmail")).email(t("wrongEmail")),
+      country: Yup.string().default(""),
     }),
     learning_languages: Yup.array()
       .of(
@@ -116,6 +119,19 @@ const ProfileStudent = () => {
         .then(() => toast.success(t("messageSucRequest")))
         .catch(() => toast.error(t("messageErrRequest")));
     }
+
+    if (JSON.stringify(initialValues.user_information) !== JSON.stringify(watch("user_information"))) {
+      const updateUserData = {
+        first_name: data.user_information.first_name,
+        last_name: data.user_information.last_name,
+        date_of_birthday: moment(data.user_information.date_of_birthday, "DD.MM.YYYY").format("YYYY-MM-DD"),
+        country: data.user_information.country ? Number(data.user_information.country) : null,
+      };
+      updateUserInformation(updateUserData)
+        .unwrap()
+        .then(() => toast.success(t("messageSucRequest")))
+        .catch(() => toast.error(t("messageErrRequest")));
+    }
   };
 
   const handleCloseModal = () => {
@@ -148,7 +164,13 @@ const ProfileStudent = () => {
         currentLanguage={currentLanguage}
       />
       <form onSubmit={handleSubmit(submitStudentProfile)}>
-        <StudentInformation control={control} errors={errors} setValue={setValue} watch={watch} />
+        <StudentInformation
+          control={control}
+          errors={errors}
+          setValue={setValue}
+          watch={watch}
+          is_verify_email={studentInformation?.user?.is_verify_email}
+        />
         <StudentLanguages
           control={control}
           countOfLanguage={countOfLanguage}

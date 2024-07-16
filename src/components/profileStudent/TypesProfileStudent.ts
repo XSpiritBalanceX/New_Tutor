@@ -12,6 +12,7 @@ type TUserInformation = {
   last_name: string;
   date_of_birthday: string;
   email: string;
+  country: string;
 };
 
 export interface IStudentFormInformation {
@@ -24,6 +25,7 @@ export interface IStudentInformationProps {
   errors: FieldErrors<IStudentFormInformation>;
   setValue: UseFormSetValue<IStudentFormInformation>;
   watch: UseFormWatch<IStudentFormInformation>;
+  is_verify_email: boolean;
 }
 
 export interface IStudentLanguagesProps {

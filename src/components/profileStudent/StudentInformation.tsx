@@ -8,10 +8,10 @@ import ProfileEmailNotification from "@components/notification/ProfileEmailNotif
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
 import "./ProfileStudent.scss";
 
-const StudentInformation = ({ control, errors, setValue, watch }: IStudentInformationProps) => {
+const StudentInformation = ({ control, errors, setValue, watch, is_verify_email }: IStudentInformationProps) => {
   const { t } = translate("translate", { keyPrefix: "profilePage" });
 
-  const [isOpenEmailNotification, setIsOpenEmailNotification] = useState(true);
+  const [isVerifyEmail, setIsVerifyEmail] = useState(is_verify_email);
 
   const firstLastName = [
     { label: "firstName", name: "user_information.first_name", error: errors.user_information?.first_name?.message },
@@ -19,7 +19,7 @@ const StudentInformation = ({ control, errors, setValue, watch }: IStudentInform
   ];
 
   const handleCloseNotification = () => {
-    setIsOpenEmailNotification(false);
+    setIsVerifyEmail(true);
   };
 
   const handleDateOfBirth = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,12 +63,10 @@ const StudentInformation = ({ control, errors, setValue, watch }: IStudentInform
             error={errors.user_information?.email?.message}
             placeholder={t("email")}
           />
-          {isOpenEmailNotification && <ProfileEmailNotification cbHandleCloseNotification={handleCloseNotification} />}
+          {!isVerifyEmail && <ProfileEmailNotification cbHandleCloseNotification={handleCloseNotification} />}
         </Box>
       </Box>
-      <Box
-        className={`studentProfileFieldBox ${isOpenEmailNotification ? "fieldWithOpenModal" : "fieldWithoutOpenModal"}`}
-      >
+      <Box className={`studentProfileFieldBox ${!isVerifyEmail ? "fieldWithOpenModal" : "fieldWithoutOpenModal"}`}>
         <FormLabel className={`studentProfileLabel`}>{t("phoneNumber")}</FormLabel>
         <InputMask
           mask="+375 (99) 999-99-99"

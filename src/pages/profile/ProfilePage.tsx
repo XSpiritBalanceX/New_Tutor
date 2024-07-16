@@ -9,7 +9,11 @@ import { useGetProfileQuery } from "@store/requestApi/profileApi";
 import Loader from "@components/loader/Loader";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import CustomError from "@components/error/CustomError";
-import { useDeleteStudentLanguageMutation, useUpdateStudentLanguagesMutation } from "@store/requestApi/profileApi";
+import {
+  useDeleteStudentLanguageMutation,
+  useUpdateStudentLanguagesMutation,
+  useUpdateUserInformationMutation,
+} from "@store/requestApi/profileApi";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -31,6 +35,7 @@ const ProfilePage = () => {
   const { error, isLoading } = useGetProfileQuery({ isStudent });
   const [, { isLoading: loadingDeleteLangStudent }] = useDeleteStudentLanguageMutation();
   const [, { isLoading: loadingUpdateLangStudent }] = useUpdateStudentLanguagesMutation();
+  const [, { isLoading: loadingUpdateUser }] = useUpdateUserInformationMutation();
 
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,
@@ -45,7 +50,7 @@ const ProfilePage = () => {
     <CustomError />
   ) : (
     <Container className="profilePageContainer">
-      {(isLoading || loadingDeleteLangStudent || loadingUpdateLangStudent) && <Loader />}
+      {(isLoading || loadingDeleteLangStudent || loadingUpdateLangStudent || loadingUpdateUser) && <Loader />}
       <Box className="locationBox">
         <p className="myProfile">{t("myProfile")}</p>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

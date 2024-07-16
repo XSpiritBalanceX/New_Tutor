@@ -40,6 +40,13 @@ export interface IProfileInformation {
   schedules?: ISchedule[];
 }
 
+type TUpdateUser = {
+  first_name: string;
+  last_name: string;
+  date_of_birthday: string;
+  country: number | null;
+};
+
 export const profileApi = createApi({
   reducerPath: "profileApi",
   baseQuery: requestHandler,
@@ -71,7 +78,20 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    updateUserInformation: builder.mutation<void, TUpdateUser>({
+      query: (info) => ({
+        url: "/user/profile",
+        method: "POST",
+        body: info,
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
-export const { useGetProfileQuery, useDeleteStudentLanguageMutation, useUpdateStudentLanguagesMutation } = profileApi;
+export const {
+  useGetProfileQuery,
+  useDeleteStudentLanguageMutation,
+  useUpdateStudentLanguagesMutation,
+  useUpdateUserInformationMutation,
+} = profileApi;
