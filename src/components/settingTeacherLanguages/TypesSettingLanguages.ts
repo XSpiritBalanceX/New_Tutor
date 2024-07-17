@@ -10,3 +10,18 @@ export interface ITeacherLanguage {
 export interface ITeacherLanguageSettings {
   teaching_languages: ITeacherLanguage[];
 }
+
+export type TNewLanguage = {
+  language: number;
+  level: number;
+  description: string;
+  price: number;
+};
+
+export type TUpdateLanguage = {
+  id: number;
+  language: number;
+  level: number;
+  description: string;
+  price: number;
+};

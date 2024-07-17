@@ -1,5 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { requestHandler } from "../requestHandler";
+import { TNewLanguage, TUpdateLanguage } from "@components/settingTeacherLanguages/TypesSettingLanguages";
 
 export interface IUserInformation {
   id: number;
@@ -95,6 +96,26 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    updateTeacherLanguages: builder.mutation<
+      {
+        created_ids: number[];
+      },
+      { newLanguages: TNewLanguage[]; updateLanguages: TUpdateLanguage[] }
+    >({
+      query: (params) => ({
+        url: "/teacher/teaching/languages",
+        method: "POST",
+        body: { create: params.newLanguages, update: params.updateLanguages },
+      }),
+    }),
+    deleteTeacherLanguage: builder.mutation<void, number[]>({
+      query: (id) => ({
+        url: "/teacher/teaching/languages",
+        method: "POST",
+        body: { delete: id },
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
@@ -103,4 +124,6 @@ export const {
   useDeleteStudentLanguageMutation,
   useUpdateStudentLanguagesMutation,
   useUpdateUserInformationMutation,
+  useUpdateTeacherLanguagesMutation,
+  useDeleteTeacherLanguageMutation,
 } = profileApi;

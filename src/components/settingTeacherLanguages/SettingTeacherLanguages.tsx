@@ -8,10 +8,13 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
-import { ITeacherLanguageSettings, ITeacherLanguage } from "./TypesSettingLanguages";
+import { ITeacherLanguageSettings, ITeacherLanguage, TNewLanguage, TUpdateLanguage } from "./TypesSettingLanguages";
 import AddIcon from "@mui/icons-material/Add";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import { useNavigate } from "react-router-dom";
+import { useUpdateTeacherLanguagesMutation, useGetProfileQuery } from "@store/requestApi/profileApi";
+import { toast } from "react-toastify";
+import { uploadTeacherDocs } from "@api/teacher/uploadTeacherDocs";
 import "./SettingTeacherLanguages.scss";
 
 const SettingTeacherLanguages = () => {
@@ -20,6 +23,9 @@ const SettingTeacherLanguages = () => {
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const navigate = useNavigate();
+
+  const [updateTeacherLanguages] = useUpdateTeacherLanguagesMutation();
+  const { refetch: refetchProfileQuery } = useGetProfileQuery({ isStudent: false });
 
   useEffect(() => {
     isStudent && navigate("/profile/settings");
@@ -52,7 +58,7 @@ const SettingTeacherLanguages = () => {
           level: Yup.string().required(t("errLevel")),
           description: Yup.string().required(t("errGoal")),
           price: Yup.number().required(t("errFillField")).typeError(t("typeCoast")),
-          certificate: Yup.mixed<(File | { id: number; file: string })[]>().required(t("errCertificate")),
+          certificate: Yup.mixed<(File | { id: number; file: string })[]>().default([]).required(),
         }),
       )
       .required(),
@@ -63,6 +69,7 @@ const SettingTeacherLanguages = () => {
     watch,
     setValue,
     handleSubmit,
+    clearErrors,
     formState: { errors },
   } = useForm<ITeacherLanguageSettings>({
     resolver: yupResolver(validationSchema),
@@ -73,6 +80,7 @@ const SettingTeacherLanguages = () => {
     if (teacherLanguages) {
       const completedData = teacherLanguages.map((el) => {
         return {
+          id: el.id,
           language: el.language.toString(),
           level: el.level.toString(),
           description: el.description,
@@ -89,8 +97,56 @@ const SettingTeacherLanguages = () => {
 
   const { remove } = useFieldArray({ control, name: "teaching_languages" });
 
-  const submitTeacherLanguages = (data: ITeacherLanguageSettings) => {
-    console.log(data);
+  const submitTeacherLanguages = async (data: ITeacherLanguageSettings) => {
+    if (JSON.stringify(initialValues) !== JSON.stringify(data)) {
+      const newLanguages: TNewLanguage[] = [];
+      const updateLanguages: TUpdateLanguage[] = [];
+      data.teaching_languages.forEach((el) => {
+        if (!el.id) {
+          newLanguages.push({
+            language: Number(el.language),
+            level: Number(el.level),
+            description: el.description,
+            price: Number(el.price),
+          });
+        } else {
+          updateLanguages.push({
+            id: el.id,
+            language: Number(el.language),
+            level: Number(el.level),
+            description: el.description,
+            price: Number(el.price),
+          });
+        }
+      });
+      try {
+        const response = await updateTeacherLanguages({
+          newLanguages: newLanguages,
+          updateLanguages: updateLanguages,
+        }).unwrap();
+
+        const allCertificate: FormData[] = [];
+        const idRowToChange: any[] = response.created_ids.slice();
+        data.teaching_languages.forEach((el) => {
+          if (el.certificate.length) {
+            el.certificate.forEach((item) => {
+              if (item instanceof File) {
+                const formData = new FormData();
+                formData.append("photo", item);
+                allCertificate.push(formData);
+                idRowToChange.push(el.id);
+              }
+            });
+          }
+        });
+
+        await uploadTeacherDocs(allCertificate, idRowToChange);
+        refetchProfileQuery();
+        toast.success(t("messageSucRequest"));
+      } catch (err: any) {
+        toast.error(t("messageErrRequest"));
+      }
+    }
   };
 
   const handleCloseModal = () => {
@@ -114,6 +170,7 @@ const SettingTeacherLanguages = () => {
         return value - 1;
       });
       remove(id);
+      clearErrors(`teaching_languages.${id}`);
     }
   };
 

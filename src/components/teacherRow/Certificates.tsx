@@ -20,17 +20,24 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
 
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  /* useEffect(() => {
     setValue(`teaching_languages.${id}.certificate` as Path<T>, [] as PathValue<T, Path<T>>);
     // eslint-disable-next-line
-  }, []);
+  }, []); */
 
   const currentCertificates = watch(`teaching_languages.${id}.certificate` as Path<T>);
 
-  const [certificates, setCertificates] = useState<(File | { id: number; file: string })[]>(currentCertificates || []);
+  const [certificates, setCertificates] = useState<(File | { id: number; file: string })[]>([]);
   const [certificateError, setCertificateError] = useState("");
   const [size, setSize] = useState<{ element: string; size: string }[]>([]);
   const [loadingSizeFile, setLoadingSizeFile] = useState(true);
+
+  useEffect(() => {
+    if (currentCertificates) {
+      setCertificates(currentCertificates);
+    }
+    // eslint-disable-next-line
+  }, [currentCertificates]);
 
   const convertSize = (value: number) => {
     const kbInMb = 1024;
@@ -122,6 +129,16 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
     // eslint-disable-next-line
   }, [loadingSizeFile, currentCertificates]);
 
+  const countOfFiles = certificates.filter((item) => {
+    if (item instanceof File) {
+      return true;
+    } else if (typeof item === "object" && item !== null) {
+      return Object.keys(item).length > 0 && "id" in item && "file" in item;
+    } else {
+      return false;
+    }
+  }).length;
+
   return (
     <Box className="teacherFieldBox teacherCertificateBox">
       <FormLabel className="teacherFormLabel">{t("uploadCertificate")}</FormLabel>
@@ -137,12 +154,12 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
               <CloseIcon />
             </Button>
           </Box>
-        ) : (
+        ) : "file" in el ? (
           <Box key={ind} className="certificateBox">
             <img src={el.file} alt="certificate" />
             <Box className="certificateNameSizeBox">
               <p className="certificateName">
-                {new URL(el.file).pathname.split("%3B")[2].replace(/.{19}(?=\.png|.jpg)/, "")}
+                {el.file && new URL(el.file).pathname.split("%3B")[2].replace(/.{19}(?=\.png|.jpg)/, "")}
               </p>
               <p className="certificateSize">
                 {!loadingSizeFile && size.find((file) => file.element === el.file)?.size} MB
@@ -152,10 +169,10 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
               <CloseIcon />
             </Button>
           </Box>
-        );
+        ) : null;
       })}
       <FormHelperText className="errorMessage">{certificateError}</FormHelperText>
-      {certificates.length < 5 && (
+      {countOfFiles < 5 && (
         <Box className="addCertificateBox">
           <label htmlFor={`file_input_${id}`} className="labelCertificate">
             <AddIcon />

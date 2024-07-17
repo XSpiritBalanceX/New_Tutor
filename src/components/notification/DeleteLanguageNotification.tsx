@@ -1,7 +1,7 @@
 import { Modal, Button, Box } from "@mui/material";
 import { translate } from "@i18n";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { useDeleteStudentLanguageMutation } from "@store/requestApi/profileApi";
+import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import { toast } from "react-toastify";
 import { language, TLanguages } from "@utils/listOfLanguagesLevels";
@@ -22,6 +22,7 @@ const DeleteLanguageNotification = ({ isOpen, cbCloseModal, currentLanguage }: I
   const locale = useAppSelector(tutorSelectors.localeSelect);
 
   const [deleteStudentLanguage] = useDeleteStudentLanguageMutation();
+  const [deleteTeacherLanguage] = useDeleteTeacherLanguageMutation();
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
@@ -34,6 +35,11 @@ const DeleteLanguageNotification = ({ isOpen, cbCloseModal, currentLanguage }: I
       const deletedLanguage = language[locale as keyof TLanguages][Number(currentLanguage.language)];
       isStudent &&
         deleteStudentLanguage([currentLanguage.id as number])
+          .unwrap()
+          .then(() => toast.success(t("messageSucDelete", { language: deletedLanguage })))
+          .catch(() => toast.error(t("messageErrDelete")));
+      !isStudent &&
+        deleteTeacherLanguage([currentLanguage.id as number])
           .unwrap()
           .then(() => toast.success(t("messageSucDelete", { language: deletedLanguage })))
           .catch(() => toast.error(t("messageErrDelete")));
