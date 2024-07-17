@@ -4,7 +4,7 @@ export interface ITeacherLanguage {
   level: string;
   description: string;
   price: number;
-  certificate: File[] | { id: number; file: string }[];
+  certificate: (File | { id: number; file: string })[];
 }
 
 export interface ITeacherLanguageSettings {

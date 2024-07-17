@@ -10,10 +10,21 @@ import * as Yup from "yup";
 import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
 import { ITeacherLanguageSettings, ITeacherLanguage } from "./TypesSettingLanguages";
 import AddIcon from "@mui/icons-material/Add";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { useNavigate } from "react-router-dom";
 import "./SettingTeacherLanguages.scss";
 
 const SettingTeacherLanguages = () => {
   const { t } = translate("translate", { keyPrefix: "profilePage" });
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    isStudent && navigate("/profile/settings");
+    // eslint-disable-next-line
+  }, [isStudent]);
 
   const teacherLanguages = useAppSelector(tutorSelectors.teacherLanguagesSelect);
 
@@ -32,23 +43,6 @@ const SettingTeacherLanguages = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState<null | ITeacherLanguage>(null);
 
-  useEffect(() => {
-    if (teacherLanguages) {
-      const completedData = teacherLanguages.map((el) => {
-        return {
-          language: el.language.toString(),
-          level: el.level.toString(),
-          description: el.description,
-          price: el.price,
-          certificate: el.files,
-        };
-      });
-      setInitialValues({ teaching_languages: completedData });
-      setCountOfLanguage(completedData.length);
-    }
-    // eslint-disable-next-line
-  }, [teacherLanguages]);
-
   const validationSchema = Yup.object().shape({
     teaching_languages: Yup.array()
       .of(
@@ -58,7 +52,7 @@ const SettingTeacherLanguages = () => {
           level: Yup.string().required(t("errLevel")),
           description: Yup.string().required(t("errGoal")),
           price: Yup.number().required(t("errFillField")).typeError(t("typeCoast")),
-          certificate: /* Yup.mixed<File[]>().default([]).required(t("errCertificate")) */ Yup.array().required(),
+          certificate: Yup.mixed<(File | { id: number; file: string })[]>().required(t("errCertificate")),
         }),
       )
       .required(),
@@ -74,6 +68,24 @@ const SettingTeacherLanguages = () => {
     resolver: yupResolver(validationSchema),
     values: initialValues,
   });
+
+  useEffect(() => {
+    if (teacherLanguages) {
+      const completedData = teacherLanguages.map((el) => {
+        return {
+          language: el.language.toString(),
+          level: el.level.toString(),
+          description: el.description,
+          price: el.price,
+          certificate: el.files,
+        };
+      });
+      setInitialValues({ teaching_languages: completedData });
+      setValue("teaching_languages", completedData);
+      setCountOfLanguage(completedData.length);
+    }
+    // eslint-disable-next-line
+  }, [teacherLanguages]);
 
   const { remove } = useFieldArray({ control, name: "teaching_languages" });
 
