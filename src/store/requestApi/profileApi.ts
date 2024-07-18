@@ -28,8 +28,14 @@ interface INewLanguage {
   description: string;
 }
 
-interface ISchedule {
+export interface ISchedule {
   id: number;
+  day: number;
+  time_start: string;
+  time_end: string;
+}
+
+interface INewSchedule {
   day: number;
   time_start: string;
   time_end: string;
@@ -124,6 +130,14 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    updateTeacherSchedule: builder.mutation<void, { createLesson: INewSchedule[]; deleteLesson: number[] }>({
+      query: (params) => ({
+        url: "/teacher/schedules",
+        method: "POST",
+        body: { create: params.createLesson, delete: params.deleteLesson },
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
@@ -135,4 +149,5 @@ export const {
   useUpdateTeacherLanguagesMutation,
   useDeleteTeacherLanguageMutation,
   useDeleteTeacherDocsMutation,
+  useUpdateTeacherScheduleMutation,
 } = profileApi;

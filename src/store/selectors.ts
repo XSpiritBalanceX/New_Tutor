@@ -1,5 +1,5 @@
 import { RootState } from ".";
-import { IProfileInformation, IUserInformation, TTeacherLanguage } from "./requestApi/profileApi";
+import { IProfileInformation, IUserInformation, TTeacherLanguage, ISchedule } from "./requestApi/profileApi";
 
 export const localeSelect = (state: RootState) => state.tutor.locale;
 
@@ -14,3 +14,6 @@ export const teacherProfileInfoSelect = (state: RootState) =>
 export const teacherLanguagesSelect = (state: RootState) =>
   (state.profileApi.queries['getProfile({"isStudent":false})']?.data as IProfileInformation)
     ?.languages as TTeacherLanguage[];
+
+export const teacherScheduleSelect = (state: RootState) =>
+  (state.profileApi.queries['getProfile({"isStudent":false})']?.data as IProfileInformation)?.schedules as ISchedule[];

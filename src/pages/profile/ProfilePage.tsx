@@ -11,6 +11,7 @@ import { USER_TYPE } from "@axiosApi/axiosAPI";
 import CustomError from "@components/error/CustomError";
 import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
+import SettingTeacherSchedule from "@components/settingTeacherSchedule/SettingTeacherSchedule";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -37,7 +38,7 @@ const ProfilePage = () => {
     settings: <ProfileSettings />,
     language: <SettingTeacherLanguages />,
     number: <Box>number</Box>,
-    schedule: <Box>schedule</Box>,
+    schedule: <SettingTeacherSchedule />,
     password: <Box>password</Box>,
     payment: <Box>payment</Box>,
   };
