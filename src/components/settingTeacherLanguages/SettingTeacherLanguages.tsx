@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useUpdateTeacherLanguagesMutation, useGetProfileQuery } from "@store/requestApi/profileApi";
 import { toast } from "react-toastify";
 import { uploadTeacherDocs } from "@api/teacher/uploadTeacherDocs";
+import Loader from "@components/loader/Loader";
 import "./SettingTeacherLanguages.scss";
 
 const SettingTeacherLanguages = () => {
@@ -24,8 +25,8 @@ const SettingTeacherLanguages = () => {
 
   const navigate = useNavigate();
 
-  const [updateTeacherLanguages] = useUpdateTeacherLanguagesMutation();
-  const { refetch: refetchProfileQuery } = useGetProfileQuery({ isStudent: false });
+  const [updateTeacherLanguages, { isLoading: isLoadingUpdate }] = useUpdateTeacherLanguagesMutation();
+  const { refetch: refetchProfileQuery, isLoading: isLoadingRefetch } = useGetProfileQuery({ isStudent: false });
 
   useEffect(() => {
     isStudent && navigate("/profile/settings");
@@ -189,25 +190,28 @@ const SettingTeacherLanguages = () => {
     ));
 
   return (
-    <Box className="settingTeacherLanguageBox">
-      <DeleteLanguageNotification
-        isOpen={isOpenModal}
-        cbCloseModal={handleCloseModal}
-        currentLanguage={currentLanguage}
-      />
-      <form onSubmit={handleSubmit(submitTeacherLanguages)}>
-        {teacherRow}
-        <Box className="addLanguageButtonBox">
-          <Button type="button" onClick={handleIncreaseRow}>
-            <AddIcon />
-          </Button>
-          <p>{t("addLanguageLearning")}</p>
-        </Box>
-        <Box className="submitButtonBox">
-          <Button type="submit">{t("apply")}</Button>
-        </Box>
-      </form>
-    </Box>
+    <>
+      {(isLoadingUpdate || isLoadingRefetch) && <Loader />}
+      <Box className="settingTeacherLanguageBox">
+        <DeleteLanguageNotification
+          isOpen={isOpenModal}
+          cbCloseModal={handleCloseModal}
+          currentLanguage={currentLanguage}
+        />
+        <form onSubmit={handleSubmit(submitTeacherLanguages)}>
+          {teacherRow}
+          <Box className="addLanguageButtonBox">
+            <Button type="button" onClick={handleIncreaseRow}>
+              <AddIcon />
+            </Button>
+            <p>{t("addLanguageLearning")}</p>
+          </Box>
+          <Box className="submitButtonBox">
+            <Button type="submit">{t("apply")}</Button>
+          </Box>
+        </form>
+      </Box>
+    </>
   );
 };
 

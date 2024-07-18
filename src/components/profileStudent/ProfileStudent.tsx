@@ -13,6 +13,7 @@ import { IStudentFormInformation, TStudentLanguage, TNewLanguage, TUpdatedLangua
 import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
 import { useUpdateStudentLanguagesMutation, useUpdateUserInformationMutation } from "@store/requestApi/profileApi";
 import { toast } from "react-toastify";
+import Loader from "@components/loader/Loader";
 import "./ProfileStudent.scss";
 
 const ProfileStudent = () => {
@@ -28,8 +29,8 @@ const ProfileStudent = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState<null | TStudentLanguage>(null);
 
-  const [updateStudentLanguages] = useUpdateStudentLanguagesMutation();
-  const [updateUserInformation] = useUpdateUserInformationMutation();
+  const [updateStudentLanguages, { isLoading: isLoadingUpdate }] = useUpdateStudentLanguagesMutation();
+  const [updateUserInformation, { isLoading: isLoadingUpdateProfile }] = useUpdateUserInformationMutation();
 
   useEffect(() => {
     if (studentInformation) {
@@ -157,33 +158,36 @@ const ProfileStudent = () => {
   };
 
   return (
-    <Box className="studentProfileBox">
-      <DeleteLanguageNotification
-        isOpen={isOpenModal}
-        cbCloseModal={handleCloseModal}
-        currentLanguage={currentLanguage}
-      />
-      <form onSubmit={handleSubmit(submitStudentProfile)}>
-        <StudentInformation
-          control={control}
-          errors={errors}
-          setValue={setValue}
-          watch={watch}
-          is_verify_email={studentInformation?.user?.is_verify_email}
+    <>
+      {(isLoadingUpdate || isLoadingUpdateProfile) && <Loader />}
+      <Box className="studentProfileBox">
+        <DeleteLanguageNotification
+          isOpen={isOpenModal}
+          cbCloseModal={handleCloseModal}
+          currentLanguage={currentLanguage}
         />
-        <StudentLanguages
-          control={control}
-          countOfLanguage={countOfLanguage}
-          errors={errors}
-          watch={watch}
-          cbHandleCountOfRow={handleCountRow}
-          cbHandleDeleteLanguage={handleDeleteLanguage}
-        />
-        <Box className="submitButtonBox">
-          <Button type="submit">{t("apply")}</Button>
-        </Box>
-      </form>
-    </Box>
+        <form onSubmit={handleSubmit(submitStudentProfile)}>
+          <StudentInformation
+            control={control}
+            errors={errors}
+            setValue={setValue}
+            watch={watch}
+            is_verify_email={studentInformation?.user?.is_verify_email}
+          />
+          <StudentLanguages
+            control={control}
+            countOfLanguage={countOfLanguage}
+            errors={errors}
+            watch={watch}
+            cbHandleCountOfRow={handleCountRow}
+            cbHandleDeleteLanguage={handleDeleteLanguage}
+          />
+          <Box className="submitButtonBox">
+            <Button type="submit">{t("apply")}</Button>
+          </Box>
+        </form>
+      </Box>
+    </>
   );
 };
 

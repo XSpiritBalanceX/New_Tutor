@@ -147,7 +147,8 @@
       "addLanguageTeaching": "Добавить язык преподавания",
       "errCertificate": "Добавьте свои сертификаты/дипломы",
       "errExistingLanguages": "Язык {{language}} уже существует",
-      "errReq": "Возникла непредвиденная ошибка"
+      "errReq": "Возникла непредвиденная ошибка",
+      "messageSucDeleteDoc": "Файл успешно удален"
     },
     "userAvatar": {
       "upload": "Загрузить фото",

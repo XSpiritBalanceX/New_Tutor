@@ -7,6 +7,8 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useDeleteTeacherDocsMutation } from "@store/requestApi/profileApi";
+import { toast } from "react-toastify";
 import "./TeacherRow.scss";
 
 interface IResponseAxios {
@@ -20,10 +22,7 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
 
   const { pathname } = useLocation();
 
-  /* useEffect(() => {
-    setValue(`teaching_languages.${id}.certificate` as Path<T>, [] as PathValue<T, Path<T>>);
-    // eslint-disable-next-line
-  }, []); */
+  const [deleteTeacherDocs] = useDeleteTeacherDocsMutation();
 
   const currentCertificates = watch(`teaching_languages.${id}.certificate` as Path<T>);
 
@@ -73,11 +72,24 @@ const Certificates = <T extends FieldValues>({ id, watch, setValue }: ICertifica
     }
   };
 
-  const handleDeletePhoto = (ind: number) => {
+  const handleDeletePhoto = async (ind: number) => {
     const copyData = certificates.slice();
-    copyData.splice(ind, 1);
-    setCertificates(copyData);
-    setValue(`teaching_languages.${id}.certificate` as Path<T>, copyData as PathValue<T, Path<T>>);
+    const foundFile = copyData[ind];
+    if (foundFile instanceof File) {
+      copyData.splice(ind, 1);
+      setCertificates(copyData);
+      setValue(`teaching_languages.${id}.certificate` as Path<T>, copyData as PathValue<T, Path<T>>);
+    } else {
+      try {
+        await deleteTeacherDocs({
+          idFile: foundFile.id,
+          idLanguage: watch(`teaching_languages.${id}.id` as Path<T>),
+        }).unwrap();
+        toast.success(t("messageSucDeleteDoc"));
+      } catch (err: any) {
+        toast.error(t("errReq"));
+      }
+    }
   };
 
   useEffect(() => {

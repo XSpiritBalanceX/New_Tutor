@@ -14,6 +14,7 @@ import ProfileEmailNotification from "@components/notification/ProfileEmailNotif
 import { listOfCountries } from "@utils/listOfCountries";
 import { useUpdateUserInformationMutation } from "@store/requestApi/profileApi";
 import { toast } from "react-toastify";
+import Loader from "@components/loader/Loader";
 import "./ProfileTeacher.scss";
 
 interface ITeacherInformation {
@@ -30,7 +31,7 @@ const ProfileTeacher = () => {
   const teacherInformation = useAppSelector(tutorSelectors.teacherProfileInfoSelect);
   const locale = useAppSelector(tutorSelectors.localeSelect);
 
-  const [updateUserInformation] = useUpdateUserInformationMutation();
+  const [updateUserInformation, { isLoading: isLoadingUpdate }] = useUpdateUserInformationMutation();
 
   const [initialValues, setInitialValues] = useState({
     first_name: "",
@@ -125,82 +126,90 @@ const ProfileTeacher = () => {
   };
 
   return (
-    <Box className="teacherProfileBox">
-      <form onSubmit={handleSubmit(submitTeacherProfile)}>
-        <Box className="doubleFields">
-          {firstLastName.map((el, ind) => (
-            <Box key={ind} className="teacherProfileFieldBox">
-              <FormLabel className={`teacherProfileLabel ${el.error ? "errorLabel" : ""}`}>{t(el.label)}</FormLabel>
-              <ControlledInput name={el.name} control={control} error={el.error} placeholder={t(el.label)} />
+    <>
+      {isLoadingUpdate && <Loader />}
+      <Box className="teacherProfileBox">
+        <form onSubmit={handleSubmit(submitTeacherProfile)}>
+          <Box className="doubleFields">
+            {firstLastName.map((el, ind) => (
+              <Box key={ind} className="teacherProfileFieldBox">
+                <FormLabel className={`teacherProfileLabel ${el.error ? "errorLabel" : ""}`}>{t(el.label)}</FormLabel>
+                <ControlledInput name={el.name} control={control} error={el.error} placeholder={t(el.label)} />
+              </Box>
+            ))}
+          </Box>
+          <Box className="doubleFields">
+            <Box className="teacherProfileFieldBox dateOfBirthBox">
+              <FormLabel className={`teacherProfileLabel ${errors.date_of_birthday ? "errorLabel" : ""}`}>
+                {t("dateOfBirth")}
+              </FormLabel>
+              <InputMask
+                mask="__.__.____"
+                replacement={{ _: /\d/ }}
+                placeholder={t("dateOfBirth")}
+                className={`dataField ${errors.date_of_birthday ? "errorField" : ""}`}
+                value={watch("date_of_birthday")}
+                onChange={handleDateOfBirth}
+              />
+              {errors.date_of_birthday && <WarningAmberRoundedIcon className="errorIcon" />}
+              <FormHelperText className="errorMessage">{errors.date_of_birthday?.message}</FormHelperText>
             </Box>
-          ))}
-        </Box>
-        <Box className="doubleFields">
-          <Box className="teacherProfileFieldBox dateOfBirthBox">
-            <FormLabel className={`teacherProfileLabel ${errors.date_of_birthday ? "errorLabel" : ""}`}>
-              {t("dateOfBirth")}
-            </FormLabel>
-            <InputMask
-              mask="__.__.____"
-              replacement={{ _: /\d/ }}
-              placeholder={t("dateOfBirth")}
-              className={`dataField ${errors.date_of_birthday ? "errorField" : ""}`}
-              value={watch("date_of_birthday")}
-              onChange={handleDateOfBirth}
-            />
-            {errors.date_of_birthday && <WarningAmberRoundedIcon className="errorIcon" />}
-            <FormHelperText className="errorMessage">{errors.date_of_birthday?.message}</FormHelperText>
+            <Box className="teacherProfileFieldBox">
+              <FormLabel className={`teacherProfileLabel ${errors.email ? "errorLabel" : ""}`}>{t("email")}</FormLabel>
+              <ControlledInput
+                name={"email"}
+                control={control}
+                error={errors.email?.message}
+                placeholder={t("email")}
+              />
+              {!isVerifyEmail && <ProfileEmailNotification cbHandleCloseNotification={handleCloseNotification} />}
+            </Box>
           </Box>
-          <Box className="teacherProfileFieldBox">
-            <FormLabel className={`teacherProfileLabel ${errors.email ? "errorLabel" : ""}`}>{t("email")}</FormLabel>
-            <ControlledInput name={"email"} control={control} error={errors.email?.message} placeholder={t("email")} />
-            {!isVerifyEmail && <ProfileEmailNotification cbHandleCloseNotification={handleCloseNotification} />}
+          <Box className="doubleFields">
+            <Box className="teacherProfileFieldBox dateOfBirthBox">
+              <FormLabel className={`teacherProfileLabel`}>{t("phoneNumber")}</FormLabel>
+              <InputMask
+                mask="+375 (99) 999-99-99"
+                replacement={{ "9": /\d/ }}
+                placeholder={"+375 (XX) XXX-XX-XX"}
+                className={`dataField `}
+                disabled
+              />
+            </Box>
+            <Box className="teacherProfileFieldBox">
+              <FormLabel className={`teacherProfileLabel ${errors.country ? "errorLabel" : ""}`}>
+                {t("countryLabel")}
+              </FormLabel>
+              <TextField
+                value={watch("country") || ""}
+                onChange={handleChangeCountry}
+                select={true}
+                label={t("chCountry")}
+                className="countryField"
+                error={!!errors.country}
+                InputProps={{
+                  endAdornment: !!errors.country && (
+                    <InputAdornment position="end" className="errorIcon">
+                      <WarningAmberRoundedIcon className="errorIcon" />
+                    </InputAdornment>
+                  ),
+                }}
+              >
+                {listOfCountries.map((el, ind) => (
+                  <MenuItem key={ind} value={el.id}>
+                    {locale === "ru" ? el.russianLabel : el.englishLabel}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <FormHelperText className="errorMessage">{errors && errors.country?.message}</FormHelperText>
+            </Box>
           </Box>
-        </Box>
-        <Box className="doubleFields">
-          <Box className="teacherProfileFieldBox dateOfBirthBox">
-            <FormLabel className={`teacherProfileLabel`}>{t("phoneNumber")}</FormLabel>
-            <InputMask
-              mask="+375 (99) 999-99-99"
-              replacement={{ "9": /\d/ }}
-              placeholder={"+375 (XX) XXX-XX-XX"}
-              className={`dataField `}
-              disabled
-            />
+          <Box className="submitButtonBox">
+            <Button type="submit">{t("apply")}</Button>
           </Box>
-          <Box className="teacherProfileFieldBox">
-            <FormLabel className={`teacherProfileLabel ${errors.country ? "errorLabel" : ""}`}>
-              {t("countryLabel")}
-            </FormLabel>
-            <TextField
-              value={watch("country") || ""}
-              onChange={handleChangeCountry}
-              select={true}
-              label={t("chCountry")}
-              className="countryField"
-              error={!!errors.country}
-              InputProps={{
-                endAdornment: !!errors.country && (
-                  <InputAdornment position="end" className="errorIcon">
-                    <WarningAmberRoundedIcon className="errorIcon" />
-                  </InputAdornment>
-                ),
-              }}
-            >
-              {listOfCountries.map((el, ind) => (
-                <MenuItem key={ind} value={el.id}>
-                  {locale === "ru" ? el.russianLabel : el.englishLabel}
-                </MenuItem>
-              ))}
-            </TextField>
-            <FormHelperText className="errorMessage">{errors && errors.country?.message}</FormHelperText>
-          </Box>
-        </Box>
-        <Box className="submitButtonBox">
-          <Button type="submit">{t("apply")}</Button>
-        </Box>
-      </form>
-    </Box>
+        </form>
+      </Box>
+    </>
   );
 };
 

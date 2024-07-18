@@ -9,13 +9,7 @@ import { useGetProfileQuery } from "@store/requestApi/profileApi";
 import Loader from "@components/loader/Loader";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import CustomError from "@components/error/CustomError";
-import {
-  useDeleteStudentLanguageMutation,
-  useUpdateStudentLanguagesMutation,
-  useUpdateUserInformationMutation,
-  useUpdateTeacherLanguagesMutation,
-  useDeleteTeacherLanguageMutation,
-} from "@store/requestApi/profileApi";
+import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
 import "./ProfilePage.scss";
 
@@ -37,9 +31,6 @@ const ProfilePage = () => {
 
   const { error, isLoading } = useGetProfileQuery({ isStudent });
   const [, { isLoading: loadingDeleteLangStudent }] = useDeleteStudentLanguageMutation();
-  const [, { isLoading: loadingUpdateLangStudent }] = useUpdateStudentLanguagesMutation();
-  const [, { isLoading: loadingUpdateStudent }] = useUpdateUserInformationMutation();
-  const [, { isLoading: loadingUpdateTeacher }] = useUpdateTeacherLanguagesMutation();
   const [, { isLoading: loadingDeleteLangTeacher }] = useDeleteTeacherLanguageMutation();
 
   const profileOptions: TProfileOptions = {
@@ -55,12 +46,7 @@ const ProfilePage = () => {
     <CustomError />
   ) : (
     <Container className="profilePageContainer">
-      {(isLoading ||
-        loadingDeleteLangStudent ||
-        loadingUpdateLangStudent ||
-        loadingUpdateStudent ||
-        loadingUpdateTeacher ||
-        loadingDeleteLangTeacher) && <Loader />}
+      {(isLoading || loadingDeleteLangStudent || loadingDeleteLangTeacher) && <Loader />}
       <Box className="locationBox">
         <p className="myProfile">{t("myProfile")}</p>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

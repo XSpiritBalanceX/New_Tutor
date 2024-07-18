@@ -116,6 +116,14 @@ export const profileApi = createApi({
       }),
       invalidatesTags: ["Profile"],
     }),
+    deleteTeacherDocs: builder.mutation<void, { idFile: number; idLanguage: number }>({
+      query: (params) => ({
+        url: "/teacher/teaching/languages/docs",
+        method: "DELETE",
+        body: { id: params.idFile, language_id: params.idLanguage },
+      }),
+      invalidatesTags: ["Profile"],
+    }),
   }),
 });
 
@@ -126,4 +134,5 @@ export const {
   useUpdateUserInformationMutation,
   useUpdateTeacherLanguagesMutation,
   useDeleteTeacherLanguageMutation,
+  useDeleteTeacherDocsMutation,
 } = profileApi;
