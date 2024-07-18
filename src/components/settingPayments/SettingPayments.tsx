@@ -4,6 +4,7 @@ import { translate } from "@i18n";
 import UserBalance from "./UserBalance";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import UserBankCards from "./UserBankCards";
 import "./SettingPayments.scss";
 
 const SettingPayments = () => {
@@ -18,6 +19,7 @@ const SettingPayments = () => {
       <UserBalance />
       <Box className="cardsBox">
         <p className="cardsTitle">{t("cards")}</p>
+        {!isAddNewCard && <UserBankCards />}
         <Box className="buttonCardsBox">
           <Button type="button" onClick={handleAddNewCard}>
             {isAddNewCard ? <CloseIcon /> : <AddIcon />}

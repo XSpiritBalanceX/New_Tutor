@@ -82,5 +82,54 @@
         min-width: 44px;
       }
     }
+    .bankCardSlider {
+      max-width: 780px;
+      .slick-arrow {
+        display: none !important;
+      }
+      .slick-list {
+        .slick-track {
+          max-width: 1000px;
+        }
+        .bankCardBox {
+          display: flex !important;
+          flex-direction: column;
+          align-items: flex-end;
+          margin-right: 20px;
+          .cardBox {
+            position: relative;
+            .isActiveCardBox {
+              width: 15px;
+              height: 15px;
+              background-color: map-deep-get($theme-colors, "border", "disable");
+              border-radius: 100%;
+              position: absolute;
+              top: 7px;
+              left: 7px;
+              z-index: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .active {
+                width: 8px;
+                height: 8px;
+                background-color: map-get($theme-colors, "main-blue");
+                border-radius: 100%;
+              }
+            }
+            .isActiveCardBox.activeCardBox {
+              border: solid 1px map-get($theme-colors, "main-blue");
+            }
+          }
+          .forgetCardButton {
+            text-transform: none;
+            @extend %text-small;
+            color: map-get($theme-colors, "main-blue");
+            margin: 5px 15px 0 0;
+            padding: 0;
+          }
+        }
+      }
+    }
   }
 }
