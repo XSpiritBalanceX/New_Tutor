@@ -102,7 +102,7 @@ const SignUpForm = () => {
       .required(t("reqPassword"))
       .min(8, t("passMin"))
       .max(32, t("passMax"))
-      .matches(/^[a-zA-Z0-9]+$/, t("wrongFormatPassword")),
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,32}$/, t("wrongFormatPassword")),
     confirm_password: Yup.string()
       .required(t("confirmPassw"))
       .oneOf([Yup.ref("password")], t("passDontMatch")),

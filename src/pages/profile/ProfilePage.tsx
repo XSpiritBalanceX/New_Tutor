@@ -13,6 +13,7 @@ import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } fr
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
 import SettingTeacherSchedule from "@components/settingTeacherSchedule/SettingTeacherSchedule";
 import SettingNumber from "@components/settingNumber/SettingNumber";
+import SettingPassword from "@components/settingPassword/SettingPassword";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -40,7 +41,7 @@ const ProfilePage = () => {
     language: <SettingTeacherLanguages />,
     number: <SettingNumber />,
     schedule: <SettingTeacherSchedule />,
-    password: <Box>password</Box>,
+    password: <SettingPassword />,
     payment: <Box>payment</Box>,
   };
 

@@ -49,8 +49,8 @@
       "reqEmail": "Email is required",
       "wrongEmail": "Invalid email",
       "reqPassword": "Password required. Use numbers and latin letters",
-      "passMin": "Password must be 6 characters",
-      "passMax": "Password cannot have more than 20 characters",
+      "passMin": "Password must be 8 characters",
+      "passMax": "Password cannot have more than 32 characters",
       "password": "Password",
       "forgotPassw": "Forgot your password?",
       "noAcca": "Don't have an account yet?",
@@ -227,6 +227,22 @@
       "apply": "Apply",
       "reqField": "Fill in the field",
       "messageSucReq": "Number successfully changed",
+      "messageErrReq": "An unexpected error occurred"
+    },
+    "settingPasswordPage": {
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "confirmPassword": "Repeat new password",
+      "save": "Save",
+      "reqField": "Fill in the field",
+      "reqLettLow": "The password must contain at least 1 Latin lowercase letter",
+      "reqLettUpp": "The password must contain at least 1 capital letter",
+      "wrongFormatPassword": "Only numbers, upper and lowercase Latin letters",
+      "reqNumb": "The password must contain at least 1 digit",
+      "passDontMatch": "Password mismatch",
+      "passMin": "Password must be 8 characters",
+      "passMax": "Password cannot have more than 32 characters",
+      "messageSucReq": "Password successfully changed",
       "messageErrReq": "An unexpected error occurred"
     }
   }
