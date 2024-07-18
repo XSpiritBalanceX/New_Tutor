@@ -169,8 +169,8 @@ const ProfileTeacher = () => {
             <Box className="teacherProfileFieldBox dateOfBirthBox">
               <FormLabel className={`teacherProfileLabel`}>{t("phoneNumber")}</FormLabel>
               <InputMask
-                mask="+375 (99) 999-99-99"
-                replacement={{ "9": /\d/ }}
+                mask="+375 (__) ___-__-__"
+                replacement={{ _: /\d/ }}
                 placeholder={"+375 (XX) XXX-XX-XX"}
                 className={`dataField `}
                 disabled

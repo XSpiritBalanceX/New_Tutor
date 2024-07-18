@@ -12,6 +12,7 @@ import CustomError from "@components/error/CustomError";
 import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
 import SettingTeacherSchedule from "@components/settingTeacherSchedule/SettingTeacherSchedule";
+import SettingNumber from "@components/settingNumber/SettingNumber";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -37,7 +38,7 @@ const ProfilePage = () => {
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,
     language: <SettingTeacherLanguages />,
-    number: <Box>number</Box>,
+    number: <SettingNumber />,
     schedule: <SettingTeacherSchedule />,
     password: <Box>password</Box>,
     payment: <Box>payment</Box>,

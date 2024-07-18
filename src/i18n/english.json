@@ -217,6 +217,17 @@
         "messageSucDelete": "Language {{language}} was successfully removed",
         "messageErrDelete": "An unexpected error occurred"
       }
+    },
+    "settingNumberPage": {
+      "titleOldNumber": "Enter old number",
+      "titleCode": "Enter a code",
+      "code": "Code",
+      "sendCode": "Send code",
+      "titleNewNumber": "Enter new number",
+      "apply": "Apply",
+      "reqField": "Fill in the field",
+      "messageSucReq": "Number successfully changed",
+      "messageErrReq": "An unexpected error occurred"
     }
   }
 }
