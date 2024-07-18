@@ -1,0 +1,86 @@
+@import "../../variables";
+
+.settingPaymentsBox {
+  .userBalanceBox {
+    margin-bottom: 30px;
+    .yourBalance {
+      margin: 0 0 5px 0;
+      @extend %h3;
+      span {
+        color: map-get($theme-colors, "main-blue");
+      }
+    }
+    .balanceField {
+      max-width: 180px;
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 40px;
+        border-radius: 5px;
+        @extend %text-main;
+        padding: 0 10px 0 0;
+        input {
+          height: 40px;
+          padding: 0 10px;
+          color: map-get($theme-colors, "black");
+        }
+        .MuiInputAdornment-root {
+          color: map-get($theme-colors, "black");
+        }
+        fieldset {
+          border: solid 1px map-get($theme-colors, "gray");
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        fieldset {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+    }
+    .currencyField {
+      margin: 0 10px;
+      .MuiInputBase-root {
+        height: 40px;
+        fieldset {
+          display: none;
+        }
+        .MuiSelect-select {
+          @extend %text-main;
+          padding-top: 5px;
+          padding-bottom: 0;
+          color: map-get($theme-colors, "gray");
+        }
+      }
+    }
+    .withdrawButton {
+      @extend %button-1;
+      text-transform: none;
+      border-radius: 100px;
+      padding: 10px 20px;
+      @extend %text-main;
+    }
+  }
+  .cardsBox {
+    display: flex;
+    flex-direction: column;
+    .cardsTitle {
+      margin: 0 0 10px 0;
+      @extend %h3;
+    }
+    .buttonCardsBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p {
+        @extend %text-main;
+        margin: 0 0 0 10px;
+      }
+      button {
+        @extend %button-1;
+        border-radius: 100%;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+      }
+    }
+  }
+}

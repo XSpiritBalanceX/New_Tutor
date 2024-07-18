@@ -244,6 +244,24 @@
       "passMax": "Password cannot have more than 32 characters",
       "messageSucReq": "Password successfully changed",
       "messageErrReq": "An unexpected error occurred"
+    },
+    "settingPaymentsPage": {
+      "yourBalance": "Your balance: ",
+      "sum": "Sum",
+      "withdraw": "Withdraw",
+      "topUpBalance": "Top up",
+      "cards": "Cards",
+      "forgetCard": "Forget the card",
+      "numberPfCard": "Card number",
+      "validity": "Card expiry date",
+      "addCard": "Add a card",
+      "historyOfPayments": "Payment/subscription history",
+      "nameOfOwner": "Holder name",
+      "firstLastName": "first last name",
+      "add": "add",
+      "reqField": "Fill in the field",
+      "errCard": "Card is invalid",
+      "cancel": "Cancel"
     }
   }
 }

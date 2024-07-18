@@ -14,6 +14,7 @@ import SettingTeacherLanguages from "@components/settingTeacherLanguages/Setting
 import SettingTeacherSchedule from "@components/settingTeacherSchedule/SettingTeacherSchedule";
 import SettingNumber from "@components/settingNumber/SettingNumber";
 import SettingPassword from "@components/settingPassword/SettingPassword";
+import SettingPayments from "@components/settingPayments/SettingPayments";
 import "./ProfilePage.scss";
 
 type TProfileOptions = {
@@ -42,7 +43,7 @@ const ProfilePage = () => {
     number: <SettingNumber />,
     schedule: <SettingTeacherSchedule />,
     password: <SettingPassword />,
-    payment: <Box>payment</Box>,
+    payment: <SettingPayments />,
   };
 
   return error ? (

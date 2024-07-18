@@ -244,6 +244,24 @@
       "passMax": "Пароль не может иметь больше 32 символов",
       "messageSucReq": "Пароль успешно изменен",
       "messageErrReq": "Возникла непредвиденная ошибка"
+    },
+    "settingPaymentsPage": {
+      "yourBalance": "Ваш баланс: ",
+      "sum": "Сумма",
+      "withdraw": "Вывести",
+      "topUpBalance": "Пополнить",
+      "cards": "Карты",
+      "forgetCard": "Забыть карту",
+      "numberPfCard": "Номер карты",
+      "validity": "Срок действия",
+      "addCard": "Добавить карту",
+      "historyOfPayments": "История оплат/подписок",
+      "nameOfOwner": "Имя держателя",
+      "firstLastName": "имя фамилия",
+      "add": "Добавить",
+      "reqField": "Заполните поле",
+      "errCard": "Карта недействительная",
+      "cancel": "Отмена"
     }
   }
 }
