@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import UserBankCards from "./UserBankCards";
 import NewBankCard from "./NewBankCard";
+import HistoryOfPayments from "./HistoryOfPayments";
 import "./SettingPayments.scss";
 
 const SettingPayments = () => {
@@ -29,6 +30,7 @@ const SettingPayments = () => {
         </Box>
       </Box>
       {isAddNewCard && <NewBankCard />}
+      {!isAddNewCard && <HistoryOfPayments />}
     </Box>
   );
 };
