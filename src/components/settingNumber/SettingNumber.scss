@@ -1,0 +1,79 @@
+@import "../../variables";
+
+.settingNumberBox {
+  margin-bottom: 200px;
+  width: 100%;
+  .doubleFields {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    .sendCodeButton {
+      @extend %text-main;
+      @extend %button-1;
+      border-radius: 100px;
+      padding: 10px 20px;
+      text-transform: none;
+      margin-top: 24px;
+    }
+  }
+  .settingNumberFieldBox {
+    display: flex;
+    flex-direction: column;
+    max-width: 380px;
+    width: 100%;
+    margin-right: 20px;
+    .settingNumberLabel {
+      @extend %h3;
+      margin: 0 0 5px 0;
+      color: map-get($theme-colors, "black");
+    }
+    .settingNumberLabel.errorLabel {
+      color: map-get($theme-colors, "red");
+    }
+    .numberField {
+      all: unset;
+      height: 40px;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 5px;
+      border: solid 1px map-get($theme-colors, "gray");
+      padding: 0 15px;
+      font-family: "Rubik", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      @media all and (max-width: 40em) {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16.5px;
+      }
+      &::placeholder {
+        color: map-get($theme-colors, "gray");
+        @extend %text-main;
+      }
+      &:focus {
+        border: solid 2px map-get($theme-colors, "main-blue");
+      }
+    }
+    .numberField.errorField {
+      border: solid 2px map-get($theme-colors, "red");
+    }
+    .errorMessage {
+      color: map-get($theme-colors, "red");
+      @extend %text-small;
+    }
+  }
+  .oldNumberCodeBox {
+    margin-bottom: 40px;
+  }
+  .submitButton {
+    @extend %text-main;
+    @extend %button-1;
+    border-radius: 100px;
+    padding: 10px 20px;
+    text-transform: none;
+    margin-top: 20px;
+  }
+}

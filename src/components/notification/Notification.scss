@@ -1,0 +1,85 @@
+@import "../../variables";
+
+.profileEmailNotificationBox {
+  padding: 10px;
+  background-color: map-get($theme-colors, "white-blue");
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  .titleButtonBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    p {
+      margin: 0;
+      @extend %text-small;
+    }
+    button {
+      color: map-get($theme-colors, "gray");
+      height: 24px;
+      width: 24px;
+      min-width: 24px;
+    }
+  }
+  .resentButton {
+    text-transform: none;
+    padding: 0 24px 0 0;
+    @extend %text-small;
+    justify-content: flex-end;
+    color: map-get($theme-colors, "main-blue");
+  }
+}
+
+.deleteLanguageModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .contentDeleteLanguageModal {
+    background-color: map-get($theme-colors, "white");
+    padding: 10px 10px 30px 10px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "header");
+    max-width: 430px;
+    width: 100%;
+    .closeButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .title {
+      margin: 0;
+      @extend %h2;
+      text-align: center;
+    }
+    .text {
+      margin: 10px 0 20px 0;
+      @extend %text-main;
+      text-align: center;
+    }
+    .controlsButtonsBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .deleteButton,
+      .closeButton {
+        text-transform: none;
+        @extend %text-main;
+        border-radius: 100px;
+        padding: 10px 20px;
+      }
+      .deleteButton {
+        @extend %button-1;
+        margin-right: 20px;
+      }
+      .closeButton {
+        @extend %button-2;
+      }
+    }
+  }
+}

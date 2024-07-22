@@ -1,0 +1,289 @@
+@import "../../variables";
+
+.settingPaymentsBox {
+  width: 100%;
+  .userBalanceBox {
+    margin-bottom: 30px;
+    .yourBalance {
+      margin: 0 0 5px 0;
+      @extend %h3;
+      span {
+        color: map-get($theme-colors, "main-blue");
+      }
+    }
+    .balanceField {
+      max-width: 180px;
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 40px;
+        border-radius: 5px;
+        @extend %text-main;
+        padding: 0 10px 0 0;
+        input {
+          height: 40px;
+          padding: 0 10px;
+          color: map-get($theme-colors, "black");
+        }
+        .MuiInputAdornment-root {
+          color: map-get($theme-colors, "black");
+        }
+        fieldset {
+          border: solid 1px map-get($theme-colors, "gray");
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        fieldset {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+    }
+    .currencyField {
+      margin: 0 10px;
+      .MuiInputBase-root {
+        height: 40px;
+        fieldset {
+          display: none;
+        }
+        .MuiSelect-select {
+          @extend %text-main;
+          padding-top: 5px;
+          padding-bottom: 0;
+          color: map-get($theme-colors, "gray");
+        }
+      }
+    }
+    .withdrawButton {
+      @extend %button-1;
+      text-transform: none;
+      border-radius: 100px;
+      padding: 10px 20px;
+      @extend %text-main;
+    }
+  }
+  .cardsBox {
+    display: flex;
+    flex-direction: column;
+    .cardsTitle {
+      margin: 0 0 10px 0;
+      @extend %h3;
+    }
+    .buttonCardsBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p {
+        @extend %text-main;
+        margin: 0 0 0 10px;
+      }
+      button {
+        @extend %button-1;
+        border-radius: 100%;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+      }
+    }
+    .bankCardSlider {
+      max-width: 780px;
+      .slick-arrow {
+        display: none !important;
+      }
+      .slick-list {
+        .slick-track {
+          max-width: 1000px;
+        }
+        .bankCardBox {
+          display: flex !important;
+          flex-direction: column;
+          align-items: flex-end;
+          margin-right: 20px;
+          .cardBox {
+            position: relative;
+            .isActiveCardBox {
+              width: 15px;
+              height: 15px;
+              background-color: map-deep-get($theme-colors, "border", "disable");
+              border-radius: 100%;
+              position: absolute;
+              top: 7px;
+              left: 7px;
+              z-index: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .active {
+                width: 8px;
+                height: 8px;
+                background-color: map-get($theme-colors, "main-blue");
+                border-radius: 100%;
+              }
+            }
+            .isActiveCardBox.activeCardBox {
+              border: solid 1px map-get($theme-colors, "main-blue");
+            }
+          }
+          .forgetCardButton {
+            text-transform: none;
+            @extend %text-small;
+            color: map-get($theme-colors, "main-blue");
+            margin: 5px 15px 0 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+  .newBankCardBox {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    form {
+      width: 100%;
+      max-width: 510px;
+    }
+    .newBankCardField {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+      .newCardLabel {
+        @extend %text-main;
+        margin: 0 0 5px 0;
+        color: map-get($theme-colors, "white");
+      }
+      .newCardLabel.errorLabel {
+        color: map-get($theme-colors, "red");
+      }
+      .numberField {
+        all: unset;
+        height: 40px;
+        background-color: map-get($theme-colors, "white");
+        border-radius: 5px;
+        border: solid 1px map-get($theme-colors, "gray");
+        padding: 0 15px;
+        font-family: "Rubik", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        @media all and (max-width: 40em) {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 16.5px;
+        }
+        &::placeholder {
+          color: map-get($theme-colors, "gray");
+          @extend %text-main;
+        }
+        &:focus {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+      .numberField.errorField {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+      .errorMessage {
+        color: map-get($theme-colors, "red");
+        @extend %text-small;
+      }
+    }
+    .cardWrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      .frontSideCard,
+      .backSideCard {
+        margin: 0;
+        border-radius: 10px;
+        width: 380px;
+        height: 240px;
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+        background: map-get($theme-colors, "gradient");
+      }
+      .frontSideCard {
+        padding: 10px 0 30px 30px;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .newBankCardField {
+          max-width: 280px;
+          .errorMessage {
+            margin: 0;
+            height: 15px;
+          }
+          .errorIcon {
+            display: none;
+          }
+        }
+        .expDateBox {
+          display: flex;
+          flex-direction: row;
+          max-width: 180px;
+          justify-content: space-between;
+          .expDateField {
+            max-width: 80px;
+          }
+          .errorMessage {
+            max-width: 80px;
+          }
+        }
+      }
+      .backSideCard {
+        padding: 10px 0 30px 0;
+        margin-left: -250px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .blackLine {
+          margin: 30px 0 10px 0;
+          height: 50px;
+          background-color: map-get($theme-colors, "black");
+          width: 100%;
+        }
+        .newBankCardField {
+          max-width: 90px;
+          margin-right: 10px;
+          .errorIcon {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .historyOfPaymentsBox {
+    margin-top: 30px;
+    .titleHistory {
+      @extend %h3;
+      margin: 0 0 10px 0;
+    }
+    .historyTable {
+      tbody {
+        tr {
+          td {
+            @extend %text-small;
+            line-height: 120%;
+            text-transform: uppercase;
+            padding: 10px;
+          }
+          .sumCell.isReturnedSum {
+            color: map-get($theme-colors, "red");
+          }
+        }
+      }
+    }
+  }
+  .submitButtonBox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    button {
+      @extend %button-1;
+      @extend %text-main;
+      text-transform: none;
+      padding: 10px 20px;
+      border-radius: 100px;
+    }
+  }
+}

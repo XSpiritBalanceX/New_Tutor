@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FormControlLabel, Checkbox } from "@mui/material";
 import moment from "moment";
 import "./Schedule.scss";
@@ -11,14 +10,9 @@ interface IButtonTimeProps {
 }
 
 const ButtonTime = ({ time, day, cbHandleCreateSchedule, schedule }: IButtonTimeProps) => {
-  const [isChecked, setIsChecked] = useState(false);
-
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.currentTarget;
-    setIsChecked((prevState) => {
-      cbHandleCreateSchedule(name, value);
-      return !prevState;
-    });
+    cbHandleCreateSchedule(name, value);
   };
 
   const isTimeInSchedule = schedule.some(
@@ -28,13 +22,7 @@ const ButtonTime = ({ time, day, cbHandleCreateSchedule, schedule }: IButtonTime
   return (
     <FormControlLabel
       control={
-        <Checkbox
-          className="timeCheckbox"
-          value={day}
-          name={time}
-          onChange={handleCheck}
-          checked={isChecked || isTimeInSchedule}
-        />
+        <Checkbox className="timeCheckbox" value={day} name={time} onChange={handleCheck} checked={isTimeInSchedule} />
       }
       label={time}
       className="timeButton"

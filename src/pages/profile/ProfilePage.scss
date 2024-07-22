@@ -1,0 +1,59 @@
+@import "../../variables";
+
+.profilePageContainer {
+  padding: 30px 0 100px 0 !important;
+  position: relative;
+  .locationBox {
+    margin: 0 0 40px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @extend %text-small;
+    .myProfile,
+    .arrowIcon,
+    a {
+      color: map-get($theme-colors, "gray");
+      margin: 0;
+      text-decoration: none;
+    }
+    .elementText {
+      margin: 0;
+    }
+  }
+  .profilePageContent {
+    display: flex;
+    flex-direction: row;
+    .profileMenu {
+      display: flex;
+      flex-direction: column;
+      max-width: 280px;
+      width: 100%;
+      margin: 0 20px 0 0;
+      .nav-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-decoration: none;
+        height: 40px;
+        @extend %text-main;
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "header");
+        border-radius: 5px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+        background-color: map-get($theme-colors, "white");
+        color: map-get($theme-colors, "black");
+        svg {
+          margin: 0 5px 0 0;
+        }
+      }
+      .nav-link.phoneLink {
+        padding-left: 50px;
+      }
+      .nav-link.active {
+        background-color: map-get($theme-colors, "main-blue");
+        color: map-get($theme-colors, "white");
+      }
+    }
+  }
+}

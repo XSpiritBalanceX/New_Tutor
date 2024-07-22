@@ -10,6 +10,7 @@ import WrapperHeader from "@components/header/WrapperHeader";
 import Footer from "@components/footer/Footer";
 import moment from "moment";
 import { axiosAPI } from "@axiosApi/axiosAPI";
+import ErrorBoundary from "@components/error/ErrorBoundary";
 import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -46,7 +47,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <ErrorBoundary>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -60,7 +61,7 @@ const App = () => {
       <WrapperHeader />
       <RouterComponent />
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 };
 

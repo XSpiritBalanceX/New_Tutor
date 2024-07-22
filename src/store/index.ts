@@ -1,12 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { profileApi } from "./requestApi/profileApi";
 
 import tutorSlice from "./tutorSlice";
 
 export const store = configureStore({
   reducer: {
     tutor: tutorSlice,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(profileApi.middleware),
 });
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 

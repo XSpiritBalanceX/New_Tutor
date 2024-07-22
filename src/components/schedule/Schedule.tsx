@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import * as momentTimeZone from "moment-timezone";
@@ -12,6 +12,9 @@ import { IToken } from "@axiosApi/TypesAPI";
 import { REGISTER_STATE, TOKEN_KEY, TOKEN_EXPIRES_KEY } from "@axiosApi/axiosAPI";
 import Loader from "@components/loader/Loader";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "@store/hook";
+import * as tutorSelectors from "@store/selectors";
+import { useUpdateTeacherScheduleMutation } from "@store/requestApi/profileApi";
 import "./Schedule.scss";
 
 interface IScheduleProps {
@@ -19,6 +22,7 @@ interface IScheduleProps {
 }
 
 type TLesson = {
+  id?: number | null;
   day: number;
   time_start: string;
   time_end: string;
@@ -27,12 +31,24 @@ type TLesson = {
 const Schedule = ({ isCreating }: IScheduleProps) => {
   const { t } = translate("translate", { keyPrefix: "teacherSchedule" });
 
+  const teacherSchedule = useAppSelector(tutorSelectors.teacherScheduleSelect);
+
+  const [updateTeacherSchedule] = useUpdateTeacherScheduleMutation();
+
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
   const [selectedTimeZone, setSelectedTimeZone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone);
   const [schedule, setSchedule] = useState<TLesson[]>([]);
   const [errDate, setErrDate] = useState("");
+  const [deleteLessonID, setDeleteLessonID] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (teacherSchedule) {
+      setSchedule(teacherSchedule);
+    }
+    // eslint-disable-next-line
+  }, [teacherSchedule]);
 
   const handleChangeTimeZone = (timezone: ITimezoneOption) => {
     setSelectedTimeZone(timezone.value);
@@ -51,7 +67,13 @@ const Schedule = ({ isCreating }: IScheduleProps) => {
   };
 
   const handleCreateSchedule = (time: string, day: string) => {
+    const foundLesson =
+      teacherSchedule &&
+      teacherSchedule.find(
+        (el) => el.day === Number(day) && el.time_start === moment(time, "HH:mm").utc().format("HH:mm"),
+      );
     const lesson = {
+      id: foundLesson?.id ?? null,
       day: Number(day),
       time_start: moment(time, "HH:mm").utc().format("HH:mm"),
       time_end: moment(time, "HH:mm").utc().add(55, "minutes").format("HH:mm"),
@@ -61,19 +83,33 @@ const Schedule = ({ isCreating }: IScheduleProps) => {
       (el) => el.day === lesson.day && el.time_start === lesson.time_start && el.time_end === lesson.time_end,
     );
     if (index !== -1) {
+      const lessonId = copyData[index];
+      const copyLessonsID = deleteLessonID.slice();
+      lessonId.id && !copyLessonsID.includes(lessonId.id) && copyLessonsID.push(lessonId.id);
+      setDeleteLessonID(copyLessonsID);
       copyData.splice(index, 1);
     } else {
+      const foundID =
+        teacherSchedule && teacherSchedule.find((el) => el.day === lesson.day && el.time_start === lesson.time_start);
+      const filteredLessonIDs = foundID && deleteLessonID.filter((el) => el !== foundID.id);
+      filteredLessonIDs && setDeleteLessonID(filteredLessonIDs);
       copyData.push(lesson);
     }
     setSchedule(copyData);
   };
 
   const handleSentSchedule = async () => {
-    if (schedule.length) {
+    const newSchedule: TLesson[] = [];
+    schedule.forEach((el) => {
+      if (!el.id) {
+        newSchedule.push({ day: el.day, time_start: el.time_start, time_end: el.time_end });
+      }
+    });
+    if (isCreating && schedule.length) {
       try {
         setIsLoading(true);
         setErrDate("");
-        await createSchedule({ create: schedule });
+        await createSchedule({ create: newSchedule });
         const responseToken = await refreshToken();
         if (responseToken) {
           const decode: IToken = jwtDecode(responseToken);
@@ -94,6 +130,16 @@ const Schedule = ({ isCreating }: IScheduleProps) => {
           setErrDate(t(""));
           setErrDate(t("errDate", { date: busyDate }));
         }
+      } finally {
+        setIsLoading(false);
+      }
+    } else if (!isCreating && (newSchedule.length || deleteLessonID.length)) {
+      try {
+        setIsLoading(true);
+        await updateTeacherSchedule({ createLesson: newSchedule, deleteLesson: deleteLessonID }).unwrap();
+        setDeleteLessonID([]);
+      } catch (err: any) {
+        console.log("ERROR HERE", err.response);
       } finally {
         setIsLoading(false);
       }

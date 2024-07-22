@@ -49,8 +49,8 @@
       "reqEmail": "Email is required",
       "wrongEmail": "Invalid email",
       "reqPassword": "Password required. Use numbers and latin letters",
-      "passMin": "Password must be 6 characters",
-      "passMax": "Password cannot have more than 20 characters",
+      "passMin": "Password must be 8 characters",
+      "passMax": "Password cannot have more than 32 characters",
       "password": "Password",
       "forgotPassw": "Forgot your password?",
       "noAcca": "Don't have an account yet?",
@@ -147,14 +147,17 @@
       "addLanguageTeaching": "Add teaching language",
       "errCertificate": "Add your certificates/diplomas",
       "errExistingLanguages": "Language {{language}} already exist",
-      "errReq": "Возникла непредвиденная ошибка"
+      "errReq": "An unexpected error occurred",
+      "messageSucDeleteDoc": "File deleted successfully"
     },
     "userAvatar": {
       "upload": "Upload a photo",
       "delete": "Delete",
       "hintPhoto": "JPG or PNG format. Maximum size 2 MB",
       "errorFileSizeImage": "The file size is too large, no more than 2 MB.",
-      "errorTypeImage": "File format is JPG or PNG only."
+      "errorTypeImage": "File format is JPG or PNG only.",
+      "messageSucUpload": "The photo was successfully uploaded",
+      "messageErrUpload": "An unexpected error occurred"
     },
     "teacherSchedule": {
       "chooseTime": "Choose a time for the lesson",
@@ -164,6 +167,104 @@
       "apply": "Apply",
       "errBusy": "You cannot make changes to the schedule. You already have a lesson scheduled for this time. To reschedule a class, go to ",
       "errDate": "You have already published a lesson on {{date}}."
+    },
+    "profilePage": {
+      "myProfile": "Мой профиль",
+      "generalSettings": "General settings",
+      "changeNumber": "Change of number",
+      "languages": "Languages",
+      "schedule": "Расписание",
+      "changePassword": "Change Password",
+      "payments": "Payments/subscriptions",
+      "reqDateOfBirth": "Enter your date of birth (DD.MM.YYYY)",
+      "notValidDateOfBirth": "Incorrect date",
+      "greatThan": "You cannot be under 18 years old",
+      "chooseCountry": "Please indicate your country",
+      "reqEmail": "Email required",
+      "wrongEmail": "Invalid email",
+      "reqName": "Name required",
+      "reqSurname": "Last name required",
+      "errName": "Invalid field filled in. From 3 to 20 characters",
+      "errLevel": "Please indicate your level of proficiency",
+      "errChooseLanguage": "Specify language",
+      "errGoal": "Complete the learning objective",
+      "addLanguageLearning": "Add a language to study",
+      "apply": "Apply",
+      "firstName": "Имя",
+      "lastName": "Surname",
+      "dateOfBirth": "Date of Birth",
+      "email": "Email",
+      "phoneNumber": "Phone number",
+      "titleConfirmEmail": "Your email has not been verified. Please go to your email.",
+      "buttonConfirmEmail": "Send confirmation again",
+      "messageSucRequest": "Data updated successfully",
+      "messageErrRequest": "An unexpected error occurred",
+      "countryLabel": "Where are you from?",
+      "chCountry": "Choose the country",
+      "addLanguageTeaching": "Add teaching language"
+    },
+    "errorPage": {
+      "title": "Page not found",
+      "text": "The page you requested was not found. We are already working on this. In the meantime, you can return to the main page.",
+      "button": "Go back to the main page"
+    },
+    "notification": {
+      "deleteLanguage": {
+        "title": "Removing a language",
+        "text": "Are you sure you want to remove the language?",
+        "delete": "Remove language",
+        "cancel": "Cancel",
+        "messageSucDelete": "Language {{language}} was successfully removed",
+        "messageErrDelete": "An unexpected error occurred"
+      }
+    },
+    "settingNumberPage": {
+      "titleOldNumber": "Enter old number",
+      "titleCode": "Enter a code",
+      "code": "Code",
+      "sendCode": "Send code",
+      "titleNewNumber": "Enter new number",
+      "apply": "Apply",
+      "reqField": "Fill in the field",
+      "messageSucReq": "Number successfully changed",
+      "messageErrReq": "An unexpected error occurred"
+    },
+    "settingPasswordPage": {
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "confirmPassword": "Repeat new password",
+      "save": "Save",
+      "reqField": "Fill in the field",
+      "reqLettLow": "The password must contain at least 1 Latin lowercase letter",
+      "reqLettUpp": "The password must contain at least 1 capital letter",
+      "wrongFormatPassword": "Only numbers, upper and lowercase Latin letters",
+      "reqNumb": "The password must contain at least 1 digit",
+      "passDontMatch": "Password mismatch",
+      "passMin": "Password must be 8 characters",
+      "passMax": "Password cannot have more than 32 characters",
+      "messageSucReq": "Password successfully changed",
+      "messageErrReq": "An unexpected error occurred"
+    },
+    "settingPaymentsPage": {
+      "yourBalance": "Your balance: ",
+      "sum": "Sum",
+      "withdraw": "Withdraw",
+      "topUpBalance": "Top up",
+      "cards": "Cards",
+      "forgetCard": "Forget the card",
+      "numberPfCard": "Card number",
+      "validity": "Card expiry date",
+      "addCard": "Add a card",
+      "historyOfPayments": "Payment/subscription history",
+      "nameOfOwner": "Holder name",
+      "firstLastName": "first last name",
+      "add": "add",
+      "reqField": "Fill in the field",
+      "errCard": "Card is invalid",
+      "cancel": "Cancel",
+      "yearLab": "YY",
+      "errLengthCVC": "Only 3 digits",
+      "errNumber": "Only numbers"
     }
   }
 }
