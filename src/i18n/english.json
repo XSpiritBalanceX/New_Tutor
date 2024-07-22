@@ -261,7 +261,10 @@
       "add": "add",
       "reqField": "Fill in the field",
       "errCard": "Card is invalid",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "yearLab": "YY",
+      "errLengthCVC": "Only 3 digits",
+      "errNumber": "Only numbers"
     }
   }
 }

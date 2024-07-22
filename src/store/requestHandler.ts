@@ -17,7 +17,7 @@ const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, o
 // Перехватчик запросов для обработки ошибок
 export const requestHandler = async (url: string | FetchArgs, config: any, extraOptions: object) => {
   const response = await baseQuery(url, config, extraOptions);
-  if (response.error?.status === 401) {
+  if ((response.error as { originalStatus: number })?.originalStatus === 401) {
     try {
       const newAccessToken = await refreshToken();
       if (newAccessToken) {

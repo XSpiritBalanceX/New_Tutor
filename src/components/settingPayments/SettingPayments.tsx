@@ -5,6 +5,7 @@ import UserBalance from "./UserBalance";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import UserBankCards from "./UserBankCards";
+import NewBankCard from "./NewBankCard";
 import "./SettingPayments.scss";
 
 const SettingPayments = () => {
@@ -27,6 +28,7 @@ const SettingPayments = () => {
           <p>{t(isAddNewCard ? "cancel" : "addCard")}</p>
         </Box>
       </Box>
+      {isAddNewCard && <NewBankCard />}
     </Box>
   );
 };

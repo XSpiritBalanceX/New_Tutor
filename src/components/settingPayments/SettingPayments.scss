@@ -1,6 +1,7 @@
 @import "../../variables";
 
 .settingPaymentsBox {
+  width: 100%;
   .userBalanceBox {
     margin-bottom: 30px;
     .yourBalance {
@@ -130,6 +131,137 @@
           }
         }
       }
+    }
+  }
+  .newBankCardBox {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    form {
+      width: 100%;
+      max-width: 510px;
+    }
+    .newBankCardField {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+      .newCardLabel {
+        @extend %text-main;
+        margin: 0 0 5px 0;
+        color: map-get($theme-colors, "white");
+      }
+      .newCardLabel.errorLabel {
+        color: map-get($theme-colors, "red");
+      }
+      .numberField {
+        all: unset;
+        height: 40px;
+        background-color: map-get($theme-colors, "white");
+        border-radius: 5px;
+        border: solid 1px map-get($theme-colors, "gray");
+        padding: 0 15px;
+        font-family: "Rubik", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        @media all and (max-width: 40em) {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 16.5px;
+        }
+        &::placeholder {
+          color: map-get($theme-colors, "gray");
+          @extend %text-main;
+        }
+        &:focus {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+      .numberField.errorField {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+      .errorMessage {
+        color: map-get($theme-colors, "red");
+        @extend %text-small;
+      }
+    }
+    .cardWrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      .frontSideCard,
+      .backSideCard {
+        margin: 0;
+        border-radius: 10px;
+        width: 380px;
+        height: 240px;
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+        background: map-get($theme-colors, "gradient");
+      }
+      .frontSideCard {
+        padding: 10px 0 30px 30px;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .newBankCardField {
+          max-width: 280px;
+          .errorMessage {
+            margin: 0;
+            height: 15px;
+          }
+          .errorIcon {
+            display: none;
+          }
+        }
+        .expDateBox {
+          display: flex;
+          flex-direction: row;
+          max-width: 180px;
+          justify-content: space-between;
+          .expDateField {
+            max-width: 80px;
+          }
+          .errorMessage {
+            max-width: 80px;
+          }
+        }
+      }
+      .backSideCard {
+        padding: 10px 0 30px 0;
+        margin-left: -250px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .blackLine {
+          margin: 30px 0 10px 0;
+          height: 50px;
+          background-color: map-get($theme-colors, "black");
+          width: 100%;
+        }
+        .newBankCardField {
+          max-width: 90px;
+          margin-right: 10px;
+          .errorIcon {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .submitButtonBox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    button {
+      @extend %button-1;
+      @extend %text-main;
+      text-transform: none;
+      padding: 10px 20px;
+      border-radius: 100px;
     }
   }
 }
