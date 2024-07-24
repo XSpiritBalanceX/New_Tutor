@@ -5,6 +5,7 @@ import MainPage from "@pages/main/MainPage";
 import AuthPage from "@pages/auth/AuthPage";
 import RegistrationPage from "@pages/registration/RegistrationPage";
 import ProfilePage from "@pages/profile/ProfilePage";
+import SearchPage from "@pages/search/SearchPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [{ path: "/", element: <MainPage /> }];
@@ -18,6 +19,7 @@ const RouterComponent = () => {
     { path: "/registration/:user", element: <RegistrationPage /> },
     { path: "/registration/teacher/schedule", element: <RegistrationPage /> },
     { path: "/profile/:element", element: <ProfilePage /> },
+    { path: "/search/:page", element: <SearchPage /> },
   ];
   return (
     <Routes>

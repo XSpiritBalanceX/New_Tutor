@@ -265,6 +265,36 @@
       "yearLab": "YY",
       "errLengthCVC": "Only 3 digits",
       "errNumber": "Only numbers"
+    },
+    "searchPage": {
+      "main": "Main",
+      "findTeacher": "Find a teacher",
+      "wantToLearn": "Want to study",
+      "chooseLang": "Choose language",
+      "priceOfLesson": "Lesson cost (USD)",
+      "to": "To",
+      "certificatedTeacher": "Certified teacher",
+      "wantToStudy": "Want to study",
+      "morning": "In the morning",
+      "day": "in the afternoon",
+      "evening": "In the evening",
+      "night": "Ночью",
+      "anyTime": "В любое время",
+      "apply": "Apply",
+      "sortBy": "Sort by",
+      "popular": "Popular",
+      "cheap": "Cheap",
+      "expensive": "Expensive",
+      "new": "New",
+      "countOfReviews": "{{count}} reviews",
+      "levelOfLanguage": "{{language}} level:",
+      "countOfStudent": "Number of students:",
+      "costPerHour": "Cost per hour:",
+      "writeMe": "Write me",
+      "more": "More details",
+      "bookFreeLesson": "Book a free lesson with me",
+      "emptyRequest": "Unfortunately, your search returned no results",
+      "changeRequest": "Try changing your search terms"
     }
   }
 }

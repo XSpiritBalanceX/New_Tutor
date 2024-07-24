@@ -265,6 +265,36 @@
       "yearLab": "ГГ",
       "errLengthCVC": "Только 3 цифры",
       "errNumber": "Только цифры"
+    },
+    "searchPage": {
+      "main": "Главная",
+      "findTeacher": "Найти преподавателя",
+      "wantToLearn": "Хочу изучать",
+      "chooseLang": "Выберите язык",
+      "priceOfLesson": "Стоимость занятия (USD)",
+      "to": "До",
+      "certificatedTeacher": "Сертифицированный преподаватель",
+      "wantToStudy": "Хочу заниматься",
+      "morning": "Утром",
+      "day": "Днем",
+      "evening": "Вечером",
+      "night": "Ночью",
+      "anyTime": "В любое время",
+      "apply": "Применить",
+      "sortBy": "Сортировать по",
+      "popular": "Популярные",
+      "cheap": "Дешевые",
+      "expensive": "Дорогие",
+      "new": "Новые",
+      "countOfReviews": "{{count}} отзывов",
+      "levelOfLanguage": "Уровень {{language}}:",
+      "countOfStudent": "Количество учеников:",
+      "costPerHour": "Стоимость в час:",
+      "writeMe": "Написать мне",
+      "more": "Подробнее",
+      "bookFreeLesson": "Забронировать бесплатный урок со мной",
+      "emptyRequest": "К сожалению, по вашему запросу ничего не найдено",
+      "changeRequest": "Попробуйте изменить условия поиска"
     }
   }
 }
