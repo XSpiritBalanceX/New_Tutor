@@ -24,6 +24,49 @@
     margin: 0;
     @extend %h1;
   }
+  .sortBox {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 10px 0;
+    .sortField {
+      width: 100%;
+      max-width: 280px;
+      height: 40px;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 5px;
+      .MuiFormLabel-root {
+        margin-top: -7px;
+        @extend %text-main;
+        color: map-get($theme-colors, "black");
+      }
+      .MuiFormLabel-root.MuiFormLabel-filled.Mui-focused,
+      .MuiFormLabel-root.Mui-focused {
+        display: none;
+      }
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 40px;
+        border-radius: 5px;
+        @extend %text-main;
+        input {
+          height: 40px;
+          padding: 0 15px;
+          color: map-get($theme-colors, "black");
+        }
+        fieldset {
+          border: solid 1px map-get($theme-colors, "gray");
+          legend {
+            display: none;
+          }
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        fieldset {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+    }
+  }
   .filterContentBox {
     display: flex;
     flex-direction: row;

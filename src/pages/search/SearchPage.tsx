@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Box } from "@mui/material";
+import { Container, Box, TextField, MenuItem } from "@mui/material";
 import { translate } from "@i18n";
 import { NavLink, useParams } from "react-router-dom";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
@@ -15,11 +15,18 @@ const SearchPage = () => {
   const { page } = useParams();
 
   const [itemPerPage] = useState(4);
+  const [sortFilter, setSortFilter] = useState("");
 
   const { data, isLoading, error } = useGetTeachersListQuery({
     currentPage: page as string,
     countTeachers: itemPerPage,
   });
+
+  const sortBy = ["popular", "cheap", "expensive", "new"];
+
+  const handleChangeSort = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSortFilter(e.target.value);
+  };
 
   return (
     <Container className="searchPageContainer">
@@ -35,7 +42,15 @@ const SearchPage = () => {
             <p className="findTeacher">{t("findTeacher")}</p>
           </Box>
           <p className="findTeacherTitle">{t("findTeacher")}</p>
-          <Box>sorting</Box>
+          <Box className="sortBox">
+            <TextField select value={sortFilter} onChange={handleChangeSort} label={t("sortBy")} className="sortField">
+              {sortBy.map((el, ind) => (
+                <MenuItem key={ind} value={el}>
+                  {t(el)}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Box>
           <Box className="filterContentBox">
             <SearchFilter />
           </Box>
