@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Container, Box, TextField, MenuItem } from "@mui/material";
+import { Container, Box, TextField, MenuItem, Pagination } from "@mui/material";
 import { translate } from "@i18n";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { useGetTeachersListQuery } from "@store/requestApi/searchApi";
 import CustomError from "@components/error/CustomError";
@@ -14,6 +14,7 @@ const SearchPage = () => {
   const { t } = translate("translate", { keyPrefix: "searchPage" });
 
   const { page } = useParams();
+  const navigate = useNavigate();
 
   const [itemPerPage] = useState(4);
   const [sortFilter, setSortFilter] = useState("");
@@ -27,6 +28,10 @@ const SearchPage = () => {
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSortFilter(e.target.value);
+  };
+
+  const handleChangePage = (_: React.ChangeEvent<unknown>, value: number) => {
+    navigate(`/search/${value}`);
   };
 
   return (
@@ -55,6 +60,18 @@ const SearchPage = () => {
           <Box className="filterContentBox">
             <SearchFilter />
             {data.items.length === 0 && <EmptySearch />}
+            {data.items.length !== 0 && (
+              <Box className="contentBox">
+                <Box className="paginationBox">
+                  <Pagination
+                    count={data.count}
+                    page={Number(page)}
+                    onChange={handleChangePage}
+                    className="searchPagination"
+                  />
+                </Box>
+              </Box>
+            )}
           </Box>
         </>
       )}

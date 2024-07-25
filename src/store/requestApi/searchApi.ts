@@ -23,6 +23,7 @@ interface ITeacherInfo {
 }
 
 interface IResponseSearch {
+  count: number;
   page: number;
   isHasNextPage: boolean;
   all_items_count: number;
