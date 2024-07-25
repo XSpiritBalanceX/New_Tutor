@@ -97,12 +97,13 @@
     .contentBox {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: flex-start;
       align-items: center;
       min-height: 600px;
-      width: 100%;
+      width: calc(100% - 300px);
       .paginationBox {
         width: 100%;
+        margin-top: 60px;
         .searchPagination {
           margin: 0 auto;
           .MuiPagination-ul {

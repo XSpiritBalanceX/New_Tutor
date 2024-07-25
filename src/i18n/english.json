@@ -292,6 +292,7 @@
       "costPerHour": "Cost per hour:",
       "writeMe": "Write me",
       "more": "More details",
+      "collapse": "Collapse",
       "bookFreeLesson": "Book a free lesson with me",
       "emptyRequest": "Unfortunately, your search returned no results",
       "changeRequest": "Try changing your search terms"

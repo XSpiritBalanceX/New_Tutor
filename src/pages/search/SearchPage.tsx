@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Box, TextField, MenuItem, Pagination } from "@mui/material";
 import { translate } from "@i18n";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
 import SearchFilter from "@components/searchFilter/SearchFilter";
 import EmptySearch from "./EmptySearch";
+import CardTeacher from "@components/cardTeacher/CardTeacher";
 import "./SearchPage.scss";
 
 const SearchPage = () => {
@@ -19,7 +20,7 @@ const SearchPage = () => {
   const [itemPerPage] = useState(4);
   const [sortFilter, setSortFilter] = useState("");
 
-  const { data, isLoading, error } = useGetTeachersListQuery({
+  const { data, isLoading, error, isFetching } = useGetTeachersListQuery({
     currentPage: page as string,
     countTeachers: itemPerPage,
   });
@@ -36,7 +37,7 @@ const SearchPage = () => {
 
   return (
     <Container className="searchPageContainer">
-      {isLoading && <Loader />}
+      {(isLoading || isFetching) && <Loader />}
       {error && <CustomError />}
       {data && !error && (
         <>
@@ -62,6 +63,9 @@ const SearchPage = () => {
             {data.items.length === 0 && <EmptySearch />}
             {data.items.length !== 0 && (
               <Box className="contentBox">
+                {data.items.map((el, ind) => (
+                  <CardTeacher key={ind} info_teacher={el} />
+                ))}
                 <Box className="paginationBox">
                   <Pagination
                     count={data.count}

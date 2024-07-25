@@ -9,7 +9,7 @@ interface ILanguageTeacher {
   description: string;
 }
 
-interface ITeacherInfo {
+export interface ITeacherInfo {
   id: number;
   first_name: string;
   last_name: string;
