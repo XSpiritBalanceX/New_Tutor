@@ -3,6 +3,7 @@
 .searchPageContainer {
   padding: 60px 0 150px 0 !important;
   position: relative;
+  min-height: 800px;
   .locationSearchPageBox {
     display: flex;
     flex-direction: row;
@@ -22,5 +23,9 @@
   .findTeacherTitle {
     margin: 0;
     @extend %h1;
+  }
+  .filterContentBox {
+    display: flex;
+    flex-direction: row;
   }
 }
