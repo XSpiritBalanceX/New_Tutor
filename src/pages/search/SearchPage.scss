@@ -70,5 +70,29 @@
   .filterContentBox {
     display: flex;
     flex-direction: row;
+    .emptySearchBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      .textEmptySearch {
+        max-width: 380px;
+        width: 100%;
+        margin: 60px 0 0 0;
+        .emptyText {
+          @extend %h2;
+          margin: 0 0 15px 0;
+        }
+        .changeRequest {
+          margin: 0;
+          @extend %text-main;
+          color: map-deep-get($theme-colors, "text", "dark-gray");
+        }
+      }
+      img {
+        width: 380px;
+        height: 300px;
+      }
+    }
   }
 }

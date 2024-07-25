@@ -7,6 +7,7 @@ import { useGetTeachersListQuery } from "@store/requestApi/searchApi";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
 import SearchFilter from "@components/searchFilter/SearchFilter";
+import EmptySearch from "./EmptySearch";
 import "./SearchPage.scss";
 
 const SearchPage = () => {
@@ -53,6 +54,7 @@ const SearchPage = () => {
           </Box>
           <Box className="filterContentBox">
             <SearchFilter />
+            {data.items.length === 0 && <EmptySearch />}
           </Box>
         </>
       )}
