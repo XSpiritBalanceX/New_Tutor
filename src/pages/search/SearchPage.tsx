@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container, Box, TextField, MenuItem, Pagination } from "@mui/material";
 import { translate } from "@i18n";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
