@@ -296,6 +296,28 @@
       "bookFreeLesson": "Забронировать бесплатный урок со мной",
       "emptyRequest": "К сожалению, по вашему запросу ничего не найдено",
       "changeRequest": "Попробуйте изменить условия поиска"
+    },
+    "teacherPage": {
+      "main": "Главная",
+      "findTeacher": "Найти преподавателя",
+      "teacherProfile": "Профиль преподавателя",
+      "countOfReviews": "{{count}} отзывов",
+      "levelOfLanguage": "Уровень {{language}}:",
+      "countOfStudent": "Количество учеников:",
+      "costPerHour": "Стоимость в час:",
+      "newTeacher": "Новый преподаватель",
+      "writeMe": "Написать мне",
+      "professionalSkills": "Профессиональные навыки",
+      "review": "Отзывы",
+      "scheduleLessons": "Расписание занятий",
+      "lengthOfLesson": "Длительность занятий составляет 55 мин",
+      "chooseTimeZone": "Выберите ваш часовой пояс",
+      "chooseLanguage": "Выберите язык",
+      "youWanToToBookLesson": "Вы хотите записаться на уроки {{language}} языка с преподавателем {{teacherName}} на {{dates}}",
+      "book": "Записаться",
+      "certificatedTeacher": "Сертифицированный преподаватель",
+      "seeMore": "Показать еще",
+      "collapse": "Свернуть"
     }
   }
 }

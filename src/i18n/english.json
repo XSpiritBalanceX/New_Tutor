@@ -296,6 +296,28 @@
       "bookFreeLesson": "Book a free lesson with me",
       "emptyRequest": "Unfortunately, your search returned no results",
       "changeRequest": "Try changing your search terms"
+    },
+    "teacherPage": {
+      "main": "Main",
+      "findTeacher": "Find a teacher",
+      "teacherProfile": "Teacher profile",
+      "countOfReviews": "{{count}} reviews",
+      "levelOfLanguage": "{{language}} level:",
+      "countOfStudent": "Number of students:",
+      "costPerHour": "Cost per hour:",
+      "newTeacher": "New teacher",
+      "writeMe": "Write me",
+      "professionalSkills": "Professional skills",
+      "review": "Reviews",
+      "scheduleLessons": "Timetable of lessons",
+      "lengthOfLesson": "Duration of classes is 55 minutes",
+      "chooseTimeZone": "Select your time zone",
+      "chooseLanguage": "Choose language",
+      "youWanToToBookLesson": "You would like to book {{}language} lessons with teacher {{teacherName}} on {{dates}}",
+      "book": "Book",
+      "certificatedTeacher": "Certified teacher",
+      "seeMore": "See more",
+      "collapse": "Collapse"
     }
   }
 }

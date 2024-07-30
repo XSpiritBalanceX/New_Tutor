@@ -7,6 +7,8 @@ import Loader from "@components/loader/Loader";
 import CustomError from "@components/error/CustomError";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import TeacherProfile from "./TeacherProfile";
 import "./TeacherPage.scss";
 
 const TeacherPage = () => {
@@ -30,9 +32,25 @@ const TeacherPage = () => {
   return error ? (
     <CustomError />
   ) : (
-    <Container>
+    <Container className="teacherPageContainer">
       {isLoading && <Loader />}
-      <Box></Box>
+      <Box className="locationTeacherPageBox">
+        <NavLink to={"/"} className={"teacherPageLink"}>
+          {t("main")}
+        </NavLink>
+        <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
+        <NavLink to={"/search/1"} className={"teacherPageLink"}>
+          {t("findTeacher")}
+        </NavLink>
+        <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
+        <p>{t("teacherProfile")}</p>
+      </Box>
+      {data && (
+        <>
+          <TeacherProfile teacher_information={data.user} teacher_languages={data.languages} />
+          <Box className="teacherScheduleBox"></Box>
+        </>
+      )}
     </Container>
   );
 };

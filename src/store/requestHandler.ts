@@ -43,7 +43,10 @@ export const requestHandler = async (url: string | FetchArgs, config: any, extra
     } catch (error) {
       throw error;
     }
-  } else if ((response.error as { status: number })?.status === 401) {
+  } else if (
+    (response.error as { status: number })?.status === 401 ||
+    (response.error as { originalStatus: number })?.originalStatus === 401
+  ) {
     try {
       const newAccessToken = await refreshToken();
       if (newAccessToken) {
