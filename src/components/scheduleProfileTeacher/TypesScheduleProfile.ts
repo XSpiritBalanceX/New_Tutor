@@ -43,3 +43,10 @@ export interface IButtonTimeProps {
   cbHandleBookLessons: (id: number, date: string) => void;
   selectedLessons: ISelectedLesson[];
 }
+
+export interface IMessageAboutBookProps {
+  selectedLessons: ISelectedLesson[];
+  teacher_name: string;
+  selectedLanguage: string;
+  selectedTimeZone: string;
+}

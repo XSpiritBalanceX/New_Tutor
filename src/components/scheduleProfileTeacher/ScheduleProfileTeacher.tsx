@@ -11,6 +11,7 @@ import { language, TLanguages } from "@utils/listOfLanguagesLevels";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ButtonTime from "./ButtonTime";
+import MessageAboutBook from "./MessageAboutBook";
 import "./ScheduleProfileTeacher.scss";
 
 const mockLanguages = [{ language: 1 }, { language: 10 }, { language: 14 }, { language: 19 }];
@@ -142,6 +143,14 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
           ))}
         </RadioGroup>
       </Box>
+      {selectedLessons.length !== 0 && selectedLanguage && (
+        <MessageAboutBook
+          selectedLessons={selectedLessons}
+          teacher_name={teacher_name}
+          selectedLanguage={selectedLanguage as string}
+          selectedTimeZone={selectedTimeZone}
+        />
+      )}
       <Box className="datesControlsBox">
         <Button
           type="button"
