@@ -10,6 +10,7 @@ import * as tutorSelectors from "@store/selectors";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import TeacherProfile from "./TeacherProfile";
 import ScheduleProfileTeacher from "@components/scheduleProfileTeacher/ScheduleProfileTeacher";
+import TeacherReviews from "@components/teacherReviews/TeacherReviews";
 import "./TeacherPage.scss";
 
 const TeacherPage = () => {
@@ -65,6 +66,7 @@ const TeacherPage = () => {
               />
             </Box>
           )}
+          <TeacherReviews />
         </>
       )}
     </Container>

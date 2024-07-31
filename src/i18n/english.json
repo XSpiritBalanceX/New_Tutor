@@ -324,7 +324,11 @@
       "seeMore": "See more",
       "collapse": "Collapse",
       "errorRequest": "An unexpected error occurred",
-      "errBusyTime": "An error has occurred. Lesson is already booked"
+      "errBusyTime": "An error has occurred. Lesson is already booked",
+      "overallRating": "Overall rating: {{rating}}",
+      "pros": "Advantages:",
+      "cons": "Disadvantages:",
+      "readMore": "Read completely"
     }
   }
 }
