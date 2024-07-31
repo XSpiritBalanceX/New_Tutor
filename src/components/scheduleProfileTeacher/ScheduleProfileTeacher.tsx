@@ -13,6 +13,8 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import ButtonTime from "./ButtonTime";
 import MessageAboutBook from "./MessageAboutBook";
 import ModalBookLessons from "@components/notification/ModalBookLessons";
+import { useBookLessonsMutation } from "@store/requestApi/teacherApi";
+import { toast } from "react-toastify";
 import "./ScheduleProfileTeacher.scss";
 
 const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id }: IScheduleProfileTeacherProps) => {
@@ -23,6 +25,8 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
   const [extraWeek, setExtraWeek] = useState(0);
   const [selectedLessons, setSelectedLessons] = useState<ISelectedLesson[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const [bookLessons] = useBookLessonsMutation();
 
   const currentWeek = moment().week();
 
@@ -95,7 +99,23 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
   };
 
   const handleBookLessons = () => {
-    setIsOpenModal(true);
+    localStorage.removeItem("tutor_skip_auth");
+    const mappedLessons = selectedLessons.map((el) => {
+      return { teacher_id: el.teacher_id, schedule_id: el.schedule_id, date: el.date };
+    });
+    bookLessons({ booked_lessons: mappedLessons })
+      .unwrap()
+      .then(() => {
+        localStorage.setItem("tutor_skip_auth", "true");
+        setIsOpenModal(true);
+      })
+      .catch((err) => {
+        if (err.data.type === "CannotCreatePlannedLessonException") {
+          toast.error(t("errBusyTime"));
+        } else {
+          toast.error(t("errorRequest"));
+        }
+      });
   };
 
   return (

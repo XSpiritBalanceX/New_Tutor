@@ -322,7 +322,9 @@
       "book": "Book",
       "certificatedTeacher": "Certified teacher",
       "seeMore": "See more",
-      "collapse": "Collapse"
+      "collapse": "Collapse",
+      "errorRequest": "An unexpected error occurred",
+      "errBusyTime": "An error has occurred. Lesson is already booked"
     }
   }
 }
