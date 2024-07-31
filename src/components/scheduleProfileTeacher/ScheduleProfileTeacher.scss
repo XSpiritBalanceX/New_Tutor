@@ -1,0 +1,174 @@
+@import "../../variables";
+
+.scheduleProfileContainer {
+  width: auto;
+  background-color: map-get($theme-colors, "white");
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+  padding: 40px;
+  max-width: 640px;
+  width: 100%;
+  .timeTitle,
+  .durationTitle {
+    text-align: center;
+  }
+  .timeTitle {
+    @extend %h2;
+    margin: 0 0 10px 0;
+  }
+  .durationTitle {
+    @extend %h3;
+    margin: 0;
+    color: map-get($theme-colors, "main-blue");
+  }
+  .timeZoneBox {
+    margin: 20px 0;
+    p {
+      @extend %h3;
+      margin: 0 0 5px 0;
+    }
+    .timeZoneField {
+      max-width: 360px;
+      div:nth-child(3) {
+        border-radius: 5px;
+        border-color: map-get($theme-colors, "black");
+        @extend %text-main;
+        &:active {
+          border: solid 2px map-get($theme-colors, "main-blue");
+          box-shadow: none;
+        }
+        > div:nth-child(2) {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .scheduleLanguagesBox {
+    display: flex;
+    flex-direction: column;
+    p {
+      margin: 0 0 10px 0;
+      @extend %h3;
+    }
+    .scheduleLanguagesGroup {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      .MuiFormControlLabel-root {
+        margin: 0 20px 0 0;
+        .MuiRadio-root {
+          padding: 0;
+          width: 17px;
+          height: 17px;
+          margin-right: 5px;
+        }
+        .MuiRadio-root.Mui-checked {
+          color: map-get($theme-colors, "main-blue");
+        }
+        .MuiTypography-root {
+          @extend %text-main;
+        }
+      }
+    }
+  }
+  .datesControlsBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 42px;
+    background-color: map-get($theme-colors, "white-blue");
+    border-radius: 5px;
+    width: 100%;
+    margin: 20px 0 10px 0;
+    p {
+      margin: 0;
+      @extend %h3;
+    }
+    button {
+      color: map-get($theme-colors, "black");
+      height: 32px;
+      width: 32px;
+      min-width: 32px;
+    }
+  }
+  .datesWeekBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    .dayWeekBox {
+      max-width: 60px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .dayOfWeek,
+      .dateOfWeek {
+        margin: 0;
+      }
+      .dayOfWeek {
+        @extend %h2;
+        margin-bottom: 10px;
+      }
+      .dateOfWeek {
+        @extend %h3;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+  }
+  .timeDaysBox {
+    margin: 10px 0 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-height: 350px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background: map-get($theme-colors, "white-blue");
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: map-get($theme-colors, "main-blue");
+    }
+    .timeButtonBox {
+      display: flex;
+      flex-direction: column;
+      width: 60px;
+    }
+    .timeButton {
+      position: relative;
+      margin: 0 0 10px 0;
+      .timeCheckbox {
+        border: solid 1px map-get($theme-colors, "main-blue");
+        padding: 0;
+        width: 60px;
+        height: 30px;
+        border-radius: 4px;
+        svg {
+          display: none;
+        }
+      }
+      .timeCheckbox.Mui-checked {
+        background-color: map-get($theme-colors, "main-blue");
+      }
+      .timeCheckbox.Mui-checked + .MuiTypography-root {
+        color: map-get($theme-colors, "white");
+      }
+      .MuiTypography-root {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @extend %text-small;
+        color: map-get($theme-colors, "main-blue");
+      }
+    }
+  }
+}
