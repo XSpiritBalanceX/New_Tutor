@@ -12,42 +12,8 @@ import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ButtonTime from "./ButtonTime";
 import MessageAboutBook from "./MessageAboutBook";
+import ModalBookLessons from "@components/notification/ModalBookLessons";
 import "./ScheduleProfileTeacher.scss";
-
-const mockLanguages = [{ language: 1 }, { language: 10 }, { language: 14 }, { language: 19 }];
-
-const mockShecule = [
-  {
-    id: 1,
-    day: 4,
-    time_start: "12:12:12",
-    time_end: "13:12:12",
-  },
-  {
-    id: 2,
-    day: 2,
-    time_start: "13:12:12",
-    time_end: "13:12:12",
-  },
-  {
-    id: 3,
-    day: 0,
-    time_start: "15:12:12",
-    time_end: "13:12:12",
-  },
-  {
-    id: 4,
-    day: 0,
-    time_start: "18:12:12",
-    time_end: "13:12:12",
-  },
-  {
-    id: 5,
-    day: 2,
-    time_start: "16:12:12",
-    time_end: "13:12:12",
-  },
-];
 
 const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id }: IScheduleProfileTeacherProps) => {
   const { t } = translate("translate", { keyPrefix: "teacherPage" });
@@ -56,6 +22,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
   const [selectedLanguage, setSelectedLanguage] = useState<null | string>(null);
   const [extraWeek, setExtraWeek] = useState(0);
   const [selectedLessons, setSelectedLessons] = useState<ISelectedLesson[]>([]);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const currentWeek = moment().week();
 
@@ -104,7 +71,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
   };
 
   const handleBookLesson = (lesson_id: number, date: string) => {
-    const foundLesson = mockShecule.find((el) => el.id === lesson_id);
+    const foundLesson = schedule.find((el) => el.id === lesson_id);
     const lesson: ISelectedLesson = {
       teacher_id: teacher_id,
       schedule_id: foundLesson?.id ?? 0,
@@ -123,8 +90,23 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
     setSelectedLessons(copyData);
   };
 
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+  };
+
+  const handleBookLessons = () => {
+    setIsOpenModal(true);
+  };
+
   return (
     <Box className="scheduleProfileContainer">
+      <ModalBookLessons
+        isOpen={isOpenModal}
+        cbCloseModal={handleCloseModal}
+        teacher_name={teacher_name}
+        selectedLessons={selectedLessons}
+        selectedTimeZone={selectedTimeZone}
+      />
       <p className="timeTitle">{t("scheduleLessons")}</p>
       <p className="durationTitle">{t("lengthOfLesson")}</p>
       <Box className="timeZoneBox">
@@ -134,7 +116,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
       <Box className="scheduleLanguagesBox">
         <p>{t("chooseLanguage")}</p>
         <RadioGroup onChange={handleSelectLanguage} className="scheduleLanguagesGroup">
-          {mockLanguages.map((el, ind) => (
+          {languages.map((el, ind) => (
             <FormControlLabel
               key={ind}
               control={<Radio value={el.language} />}
@@ -149,6 +131,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
           teacher_name={teacher_name}
           selectedLanguage={selectedLanguage as string}
           selectedTimeZone={selectedTimeZone}
+          cbHandleBookLessons={handleBookLessons}
         />
       )}
       <Box className="datesControlsBox">
@@ -182,7 +165,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
           .fill(null)
           .map((_, index) => (
             <Box key={index} className="timeButtonBox">
-              {mockShecule
+              {schedule
                 .sort((a, b) => {
                   return a.time_start < b.time_start ? -1 : a.time_start > b.time_start ? 1 : 0;
                 })

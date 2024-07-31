@@ -49,4 +49,5 @@ export interface IMessageAboutBookProps {
   teacher_name: string;
   selectedLanguage: string;
   selectedTimeZone: string;
+  cbHandleBookLessons: () => void;
 }

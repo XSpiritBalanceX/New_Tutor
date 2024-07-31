@@ -13,10 +13,15 @@ const MessageAboutBook = ({
   teacher_name,
   selectedLanguage,
   selectedTimeZone,
+  cbHandleBookLessons,
 }: IMessageAboutBookProps) => {
   const { t } = translate("translate", { keyPrefix: "teacherPage" });
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
+
+  const handleBookLessons = () => {
+    cbHandleBookLessons();
+  };
 
   const strSelectedLessons = selectedLessons
     .sort((a, b) => {
@@ -42,7 +47,9 @@ const MessageAboutBook = ({
         })}
       </p>
       <Box className="buttonBookBox">
-        <Button type="button">{t("book")}</Button>
+        <Button type="button" onClick={handleBookLessons}>
+          {t("book")}
+        </Button>
       </Box>
     </Box>
   );

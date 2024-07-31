@@ -216,6 +216,11 @@
         "cancel": "Cancel",
         "messageSucDelete": "Language {{language}} was successfully removed",
         "messageErrDelete": "An unexpected error occurred"
+      },
+      "bookLessons": {
+        "youBookedLessons": "You have booked a lesson",
+        "youBookedWithTeacher": "You have booked lessons with teacher {{name}}",
+        "onLesson": "on {{date}}"
       }
     },
     "settingNumberPage": {
@@ -309,7 +314,7 @@
       "writeMe": "Write me",
       "professionalSkills": "Professional skills",
       "review": "Reviews",
-      "scheduleLessons": "Timetable of lessons",
+      "scheduleLessons": "Choose a time to study",
       "lengthOfLesson": "Duration of classes is 55 minutes",
       "chooseTimeZone": "Select your time zone",
       "chooseLanguage": "Choose language",
