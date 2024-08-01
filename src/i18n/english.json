@@ -350,7 +350,8 @@
       "sucRequest": "Your lesson has been successfully cancelled.",
       "errRequest": "An unexpected error occurred",
       "noOneLessons": "You haven't booked any lessons",
-      "noOneLessonsTeacher": "You have no lessons booked"
+      "noOneLessonsTeacher": "You have no lessons booked",
+      "errorReason": "Please indicate the reason for canceling the lesson"
     }
   }
 }

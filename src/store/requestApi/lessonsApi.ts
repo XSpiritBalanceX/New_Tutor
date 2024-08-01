@@ -29,7 +29,15 @@ export const lessonsApi = createApi({
       query: ({ countLessons, currentPage }) => `/book?count=${countLessons}&page=${currentPage}`,
       providesTags: ["AllLessons"],
     }),
+    cancelLesson: builder.mutation<void, { lesson_id: number; reason: string }[]>({
+      query: (params) => ({
+        url: "/book/cancel",
+        method: "POST",
+        body: { lessons_id: params },
+      }),
+      invalidatesTags: ["AllLessons"],
+    }),
   }),
 });
 
-export const { useGetLessonsQuery } = lessonsApi;
+export const { useGetLessonsQuery, useCancelLessonMutation } = lessonsApi;

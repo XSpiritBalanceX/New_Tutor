@@ -24,7 +24,9 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
     console.log("open chat");
   };
 
-  const handleCancelLesson = () => {};
+  const handleCancelLesson = () => {
+    cbShowModal(lesson_information.id);
+  };
 
   return (
     <Box className="lessonBox">
