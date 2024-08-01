@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Button, TextField, MenuItem } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "@assets/logo.svg";
 import { translate } from "@i18n";
 import * as tutorSelectors from "@store/selectors";
@@ -19,6 +19,13 @@ const AuthHeader = () => {
   const [isOpenLessonMenu, setIsOpenLessonMenu] = useState(false);
 
   const dispatch = useAppDispatch();
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    isOpenLessonMenu && setIsOpenLessonMenu(false);
+    // eslint-disable-next-line
+  }, [pathname]);
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
   const isStudent = localStorage.getItem(USER_TYPE) === "0";

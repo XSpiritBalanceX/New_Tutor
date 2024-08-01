@@ -7,9 +7,15 @@ import RegistrationPage from "@pages/registration/RegistrationPage";
 import ProfilePage from "@pages/profile/ProfilePage";
 import SearchPage from "@pages/search/SearchPage";
 import TeacherPage from "@pages/teacher/TeacherPage";
+import AllLessonsPage from "@pages/allLessons/AllLessonsPage";
+import StudentPage from "@pages/student/StudentPage";
 
 const RouterComponent = () => {
-  const unprotectedRoutes = [{ path: "/", element: <MainPage /> }];
+  const unprotectedRoutes = [
+    { path: "/", element: <MainPage /> },
+    { path: "/search/:page", element: <SearchPage /> },
+    { path: "/teacher/:id", element: <TeacherPage /> },
+  ];
 
   const unauthRoutes = [
     { path: "/login", element: <AuthPage /> },
@@ -20,12 +26,10 @@ const RouterComponent = () => {
     { path: "/registration/:user", element: <RegistrationPage /> },
     { path: "/registration/teacher/schedule", element: <RegistrationPage /> },
     { path: "/profile/:element", element: <ProfilePage /> },
+    { path: "/lessons/:page", element: <AllLessonsPage /> },
+    { path: "/student/:id", element: <StudentPage /> },
   ];
 
-  const routesWithoutCheck = [
-    { path: "/search/:page", element: <SearchPage /> },
-    { path: "/teacher/:id", element: <TeacherPage /> },
-  ];
   return (
     <Routes>
       {unprotectedRoutes.map((el, ind) => (
@@ -36,9 +40,6 @@ const RouterComponent = () => {
       ))}
       {authRoutes.map((el, ind) => (
         <Route key={ind} path={el.path} element={<ProtectedRouter>{el.element}</ProtectedRouter>} />
-      ))}
-      {routesWithoutCheck.map((el, ind) => (
-        <Route key={ind} path={el.path} element={el.element} />
       ))}
       <Route path="*" element={<Navigate to={"/"} />} />
     </Routes>

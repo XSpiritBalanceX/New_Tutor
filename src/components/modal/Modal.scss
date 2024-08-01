@@ -107,3 +107,79 @@
     }
   }
 }
+
+.modalCancelLessons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .contentCancelLessons {
+    background-color: map-get($theme-colors, "white");
+    padding: 10px 10px 30px 10px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "header");
+    max-width: 500px;
+    width: 100%;
+    .closeButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .mainContentBox {
+      padding: 0 35px;
+      .titleModal,
+      .reasonModal {
+        margin: 0 0 10px 0;
+        text-align: center;
+      }
+      .titleModal {
+        @extend %h2;
+      }
+      .reasonModal {
+        @extend %text-main;
+      }
+      .fieldReason {
+        all: unset;
+        width: calc(100% - 20px);
+        border-radius: 5px;
+        padding: 10px;
+        height: 150px;
+        @extend %text-main;
+        border: solid 1px map-get($theme-colors, "white-gray");
+        &::placeholder {
+          color: map-get($theme-colors, "white-gray");
+        }
+        &:focus-visible {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+      .errorMessage {
+        margin: 0;
+        @extend %text-main;
+        color: map-get($theme-colors, "red");
+      }
+      .controlsModalBox {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 30px 0 0 0;
+        button {
+          text-transform: none;
+          @extend %text-main;
+          border-radius: 100px;
+          padding: 10px 20px;
+        }
+        .cancelButton {
+          @extend %button-1;
+          margin: 0 20px 0 0;
+        }
+        .closeButton {
+          @extend %button-2;
+        }
+      }
+    }
+  }
+}

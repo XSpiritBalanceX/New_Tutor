@@ -1,0 +1,71 @@
+@import "../../variables";
+
+.lessonBox {
+  padding: 20px;
+  margin: 0 0 10px 0;
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .dateOfLesson {
+    @extend %text-main;
+    color: map-deep-get($theme-colors, "text", "dark-gray");
+    margin: 0;
+  }
+  .lessonContent {
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    .userInformationBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .userAvatar {
+        width: 80px;
+        height: 80px;
+        margin: 0 10px 0 0;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .userNameButtonBox {
+        display: flex;
+        flex-direction: column;
+        p {
+          margin: 0 0 10px 0;
+          @extend %h3;
+          &:hover {
+            cursor: pointer;
+            color: map-get($theme-colors, "main-blue");
+          }
+        }
+        button {
+          @extend %text-main;
+          @extend %button-1;
+          text-transform: none;
+          padding: 10px 20px;
+          border-radius: 100px;
+        }
+      }
+    }
+    .controlsLessonBox {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      button {
+        text-transform: none;
+        padding: 0;
+        @extend %text-main;
+      }
+      .writeButton {
+        margin: 0 0 10px 0;
+        color: map-get($theme-colors, "main-blue");
+      }
+      .cancelButton {
+        color: map-get($theme-colors, "red");
+      }
+    }
+  }
+}
