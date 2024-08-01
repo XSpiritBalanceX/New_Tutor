@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { requestHandler } from "../requestHandler";
 
-interface ILesson {
+export interface ILesson {
   id: number;
   schedule_id: number;
   teacher_id: number;

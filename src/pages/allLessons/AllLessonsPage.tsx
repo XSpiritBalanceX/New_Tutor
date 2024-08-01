@@ -8,6 +8,7 @@ import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
 import { useGetLessonsQuery } from "@store/requestApi/lessonsApi";
 import calendar from "@assets/calendar.svg";
+import CardLesson from "@components/cardLesson/CardLesson";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
@@ -22,10 +23,12 @@ const AllLessonsPage = () => {
 
   const { data, error, isFetching } = useGetLessonsQuery({ countLessons: itemPerPage, currentPage: Number(page) });
 
-  console.log(data);
-
   const handleChangePage = (_: React.ChangeEvent<unknown>, value: number) => {
     navigate(`/lessons/${value}`);
+  };
+
+  const handleShowModal = (id: number) => {
+    console.log(id);
   };
 
   return error ? (
@@ -50,6 +53,9 @@ const AllLessonsPage = () => {
           {data.items.length !== 0 && (
             <Box className="lessonsContainer">
               <p className="titleLessons">{t("upcomingLessons")}</p>
+              {data.items.map((el, ind) => (
+                <CardLesson key={ind} lesson_information={el} cbShowModal={handleShowModal} />
+              ))}
             </Box>
           )}
           <Box className="paginationBox">
