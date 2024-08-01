@@ -26,6 +26,9 @@
         width: 80px;
         height: 80px;
         margin: 0 10px 0 0;
+        &:hover {
+          cursor: pointer;
+        }
       }
       .userNameButtonBox {
         display: flex;
@@ -33,6 +36,10 @@
         p {
           margin: 0 0 10px 0;
           @extend %h3;
+          &:hover {
+            cursor: pointer;
+            color: map-get($theme-colors, "main-blue");
+          }
         }
         button {
           @extend %text-main;

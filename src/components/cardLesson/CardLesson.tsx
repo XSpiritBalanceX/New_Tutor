@@ -4,6 +4,7 @@ import { ILesson } from "@store/requestApi/lessonsApi";
 import { USER_TYPE } from "@axiosApi/axiosAPI";
 import moment from "moment";
 import user from "@assets/user.svg";
+import { useNavigate } from "react-router-dom";
 import "./CardLesson.scss";
 
 interface ICardLessonProps {
@@ -16,6 +17,8 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
+  const navigate = useNavigate();
+
   const handleStartLesson = () => {
     console.log("start lesson");
   };
@@ -26,6 +29,11 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
 
   const handleCancelLesson = () => {
     cbShowModal(lesson_information.id);
+  };
+
+  const handleShowUserPage = () => {
+    isStudent && navigate(`/teacher/${lesson_information.teacher_id}`);
+    !isStudent && navigate(`/student/${lesson_information.teacher_id}`);
   };
 
   return (
@@ -40,9 +48,11 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
         .format("HH:mm")}`}</p>
       <Box className="lessonContent">
         <Box className="userInformationBox">
-          <Avatar src={lesson_information.photo || user} className="userAvatar" />
+          <Avatar src={lesson_information.photo || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
-            <p>{`${lesson_information.teacher_first_name} ${lesson_information.teacher_last_name}`}</p>
+            <p
+              onClick={handleShowUserPage}
+            >{`${lesson_information.teacher_first_name} ${lesson_information.teacher_last_name}`}</p>
             <Button type="button" onClick={handleStartLesson}>
               {t("startLesson")}
             </Button>
