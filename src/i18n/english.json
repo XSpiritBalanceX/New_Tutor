@@ -216,6 +216,11 @@
         "cancel": "Cancel",
         "messageSucDelete": "Language {{language}} was successfully removed",
         "messageErrDelete": "An unexpected error occurred"
+      },
+      "bookLessons": {
+        "youBookedLessons": "You have booked a lesson",
+        "youBookedWithTeacher": "You have booked lessons with teacher {{name}}",
+        "onLesson": "on {{date}}"
       }
     },
     "settingNumberPage": {
@@ -265,6 +270,66 @@
       "yearLab": "YY",
       "errLengthCVC": "Only 3 digits",
       "errNumber": "Only numbers"
+    },
+    "searchPage": {
+      "main": "Main",
+      "findTeacher": "Find a teacher",
+      "wantToLearn": "Want to study",
+      "chooseLang": "Choose language",
+      "priceOfLesson": "Lesson cost (USD)",
+      "to": "To",
+      "certificatedTeacher": "Certified teacher",
+      "wantToStudy": "Want to study",
+      "morning": "In the morning",
+      "day": "in the afternoon",
+      "evening": "In the evening",
+      "night": "Ночью",
+      "anyTime": "В любое время",
+      "apply": "Apply",
+      "sortBy": "Sort by",
+      "popular": "Popular",
+      "cheap": "Cheap",
+      "expensive": "Expensive",
+      "new": "New",
+      "countOfReviews": "{{count}} reviews",
+      "levelOfLanguage": "{{language}} level:",
+      "countOfStudent": "Number of students:",
+      "costPerHour": "Cost per hour:",
+      "writeMe": "Write me",
+      "more": "More details",
+      "collapse": "Collapse",
+      "bookFreeLesson": "Book a free lesson with me",
+      "emptyRequest": "Unfortunately, your search returned no results",
+      "changeRequest": "Try changing your search terms"
+    },
+    "teacherPage": {
+      "main": "Main",
+      "findTeacher": "Find a teacher",
+      "teacherProfile": "Teacher profile",
+      "countOfReviews": "{{count}} reviews",
+      "levelOfLanguage": "{{language}} level:",
+      "countOfStudent": "Number of students:",
+      "costPerHour": "Cost per hour:",
+      "newTeacher": "New teacher",
+      "writeMe": "Write me",
+      "professionalSkills": "Professional skills",
+      "review": "Reviews",
+      "scheduleLessons": "Choose a time to study",
+      "lengthOfLesson": "Duration of classes is 55 minutes",
+      "chooseTimeZone": "Select your time zone",
+      "chooseLanguage": "Choose language",
+      "youWanToToBookLesson": "You would like to book {{language}} lessons with teacher {{teacherName}} on {{dates}}",
+      "book": "Book",
+      "certificatedTeacher": "Certified teacher",
+      "seeMore": "See more",
+      "collapse": "Collapse",
+      "errorRequest": "An unexpected error occurred",
+      "errBusyTime": "An error has occurred. Lesson is already booked",
+      "overallRating": "Overall rating: {{rating}}",
+      "pros": "Advantages:",
+      "cons": "Disadvantages:",
+      "readMore": "Read completely",
+      "close": "Close"
     }
   }
 }

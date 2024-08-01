@@ -1,0 +1,135 @@
+@import "../../variables";
+
+.filterBox {
+  max-width: 280px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px 0 0;
+  .filterLabel {
+    @extend %h3;
+    margin-bottom: 5px;
+    color: map-get($theme-colors, "black");
+  }
+  .filterField {
+    width: 100%;
+    height: 40px;
+    background-color: map-get($theme-colors, "white");
+    border-radius: 5px;
+    .MuiFormLabel-root {
+      margin-top: -7px;
+      @extend %text-main;
+      color: map-get($theme-colors, "black");
+    }
+    .MuiFormLabel-root.MuiFormLabel-filled {
+      display: none;
+    }
+    .MuiFormLabel-root.MuiFormLabel-filled.Mui-focused,
+    .MuiFormLabel-root.Mui-focused {
+      color: map-get($theme-colors, "main-blue");
+      @extend %text-main;
+    }
+    .MuiInputBase-root.MuiInputBase-formControl {
+      height: 40px;
+      border-radius: 5px;
+      @extend %text-main;
+      input {
+        height: 40px;
+        padding: 0 15px;
+        color: map-get($theme-colors, "black");
+      }
+      fieldset {
+        border: solid 1px map-get($theme-colors, "gray");
+        legend {
+          display: none;
+        }
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "main-blue");
+      }
+    }
+  }
+  .wantToLearnBox {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .filterPriceBox {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    .priceFieldsBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .filterField {
+        max-width: 60px;
+      }
+      .toText {
+        margin: 0 20px;
+        @extend %text-main;
+      }
+      .currencyText {
+        @extend %text-main;
+        margin: 0 0 0 10px;
+      }
+    }
+    .priceSlider {
+      max-width: 95%;
+      margin: 10px auto;
+      .MuiSlider-rail {
+        background-color: map-get($theme-colors, "white-blue");
+        opacity: 1;
+        height: 2px;
+      }
+      .MuiSlider-track {
+        background-color: map-get($theme-colors, "main-blue");
+        height: 2px;
+      }
+      .MuiSlider-thumb {
+        width: 16px;
+        height: 16px;
+        background-color: map-get($theme-colors, "main-blue");
+      }
+      .MuiSlider-valueLabelOpen {
+        @extend %text-small;
+        color: map-get($theme-colors, "main-blue");
+        background-color: transparent;
+        transform: translateY(100%);
+      }
+    }
+  }
+  .certificatedTeacherCheckBox {
+    margin: 0;
+    .MuiCheckbox-root {
+      color: map-get($theme-colors, "main-blue");
+      padding-left: 0;
+    }
+    .MuiTypography-root {
+      @extend %text-main;
+    }
+  }
+  .partsOfDayBox {
+    margin: 20px 0;
+    .partOfDayField {
+      margin: 0;
+      .MuiCheckbox-root {
+        color: map-get($theme-colors, "main-blue");
+        padding-left: 0;
+      }
+      .MuiTypography-root {
+        @extend %text-main;
+      }
+    }
+  }
+  .buttonApply {
+    @extend %text-main;
+    @extend %button-1;
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-transform: none;
+  }
+}

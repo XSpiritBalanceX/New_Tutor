@@ -1,0 +1,146 @@
+@import "../../variables";
+
+.searchPageContainer {
+  padding: 60px 0 150px 0 !important;
+  position: relative;
+  min-height: 800px;
+  .locationSearchPageBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 30px 0;
+    @extend %text-small;
+    .mainLink,
+    .arrowIcon {
+      color: map-get($theme-colors, "gray");
+      margin: 0;
+      text-decoration: none;
+    }
+    .findTeacher {
+      margin: 0;
+    }
+  }
+  .findTeacherTitle {
+    margin: 0;
+    @extend %h1;
+  }
+  .sortBox {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 10px 0;
+    .sortField {
+      width: 100%;
+      max-width: 280px;
+      height: 40px;
+      background-color: map-get($theme-colors, "white");
+      border-radius: 5px;
+      .MuiFormLabel-root {
+        margin-top: -7px;
+        @extend %text-main;
+        color: map-get($theme-colors, "black");
+      }
+      .MuiFormLabel-root.MuiFormLabel-filled.Mui-focused,
+      .MuiFormLabel-root.Mui-focused {
+        display: none;
+      }
+      .MuiInputBase-root.MuiInputBase-formControl {
+        height: 40px;
+        border-radius: 5px;
+        @extend %text-main;
+        input {
+          height: 40px;
+          padding: 0 15px;
+          color: map-get($theme-colors, "black");
+        }
+        fieldset {
+          border: solid 1px map-get($theme-colors, "gray");
+          legend {
+            display: none;
+          }
+        }
+      }
+      .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+        border: none;
+        fieldset {
+          border: solid 2px map-get($theme-colors, "main-blue");
+        }
+      }
+    }
+  }
+  .filterContentBox {
+    display: flex;
+    flex-direction: row;
+    .emptySearchBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      .textEmptySearch {
+        max-width: 380px;
+        width: 100%;
+        margin: 60px 0 0 0;
+        .emptyText {
+          @extend %h2;
+          margin: 0 0 15px 0;
+        }
+        .changeRequest {
+          margin: 0;
+          @extend %text-main;
+          color: map-deep-get($theme-colors, "text", "dark-gray");
+        }
+      }
+      img {
+        width: 380px;
+        height: 300px;
+      }
+    }
+    .contentBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 600px;
+      width: calc(100% - 300px);
+      .paginationBox {
+        width: 100%;
+        margin-top: 60px;
+        .searchPagination {
+          margin: 0 auto;
+          .MuiPagination-ul {
+            justify-content: center;
+            li {
+              .MuiButtonBase-root {
+                border: solid 1px map-get($theme-colors, "white-gray");
+                width: 44px;
+                height: 44px;
+                border-radius: 100%;
+                @extend %text-main;
+                svg {
+                  font-size: 28px;
+                }
+              }
+              .MuiButtonBase-root.Mui-selected,
+              .MuiButtonBase-root.MuiPaginationItem-previousNext {
+                background-color: map-get($theme-colors, "main-blue");
+                color: map-get($theme-colors, "white");
+                border: solid 1px map-get($theme-colors, "main-blue");
+              }
+              .MuiButtonBase-root.Mui-disabled {
+                background-color: map-deep-get($theme-colors, "border", "disable");
+                color: map-get($theme-colors, "white");
+                opacity: 1;
+                border: solid 1px map-deep-get($theme-colors, "border", "disable");
+              }
+            }
+            li:first-child {
+              margin-right: 15px;
+            }
+            li:last-child {
+              margin-left: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+@import "../../variables";
+
+.modalBookLessons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .contentBookLessons {
+    background-color: map-get($theme-colors, "white");
+    padding: 10px 10px 30px 10px;
+    box-shadow: map-deep-get($theme-colors, "box-shadow", "header");
+    max-width: 500px;
+    width: 100%;
+    .closeButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .bookingInformation {
+      padding: 0 35px;
+      .youBooked,
+      .withTeacher,
+      .timeLesson {
+        margin: 0 0 10px 0;
+        text-align: center;
+      }
+      .youBooked {
+        @extend %h2;
+      }
+      .withTeacher {
+        @extend %text-main;
+      }
+      .timeLesson {
+        @extend %h1;
+        font-size: 18px;
+      }
+    }
+    .imageBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.modalTeacherReview {
+  .reviewTitle {
+    color: map-get($theme-colors, "main-blue");
+    @extend %h2;
+    text-align: center;
+  }
+  .ratingBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    .ratingReview {
+      .emptyIcon,
+      .fillIcon {
+        width: 20px;
+        height: 20px;
+      }
+      .fillIcon {
+        fill: map-deep-get($theme-colors, "border", "hover");
+      }
+      .emptyIcon {
+        fill: map-get($theme-colors, "white-blue");
+      }
+    }
+  }
+  .descriptionReviewBox {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 20px 0;
+    .titleDescription {
+      @extend %h3;
+      margin: 0 5px 0 0;
+      color: map-deep-get($theme-colors, "text", "dark-gray");
+    }
+    .textDescription {
+      margin: 0;
+      @extend %text-main;
+      color: map-deep-get($theme-colors, "text", "dark-gray");
+    }
+  }
+  .userDateBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p {
+      color: map-get($theme-colors, "white-gray");
+      @extend %text-main;
+      margin: 0;
+    }
+  }
+  .actionsBox {
+    button {
+      text-transform: none;
+      @extend %text-main;
+      @extend %button-1;
+      border-radius: 100px;
+      padding: 10px 20px;
+    }
+  }
+}

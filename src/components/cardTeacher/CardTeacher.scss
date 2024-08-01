@@ -1,0 +1,155 @@
+@import "../../variables";
+
+.cardTeacherBox {
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+  position: relative;
+  background-color: map-get($theme-colors, "white");
+  margin: 0 0 10px 0;
+  width: 100%;
+  .teacherGeneralInfoBox {
+    margin: 20px 30px 10px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .teacherAvatar {
+      width: 140px;
+      height: 140px;
+      margin: 0 20px 15px 0;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .teacherInfoBox {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      .teacherName {
+        margin: 0 0 10px 0;
+        @extend %h2;
+        &:hover {
+          color: map-get($theme-colors, "main-blue");
+          cursor: pointer;
+        }
+      }
+      .teacherRatingBox {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .countOfFeedback {
+          @extend %text-small;
+          color: map-get($theme-colors, "main-blue");
+          margin: 0 0 0 10px;
+        }
+        .MuiRating-root {
+          .emptyIcon,
+          .fillIcon {
+            width: 17px;
+            height: 17px;
+          }
+          .emptyIcon {
+            fill: map-get($theme-colors, "white-yellow");
+          }
+        }
+      }
+      .certificatedTeacherBox {
+        margin: 5px 0;
+        .MuiCheckbox-root {
+          padding: 0;
+          width: 17px;
+          height: 17px;
+          color: map-get($theme-colors, "main-blue");
+          margin-right: 3px;
+          svg {
+            width: 17px;
+            height: 17px;
+          }
+        }
+        .MuiTypography-root {
+          @extend %text-small;
+          color: map-deep-get($theme-colors, "text", "dark-gray");
+        }
+      }
+      .teacherLevelLanguage {
+        margin: 0 0 5px 0;
+        @extend %h3;
+        word-break: break-all;
+        .lowLevel,
+        .averageLevel,
+        .highLevel {
+          @extend %text-small;
+          padding: 5px 10px;
+          border-radius: 100px;
+          margin-left: 10px;
+          display: inline-block;
+        }
+        .lowLevel {
+          background-color: map-get($theme-colors, "light-red");
+          color: map-get($theme-colors, "red");
+        }
+        .averageLevel {
+          background-color: map-get($theme-colors, "white-yellow");
+          color: map-get($theme-colors, "orange");
+        }
+        .highLevel {
+          background-color: map-get($theme-colors, "light-green");
+          color: map-get($theme-colors, "green");
+        }
+      }
+      .priceStudentBox {
+        display: flex;
+        flex-direction: row;
+        .countStudent,
+        .priceText {
+          @extend %h3;
+          span {
+            color: map-get($theme-colors, "main-blue");
+            margin-left: 3px;
+          }
+        }
+        .countStudent {
+          margin: 0 20px 0 0;
+        }
+        .priceText {
+          margin: 0;
+        }
+      }
+    }
+    .writeButtonBox {
+      width: 100%;
+      button {
+        text-transform: none;
+        @extend %text-main;
+        @extend %button-2;
+        border-radius: 100px;
+        padding: 10px;
+        min-width: 150px;
+      }
+    }
+  }
+  .languageDescriptionBox {
+    margin: -50px 20px 10px 180px;
+    width: calc(100% - 200px);
+    .descriptionText {
+      margin: 0 0 5px 0;
+      @extend %text-main;
+      color: map-deep-get($theme-colors, "text", "dark-gray");
+    }
+    .seeDetailButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      button {
+        padding: 0;
+        text-transform: none;
+        color: map-get($theme-colors, "main-blue");
+        @extend %text-main;
+      }
+    }
+  }
+  .freeLessonButton {
+    margin: 10px 0 30px 180px;
+    text-transform: none;
+    padding: 0;
+    @extend %h3;
+    color: map-get($theme-colors, "main-blue");
+  }
+}
