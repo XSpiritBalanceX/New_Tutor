@@ -5,7 +5,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import calendar from "@assets/calendar.svg";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
-import "./Notification.scss";
+import "./Modal.scss";
 
 interface IModalBookLessonsProps {
   isOpen: boolean;

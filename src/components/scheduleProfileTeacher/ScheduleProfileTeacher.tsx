@@ -12,7 +12,7 @@ import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ButtonTime from "./ButtonTime";
 import MessageAboutBook from "./MessageAboutBook";
-import ModalBookLessons from "@components/notification/ModalBookLessons";
+import ModalBookLessons from "@components/modal/ModalBookLessons";
 import { useBookLessonsMutation } from "@store/requestApi/teacherApi";
 import { toast } from "react-toastify";
 import "./ScheduleProfileTeacher.scss";
