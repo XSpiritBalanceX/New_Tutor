@@ -330,6 +330,25 @@
       "cons": "Disadvantages:",
       "readMore": "Read completely",
       "close": "Close"
+    },
+    "allLessonsPage": {
+      "myLessons": "My lessons",
+      "allLessons": "All lessons",
+      "upcomingLessons": "Upcoming lessons",
+      "writeTeacher": "Write to the teacher",
+      "writeStudent": "Write to the student",
+      "cancelLesson": "Cancel lesson",
+      "startLesson": "Start lesson",
+      "pastLessons": "Past Lessons",
+      "paid": "Paid",
+      "notPayed": "Not paid",
+      "lessonCanceled": "Lesson canceled",
+      "cancellingLesson": "Canceling a lesson",
+      "reason": "To cancel a lesson you must indicate a reason",
+      "enterText": "Enter text",
+      "close": "Close",
+      "sucRequest": "Your lesson has been successfully cancelled.",
+      "errRequest": "An unexpected error occurred"
     }
   }
 }

@@ -330,6 +330,25 @@
       "cons": "Минусы:",
       "readMore": "Читать полностью",
       "close": "Закрыть"
+    },
+    "allLessonsPage": {
+      "myLessons": "Мои уроки",
+      "allLessons": "Все уроки",
+      "upcomingLessons": "Ближайшие уроки",
+      "writeTeacher": "Написать преподавателю",
+      "writeStudent": "Написать ученику",
+      "cancelLesson": "Отменить урок",
+      "startLesson": "Начать урок",
+      "pastLessons": "Прошедшие уроки",
+      "paid": "Оплачено",
+      "notPayed": "Не оплачено",
+      "lessonCanceled": "Урок отменен",
+      "cancellingLesson": "Отмена урока",
+      "reason": "Чтобы отменить урок необходимо указать причину ",
+      "enterText": "Введите текст",
+      "close": "Закрыть",
+      "sucRequest": "Ваш урок был успешно отменен",
+      "errRequest": "Возникла непредвиденная ошибка"
     }
   }
 }
