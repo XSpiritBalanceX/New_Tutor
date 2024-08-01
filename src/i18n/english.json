@@ -352,6 +352,16 @@
       "noOneLessons": "You haven't booked any lessons",
       "noOneLessonsTeacher": "You have no lessons booked",
       "errorReason": "Please indicate the reason for canceling the lesson"
+    },
+    "studentPage": {
+      "main": "Main",
+      "myLessons": "My lessons",
+      "profileStudent": "Student profile",
+      "languageLevel": "{{language}} level:",
+      "showMore": "Show more",
+      "collapse": "Hide",
+      "writeMe": "Write me",
+      "goal": "The purpose of learning languages:"
     }
   }
 }

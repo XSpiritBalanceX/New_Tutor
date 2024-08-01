@@ -352,6 +352,16 @@
       "noOneLessons": "Вы не записались ни на один урок",
       "noOneLessonsTeacher": "У Вас нет забронированных уроков",
       "errorReason": "Укажите причину отмены урока"
+    },
+    "studentPage": {
+      "main": "Главная",
+      "myLessons": "Мои уроки",
+      "profileStudent": "Профиль ученика",
+      "languageLevel": "Уровень {{language}}:",
+      "showMore": "Показать еще",
+      "collapse": "Скрыть",
+      "writeMe": "Написать мне",
+      "goal": "Цель изучения языков:"
     }
   }
 }

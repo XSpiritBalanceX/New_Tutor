@@ -8,6 +8,7 @@ import ProfilePage from "@pages/profile/ProfilePage";
 import SearchPage from "@pages/search/SearchPage";
 import TeacherPage from "@pages/teacher/TeacherPage";
 import AllLessonsPage from "@pages/allLessons/AllLessonsPage";
+import StudentPage from "@pages/student/StudentPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -26,6 +27,7 @@ const RouterComponent = () => {
     { path: "/registration/teacher/schedule", element: <RegistrationPage /> },
     { path: "/profile/:element", element: <ProfilePage /> },
     { path: "/lessons/:page", element: <AllLessonsPage /> },
+    { path: "/student/:id", element: <StudentPage /> },
   ];
 
   return (
