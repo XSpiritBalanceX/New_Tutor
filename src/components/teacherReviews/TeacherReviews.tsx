@@ -6,6 +6,7 @@ import moment from "moment";
 import StarIcon from "@mui/icons-material/Star";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import ModalTeacherReview from "@components/modal/ModalTeacherReview";
 import "./TeacherReviews.scss";
 
 const mockData = [
@@ -73,6 +74,8 @@ const TeacherReviews = () => {
   const { t } = translate("translate", { keyPrefix: "teacherPage" });
 
   const [teacherReviews, setTeacherReviews] = useState<IReview[]>([]);
+  const [currentReview, setCurrentReview] = useState<IReview | null>(null);
+  const [isOpenModal, setIsOpenModal] = useState(true);
   const [activePage, setActivePage] = useState(1);
   const [itemsPerPage] = useState(2);
   const totalPages = Math.ceil(mockData.length / itemsPerPage);
@@ -99,10 +102,23 @@ const TeacherReviews = () => {
     }
   };
 
-  const handleSeeAllReview = () => {};
+  const handleSeeAllReview = (id: number) => {
+    const review = teacherReviews.find((el) => el.id === id);
+    if (review) {
+      setCurrentReview(review);
+      setIsOpenModal(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+  };
 
   return (
     <Box className="teacherReviewsBox">
+      {currentReview && (
+        <ModalTeacherReview isOpen={isOpenModal} cbCloseModal={handleCloseModal} review={currentReview} />
+      )}
       <Box className="titlesBox">
         <p className="title">{t("review")}</p>
         <p className="averageRating">{t("overallRating", { rating: `${averageRating}/5` })}</p>
@@ -136,7 +152,7 @@ const TeacherReviews = () => {
                 <p className="userName">{el.user}</p>
               </Box>
               {(el.plus.length > maxLengthText || el.minus.length > maxLengthText) && (
-                <Button type="button" className="readMoreButton" onClick={handleSeeAllReview}>
+                <Button type="button" className="readMoreButton" onClick={() => handleSeeAllReview(el.id)}>
                   {t("readMore")}
                   <KeyboardArrowRightOutlinedIcon />
                 </Button>

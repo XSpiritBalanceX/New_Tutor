@@ -46,3 +46,64 @@
     }
   }
 }
+
+.modalTeacherReview {
+  .reviewTitle {
+    color: map-get($theme-colors, "main-blue");
+    @extend %h2;
+    text-align: center;
+  }
+  .ratingBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    .ratingReview {
+      .emptyIcon,
+      .fillIcon {
+        width: 20px;
+        height: 20px;
+      }
+      .fillIcon {
+        fill: map-deep-get($theme-colors, "border", "hover");
+      }
+      .emptyIcon {
+        fill: map-get($theme-colors, "white-blue");
+      }
+    }
+  }
+  .descriptionReviewBox {
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 20px 0;
+    .titleDescription {
+      @extend %h3;
+      margin: 0 5px 0 0;
+      color: map-deep-get($theme-colors, "text", "dark-gray");
+    }
+    .textDescription {
+      margin: 0;
+      @extend %text-main;
+      color: map-deep-get($theme-colors, "text", "dark-gray");
+    }
+  }
+  .userDateBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p {
+      color: map-get($theme-colors, "white-gray");
+      @extend %text-main;
+      margin: 0;
+    }
+  }
+  .actionsBox {
+    button {
+      text-transform: none;
+      @extend %text-main;
+      @extend %button-1;
+      border-radius: 100px;
+      padding: 10px 20px;
+    }
+  }
+}

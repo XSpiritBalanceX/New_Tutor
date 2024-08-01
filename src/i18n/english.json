@@ -328,7 +328,8 @@
       "overallRating": "Overall rating: {{rating}}",
       "pros": "Advantages:",
       "cons": "Disadvantages:",
-      "readMore": "Read completely"
+      "readMore": "Read completely",
+      "close": "Close"
     }
   }
 }
