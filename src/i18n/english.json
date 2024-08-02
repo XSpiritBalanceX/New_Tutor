@@ -370,6 +370,19 @@
       "firstText": "Every user of our platform is very important to us",
       "secondText": "We are working on developing our resource and will be glad to hear suggestions for improving the platform",
       "thirdText": "A team of dedicated employees is always ready to help you"
+    },
+    "askQuestionPage": {
+      "main": "Main",
+      "askQuestion": "Ask a question",
+      "enterEmail": "Enter your email",
+      "email": "Email",
+      "enterQuestion": "Write your question",
+      "enterText": "Enter text",
+      "send": "Send",
+      "wrongEmail": "Invalid email",
+      "reqField": "Fill in the field",
+      "sucRequest": "Your question has been sent successfully",
+      "errRequest": "An unexpected error occurred"
     }
   }
 }

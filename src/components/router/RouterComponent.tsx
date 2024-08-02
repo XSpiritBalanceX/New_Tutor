@@ -10,6 +10,7 @@ import TeacherPage from "@pages/teacher/TeacherPage";
 import AllLessonsPage from "@pages/allLessons/AllLessonsPage";
 import StudentPage from "@pages/student/StudentPage";
 import AboutUsPage from "@pages/aboutUs/AboutUsPage";
+import AskQuestionPage from "@pages/askQuestion/AskQuestionPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -17,6 +18,7 @@ const RouterComponent = () => {
     { path: "/search/:page", element: <SearchPage /> },
     { path: "/teacher/:id", element: <TeacherPage /> },
     { path: "/aboutus", element: <AboutUsPage /> },
+    { path: "/askquestion", element: <AskQuestionPage /> },
   ];
 
   const unauthRoutes = [
