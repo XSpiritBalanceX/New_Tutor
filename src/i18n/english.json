@@ -390,6 +390,21 @@
       "titlePage": "Invite a friend and receive a cash bonus to your account",
       "copyLink": "Copy link",
       "shareVia": "Share via:"
+    },
+    "reviewPage": {
+      "main": "Main",
+      "myLessons": "My lessons",
+      "videoLesson": "Video lesson",
+      "perforEval": "Rate work",
+      "perforEvalTeacher": "Rate the teacher's work",
+      "commonImpression": "General impression of the teacher",
+      "enterText": "Enter text",
+      "pros": "Advantages",
+      "cons": "Disadvantages",
+      "send": "Send",
+      "reqField": "Fill in the field",
+      "sucRequest": "Your review has been sent successfully",
+      "errRequest": "An unexpected error occurred"
     }
   }
 }

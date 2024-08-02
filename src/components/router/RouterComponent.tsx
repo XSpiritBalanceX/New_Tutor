@@ -12,6 +12,7 @@ import StudentPage from "@pages/student/StudentPage";
 import AboutUsPage from "@pages/aboutUs/AboutUsPage";
 import AskQuestionPage from "@pages/askQuestion/AskQuestionPage";
 import InviteFriendPage from "@pages/inviteFriend/InviteFriendPage";
+import ReviewPage from "@pages/review/ReviewPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -34,6 +35,7 @@ const RouterComponent = () => {
     { path: "/lessons/:page", element: <AllLessonsPage /> },
     { path: "/student/:id", element: <StudentPage /> },
     { path: "/invitation", element: <InviteFriendPage /> },
+    { path: "/review", element: <ReviewPage /> },
   ];
 
   return (
