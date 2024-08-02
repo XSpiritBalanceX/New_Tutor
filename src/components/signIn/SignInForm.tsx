@@ -89,7 +89,7 @@ const SignInForm = () => {
           name="password"
           control={control}
           error={errors.password?.message}
-          placeholder={t("email")}
+          placeholder={t("password")}
         />
       </Box>
       <Box className="linkForgotBox">

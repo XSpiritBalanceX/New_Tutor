@@ -11,6 +11,7 @@ import AllLessonsPage from "@pages/allLessons/AllLessonsPage";
 import StudentPage from "@pages/student/StudentPage";
 import AboutUsPage from "@pages/aboutUs/AboutUsPage";
 import AskQuestionPage from "@pages/askQuestion/AskQuestionPage";
+import InviteFriendPage from "@pages/inviteFriend/InviteFriendPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -32,6 +33,7 @@ const RouterComponent = () => {
     { path: "/profile/:element", element: <ProfilePage /> },
     { path: "/lessons/:page", element: <AllLessonsPage /> },
     { path: "/student/:id", element: <StudentPage /> },
+    { path: "/invitation", element: <InviteFriendPage /> },
   ];
 
   return (

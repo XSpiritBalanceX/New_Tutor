@@ -383,6 +383,13 @@
       "reqField": "Fill in the field",
       "sucRequest": "Your question has been sent successfully",
       "errRequest": "An unexpected error occurred"
+    },
+    "inviteFriendPage": {
+      "main": "Main",
+      "inviteFriend": "Invite a friend",
+      "titlePage": "Invite a friend and receive a cash bonus to your account",
+      "copyLink": "Copy link",
+      "shareVia": "Share via:"
     }
   }
 }
