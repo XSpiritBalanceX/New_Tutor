@@ -362,6 +362,14 @@
       "collapse": "Hide",
       "writeMe": "Write me",
       "goal": "The purpose of learning languages:"
+    },
+    "aboutUsPage": {
+      "main": "Main",
+      "aboutUs": "About Us",
+      "titleAboutUs": "We welcome you to our international language learning platform",
+      "firstText": "Every user of our platform is very important to us",
+      "secondText": "We are working on developing our resource and will be glad to hear suggestions for improving the platform",
+      "thirdText": "A team of dedicated employees is always ready to help you"
     }
   }
 }

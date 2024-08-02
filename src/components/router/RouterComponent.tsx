@@ -9,12 +9,14 @@ import SearchPage from "@pages/search/SearchPage";
 import TeacherPage from "@pages/teacher/TeacherPage";
 import AllLessonsPage from "@pages/allLessons/AllLessonsPage";
 import StudentPage from "@pages/student/StudentPage";
+import AboutUsPage from "@pages/aboutUs/AboutUsPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
     { path: "/", element: <MainPage /> },
     { path: "/search/:page", element: <SearchPage /> },
     { path: "/teacher/:id", element: <TeacherPage /> },
+    { path: "/aboutus", element: <AboutUsPage /> },
   ];
 
   const unauthRoutes = [
