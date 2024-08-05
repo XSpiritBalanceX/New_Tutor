@@ -13,6 +13,7 @@ import AboutUsPage from "@pages/aboutUs/AboutUsPage";
 import AskQuestionPage from "@pages/askQuestion/AskQuestionPage";
 import InviteFriendPage from "@pages/inviteFriend/InviteFriendPage";
 import ReviewPage from "@pages/review/ReviewPage";
+import TermsPage from "@pages/terms/TermsPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -21,6 +22,7 @@ const RouterComponent = () => {
     { path: "/teacher/:id", element: <TeacherPage /> },
     { path: "/aboutus", element: <AboutUsPage /> },
     { path: "/askquestion", element: <AskQuestionPage /> },
+    { path: "/terms", element: <TermsPage /> },
   ];
 
   const unauthRoutes = [
