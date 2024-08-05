@@ -454,6 +454,35 @@
       "paymentsAndReturnsStudentText2": "if the user wishes to return unused funds, it is carried out within no more than 7 working days.",
       "paymentsAndReturnsTeacher": "Tutors:",
       "paymentsAndReturnsTeacherText1": "Tutors get payments for rendered services (lessons) to students is carried out within no more than 7 working days, less the remuneration of the Tutor service in the amount of 10% of the amount."
+    },
+    "policyPage": {
+      "main": "Main",
+      "policy": "Privacy Policy",
+      "generalInformation": "General information",
+      "generalInformationPolicy": "Please read that privacy Policy carefully. That privacy policy are not negotiable. If you do not agree to it, you must stop using «Tutor»  immediately. Access to the «Tutor» is available with or without the necessity to register an account. You may access our Website without registration. However, whenever you access the Website, we collect log information and put cookies on your device, by which we track your activity on the Website. You can always opt out of cookies except those without which the Website cannot work. When you are a registered user, «Tutor» may collect from you and process cookie identifiers and the data you specifically provide us with upon registration, including first name, last name, email, phone number, or social network ID      (if assigned through Facebook, Twitter or Google, time zone, interface language, IP address, and device type. Specifically, if you are a tutor, we may also collect and process, besides the aforementioned information, the other data provided by you, including, city of residence, and education experience. Registered users may additionally provide profile pictures as well as chosen currency to perform actions pursuant. We may change this Privacy Policy from time to time, so please check this page to ensure that you’re happy with any changes. We will post those changes on this page and update the Privacy Policy. Any questions regarding this Policy and our services should be sent to asktutor24@gmail.com.",
+      "basesProcessing": "Bases for processing",
+      "basesProcessingText1": "«Tutor»  processes your personal data only when we have bases. Specifically, «Tutor» processes your personal data if:",
+      "basesProcessingText2": "processing is based on the consent you have given. As such our newsletters, collection, analysis, and publication of user feedback and reviews, placement of different types of cookies;",
+      "basesProcessingText3": "processing is necessary to provide our services to you;",
+      "basesProcessingText4": "processing is necessary for the purposes of our interests.",
+      "basesProcessingText5": "Those legitimate interests may include but are not limited to: - compliance with the U.S. financial and accounting legislation;",
+      "basesProcessingText6": "user session control and fraud prevention, ensuring the appropriate protection of personal data;",
+      "basesProcessingText7": "enhancing the learning experience for tutors and students by providing recommendations, improved lesson planning, and interactive learning tools;",
+      "basesProcessingText8": "in exceptional cases, to protect your vital interests or vital interests of another natural person; or for the performance of a task carried out in the public interest or in the exercise of official authority vested in us;",
+      "basesProcessingText9": "in all cases, we will notify you about the applied legal basis for processing and other relevant details before we start the processing of your personal data on a specific legal basis unless we are not able to do so in accordance with our obligations under any applicable legislation.",
+      "registrationAndAccounts": "Registration and accounts",
+      "registrationAndAccountsText1": "Any Browser can view «Tutor», but in order to participate fully in all activities on «Tutor», it must register for a personal account on «Tutor»  by providing a name, an email address and a password.",
+      "registrationAndAccountsText2": "you agree that you will never divulge or share access or your access information to your User Account with any third party for any reason whatsoever;",
+      "registrationAndAccountsText3": "in setting up your User Account, you may be prompted or required to enter anyadditional information, that will help other Users get to know you and help us to tailor the services to suit you and comply with our legal obligations;",
+      "registrationAndAccountsText4": "you undertake to us that all information provided by you in relation to your User Account is and will continue to be accurate, current and complete at all times and that you will maintain and update your information to keep it accurate, current and complete.",
+      "dataCollect": "Data we collect",
+      "accountStudent": "Account for students",
+      "accountStudentText": "«Tutor»  collects and processes personal data submitted by you upon registration and further editing of settings in your Account. For registration purposes, you submit your login credentials (username and password), first name, last name, and email. You may also edit your Account anytime with additional information.",
+      "accountTutor": "Account for tutors",
+      "accountTutorText": "«Tutor»  collects and processes personal data submitted by you upon registration and further editing of your profile. For registration purposes, you submit your login credentials (username and password), first name, last name, and email. You may also edit your profile anytime with additional information. At the same time, you are not strictly required to provide additional information not specifically necessary for the registration. Therefore, it is your choice whether to include additional data in your profile, or not, such as, country, language skills, education, and other.",
+      "registrationAccText1": "We process personal data freely submitted to you on «Tutor». This may be an online form you fill in on «Tutor», a question or comment left in the Q&A section of our Website, or feedback you provide us with.",
+      "registrationAccText2": "«Tutor»  may also process information provided by you (including content and messages) that you post on/through the «Tutor», including personally identifiable information. By doing so, you acknowledge that any information you share through the services will be available to «Tutor»  and to other users of the services.",
+      "registrationAccText3": "From our turn and unless you opt out, we retain this information as necessary to resolve disputes, provide customer support and troubleshoot problems as permitted by law. We reserve the right to terminate the accounts of visitors who use these services in a manner inconsistent with the terms of use."
     }
   }
 }

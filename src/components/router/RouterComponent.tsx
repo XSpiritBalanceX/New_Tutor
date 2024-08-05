@@ -14,6 +14,7 @@ import AskQuestionPage from "@pages/askQuestion/AskQuestionPage";
 import InviteFriendPage from "@pages/inviteFriend/InviteFriendPage";
 import ReviewPage from "@pages/review/ReviewPage";
 import TermsPage from "@pages/terms/TermsPage";
+import PolicyPage from "@pages/policy/PolicyPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -23,6 +24,7 @@ const RouterComponent = () => {
     { path: "/aboutus", element: <AboutUsPage /> },
     { path: "/askquestion", element: <AskQuestionPage /> },
     { path: "/terms", element: <TermsPage /> },
+    { path: "/policy", element: <PolicyPage /> },
   ];
 
   const unauthRoutes = [
