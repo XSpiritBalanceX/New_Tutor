@@ -89,11 +89,11 @@ const SignInForm = () => {
           name="password"
           control={control}
           error={errors.password?.message}
-          placeholder={t("email")}
+          placeholder={t("password")}
         />
       </Box>
       <Box className="linkForgotBox">
-        <NavLink to={"/resetpassword"} className={"linkForgot"}>
+        <NavLink to={"/forgotpassword"} className={"linkForgot"}>
           {t("forgotPassw")}
         </NavLink>
       </Box>

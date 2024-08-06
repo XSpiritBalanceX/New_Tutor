@@ -9,17 +9,30 @@ import SearchPage from "@pages/search/SearchPage";
 import TeacherPage from "@pages/teacher/TeacherPage";
 import AllLessonsPage from "@pages/allLessons/AllLessonsPage";
 import StudentPage from "@pages/student/StudentPage";
+import AboutUsPage from "@pages/aboutUs/AboutUsPage";
+import AskQuestionPage from "@pages/askQuestion/AskQuestionPage";
+import InviteFriendPage from "@pages/inviteFriend/InviteFriendPage";
+import ReviewPage from "@pages/review/ReviewPage";
+import TermsPage from "@pages/terms/TermsPage";
+import PolicyPage from "@pages/policy/PolicyPage";
+import ResetPasswordPage from "@pages/resetPassword/ResetPasswordPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
     { path: "/", element: <MainPage /> },
     { path: "/search/:page", element: <SearchPage /> },
     { path: "/teacher/:id", element: <TeacherPage /> },
+    { path: "/aboutus", element: <AboutUsPage /> },
+    { path: "/askquestion", element: <AskQuestionPage /> },
+    { path: "/terms", element: <TermsPage /> },
+    { path: "/policy", element: <PolicyPage /> },
   ];
 
   const unauthRoutes = [
     { path: "/login", element: <AuthPage /> },
     { path: "/registration", element: <AuthPage /> },
+    { path: "/forgotpassword", element: <ResetPasswordPage /> },
+    { path: "/resetpassword", element: <ResetPasswordPage /> },
   ];
 
   const authRoutes = [
@@ -28,6 +41,8 @@ const RouterComponent = () => {
     { path: "/profile/:element", element: <ProfilePage /> },
     { path: "/lessons/:page", element: <AllLessonsPage /> },
     { path: "/student/:id", element: <StudentPage /> },
+    { path: "/invitation", element: <InviteFriendPage /> },
+    { path: "/review", element: <ReviewPage /> },
   ];
 
   return (

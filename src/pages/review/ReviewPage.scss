@@ -1,0 +1,104 @@
+@import "../../variables";
+
+.reviewPageContainer {
+  padding: 30px 0 150px 0 !important;
+  .locationReviewPage {
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @extend %text-small;
+    p {
+      margin: 0;
+    }
+    .grayText,
+    .arrowIcon {
+      color: map-get($theme-colors, "gray");
+      margin: 0;
+      text-decoration: none;
+    }
+  }
+  .contentReviewPage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    form {
+      width: 100%;
+      .titleForm {
+        @extend %h1;
+        margin: 0 0 15px 0;
+      }
+      .reviewFieldBox {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 15px 0;
+        .reviewLabel {
+          @extend %h3;
+          margin: 0 0 5px 0;
+          color: map-get($theme-colors, "black");
+        }
+        .reviewLabel.errorLabel {
+          color: map-get($theme-colors, "red");
+        }
+        .errorMessage {
+          color: map-get($theme-colors, "red");
+          margin: 5px 0 0 0;
+          @extend %text-small;
+        }
+        .reviewField {
+          all: unset;
+          width: calc(100% - 20px);
+          border-radius: 5px;
+          padding: 10px;
+          @extend %text-main;
+          border: solid 1px map-get($theme-colors, "white-gray");
+          &::placeholder {
+            color: map-get($theme-colors, "white-gray");
+            @extend %text-main;
+          }
+          &:focus-visible {
+            border: solid 2px map-get($theme-colors, "main-blue");
+          }
+        }
+        .reviewField_1 {
+          height: 150px;
+        }
+        .reviewField_2,
+        .reviewField_3 {
+          height: 100px;
+        }
+        .reviewField.errorField {
+          border: solid 2px map-get($theme-colors, "red");
+          &:focus-visible {
+            border: solid 2px map-get($theme-colors, "main-blue");
+          }
+        }
+        .MuiRating-root {
+          .emptyIcon,
+          .fillIcon {
+            width: 34px;
+            height: 34px;
+          }
+          .fillIcon {
+            fill: map-get($theme-colors, "main-blue");
+          }
+          .emptyIcon {
+            fill: map-get($theme-colors, "white-blue");
+          }
+        }
+      }
+      .submitButtonBox {
+        display: flex;
+        justify-content: flex-end;
+        margin: 20px 0 0 0;
+        button {
+          @extend %text-main;
+          @extend %button-1;
+          border-radius: 100px;
+          padding: 10px 20px;
+          text-transform: none;
+        }
+      }
+    }
+  }
+}
