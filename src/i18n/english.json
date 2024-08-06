@@ -483,6 +483,21 @@
       "registrationAccText1": "We process personal data freely submitted to you on «Tutor». This may be an online form you fill in on «Tutor», a question or comment left in the Q&A section of our Website, or feedback you provide us with.",
       "registrationAccText2": "«Tutor»  may also process information provided by you (including content and messages) that you post on/through the «Tutor», including personally identifiable information. By doing so, you acknowledge that any information you share through the services will be available to «Tutor»  and to other users of the services.",
       "registrationAccText3": "From our turn and unless you opt out, we retain this information as necessary to resolve disputes, provide customer support and troubleshoot problems as permitted by law. We reserve the right to terminate the accounts of visitors who use these services in a manner inconsistent with the terms of use."
+    },
+    "resetPasswordPage": {
+      "passwordRecovery": "Password recovery",
+      "textPasswordRecovery": "To recover your password, enter your email address",
+      "email": "Email",
+      "continue": "Continue",
+      "textAfterRecovery": "Go to your email, we have sent you a link to change your password",
+      "enterNewPassword": "Enter your new password",
+      "password": "Password",
+      "confirmPassword": "Repeat password",
+      "errRequest": "An unexpected error occurred",
+      "sucRequest": "The password has been successfully changed",
+      "errReqField": "Fill in the field",
+      "passDontMatch": "Password mismatch",
+      "errEmail": "Invalid email"
     }
   }
 }

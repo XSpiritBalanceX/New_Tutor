@@ -15,6 +15,7 @@ import InviteFriendPage from "@pages/inviteFriend/InviteFriendPage";
 import ReviewPage from "@pages/review/ReviewPage";
 import TermsPage from "@pages/terms/TermsPage";
 import PolicyPage from "@pages/policy/PolicyPage";
+import ResetPasswordPage from "@pages/resetPassword/ResetPasswordPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -30,6 +31,8 @@ const RouterComponent = () => {
   const unauthRoutes = [
     { path: "/login", element: <AuthPage /> },
     { path: "/registration", element: <AuthPage /> },
+    { path: "/forgotpassword", element: <ResetPasswordPage /> },
+    { path: "/resetpassword", element: <ResetPasswordPage /> },
   ];
 
   const authRoutes = [

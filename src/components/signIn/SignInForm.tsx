@@ -93,7 +93,7 @@ const SignInForm = () => {
         />
       </Box>
       <Box className="linkForgotBox">
-        <NavLink to={"/resetpassword"} className={"linkForgot"}>
+        <NavLink to={"/forgotpassword"} className={"linkForgot"}>
           {t("forgotPassw")}
         </NavLink>
       </Box>
