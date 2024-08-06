@@ -501,6 +501,13 @@
       "passMin": "Password must be 8 characters",
       "passMax": "Password cannot have more than 32 characters",
       "wrongFormatPassword": "Only numbers and letters of the Latin alphabet"
+    },
+    "userNotifications": {
+      "notifications": "Notifications",
+      "markAsRead": "Mark as read",
+      "seeAll": "See all",
+      "collapse": "Collapse",
+      "emptyNotifications": "It's empty here yet"
     }
   }
 }

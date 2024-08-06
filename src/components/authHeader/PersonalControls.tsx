@@ -7,6 +7,7 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import { NavLink, useLocation } from "react-router-dom";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/tutorSlice";
+import UserNotifications from "@components/userNotifications/UserNotifications";
 import "./AuthHeader.scss";
 
 const PersonalControls = () => {
@@ -16,9 +17,11 @@ const PersonalControls = () => {
   const { pathname } = useLocation();
 
   const [isOpenPersonalMenu, setIsOpenPersonalMenu] = useState(false);
+  const [isOpenNotifications, setIsOpenNotifications] = useState(false);
 
   useEffect(() => {
-    setIsOpenPersonalMenu(false);
+    isOpenPersonalMenu && setIsOpenPersonalMenu(false);
+    isOpenNotifications && setIsOpenNotifications(false);
     // eslint-disable-next-line
   }, [pathname]);
 
@@ -39,6 +42,14 @@ const PersonalControls = () => {
     );
   };
 
+  const handleOpenNotifications = () => {
+    setIsOpenNotifications(true);
+  };
+
+  const handleCloseNotifications = () => {
+    setIsOpenNotifications(false);
+  };
+
   return (
     <Box className="personalControlsBox">
       <Button type="button" className="notificationButton">
@@ -46,11 +57,12 @@ const PersonalControls = () => {
           <NotificationsOutlinedIcon />
         </Badge>
       </Button>
-      <Button type="button" className="mailButton">
+      <Button type="button" className="mailButton" onClick={handleOpenNotifications}>
         <Badge badgeContent={2} color="error">
           <MailOutlineOutlinedIcon />
         </Badge>
       </Button>
+      {isOpenNotifications && <UserNotifications cbHandleCloseNotification={handleCloseNotifications}/>}
       <Button type="button" className="userAvatarButton" onClick={handleOpenPersonalMenu}>
         <Avatar src={user} className="userAvatar" />
       </Button>

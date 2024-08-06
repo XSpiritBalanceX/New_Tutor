@@ -1,0 +1,109 @@
+@import "../../variables";
+
+.userNotificationsBox {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  z-index: 1;
+  background-color: map-get($theme-colors, "white");
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+  padding: 20px;
+  max-width: 440px;
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 170px);
+  .firstRowNotifications {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 10px 0;
+    p {
+      margin: 0;
+      @extend %h2;
+    }
+    button {
+      min-width: 32px;
+      width: 32px;
+      height: 32px;
+      color: map-get($theme-colors, "gray");
+    }
+  }
+  .lastRowNotifications {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0 0 0;
+    button {
+      @extend %text-small;
+      padding: 0;
+      text-transform: none;
+      color: map-get($theme-colors, "main-blue");
+    }
+  }
+  .notificationsContentBox {
+    max-height: calc(100vh - 270px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+    &::-webkit-scrollbar-track {
+      background: map-get($theme-colors, "white-blue");
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: map-get($theme-colors, "main-blue");
+    }
+
+    .emptyNotifications {
+      @extend %text-main;
+      text-align: center;
+    }
+    .itemNotificationBox {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      border-bottom: solid 1px map-get($theme-colors, "gray");
+      padding: 10px 0;
+      width: calc(100% - 20px);
+      .userAvatar {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px 0 0;
+      }
+      .notificationInformationBox {
+        width: 100%;
+        .nameReadBox {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 0 5px 0;
+          .userName {
+            @extend %h3;
+            margin: 0;
+          }
+          .isReadBox {
+            width: 8px;
+            height: 8px;
+            background-color: map-get($theme-colors, "main-blue");
+            border-radius: 100%;
+            margin: 0 0 0 10px;
+          }
+        }
+        .notificationText {
+          margin: 0 0 10px 0;
+          @extend %text-small;
+        }
+        .date {
+          margin: 0;
+          @extend %text-small;
+          color: map-get($theme-colors, "gray");
+        }
+      }
+    }
+  }
+}
