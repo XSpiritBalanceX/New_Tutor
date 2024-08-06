@@ -14,6 +14,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  @media all and (max-width: 80em) {
+    width: calc(100% - 40px);
+    padding: 30px 0 20px 0;
+  }
+  @media all and (max-width: 45em) {
+    padding: 10px 0;
+  }
+
   a {
     text-decoration: none;
   }
@@ -27,6 +36,9 @@
     .nav-link {
       @extend %text-main;
       color: map-get($theme-colors, "black");
+      @media all and (max-width: 60em) {
+        display: none;
+      }
     }
     .nav-link.active {
       color: map-get($theme-colors, "main-blue");
@@ -62,10 +74,56 @@
     .loginLink {
       margin: 0 20px;
       @extend %button-2;
+      @media all and (max-width: 45em) {
+        position: absolute;
+        bottom: -55px;
+        left: 0;
+        margin: 0;
+      }
     }
     .registrationLink {
       @extend %button-1;
       border: solid 1px map-get($theme-colors, "main-blue");
+      @media all and (max-width: 45em) {
+        position: absolute;
+        bottom: -55px;
+        right: 0;
+      }
+    }
+    .buttonMobileMenu {
+      height: 24px;
+      width: 24px;
+      min-width: 24px;
+      margin: 0 0 0 20px;
+      color: map-get($theme-colors, "main-blue");
+      display: none;
+      @media all and (max-width: 60em) {
+        display: flex;
+      }
+    }
+  }
+}
+
+.mobileMenuHeaderContainer {
+  .MuiPaper-root {
+    padding: 20px;
+    .closeButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 40px 0;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .nav-link {
+      @extend %h2;
+      padding: 10px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      color: map-get($theme-colors, "black");
     }
   }
 }

@@ -1,10 +1,13 @@
-import { Box, TextField, MenuItem } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Box, TextField, MenuItem, Button } from "@mui/material";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "@assets/logo.svg";
 import { translate } from "@i18n";
 import * as tutorSelectors from "@store/selectors";
 import { useAppSelector, useAppDispatch } from "@store/hook";
 import { changeLocale } from "@store/tutorSlice";
+import MenuIcon from "@mui/icons-material/Menu";
+import MobileMenu from "./MobileMenu";
 import "./Header.scss";
 
 const Header = () => {
@@ -13,6 +16,15 @@ const Header = () => {
   const dispatch = useAppDispatch();
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
+
+  const { pathname } = useLocation();
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  useEffect(() => {
+    isOpenMenu && setIsOpenMenu(false);
+    // eslint-disable-next-line
+  }, [pathname]);
 
   const languagesApp = [
     {
@@ -29,8 +41,17 @@ const Header = () => {
     dispatch(changeLocale(e.target.value));
   };
 
+  const handleOpenMenu = () => {
+    setIsOpenMenu(true);
+  };
+
+  const handleCloseMenu = () => {
+    setIsOpenMenu(false);
+  };
+
   return (
     <Box className="headerContainer">
+      <MobileMenu isOpen={isOpenMenu} cbHandleCloseMenu={handleCloseMenu} />
       <Box className="firstLinksBox">
         <NavLink to={"/"}>
           <img src={logo} alt="logo" />
@@ -56,6 +77,9 @@ const Header = () => {
         <NavLink to={"/registration"} className="nav-link registrationLink">
           {t("signUpButton")}
         </NavLink>
+        <Button type="button" onClick={handleOpenMenu} className="buttonMobileMenu">
+          <MenuIcon />
+        </Button>
       </Box>
     </Box>
   );
