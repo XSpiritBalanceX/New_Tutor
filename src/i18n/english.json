@@ -497,7 +497,10 @@
       "sucRequest": "The password has been successfully changed",
       "errReqField": "Fill in the field",
       "passDontMatch": "Password mismatch",
-      "errEmail": "Invalid email"
+      "errEmail": "Invalid email",
+      "passMin": "Password must be 8 characters",
+      "passMax": "Password cannot have more than 32 characters",
+      "wrongFormatPassword": "Only numbers and letters of the Latin alphabet"
     }
   }
 }
