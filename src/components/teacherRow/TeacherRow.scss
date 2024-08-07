@@ -11,6 +11,9 @@
     flex-direction: row;
     justify-content: space-between;
     max-width: 880px;
+    @media all and (max-width: 53em) {
+      flex-direction: column;
+    }
   }
   .teacherFieldBox {
     display: flex;
@@ -18,6 +21,9 @@
     margin-bottom: 20px;
     max-width: 388px;
     width: 100%;
+    @media all and (max-width: 40em) {
+      max-width: 100%;
+    }
     .errorIcon {
       margin-right: 5px;
     }
@@ -85,6 +91,9 @@
       border-radius: 100px;
       padding: 10px 20px;
       margin-bottom: 20px;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
     }
   }
   .teacherCertificateBox {

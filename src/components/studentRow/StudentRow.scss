@@ -77,6 +77,9 @@
       border-radius: 100px;
       padding: 10px 20px;
       margin-bottom: 20px;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
     }
   }
 }
