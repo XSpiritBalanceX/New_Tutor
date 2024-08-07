@@ -30,6 +30,9 @@
       @extend %button-1;
       border-radius: 100px;
       padding: 10px 20px;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
     }
   }
 }
