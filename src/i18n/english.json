@@ -18,7 +18,8 @@
       "schedule": "Schedule",
       "changePassword": "Change password",
       "payments": "Payments/subscriptions",
-      "logOut": "Log out"
+      "logOut": "Log out",
+      "balanceMobile": "Balance"
     },
     "footer": {
       "aboutCompany": "About company",

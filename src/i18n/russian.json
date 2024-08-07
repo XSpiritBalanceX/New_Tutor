@@ -18,7 +18,8 @@
       "schedule": "Расписание",
       "changePassword": "Изменение пароля",
       "payments": "Оплаты/подписки",
-      "logOut": "Выйти"
+      "logOut": "Выйти",
+      "balanceMobile": "Баланс"
     },
     "footer": {
       "aboutCompany": "О компании",
