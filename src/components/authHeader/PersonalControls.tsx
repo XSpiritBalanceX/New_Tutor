@@ -11,10 +11,13 @@ import UserNotifications from "@components/userNotifications/UserNotifications";
 import MenuIcon from "@mui/icons-material/Menu";
 import MobileAuthMenu from "./MobileAuthMenu";
 import MobilePersonalMenu from "./MobilePersonalMenu";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
 import "./AuthHeader.scss";
 
 const PersonalControls = () => {
   const { t } = translate("translate", { keyPrefix: "header" });
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
@@ -92,12 +95,16 @@ const PersonalControls = () => {
           <NavLink to={"/profile/number"} className="nav-link">
             {t("changePhone")}
           </NavLink>
-          <NavLink to={"/profile/language"} className="nav-link">
-            {t("languages")}
-          </NavLink>
-          <NavLink to={"/profile/schedule"} className="nav-link">
-            {t("schedule")}
-          </NavLink>
+          {!isStudent && (
+            <NavLink to={"/profile/language"} className="nav-link">
+              {t("languages")}
+            </NavLink>
+          )}
+          {!isStudent && (
+            <NavLink to={"/profile/schedule"} className="nav-link">
+              {t("schedule")}
+            </NavLink>
+          )}
           <NavLink to={"/profile/password"} className="nav-link">
             {t("changePassword")}
           </NavLink>

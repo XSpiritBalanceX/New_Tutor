@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/tutorSlice";
+import { USER_TYPE } from "@axiosApi/axiosAPI";
 import "./AuthHeader.scss";
 
 interface IMobilePersonalMenuProps {
@@ -13,6 +14,8 @@ interface IMobilePersonalMenuProps {
 
 const MobilePersonalMenu = ({ isOpen, cbHandleCloseMenu }: IMobilePersonalMenuProps) => {
   const { t } = translate("translate", { keyPrefix: "header" });
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const dispatch = useAppDispatch();
 
@@ -47,12 +50,16 @@ const MobilePersonalMenu = ({ isOpen, cbHandleCloseMenu }: IMobilePersonalMenuPr
         <NavLink to={"/profile/number"} className="nav-link">
           {t("changePhone")}
         </NavLink>
-        <NavLink to={"/profile/language"} className="nav-link">
-          {t("languages")}
-        </NavLink>
-        <NavLink to={"/profile/schedule"} className="nav-link">
-          {t("schedule")}
-        </NavLink>
+        {!isStudent && (
+          <NavLink to={"/profile/language"} className="nav-link">
+            {t("languages")}
+          </NavLink>
+        )}
+        {!isStudent && (
+          <NavLink to={"/profile/schedule"} className="nav-link">
+            {t("schedule")}
+          </NavLink>
+        )}
         <NavLink to={"/profile/password"} className="nav-link">
           {t("changePassword")}
         </NavLink>
