@@ -70,7 +70,7 @@ const ReviewPage = () => {
       <Box className="contentReviewPage">
         <form onSubmit={handleSubmit(submitReview)}>
           <p className="titleForm">{t("perforEvalTeacher")}</p>
-          <Box className="reviewFieldBox">
+          <Box className="reviewFieldBox ratingBox">
             <Rating
               value={watch("rating") || 0}
               emptyIcon={<StarIcon className="emptyIcon" />}
@@ -95,7 +95,7 @@ const ReviewPage = () => {
             <Button type="submit">{t("send")}</Button>
           </Box>
         </form>
-        <img src={reviewPic} alt="review" />
+        <img src={reviewPic} alt="review" className="reviewPict" />
       </Box>
     </Container>
   );
