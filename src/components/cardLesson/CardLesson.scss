@@ -7,10 +7,16 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media all and (max-width: 47em) {
+    padding: 20px 0;
+  }
   .dateOfLesson {
     @extend %text-main;
     color: map-deep-get($theme-colors, "text", "dark-gray");
     margin: 0;
+    @media all and (max-width: 47em) {
+      margin: 0 20px;
+    }
   }
   .lessonContent {
     margin: 10px 0 0 0;
@@ -18,10 +24,22 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    @media all and (max-width: 47em) {
+      margin: 10px 20px 0 20px;
+    }
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      position: relative;
+    }
     .userInformationBox {
       display: flex;
       flex-direction: row;
       align-items: center;
+      @media all and (max-width: 40em) {
+        flex-wrap: wrap;
+        position: relative;
+        width: 100%;
+      }
       .userAvatar {
         width: 80px;
         height: 80px;
@@ -33,12 +51,20 @@
       .userNameButtonBox {
         display: flex;
         flex-direction: column;
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
         p {
           margin: 0 0 10px 0;
           @extend %h3;
           &:hover {
             cursor: pointer;
             color: map-get($theme-colors, "main-blue");
+          }
+          @media all and (max-width: 40em) {
+            position: absolute;
+            top: 0;
+            left: 90px;
           }
         }
         button {
@@ -47,6 +73,10 @@
           text-transform: none;
           padding: 10px 20px;
           border-radius: 100px;
+          @media all and (max-width: 40em) {
+            width: 100%;
+            margin: 10px 0 0 0;
+          }
         }
       }
     }
@@ -54,6 +84,11 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      @media all and (max-width: 40em) {
+        position: absolute;
+        top: 30px;
+        left: 90px;
+      }
       button {
         text-transform: none;
         padding: 0;
