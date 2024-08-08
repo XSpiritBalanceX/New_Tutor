@@ -7,6 +7,11 @@
   padding: 40px;
   max-width: 640px;
   width: 100%;
+  @media all and (max-width: 45em) {
+    max-width: 100%;
+    padding: 40px 0;
+    box-shadow: none;
+  }
   .timeTitle,
   .durationTitle {
     text-align: center;
@@ -91,6 +96,9 @@
         @extend %text-main;
         @extend %button-1;
         padding: 10px 20px;
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
       }
     }
   }
@@ -120,6 +128,9 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    @media all and (max-width: 40em) {
+      display: none;
+    }
     .dayWeekBox {
       max-width: 60px;
       width: 100%;
@@ -148,6 +159,9 @@
     justify-content: space-between;
     max-height: 350px;
     overflow-y: auto;
+    @media all and (max-width: 40em) {
+      display: none;
+    }
     &::-webkit-scrollbar {
       width: 3px;
     }
@@ -195,6 +209,83 @@
         transform: translate(-50%, -50%);
         @extend %text-small;
         color: map-get($theme-colors, "main-blue");
+      }
+    }
+  }
+  .scheduleMobileSlider {
+    display: none;
+    padding: 0 25px;
+    @media all and (max-width: 40em) {
+      display: block;
+    }
+    .slick-arrow {
+      width: 40px;
+      height: 40px;
+      &::before {
+        opacity: 1;
+        color: map-get($theme-colors, "main-blue");
+        @extend %h1;
+      }
+    }
+    .slick-prev {
+      left: -10px;
+      &::before {
+        content: "<";
+      }
+    }
+    .slick-next {
+      right: -10px;
+      &::before {
+        content: ">";
+      }
+    }
+    .dateBox {
+      margin: 0 0 20px 0;
+      p {
+        @extend %h3;
+        margin: 0;
+        text-align: center;
+      }
+    }
+    .timesBox {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      .timeButton {
+        position: relative;
+        margin: 0 10px 10px 0;
+        .timeCheckbox {
+          border: solid 1px map-get($theme-colors, "main-blue");
+          padding: 0;
+          width: 60px;
+          height: 30px;
+          border-radius: 4px;
+          svg {
+            display: none;
+          }
+        }
+        .timeCheckbox.Mui-checked {
+          background-color: map-get($theme-colors, "main-blue");
+          + .MuiTypography-root {
+            color: map-get($theme-colors, "white");
+          }
+        }
+        .timeCheckbox.Mui-disabled {
+          border: solid 1px map-deep-get($theme-colors, "border", "disable");
+          + .MuiTypography-root {
+            color: map-deep-get($theme-colors, "border", "disable");
+          }
+        }
+        .MuiTypography-root {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          @extend %text-small;
+          color: map-get($theme-colors, "main-blue");
+        }
       }
     }
   }

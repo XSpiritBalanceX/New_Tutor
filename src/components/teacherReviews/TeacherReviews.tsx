@@ -77,7 +77,7 @@ const TeacherReviews = () => {
   const [currentReview, setCurrentReview] = useState<IReview | null>(null);
   const [isOpenModal, setIsOpenModal] = useState(true);
   const [activePage, setActivePage] = useState(1);
-  const [itemsPerPage] = useState(2);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
   const totalPages = Math.ceil(mockData.length / itemsPerPage);
 
   const ratingSum = mockData.reduce((sum, acc) => sum + acc.rating, 0);
@@ -91,7 +91,26 @@ const TeacherReviews = () => {
     const pageItems = mockData.slice(startIndex, endIndex);
     setTeacherReviews(pageItems);
     // eslint-disable-next-line
-  }, [mockData, activePage]);
+  }, [mockData, activePage, itemsPerPage]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mediaQuery = window.matchMedia("(max-width: 65em)");
+      if (mediaQuery.matches) {
+        setItemsPerPage(1);
+      } else {
+        setItemsPerPage(2);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handlePages = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { name } = e.currentTarget;

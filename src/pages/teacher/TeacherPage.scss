@@ -1,15 +1,28 @@
 @import "../../variables";
 
+.unLoggedUser.teacherPageContainer {
+  @media all and (max-width: 45em) {
+    padding: 0 20px 150px 20px !important;
+    margin: 65px 0 0 0;
+  }
+}
+
 .teacherPageContainer {
   padding: 30px 0 150px 0 !important;
   position: relative;
   min-height: 800px;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 150px 20px !important;
+  }
   .locationTeacherPageBox {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 0 0 30px 0;
     @extend %text-small;
+    @media all and (max-width: 40em) {
+      flex-wrap: wrap;
+    }
     .teacherPageLink,
     .arrowIcon {
       color: map-get($theme-colors, "gray");
@@ -26,30 +39,57 @@
     .teacherInformationBox {
       display: flex;
       flex-direction: row;
+      @media all and (max-width: 40em) {
+        flex-direction: column;
+        position: relative;
+      }
       .teacherAvatar {
         width: 240px;
         height: 240px;
         margin-right: 20px;
+        @media all and (max-width: 40em) {
+          width: 140px;
+          height: 140px;
+        }
       }
       .teacherInformationContent {
         .teacherName {
           margin: 0 0 10px 0;
           @extend %h1;
+          @media all and (max-width: 40em) {
+            position: absolute;
+            left: 160px;
+            top: 0;
+          }
         }
         .teacherRatingBox {
           display: flex;
           flex-direction: row;
           align-items: center;
+          @media all and (max-width: 40em) {
+            position: absolute;
+            left: 160px;
+            top: 30px;
+            flex-direction: column;
+            align-items: flex-start;
+          }
           .countOfFeedback {
             @extend %text-main;
             color: map-get($theme-colors, "main-blue");
             margin: 0 0 0 10px;
+            @media all and (max-width: 40em) {
+              margin: 0;
+            }
           }
           .MuiRating-root {
             .emptyIcon,
             .fillIcon {
               width: 17px;
               height: 17px;
+              @media all and (max-width: 40em) {
+                width: 20px;
+                height: 20px;
+              }
             }
             .emptyIcon {
               fill: map-get($theme-colors, "white-yellow");
@@ -58,6 +98,11 @@
         }
         .certificatedTeacherBox {
           margin: 10px 0 15px 0;
+          @media all and (max-width: 40em) {
+            position: absolute;
+            left: 160px;
+            top: 65px;
+          }
           .MuiCheckbox-root {
             padding: 0;
             width: 17px;
@@ -76,6 +121,9 @@
         }
         .languageBox {
           margin-bottom: 10px;
+          @media all and (max-width: 40em) {
+            margin-top: 10px;
+          }
           .levelOfLanguage,
           .countOfStudent,
           .costPerHour {
@@ -156,10 +204,18 @@
       display: flex;
       flex-direction: row;
       align-items: flex-start;
+      @media all and (max-width: 40em) {
+        margin: 30px 0;
+        flex-direction: column;
+      }
       .titleSkills {
         margin: 0 20px 0 0;
         @extend %h2;
         max-width: 240px;
+        @media all and (max-width: 40em) {
+          max-width: 100%;
+          margin: 0 0 10px 0;
+        }
       }
       .descriptionsBox {
         display: flex;
@@ -180,5 +236,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media all and (max-width: 60em) {
+      margin-left: calc(49% - 50vw);
+    }
+    @media all and (max-width: 55em) {
+      margin-left: calc(48.5% - 50vw);
+    }
+    @media all and (max-width: 45em) {
+      width: 100%;
+      margin-left: 0;
+      background-color: map-get($theme-colors, "white");
+      padding: 0;
+    }
   }
 }
