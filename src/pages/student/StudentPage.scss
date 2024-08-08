@@ -4,12 +4,18 @@
   padding: 30px 0 150px 0 !important;
   position: relative;
   min-height: 600px;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 150px 20px !important;
+  }
   .locationStudentPage {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 0 0 30px 0;
     @extend %text-small;
+    @media all and (max-width: 40em) {
+      flex-wrap: wrap;
+    }
     .arrowIcon,
     a {
       color: map-get($theme-colors, "gray");
@@ -23,10 +29,19 @@
   .studentProfileBox {
     display: flex;
     flex-direction: row;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      position: relative;
+    }
     .studentAvatar {
       width: 240px;
       height: 240px;
       margin: 0 20px 0 0;
+      @media all and (max-width: 45em) {
+        width: 140px;
+        height: 140px;
+        margin: 0 20px 10px 0;
+      }
     }
     .studentInformationBox {
       display: flex;
@@ -35,6 +50,11 @@
       .studentName {
         @extend %h1;
         margin: 0 0 10px 0;
+        @media all and (max-width: 40em) {
+          position: absolute;
+          top: 0;
+          left: 160px;
+        }
       }
       .studentLanguage {
         margin: 0 0 15px 0;
@@ -86,11 +106,18 @@
     flex-direction: row;
     align-items: flex-start;
     margin: 40px 0 0 0;
+    @media all and (max-width: 55em) {
+      flex-direction: column;
+    }
     .goal {
       @extend %h2;
       margin: 0 20px 0 0;
       min-width: 245px;
       width: fit-content;
+      @media all and (max-width: 55em) {
+        width: 100%;
+        margin: 0 0 10px 0;
+      }
     }
     .descriptionBox {
       display: flex;
