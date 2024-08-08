@@ -301,7 +301,8 @@
       "collapse": "Collapse",
       "bookFreeLesson": "Book a free lesson with me",
       "emptyRequest": "Unfortunately, your search returned no results",
-      "changeRequest": "Try changing your search terms"
+      "changeRequest": "Try changing your search terms",
+      "filters": "Filters"
     },
     "teacherPage": {
       "main": "Main",

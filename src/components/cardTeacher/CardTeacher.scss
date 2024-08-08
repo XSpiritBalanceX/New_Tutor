@@ -11,6 +11,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      position: relative;
+    }
     .teacherAvatar {
       width: 140px;
       height: 140px;
@@ -18,11 +22,18 @@
       &:hover {
         cursor: pointer;
       }
+      @media all and (max-width: 40em) {
+        width: 80px;
+        height: 80px;
+      }
     }
     .teacherInfoBox {
       display: flex;
       flex-direction: column;
       flex: 1;
+      @media all and (max-width: 40em) {
+        margin: 0 0 5px 0;
+      }
       .teacherName {
         margin: 0 0 10px 0;
         @extend %h2;
@@ -30,11 +41,21 @@
           color: map-get($theme-colors, "main-blue");
           cursor: pointer;
         }
+        @media all and (max-width: 40em) {
+          position: absolute;
+          top: 0;
+          left: 100px;
+        }
       }
       .teacherRatingBox {
         display: flex;
         flex-direction: row;
         align-items: center;
+        @media all and (max-width: 40em) {
+          position: absolute;
+          top: 30px;
+          left: 100px;
+        }
         .countOfFeedback {
           @extend %text-small;
           color: map-get($theme-colors, "main-blue");
@@ -53,6 +74,11 @@
       }
       .certificatedTeacherBox {
         margin: 5px 0;
+        @media all and (max-width: 40em) {
+          position: absolute;
+          top: 50px;
+          left: 100px;
+        }
         .MuiCheckbox-root {
           padding: 0;
           width: 17px;
@@ -98,6 +124,9 @@
       .priceStudentBox {
         display: flex;
         flex-direction: row;
+        @media all and (max-width: 45em) {
+          flex-direction: column;
+        }
         .countStudent,
         .priceText {
           @extend %h3;
@@ -108,6 +137,9 @@
         }
         .countStudent {
           margin: 0 20px 0 0;
+          @media all and (max-width: 45em) {
+            margin: 0 0 10px 0;
+          }
         }
         .priceText {
           margin: 0;
@@ -123,12 +155,18 @@
         border-radius: 100px;
         padding: 10px;
         min-width: 150px;
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
       }
     }
   }
   .languageDescriptionBox {
     margin: -50px 20px 10px 180px;
     width: calc(100% - 200px);
+    @media all and (max-width: 40em) {
+      margin: 0 20px 10px 20px;
+    }
     .descriptionText {
       margin: 0 0 5px 0;
       @extend %text-main;
@@ -151,5 +189,8 @@
     padding: 0;
     @extend %h3;
     color: map-get($theme-colors, "main-blue");
+    @media all and (max-width: 40em) {
+      margin: 10px 20px 30px 20px;
+    }
   }
 }
