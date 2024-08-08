@@ -2,6 +2,9 @@
 
 .settingTeacherLanguageBox {
   width: 100%;
+  @media all and (max-width: 70em) {
+    margin-top: -30px;
+  }
   .teacherRowBox {
     .firstRowTeacher,
     .secondRowTeacher,
@@ -37,6 +40,12 @@
       border-radius: 100px;
       padding: 10px 20px;
       text-transform: none;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+    }
+    @media all and (max-width: 55em) {
+      padding-right: 0;
     }
   }
 }

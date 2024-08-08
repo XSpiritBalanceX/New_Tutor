@@ -3,12 +3,18 @@
 .profilePageContainer {
   padding: 30px 0 100px 0 !important;
   position: relative;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 100px 20px !important;
+  }
   .locationBox {
     margin: 0 0 40px 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     @extend %text-small;
+    @media all and (max-width: 65em) {
+      margin: 0 0 30px 0;
+    }
     .myProfile,
     .arrowIcon,
     a {
@@ -23,12 +29,18 @@
   .profilePageContent {
     display: flex;
     flex-direction: row;
+    @media all and (max-width: 70em) {
+      flex-direction: column;
+    }
     .profileMenu {
       display: flex;
       flex-direction: column;
       max-width: 280px;
       width: 100%;
       margin: 0 20px 0 0;
+      @media all and (max-width: 70em) {
+        display: none;
+      }
       .nav-link {
         display: flex;
         flex-direction: row;
@@ -45,6 +57,10 @@
         color: map-get($theme-colors, "black");
         svg {
           margin: 0 5px 0 0;
+        }
+        @media all and (max-width: 70em) {
+          min-width: 210px;
+          margin: 0 10px 0 0;
         }
       }
       .nav-link.phoneLink {
