@@ -4,6 +4,11 @@
   width: 100%;
   .userBalanceBox {
     margin-bottom: 30px;
+    @media all and (max-width: 40em) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
     .yourBalance {
       margin: 0 0 5px 0;
       @extend %h3;
@@ -13,6 +18,10 @@
     }
     .balanceField {
       max-width: 180px;
+      @media all and (max-width: 40em) {
+        max-width: calc(100% - 90px);
+        width: calc(100% - 90px);
+      }
       .MuiInputBase-root.MuiInputBase-formControl {
         height: 40px;
         border-radius: 5px;
@@ -39,6 +48,9 @@
     }
     .currencyField {
       margin: 0 10px;
+      @media all and (max-width: 40em) {
+        margin: 0 0 0 10px;
+      }
       .MuiInputBase-root {
         height: 40px;
         fieldset {
@@ -58,6 +70,10 @@
       border-radius: 100px;
       padding: 10px 20px;
       @extend %text-main;
+      @media all and (max-width: 40em) {
+        width: 100%;
+        margin: 20px 0 0 0;
+      }
     }
   }
   .cardsBox {
@@ -85,6 +101,9 @@
     }
     .bankCardSlider {
       max-width: 780px;
+      @media all and (max-width: 70em) {
+        max-width: 100%;
+      }
       .slick-arrow {
         display: none !important;
       }
@@ -141,6 +160,9 @@
     form {
       width: 100%;
       max-width: 510px;
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+      }
     }
     .newBankCardField {
       display: flex;
@@ -192,6 +214,9 @@
       width: 100%;
       display: flex;
       flex-direction: row;
+      @media all and (max-width: 40em) {
+        flex-direction: column;
+      }
       .frontSideCard,
       .backSideCard {
         margin: 0;
@@ -200,6 +225,9 @@
         height: 240px;
         box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
         background: map-get($theme-colors, "gradient");
+        @media all and (max-width: 40em) {
+          width: 100%;
+        }
       }
       .frontSideCard {
         padding: 10px 0 30px 30px;
@@ -207,8 +235,16 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media all and (max-width: 40em) {
+          padding: 10px 0 30px 0;
+        }
         .newBankCardField {
           max-width: 280px;
+          @media all and (max-width: 40em) {
+            max-width: calc(100% - 30px);
+            width: 100%;
+            margin: 0 auto;
+          }
           .errorMessage {
             margin: 0;
             height: 15px;
@@ -236,6 +272,9 @@
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        @media all and (max-width: 40em) {
+          margin: 20px 0 0 0;
+        }
         .blackLine {
           margin: 30px 0 10px 0;
           height: 50px;
@@ -261,11 +300,21 @@
     .historyTable {
       tbody {
         tr {
+          @media all and (max-width: 50em) {
+            display: flex;
+            flex-direction: column;
+            border-bottom: solid 1px map-get($theme-colors, "gray");
+            padding: 10px 0;
+          }
           td {
             @extend %text-small;
             line-height: 120%;
             text-transform: uppercase;
             padding: 10px;
+            @media all and (max-width: 50em) {
+              border: none;
+              padding: 0 10px 5px 10px;
+            }
           }
           .sumCell.isReturnedSum {
             color: map-get($theme-colors, "red");
@@ -284,6 +333,9 @@
       text-transform: none;
       padding: 10px 20px;
       border-radius: 100px;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
     }
   }
 }

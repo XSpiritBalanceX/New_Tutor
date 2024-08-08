@@ -15,6 +15,9 @@
     @media all and (max-width: 65em) {
       margin: 0 0 30px 0;
     }
+    @media all and (max-width: 40em) {
+      flex-wrap: wrap;
+    }
     .myProfile,
     .arrowIcon,
     a {
