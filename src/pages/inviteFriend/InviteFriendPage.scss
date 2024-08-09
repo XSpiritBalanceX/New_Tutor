@@ -2,6 +2,9 @@
 
 .inviteFriendContainer {
   padding: 30px 0 100px 0 !important;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 100px 20px !important;
+  }
   .locationInvitationPage {
     margin: 0 0 30px 0;
     display: flex;
@@ -26,8 +29,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    @media all and (max-width: 55em) {
+      flex-direction: column;
+    }
     img {
       margin-right: 40px;
+      @media all and (max-width: 55em) {
+        margin: 0 0 20px 0;
+      }
+      @media all and (max-width: 40em) {
+        max-width: 209px;
+        height: 220px;
+      }
     }
     .mainContentBox {
       width: 100%;
@@ -41,6 +54,15 @@
       display: flex;
       flex-direction: row;
       margin: 0 0 20px 0;
+      @media all and (max-width: 60em) {
+        flex-direction: column;
+      }
+      @media all and (max-width: 55em) {
+        flex-direction: row;
+      }
+      @media all and (max-width: 45em) {
+        flex-direction: column;
+      }
       .linkField {
         max-width: 480px;
         width: 100%;
@@ -49,6 +71,9 @@
         border-radius: 5px;
         margin: 0 20px 0 0;
         height: 40px;
+        @media all and (max-width: 40em) {
+          padding: 0;
+        }
       }
       button {
         @extend %text-main;
@@ -56,15 +81,35 @@
         border-radius: 100px;
         padding: 10px 20px;
         text-transform: none;
+        @media all and (max-width: 60em) {
+          max-width: 500px;
+          width: 100%;
+          margin: 10px 0 0 0;
+        }
+        @media all and (max-width: 55em) {
+          max-width: 220px;
+          margin: 0;
+        }
+        @media all and (max-width: 45em) {
+          max-width: 500px;
+          width: 100%;
+          margin: 10px 0 0 0;
+        }
       }
     }
     .shareBox {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
+      @media all and (max-width: 40em) {
+        flex-direction: column;
+      }
       p {
         margin: 0 10px 0 0;
         @extend %h3;
+        @media all and (max-width: 40em) {
+          margin: 0 0 10px 0;
+        }
       }
       .shareButton {
         padding: 0;
