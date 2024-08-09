@@ -5,10 +5,14 @@ import third from "@assets/third.svg";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { NavLink } from "react-router-dom";
+import * as tutorSelectors from "@store/selectors";
+import { useAppSelector } from "@store/hook";
 import "./AboutUsPage.scss";
 
 const AboutUsPage = () => {
   const { t } = translate("translate", { keyPrefix: "aboutUsPage" });
+
+  const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
   const picturesText = [
     { picture: first, text: "firstText" },
@@ -17,7 +21,7 @@ const AboutUsPage = () => {
   ];
 
   return (
-    <Container className="aboutUsPageContainer">
+    <Container className={`aboutUsPageContainer ${isLogin ? "" : "unLoggedUser"}`}>
       <Box className="locationAboutUsPage">
         <NavLink to={"/"}>{t("main")}</NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

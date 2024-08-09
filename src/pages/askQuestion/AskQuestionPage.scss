@@ -1,7 +1,17 @@
 @import "../../variables";
 
+.unLoggedUser.askQuestionPageContainer {
+  @media all and (max-width: 45em) {
+    padding: 0 20px 60px 20px !important;
+    margin: 65px 0 0 0;
+  }
+}
+
 .askQuestionPageContainer {
   padding: 30px 0 100px 0 !important;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 100px 20px !important;
+  }
   .locationAskQuestionPage {
     margin: 0 0 30px 0;
     display: flex;
@@ -21,15 +31,24 @@
   .titlePage {
     margin: 0 0 30px 0;
     @extend %h1;
+    @media all and (max-width: 55em) {
+      margin: 0 0 10px 0;
+    }
   }
   .contentAskQuestion {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    @media all and (max-width: 55em) {
+      flex-direction: column;
+    }
     form {
       max-width: 780px;
       width: 100%;
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+      }
       .questionFieldBox {
         display: flex;
         flex-direction: column;
@@ -72,6 +91,9 @@
       }
       .emailBox {
         max-width: 380px;
+        @media all and (max-width: 40em) {
+          max-width: 100%;
+        }
       }
       .submitButtonBox {
         display: flex;
@@ -83,6 +105,9 @@
           border-radius: 100px;
           padding: 10px 20px;
           text-transform: none;
+          @media all and (max-width: 40em) {
+            width: 100%;
+          }
         }
       }
     }
@@ -90,6 +115,22 @@
       max-width: 400px;
       width: 100%;
       margin: 0 0 0 20px;
+      @media all and (max-width: 55em) {
+        order: -1;
+      }
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+      img {
+        @media all and (max-width: 55em) {
+          max-width: 283px;
+          height: 200px;
+        }
+      }
     }
   }
 }
