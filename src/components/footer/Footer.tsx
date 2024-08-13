@@ -5,6 +5,7 @@ import { useAppSelector } from "@store/hook";
 import { translate } from "@i18n";
 import { NavLink } from "react-router-dom";
 import CopyrightIcon from "@mui/icons-material/Copyright";
+import MobileCompanyTeachers from "./MobileCompanyTeachers";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -38,7 +39,8 @@ const Footer = () => {
       <Box className="footerContainer">
         <Box className="firstRowFooter">
           <img src={logo} alt="logo" />
-          <Box className="columnFooter ">
+          <MobileCompanyTeachers />
+          <Box className="columnFooter aboutCompanyColumn">
             <p className="titleColumn">{t("aboutCompany")}</p>
             {aboutCompanyLinks.map((el, ind) => (
               <NavLink key={ind} to={el.path} className="nav-link">
@@ -51,7 +53,7 @@ const Footer = () => {
               </NavLink>
             )}
           </Box>
-          <Box className="columnFooter">
+          <Box className="columnFooter tutorsColumn">
             <p className="titleColumn">{t("tutors")}</p>
             <Box className="tutorsLinksBox">
               <Box className="columnTutorsBox firstColumnTutorBox">

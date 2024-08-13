@@ -1,7 +1,20 @@
 @import "../../variables";
 
+.unLoggedUser.termsContainer {
+  @media all and (max-width: 45em) {
+    padding: 0 20px 60px 20px !important;
+    margin: 65px 0 0 0;
+  }
+}
+
 .termsContainer {
   padding: 30px 0 120px 0 !important;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 120px 20px !important;
+  }
+  @media all and (max-width: 50em) {
+    padding: 30px 20px 60px 20px !important;
+  }
   .locationTermsPage {
     margin: 0 0 30px 0;
     display: flex;

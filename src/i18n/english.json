@@ -18,7 +18,8 @@
       "schedule": "Schedule",
       "changePassword": "Change password",
       "payments": "Payments/subscriptions",
-      "logOut": "Log out"
+      "logOut": "Log out",
+      "balanceMobile": "Balance"
     },
     "footer": {
       "aboutCompany": "About company",
@@ -300,7 +301,8 @@
       "collapse": "Collapse",
       "bookFreeLesson": "Book a free lesson with me",
       "emptyRequest": "Unfortunately, your search returned no results",
-      "changeRequest": "Try changing your search terms"
+      "changeRequest": "Try changing your search terms",
+      "filters": "Filters"
     },
     "teacherPage": {
       "main": "Main",

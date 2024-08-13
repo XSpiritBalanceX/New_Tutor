@@ -2,12 +2,18 @@
 
 .reviewPageContainer {
   padding: 30px 0 150px 0 !important;
+  @media all and (max-width: 78em) {
+    padding: 30px 20px 150px 20px !important;
+  }
   .locationReviewPage {
     margin: 0 0 30px 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     @extend %text-small;
+    @media all and (max-width: 40em) {
+      flex-wrap: wrap;
+    }
     p {
       margin: 0;
     }
@@ -22,11 +28,36 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    @media all and (max-width: 60em) {
+      flex-direction: column;
+      position: relative;
+    }
+    .reviewPict {
+      @media all and (max-width: 60em) {
+        position: absolute;
+        max-width: 242px;
+        height: 200px;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      @media all and (max-width: 40em) {
+        top: 110px;
+      }
+    }
     form {
       width: 100%;
       .titleForm {
         @extend %h1;
         margin: 0 0 15px 0;
+      }
+      .reviewFieldBox.ratingBox {
+        @media all and (max-width: 60em) {
+          margin-bottom: 230px;
+        }
+        @media all and (max-width: 40em) {
+          margin-bottom: 220px;
+        }
       }
       .reviewFieldBox {
         display: flex;
@@ -97,6 +128,9 @@
           border-radius: 100px;
           padding: 10px 20px;
           text-transform: none;
+          @media all and (max-width: 40em) {
+            width: 100%;
+          }
         }
       }
     }

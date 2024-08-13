@@ -3,11 +3,17 @@
 .settingNumberBox {
   margin-bottom: 200px;
   width: 100%;
+  @media all and (max-width: 55em) {
+    margin-bottom: 60px;
+  }
   .doubleFields {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     margin-bottom: 20px;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+    }
     .sendCodeButton {
       @extend %text-main;
       @extend %button-1;
@@ -15,6 +21,10 @@
       padding: 10px 20px;
       text-transform: none;
       margin-top: 24px;
+      @media all and (max-width: 40em) {
+        margin: 20px 0 0 0;
+        width: 100%;
+      }
     }
   }
   .settingNumberFieldBox {
@@ -23,6 +33,9 @@
     max-width: 380px;
     width: 100%;
     margin-right: 20px;
+    @media all and (max-width: 40em) {
+      max-width: 100%;
+    }
     .settingNumberLabel {
       @extend %h3;
       margin: 0 0 5px 0;
@@ -75,5 +88,8 @@
     padding: 10px 20px;
     text-transform: none;
     margin-top: 20px;
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
   }
 }

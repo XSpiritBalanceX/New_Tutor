@@ -1,5 +1,27 @@
 @import "../../variables";
 
+.mobileSearchFilterContainer {
+  border: solid 1px red;
+  .MuiPaper-root {
+    padding: 20px;
+    .closeButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 10px 0;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .filters {
+      @extend %h1;
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
 .filterBox {
   max-width: 280px;
   width: 100%;

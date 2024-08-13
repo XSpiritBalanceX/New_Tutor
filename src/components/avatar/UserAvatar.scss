@@ -6,6 +6,10 @@
   align-items: center;
   padding: 0 0 30px 0;
   border-bottom: solid 1px map-deep-get($theme-colors, "border", "disable");
+  @media all and (max-width: 40em) {
+    position: relative;
+    padding-bottom: 40px;
+  }
   .userAvatar {
     width: 80px;
     height: 80px;
@@ -14,6 +18,15 @@
   .controlsAvatarBox {
     display: flex;
     flex-direction: column;
+    @media all and (max-width: 40em) {
+      width: 100%;
+    }
+    .avatarButtonsBox {
+      @media all and (max-width: 40em) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
     .uploadAvatar,
     .deleteAvatar {
       @extend %text-main;
@@ -26,6 +39,12 @@
       &:hover {
         cursor: pointer;
       }
+      @media all and (max-width: 40em) {
+        margin: 0 0 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
     .deleteAvatar {
       @extend %button-2;
@@ -35,6 +54,11 @@
       @extend %text-small;
       margin: 20px 0 0 0;
       color: map-get($theme-colors, "gray");
+      @media all and (max-width: 40em) {
+        position: absolute;
+        bottom: 10px;
+        left: 5px;
+      }
     }
     .errorMessage {
       color: map-get($theme-colors, "red");

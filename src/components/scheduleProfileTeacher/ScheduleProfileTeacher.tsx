@@ -15,6 +15,7 @@ import MessageAboutBook from "./MessageAboutBook";
 import ModalBookLessons from "@components/modal/ModalBookLessons";
 import { useBookLessonsMutation } from "@store/requestApi/teacherApi";
 import { toast } from "react-toastify";
+import MobileScheduleProfileTeacher from "./MobileScheduleProfileTeacher";
 import "./ScheduleProfileTeacher.scss";
 
 const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id }: IScheduleProfileTeacherProps) => {
@@ -207,6 +208,13 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
             </Box>
           ))}
       </Box>
+      <MobileScheduleProfileTeacher
+        schedule={schedule}
+        weekDaysByWeekNumber={getWeekDaysByWeekNumber(currentWeek + extraWeek)}
+        selectedLessons={selectedLessons}
+        cbHandleBookLessons={handleBookLesson}
+        selectedTimeZone={selectedTimeZone}
+      />
     </Box>
   );
 };

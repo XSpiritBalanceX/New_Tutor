@@ -2,10 +2,14 @@ import { Container, Box } from "@mui/material";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "@store/hook";
+import * as tutorSelectors from "@store/selectors";
 import "./PolicyPage.scss";
 
 const PolicyPage = () => {
   const { t } = translate("translate", { keyPrefix: "policyPage" });
+
+  const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
   const basesForProcessingFirst = ["basesProcessingText2", "basesProcessingText3", "basesProcessingText4"];
   const basesForProcessingSecond = [
@@ -23,7 +27,7 @@ const PolicyPage = () => {
   const registrationAndAccountsSecond = ["registrationAccText1", "registrationAccText2", "registrationAccText3"];
 
   return (
-    <Container className="policyPageContainer">
+    <Container className={`policyPageContainer ${isLogin ? "" : "unLoggedUser"}`}>
       <Box className="locationPolicyPage">
         <NavLink to={"/"}>{t("main")}</NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

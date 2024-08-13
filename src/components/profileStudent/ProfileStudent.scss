@@ -12,12 +12,18 @@
       flex-direction: row;
       justify-content: space-between;
       margin: 0 0 10px 0;
+      @media all and (max-width: 53em) {
+        flex-direction: column;
+      }
     }
     .studentProfileFieldBox {
       max-width: 380px;
       width: 100%;
       display: flex;
       flex-direction: column;
+      @media all and (max-width: 40em) {
+        max-width: 100%;
+      }
       .studentProfileLabel {
         @extend %h3;
         margin: 0 0 5px 0;
@@ -71,6 +77,9 @@
     }
     .fieldWithOpenModal {
       margin-top: -65px;
+      @media all and (max-width: 53em) {
+        margin-top: 0;
+      }
     }
     .fieldWithoutOpenModal {
       margin-top: 0;
@@ -110,6 +119,12 @@
       border-radius: 100px;
       padding: 10px 20px;
       text-transform: none;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
+    }
+    @media all and (max-width: 53em) {
+      padding-right: 0;
     }
   }
 }

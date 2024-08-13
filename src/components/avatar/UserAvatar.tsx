@@ -61,7 +61,7 @@ const UserAvatar = ({ photo }: IUserAvatarProps) => {
       {!picture && <Avatar src={photo || user} className="userAvatar" />}
       {picture && <Avatar src={URL.createObjectURL(picture)} className="userAvatar" />}
       <Box className="controlsAvatarBox">
-        <Box>
+        <Box className="avatarButtonsBox">
           <label htmlFor="file_input" className="uploadAvatar">
             {t("upload")}
           </label>

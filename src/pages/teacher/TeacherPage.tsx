@@ -40,7 +40,7 @@ const TeacherPage = () => {
   return error ? (
     <CustomError />
   ) : (
-    <Container className="teacherPageContainer">
+    <Container className={`teacherPageContainer ${isLogin ? "" : "unLoggedUser"}`}>
       {isLoading && <Loader />}
       <Box className="locationTeacherPageBox">
         <NavLink to={"/"} className={"teacherPageLink"}>

@@ -10,6 +10,9 @@
     flex-direction: row;
     justify-content: space-between;
     max-width: 880px;
+    @media all and (max-width: 53em) {
+      flex-direction: column;
+    }
   }
   .studentFieldBox {
     display: flex;
@@ -17,6 +20,9 @@
     margin-bottom: 20px;
     max-width: 380px;
     width: 100%;
+    @media all and (max-width: 40em) {
+      max-width: 100%;
+    }
     .MuiFormLabel-root.MuiFormLabel-filled,
     .MuiFormLabel-root.Mui-focused {
       display: none;
@@ -71,6 +77,9 @@
       border-radius: 100px;
       padding: 10px 20px;
       margin-bottom: 20px;
+      @media all and (max-width: 40em) {
+        width: 100%;
+      }
     }
   }
 }

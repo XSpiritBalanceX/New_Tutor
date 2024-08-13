@@ -2,10 +2,14 @@ import { Container, Box } from "@mui/material";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "@store/hook";
+import * as tutorSelectors from "@store/selectors";
 import "./TermsPage.scss";
 
 const TermsPage = () => {
   const { t } = translate("translate", { keyPrefix: "termsPage" });
+
+  const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
   const tutorTermsList = ["tutorTermsText2", "tutorTermsText3", "tutorTermsText4"];
   const tutorTermsText = ["tutorTermsText5", "tutorTermsText6", "tutorTermsText7", "tutorTermsText8"];
@@ -30,7 +34,7 @@ const TermsPage = () => {
   const studentPaymentsAnsReturns = ["paymentsAndReturnsStudentText1", "paymentsAndReturnsStudentText2"];
 
   return (
-    <Container className="termsContainer">
+    <Container className={`termsContainer ${isLogin ? "" : "unLoggedUser"}`}>
       <Box className="locationTermsPage">
         <NavLink to={"/"}>{t("main")}</NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

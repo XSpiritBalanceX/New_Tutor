@@ -7,6 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import ControlledInput from "@components/fields/ControlledInput";
 import questionPic from "@assets/askQuestion.svg";
+import * as tutorSelectors from "@store/selectors";
+import { useAppSelector } from "@store/hook";
 import "./AskQuestionPage.scss";
 
 interface IQuestion {
@@ -16,6 +18,8 @@ interface IQuestion {
 
 const AskQuestionPage = () => {
   const { t } = translate("translate", { keyPrefix: "askQuestionPage" });
+
+  const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().required(t("reqField")).email(t("wrongEmail")),
@@ -36,7 +40,7 @@ const AskQuestionPage = () => {
   };
 
   return (
-    <Container className="askQuestionPageContainer">
+    <Container className={`askQuestionPageContainer ${isLogin ? "" : "unLoggedUser"}`}>
       <Box className="locationAskQuestionPage">
         <NavLink to={"/"}>{t("main")}</NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

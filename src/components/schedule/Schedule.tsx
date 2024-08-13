@@ -15,13 +15,14 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import { useUpdateTeacherScheduleMutation } from "@store/requestApi/profileApi";
+import MobileSchedule from "./MobileSchedule";
 import "./Schedule.scss";
 
 interface IScheduleProps {
   isCreating: boolean;
 }
 
-type TLesson = {
+export type TLesson = {
   id?: number | null;
   day: number;
   time_start: string;
@@ -184,6 +185,11 @@ const Schedule = ({ isCreating }: IScheduleProps) => {
               ))}
           </Box>
         </Box>
+        <MobileSchedule
+          timeInDay={getTimeInDay(0, 23)}
+          cbHandleCreateSchedule={handleCreateSchedule}
+          schedule={schedule}
+        />
       </Box>
       {errDate && <Box className="errorDateBox">{errDate}</Box>}
       <Button type="button" className="submitButton" onClick={handleSentSchedule}>

@@ -51,3 +51,16 @@ export interface IMessageAboutBookProps {
   selectedTimeZone: string;
   cbHandleBookLessons: () => void;
 }
+
+export interface IMobileScheduleProfileTeacherProps {
+  schedule: {
+    id: number;
+    day: number;
+    time_start: string;
+    time_end: string;
+  }[];
+  weekDaysByWeekNumber: IWeekDaysResult;
+  selectedLessons: ISelectedLesson[];
+  cbHandleBookLessons: (id: number, date: string) => void;
+  selectedTimeZone: string;
+}

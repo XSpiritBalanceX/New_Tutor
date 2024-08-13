@@ -9,6 +9,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media all and (max-width: 80em) {
+    width: calc(100% - 40px);
+    padding: 10px 0 20px 0;
+  }
+  @media all and (max-width: 55em) {
+    padding: 10px 0;
+  }
   .firstColHeader {
     display: flex;
     flex-direction: row;
@@ -18,6 +25,9 @@
     .balanceLinksBox {
       display: flex;
       flex-direction: column;
+      @media all and (max-width: 55em) {
+        display: none;
+      }
       .linksAuthHeaderBox {
         display: flex;
         flex-direction: row;
@@ -119,9 +129,16 @@
     justify-content: flex-end;
     align-items: flex-end;
     height: 78px;
+    @media all and (max-width: 55em) {
+      justify-content: flex-start;
+      height: 40px;
+    }
     .languageField {
       height: 25px;
       width: 70px;
+      @media all and (max-width: 55em) {
+        display: none;
+      }
       .MuiInputBase-root {
         height: 25px;
         fieldset {
@@ -155,12 +172,23 @@
       .notificationButton {
         margin-right: 20px;
       }
+      .buttonMenuMobile {
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        color: map-get($theme-colors, "main-blue");
+        display: none;
+        @media all and (max-width: 55em) {
+          display: flex;
+        }
+      }
       .userAvatarButton {
         padding: 0;
         width: 32px;
         height: 32px;
         min-width: 32px;
-        margin: 0 25px 0 20px;
+        margin: 0 20px 0 20px;
         .userAvatar {
           width: 32px;
           height: 32px;
@@ -177,6 +205,20 @@
         flex-direction: column;
         padding: 30px 60px 30px 30px;
         width: 100%;
+        @media all and (max-width: 55em) {
+          display: none;
+        }
+        .closeButtonBox {
+          display: flex;
+          justify-content: flex-end;
+          margin: 0 0 40px 0;
+          button {
+            height: 24px;
+            width: 24px;
+            min-width: 24px;
+            color: map-get($theme-colors, "main-blue");
+          }
+        }
         .nav-link {
           text-decoration: none;
           @extend %text-main;
@@ -194,6 +236,183 @@
           justify-content: flex-start;
           border-radius: 0;
         }
+      }
+    }
+  }
+}
+
+.mobileMenuAuthHeaderContainer {
+  .MuiPaper-root {
+    padding: 20px;
+    max-width: 360px;
+    width: 100%;
+    .closeButtonBox {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 40px 0;
+      align-items: center;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "main-blue");
+      }
+      .languageField {
+        height: 25px;
+        width: 70px;
+        .MuiInputBase-root {
+          height: 25px;
+          fieldset {
+            display: none;
+          }
+          .MuiSelect-select {
+            @extend %text-main;
+            padding-top: 5px;
+            padding-bottom: 0;
+            color: map-get($theme-colors, "gray");
+          }
+        }
+      }
+    }
+    .nav-link {
+      text-decoration: none;
+      @extend %h2;
+      color: map-get($theme-colors, "black");
+      margin-top: 15px;
+    }
+    .nav-link.active {
+      color: map-get($theme-colors, "main-blue");
+    }
+    .itemAccordionMobileHeader {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      &::before {
+        display: none;
+      }
+      .itemAccordionSumMobileHeader {
+        padding: 0;
+        .MuiAccordionSummary-content {
+          p {
+            @extend %h2;
+          }
+        }
+      }
+      .accordionMobileDetailsBalance {
+        padding: 0;
+        .balanceBox {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          .balanceField {
+            max-width: 100%;
+            width: calc(100% - 99px);
+            .MuiInputBase-root.MuiInputBase-formControl {
+              height: 40px;
+              border-radius: 5px;
+              @extend %text-main;
+              padding: 0 10px 0 0;
+              input {
+                height: 40px;
+                padding: 0 10px;
+                color: map-get($theme-colors, "black");
+              }
+              .MuiInputAdornment-root {
+                color: map-get($theme-colors, "black");
+              }
+              fieldset {
+                border: solid 1px map-get($theme-colors, "gray");
+              }
+            }
+            .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+              border: none;
+              fieldset {
+                border: solid 2px map-get($theme-colors, "main-blue");
+              }
+            }
+          }
+          .currencyField {
+            margin: 0 20px 0 0;
+            order: -1;
+            .MuiInputBase-root {
+              height: 40px;
+              fieldset {
+                display: none;
+              }
+              .MuiSelect-select {
+                @extend %text-main;
+                padding-top: 5px;
+                padding-bottom: 0;
+                color: map-get($theme-colors, "gray");
+              }
+            }
+          }
+          .withdrawButton {
+            @extend %button-2;
+            text-transform: none;
+            border-radius: 100px;
+            padding: 10px 20px;
+            @extend %text-main;
+            margin: 20px 0 0 0;
+            width: 100%;
+          }
+        }
+      }
+      .accordionMobileDetailsLessons {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        a {
+          text-decoration: none;
+          @extend %h3;
+          color: map-get($theme-colors, "black");
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+.mobilePersonalMenuContainer {
+  display: none;
+  @media all and (max-width: 55em) {
+    display: flex;
+  }
+  .MuiPaper-root {
+    padding: 20px;
+    max-width: 360px;
+    width: 100%;
+    .closeButtonBox {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 40px 0;
+      button {
+        height: 24px;
+        width: 24px;
+        min-width: 24px;
+        color: map-get($theme-colors, "gray");
+      }
+    }
+    .personalMenuBox {
+      display: flex;
+      flex-direction: column;
+      .nav-link {
+        text-decoration: none;
+        @extend %h3;
+        color: map-get($theme-colors, "black");
+        margin-bottom: 20px;
+      }
+      .nav-link.active {
+        color: map-get($theme-colors, "main-blue");
+      }
+      .logOutButton {
+        @extend %h3;
+        color: map-get($theme-colors, "black");
+        padding: 0;
+        text-transform: none;
+        justify-content: flex-start;
+        border-radius: 0;
       }
     }
   }

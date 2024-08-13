@@ -3,17 +3,29 @@
 .mainPageContainer {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  @media all and (max-width: 78em) {
+    padding: 0 20px !important;
+  }
   .firstMainPageBox {
     display: flex;
     flex-direction: column;
     position: relative;
     margin: 130px 0 0 0;
     min-height: 430px;
+    @media all and (max-width: 50em) {
+      margin: 90px 0 0 0;
+    }
     .titleFirstBox {
       margin: 0 0 10px 0;
       @extend %h1;
       color: map-get($theme-colors, "main-blue");
       max-width: 599px;
+      @media all and (max-width: 65em) {
+        max-width: 450px;
+      }
+      @media all and (max-width: 55em) {
+        max-width: 100%;
+      }
       span {
         background-color: map-get($theme-colors, "main-blue");
         color: map-get($theme-colors, "white");
@@ -27,11 +39,24 @@
       right: 0;
       top: 0;
       max-width: 680px;
+      @media all and (max-width: 55em) {
+        position: relative;
+        margin: 0 auto 20px auto;
+      }
+      @media all and (max-width: 50em) {
+        max-width: 100%;
+      }
     }
     .titleWords {
       max-width: 599px;
       margin: 0 0 10px 0;
       @extend %text-main;
+      @media all and (max-width: 65em) {
+        max-width: 450px;
+      }
+      @media all and (max-width: 55em) {
+        max-width: 100%;
+      }
     }
     a {
       text-decoration: none;
@@ -43,10 +68,17 @@
       justify-content: center;
       @extend %text-main;
       border-radius: 100px;
+      @media all and (max-width: 55em) {
+        width: 100%;
+        padding: 10px 0;
+      }
     }
   }
   .secondMainPageBox {
     margin: 100px 0 0 0;
+    @media all and (max-width: 55em) {
+      margin: 50px 0 0 0;
+    }
     .title {
       margin: 0 0 20px 0;
       @extend %h1;
@@ -55,6 +87,9 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      @media all and (max-width: 55em) {
+        flex-direction: column;
+      }
       .learningBox {
         box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
         display: flex;
@@ -86,15 +121,32 @@
       .learningBox_1,
       .learningBox_4 {
         flex-basis: 51%;
+        @media all and (max-width: 73em) {
+          flex-basis: 48%;
+        }
+        @media all and (max-width: 55em) {
+          flex-basis: 100%;
+          margin: 0 0 10px 0;
+        }
       }
       .learningBox_2,
       .learningBox_3 {
         flex-basis: 39%;
+        @media all and (max-width: 55em) {
+          flex-basis: 100%;
+        }
+        @media all and (max-width: 55em) {
+          flex-basis: 100%;
+          margin: 0 0 10px 0;
+        }
       }
     }
   }
   .thirdMainPageBox {
     margin: 100px 0;
+    @media all and (max-width: 55em) {
+      margin: 40px 0 60px 0;
+    }
     .title {
       margin: 0 0 30px 0;
       @extend %h1;
@@ -103,10 +155,18 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      @media all and (max-width: 55em) {
+        flex-direction: column;
+        align-items: center;
+      }
       .howToLearnBox {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        @media all and (max-width: 55em) {
+          align-items: center;
+          width: 100%;
+        }
         .stepsBox {
           display: flex;
           flex-direction: row;
@@ -149,30 +209,79 @@
           align-items: center;
         }
       }
+      .howToLearnBox_1 {
+        .stepsPicturesBox {
+          @media all and (max-width: 55em) {
+            flex-direction: column;
+          }
+          .arrowPicture {
+            @media all and (max-width: 55em) {
+              transform: scaleX(-1) rotate(65deg);
+              margin-top: 40px;
+            }
+          }
+        }
+      }
       .howToLearnBox_2 {
         margin-top: 30px;
         width: 38%;
+        @media all and (max-width: 55em) {
+          width: 100%;
+        }
         .stepsPicturesBox {
           flex-direction: column;
           align-items: flex-start;
           width: 100%;
+          @media all and (max-width: 55em) {
+            align-items: center;
+          }
           .arrowPicture {
             transform: rotate(20deg);
             align-self: flex-end;
             margin-top: -20px;
+            @media all and (max-width: 55em) {
+              transform: scaleX(-1) rotate(65deg);
+              margin-top: 40px;
+              align-self: center;
+            }
           }
         }
       }
       .howToLearnBox_3 {
         order: 1;
+        @media all and (max-width: 70em) {
+          order: 0;
+          width: 100%;
+          justify-content: flex-end;
+          align-items: flex-end;
+        }
+        @media all and (max-width: 55em) {
+          align-items: center;
+          margin-top: 40px;
+        }
         .stepsBox {
           width: 100%;
           justify-content: center;
+          @media all and (max-width: 70em) {
+            justify-content: flex-end;
+          }
+          @media all and (max-width: 55em) {
+            justify-content: center;
+          }
         }
         .stepsPicturesBox {
+          @media all and (max-width: 55em) {
+            flex-direction: column;
+          }
           .arrowPicture {
             order: -1;
             margin-top: 80px;
+            @media all and (max-width: 55em) {
+              order: 0;
+              margin: 0;
+              transform: rotate(-65deg);
+              margin-top: 40px;
+            }
           }
         }
       }
@@ -180,6 +289,10 @@
         width: 50%;
         align-items: flex-end;
         margin: 60px 0 0 0;
+        @media all and (max-width: 55em) {
+          width: 100%;
+          align-items: center;
+        }
       }
     }
   }
