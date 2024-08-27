@@ -3,7 +3,7 @@ import { USER_TYPE } from "@axiosApi/axiosAPI";
 import { translate } from "@i18n";
 import { NavLink } from "react-router-dom";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
+//import CallOutlinedIcon from "@mui/icons-material/CallOutlined";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -21,10 +21,10 @@ const ProfileMenu = () => {
         <SettingsOutlinedIcon />
         {t("generalSettings")}
       </NavLink>
-      <NavLink to={"/profile/number"} className="nav-link phoneLink">
+      {/* <NavLink to={"/profile/number"} className="nav-link phoneLink">
         <CallOutlinedIcon />
         {t("changeNumber")}
-      </NavLink>
+      </NavLink> */}
       {!isStudent && (
         <NavLink to={"/profile/language"} className="nav-link">
           <LanguageOutlinedIcon />

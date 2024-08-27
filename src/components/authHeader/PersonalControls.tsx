@@ -92,9 +92,9 @@ const PersonalControls = () => {
           <NavLink to={"/profile/settings"} className="nav-link">
             {t("generalSettings")}
           </NavLink>
-          <NavLink to={"/profile/number"} className="nav-link">
+          {/*  <NavLink to={"/profile/number"} className="nav-link">
             {t("changePhone")}
-          </NavLink>
+          </NavLink> */}
           {!isStudent && (
             <NavLink to={"/profile/language"} className="nav-link">
               {t("languages")}
