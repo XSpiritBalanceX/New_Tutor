@@ -12,7 +12,7 @@ import CustomError from "@components/error/CustomError";
 import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
 import SettingTeacherSchedule from "@components/settingTeacherSchedule/SettingTeacherSchedule";
-import SettingNumber from "@components/settingNumber/SettingNumber";
+//import SettingNumber from "@components/settingNumber/SettingNumber";
 import SettingPassword from "@components/settingPassword/SettingPassword";
 import SettingPayments from "@components/settingPayments/SettingPayments";
 import "./ProfilePage.scss";
@@ -20,7 +20,7 @@ import "./ProfilePage.scss";
 type TProfileOptions = {
   settings: JSX.Element;
   language: JSX.Element;
-  number: JSX.Element;
+  /* number: JSX.Element; */
   schedule: JSX.Element;
   password: JSX.Element;
   payment: JSX.Element;
@@ -40,7 +40,7 @@ const ProfilePage = () => {
   const profileOptions: TProfileOptions = {
     settings: <ProfileSettings />,
     language: <SettingTeacherLanguages />,
-    number: <SettingNumber />,
+    /* number: <SettingNumber />, */
     schedule: <SettingTeacherSchedule />,
     password: <SettingPassword />,
     payment: <SettingPayments />,
