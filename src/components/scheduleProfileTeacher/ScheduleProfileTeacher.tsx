@@ -187,6 +187,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
           .map((_, index) => (
             <Box key={index} className="timeButtonBox">
               {schedule
+                .slice()
                 .sort((a, b) => {
                   return a.time_start < b.time_start ? -1 : a.time_start > b.time_start ? 1 : 0;
                 })

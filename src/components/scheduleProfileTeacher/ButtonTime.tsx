@@ -10,7 +10,7 @@ const ButtonTime = ({ id, name, value, cbHandleBookLessons, selectedLessons }: I
   const currentDate = moment();
 
   useEffect(() => {
-    if (currentDate.isAfter(moment(name, "YYYY-MM-DD")) && !currentDate.isSame(moment(name, "YYYY-MM-DD"), "day")) {
+    if (moment(`${name} ${value}`, "YYYY-MM-DD HH:mm").isBefore(currentDate)) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
