@@ -202,7 +202,8 @@
       "messageErrRequest": "An unexpected error occurred",
       "countryLabel": "Where are you from?",
       "chCountry": "Choose the country",
-      "addLanguageTeaching": "Add teaching language"
+      "addLanguageTeaching": "Add teaching language",
+      "typeCoast": "Enter price"
     },
     "errorPage": {
       "title": "Page not found",

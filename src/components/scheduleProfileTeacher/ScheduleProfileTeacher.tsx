@@ -97,6 +97,8 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
 
   const handleCloseModal = () => {
     setIsOpenModal(false);
+    setSelectedLessons([]);
+    setSelectedLanguage(null);
   };
 
   const handleBookLessons = () => {
@@ -140,7 +142,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
           {languages.map((el, ind) => (
             <FormControlLabel
               key={ind}
-              control={<Radio value={el.language} />}
+              control={<Radio value={el.language} checked={selectedLanguage === el.language.toString()} />}
               label={language[locale as keyof TLanguages][el.language]}
             />
           ))}

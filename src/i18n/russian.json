@@ -202,7 +202,8 @@
       "messageErrRequest": "Возникла непредвиденная ошибка",
       "countryLabel": "Откуда вы?",
       "chCountry": "Выберите страну",
-      "addLanguageTeaching": "Добавить язык преподавания"
+      "addLanguageTeaching": "Добавить язык преподавания",
+      "typeCoast": "Введите стоимость"
     },
     "errorPage": {
       "title": "Страница не найдена",
