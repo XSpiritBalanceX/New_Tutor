@@ -183,3 +183,80 @@
     }
   }
 }
+
+.cookiesModalBox {
+  max-width: 1200px;
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: map-get($theme-colors, "white-blue");
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "header");
+  @media all and (max-width: 78em) {
+    width: calc(100% - 40px);
+  }
+  @media all and (max-width: 58em) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .textBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 525px;
+    @extend %text-main;
+    @media all and (max-width: 40em) {
+      max-width: 100%;
+    }
+    p {
+      margin: 20px 0 20px 20px;
+      @media all and (max-width: 40em) {
+        margin: 20px 10px 15px 10px;
+      }
+      a {
+        text-decoration: none;
+        color: map-get($theme-colors, "main-blue");
+      }
+    }
+  }
+  .buttonsBox {
+    @media all and (max-width: 58em) {
+      margin: 0 20px 20px 20px;
+    }
+    @media all and (max-width: 40em) {
+      display: flex;
+      flex-direction: column;
+      margin: 0 10px 20px 10px;
+      width: calc(100% - 20px);
+    }
+    button {
+      border-radius: 100px;
+      text-transform: none;
+      @extend %text-main;
+      padding: 10px 20px;
+      @media all and (max-width: 40em) {
+        padding: 10px 0;
+      }
+    }
+    .acceptButton {
+      @extend %button-1;
+    }
+    .rejectButton {
+      @extend %button-2;
+      background-color: transparent;
+      margin: 0 20px;
+      @media all and (max-width: 58em) {
+        margin: 0 0 0 20px;
+      }
+      @media all and (max-width: 40em) {
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+}
