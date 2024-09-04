@@ -122,7 +122,11 @@ const UserNotifications = ({ cbHandleCloseNotification }: IUserNotificationsProp
   };
 
   const handleMarkNotification = () => {
-    console.log("mark as read");
+    console.log("mark as read, server request");
+    const newData = mockData.map((el) => {
+      return { ...el, is_read: true };
+    });
+    setNotifications(newData);
   };
 
   const handleSeeAll = () => {
