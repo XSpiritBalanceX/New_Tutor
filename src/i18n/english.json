@@ -202,7 +202,8 @@
       "messageErrRequest": "An unexpected error occurred",
       "countryLabel": "Where are you from?",
       "chCountry": "Choose the country",
-      "addLanguageTeaching": "Add teaching language"
+      "addLanguageTeaching": "Add teaching language",
+      "typeCoast": "Enter price"
     },
     "errorPage": {
       "title": "Page not found",
@@ -222,6 +223,12 @@
         "youBookedLessons": "You have booked a lesson",
         "youBookedWithTeacher": "You have booked lessons with teacher {{name}}",
         "onLesson": "on {{date}}"
+      },
+      "cookies": {
+        "text": "We use cookies to improve your website experience.  You can find out more by going to ",
+        "link": "link",
+        "acceptAll": "Accept all",
+        "rejectAll": "Reject all"
       }
     },
     "settingNumberPage": {

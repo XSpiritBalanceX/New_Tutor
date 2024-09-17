@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Box, TextField, MenuItem, Pagination, Button } from "@mui/material";
 import { translate } from "@i18n";
 import { NavLink, useParams, useNavigate } from "react-router-dom";
@@ -22,11 +22,20 @@ const SearchPage = () => {
   const [itemPerPage] = useState(4);
   const [sortFilter, setSortFilter] = useState("");
   const [isOpenMobileFilter, setIsOpenMobileFilter] = useState(false);
+  const [pagesPagination, setPagesPagination] = useState(0);
 
   const { data, isLoading, error, isFetching } = useGetTeachersListQuery({
     currentPage: page as string,
     countTeachers: itemPerPage,
   });
+
+  useEffect(() => {
+    if (data) {
+      const pages = Math.ceil(data.all_items_count / itemPerPage);
+      pages > 1 && setPagesPagination(pages);
+    }
+    // eslint-disable-next-line
+  }, [data]);
 
   const sortBy = ["popular", "cheap", "expensive", "new"];
 
@@ -81,14 +90,16 @@ const SearchPage = () => {
                 {data.items.map((el, ind) => (
                   <CardTeacher key={ind} info_teacher={el} />
                 ))}
-                <Box className="paginationBox">
-                  <Pagination
-                    count={data.count}
-                    page={Number(page)}
-                    onChange={handleChangePage}
-                    className="searchPagination"
-                  />
-                </Box>
+                {pagesPagination > 0 && (
+                  <Box className="paginationBox">
+                    <Pagination
+                      count={pagesPagination}
+                      page={Number(page)}
+                      onChange={handleChangePage}
+                      className="searchPagination"
+                    />
+                  </Box>
+                )}
               </Box>
             )}
           </Box>

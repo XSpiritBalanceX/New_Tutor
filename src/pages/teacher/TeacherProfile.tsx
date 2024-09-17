@@ -108,12 +108,16 @@ const TeacherProfile = ({ teacher_information, teacher_languages }: ITeacherProf
           </Box>
         </Box>
       </Box>
-      <Box className="teacherSkillsBox">
-        <p className="titleSkills">{t("professionalSkills")}</p>
-        <Box className="descriptionsBox">
-          {teacher_languages.length > 0 && teacher_languages.map((el, ind) => <p key={ind}>{el.description}</p>)}
+      {teacher_languages.length > 0 && (
+        <Box className="teacherSkillsBox">
+          <p className="titleSkills">{t("professionalSkills")}</p>
+          <Box className="descriptionsBox">
+            {teacher_languages.map((el, ind) => (
+              <p key={ind}>{el.description}</p>
+            ))}
+          </Box>
         </Box>
-      </Box>
+      )}
     </Box>
   );
 };

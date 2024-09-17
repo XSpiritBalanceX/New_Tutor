@@ -23,7 +23,7 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
 
   const [isFullDescription, setIsFullDescription] = useState(false);
 
-  const firstLanguage = info_teacher.languages[0];
+  const firstLanguage = info_teacher.languages[0] ?? "";
 
   const lowLevel = [0, 1, 2];
   const averageLevel = [3, 4];
@@ -69,7 +69,7 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
             label={t("certificatedTeacher")}
             className="certificatedTeacherBox"
           />
-          {info_teacher.languages.length && (
+          {info_teacher.languages && info_teacher.languages.length > 0 && (
             <>
               <p className="teacherLevelLanguage">
                 {t("levelOfLanguage", {
@@ -105,7 +105,7 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
           </Button>
         </Box>
       </Box>
-      {info_teacher.languages.length && (
+      {info_teacher.languages && info_teacher.languages.length > 0 && (
         <Box className="languageDescriptionBox">
           {isFullDescription ? (
             <p className="descriptionText">{firstLanguage.description}</p>

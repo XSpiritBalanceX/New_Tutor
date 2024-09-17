@@ -202,7 +202,8 @@
       "messageErrRequest": "Возникла непредвиденная ошибка",
       "countryLabel": "Откуда вы?",
       "chCountry": "Выберите страну",
-      "addLanguageTeaching": "Добавить язык преподавания"
+      "addLanguageTeaching": "Добавить язык преподавания",
+      "typeCoast": "Введите стоимость"
     },
     "errorPage": {
       "title": "Страница не найдена",
@@ -222,6 +223,12 @@
         "youBookedLessons": "Вы записались на урок",
         "youBookedWithTeacher": "Вы записались на уроки с преподавателем {{name}}",
         "onLesson": "на {{date}}"
+      },
+      "cookies": {
+        "text": "Мы используем файлы cookie для улучшения работы сайта.  Узнать больше вы можете перейдя по ",
+        "link": "ссылке",
+        "acceptAll": "Принять все",
+        "rejectAll": "Отклонить все"
       }
     },
     "settingNumberPage": {

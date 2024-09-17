@@ -68,17 +68,17 @@ const PersonalControls = () => {
 
   return (
     <Box className="personalControlsBox">
-      <Button type="button" className="notificationButton">
+      <Button type="button" className="notificationButton" onClick={handleOpenNotifications}>
         <Badge badgeContent={4} color="error">
           <NotificationsOutlinedIcon />
         </Badge>
       </Button>
-      <Button type="button" className="mailButton" onClick={handleOpenNotifications}>
+      {isOpenNotifications && <UserNotifications cbHandleCloseNotification={handleCloseNotifications} />}
+      <Button type="button" className="mailButton">
         <Badge badgeContent={2} color="error">
           <MailOutlineOutlinedIcon />
         </Badge>
       </Button>
-      {isOpenNotifications && <UserNotifications cbHandleCloseNotification={handleCloseNotifications} />}
       <Button type="button" className="userAvatarButton" onClick={handleOpenPersonalMenu}>
         <Avatar src={user} className="userAvatar" />
       </Button>

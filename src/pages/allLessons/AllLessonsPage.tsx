@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Box, Pagination } from "@mui/material";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
@@ -24,9 +24,18 @@ const AllLessonsPage = () => {
   const [itemPerPage] = useState(5);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedLesson, setSelectedLesson] = useState<ILesson | null>(null);
+  const [pagesPagination, setPagesPagination] = useState(0);
 
   const { data, error, isFetching } = useGetLessonsQuery({ countLessons: itemPerPage, currentPage: Number(page) });
   const [, { isLoading }] = useCancelLessonMutation();
+
+  useEffect(() => {
+    if (data) {
+      const pages = Math.ceil(data.all_items_count / itemPerPage);
+      pages > 1 && setPagesPagination(pages);
+    }
+    // eslint-disable-next-line
+  }, [data]);
 
   const handleChangePage = (_: React.ChangeEvent<unknown>, value: number) => {
     navigate(`/lessons/${value}`);
@@ -75,14 +84,16 @@ const AllLessonsPage = () => {
               ))}
             </Box>
           )}
-          <Box className="paginationBox">
-            <Pagination
-              count={data.count}
-              page={Number(page)}
-              onChange={handleChangePage}
-              className="searchPagination"
-            />
-          </Box>
+          {pagesPagination > 0 && (
+            <Box className="paginationBox">
+              <Pagination
+                count={pagesPagination}
+                page={Number(page)}
+                onChange={handleChangePage}
+                className="searchPagination"
+              />
+            </Box>
+          )}
         </>
       )}
     </Container>

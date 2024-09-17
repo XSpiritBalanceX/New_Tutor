@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Box } from "@mui/material";
 import ScrollToTop from "@components/scrollToTop/ScrollToTop";
 import RouterComponent from "@components/router/RouterComponent";
 import { ToastContainer, Zoom } from "react-toastify";
@@ -11,6 +12,7 @@ import Footer from "@components/footer/Footer";
 import moment from "moment";
 import { axiosAPI } from "@axiosApi/axiosAPI";
 import ErrorBoundary from "@components/error/ErrorBoundary";
+import CookiesModal from "@components/modal/CookiesModal";
 import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -48,18 +50,21 @@ const App = () => {
 
   return (
     <ErrorBoundary>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        theme="light"
-        className={"notificationToast"}
-        toastClassName={"toastBody"}
-        progressClassName={"toastProgress"}
-        transition={Zoom}
-      />
-      <ScrollToTop />
-      <WrapperHeader />
-      <RouterComponent />
+      <Box position={"relative"}>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          theme="light"
+          className={"notificationToast"}
+          toastClassName={"toastBody"}
+          progressClassName={"toastProgress"}
+          transition={Zoom}
+        />
+        <ScrollToTop />
+        <WrapperHeader />
+        <RouterComponent />
+        <CookiesModal />
+      </Box>
       <Footer />
     </ErrorBoundary>
   );
