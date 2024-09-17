@@ -5,6 +5,7 @@ import { LS_TOKEN_KEY } from "chat-frontend-library";
 type MainState = {
   locale: string;
   isLogin: boolean;
+  currentOpponentID: string;
 };
 
 const mockChatToken =
@@ -16,6 +17,7 @@ const tokens = localStorage.getItem("tutor_access_token") && localStorage.getIte
 const initialState: MainState = {
   locale: languageCurrent ? languageCurrent : navigator.language === "ru" ? "ru" : "en",
   isLogin: tokens ? true : false,
+  currentOpponentID: "",
 };
 
 const tutorSlice = createSlice({
@@ -55,9 +57,12 @@ const tutorSlice = createSlice({
         localStorage.removeItem(LS_TOKEN_KEY);
       }
     },
+    setOpponentId(state, action: PayloadAction<string>) {
+      state.currentOpponentID = action.payload;
+    },
   },
 });
 
-export const { changeLocale, loginUser } = tutorSlice.actions;
+export const { changeLocale, loginUser, setOpponentId } = tutorSlice.actions;
 
 export default tutorSlice.reducer;
