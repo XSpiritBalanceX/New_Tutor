@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { BASE_URL } from "@axiosApi/axiosAPI";
+import { BASE_URL } from "@utils/appConsts";
 import { IToken } from "@axiosApi/TypesAPI";
 
 export const refreshToken = async (): Promise<string> => {

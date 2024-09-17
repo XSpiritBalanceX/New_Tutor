@@ -9,7 +9,7 @@ import { createSchedule } from "@api/teacher/createSchedule";
 import { refreshToken } from "@api/auth/refreshToken";
 import { jwtDecode } from "jwt-decode";
 import { IToken } from "@axiosApi/TypesAPI";
-import { REGISTER_STATE, TOKEN_KEY, TOKEN_EXPIRES_KEY } from "@axiosApi/axiosAPI";
+import { REGISTER_STATE, TOKEN_KEY, TOKEN_EXPIRES_KEY } from "@utils/appConsts";
 import Loader from "@components/loader/Loader";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@store/hook";

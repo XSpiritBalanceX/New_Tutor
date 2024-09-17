@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Button, InputAdornment, MenuItem, TextField } from "@mui/material";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import { translate } from "@i18n";
 import "./SettingPayments.scss";
 

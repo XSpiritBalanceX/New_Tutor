@@ -1,5 +1,5 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL, TOKEN_KEY } from "@axiosApi/axiosAPI";
+import { BASE_URL, TOKEN_KEY } from "@utils/appConsts";
 import { refreshToken } from "@api/auth/refreshToken";
 import { BaseQueryFn, FetchBaseQueryMeta, FetchBaseQueryError, FetchArgs } from "@reduxjs/toolkit/query";
 import moment from "moment";

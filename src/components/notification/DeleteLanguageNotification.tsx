@@ -2,7 +2,7 @@ import { Modal, Button, Box } from "@mui/material";
 import { translate } from "@i18n";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import { toast } from "react-toastify";
 import { language, TLanguages } from "@utils/listOfLanguagesLevels";
 import { useAppSelector } from "@store/hook";

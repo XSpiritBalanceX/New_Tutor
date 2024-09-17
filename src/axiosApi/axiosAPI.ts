@@ -1,20 +1,12 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import { jwtDecode } from "jwt-decode";
 import moment from "moment";
+import { BASE_URL, TOKEN_KEY, REFRESH_TOKEN_KEY, TOKEN_EXPIRES_KEY, USER_TYPE } from "@utils/appConsts";
 
 interface IToken {
   user_type: number;
   exp: number;
 }
-
-export const BASE_URL = "http://212.193.48.254:8080";
-export const HOST = "212.193.48.254";
-export const TOKEN_KEY = "tutor_access_token";
-export const REFRESH_TOKEN_KEY = "tutor_refresh_token";
-export const TOKEN_EXPIRES_KEY = "tutor_tokenExpires";
-export const LOGIN_KEY = "tutor_login";
-export const USER_TYPE = "tutor_user_type";
-export const REGISTER_STATE = "tutor_register_state";
 
 class AxiosAPI {
   //@ts-ignore

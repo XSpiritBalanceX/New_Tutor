@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, TextField, InputAdornment, MenuItem, Button } from "@mui/material";
 import { translate } from "@i18n";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import "./AuthHeader.scss";
 
 const Balance = () => {

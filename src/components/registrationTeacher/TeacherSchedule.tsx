@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Box } from "@mui/material";
 import Schedule from "@components/schedule/Schedule";
-import { REGISTER_STATE } from "@axiosApi/axiosAPI";
+import { REGISTER_STATE } from "@utils/appConsts";
 import { useNavigate } from "react-router-dom";
 import "./TeacherForm.scss";
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import Schedule from "@components/schedule/Schedule";
 import "./SettingTeacherSchedule.scss";
 

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import UserAvatar from "@components/avatar/UserAvatar";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import ProfileStudent from "@components/profileStudent/ProfileStudent";
 import ProfileTeacher from "@components/profileTeacher/ProfileTeacher";
 import { useAppSelector } from "@store/hook";

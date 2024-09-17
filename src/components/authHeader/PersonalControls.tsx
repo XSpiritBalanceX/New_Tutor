@@ -11,7 +11,7 @@ import UserNotifications from "@components/userNotifications/UserNotifications";
 import MenuIcon from "@mui/icons-material/Menu";
 import MobileAuthMenu from "./MobileAuthMenu";
 import MobilePersonalMenu from "./MobilePersonalMenu";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import "./AuthHeader.scss";
 
 const PersonalControls = () => {

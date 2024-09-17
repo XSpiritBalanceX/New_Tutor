@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useAppDispatch } from "@store/hook";
 import { loginUser } from "@store/tutorSlice";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import "./AuthHeader.scss";
 
 interface IMobilePersonalMenuProps {

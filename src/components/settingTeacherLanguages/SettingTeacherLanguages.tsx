@@ -10,7 +10,7 @@ import * as Yup from "yup";
 import DeleteLanguageNotification from "@components/notification/DeleteLanguageNotification";
 import { ITeacherLanguageSettings, ITeacherLanguage, TNewLanguage, TUpdateLanguage } from "./TypesSettingLanguages";
 import AddIcon from "@mui/icons-material/Add";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import { useNavigate } from "react-router-dom";
 import { useUpdateTeacherLanguagesMutation, useGetProfileQuery } from "@store/requestApi/profileApi";
 import { toast } from "react-toastify";

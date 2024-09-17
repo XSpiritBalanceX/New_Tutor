@@ -1,7 +1,7 @@
 import { Box, Button, Avatar } from "@mui/material";
 import { translate } from "@i18n";
 import { ILesson } from "@store/requestApi/lessonsApi";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import moment from "moment";
 import user from "@assets/user.svg";
 import { useNavigate } from "react-router-dom";

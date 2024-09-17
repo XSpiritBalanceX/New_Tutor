@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import { translate } from "@i18n";
 import { NavLink } from "react-router-dom";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
