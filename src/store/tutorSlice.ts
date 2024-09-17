@@ -6,6 +6,7 @@ type MainState = {
   locale: string;
   isLogin: boolean;
   currentOpponentID: string;
+  isOpenChat: boolean;
 };
 
 const mockChatToken =
@@ -18,6 +19,7 @@ const initialState: MainState = {
   locale: languageCurrent ? languageCurrent : navigator.language === "ru" ? "ru" : "en",
   isLogin: tokens ? true : false,
   currentOpponentID: "",
+  isOpenChat: false,
 };
 
 const tutorSlice = createSlice({
@@ -60,9 +62,12 @@ const tutorSlice = createSlice({
     setOpponentId(state, action: PayloadAction<string>) {
       state.currentOpponentID = action.payload;
     },
+    changeOpenChat(state, action: PayloadAction<boolean>) {
+      state.isOpenChat = action.payload;
+    },
   },
 });
 
-export const { changeLocale, loginUser, setOpponentId } = tutorSlice.actions;
+export const { changeLocale, loginUser, setOpponentId, changeOpenChat } = tutorSlice.actions;
 
 export default tutorSlice.reducer;

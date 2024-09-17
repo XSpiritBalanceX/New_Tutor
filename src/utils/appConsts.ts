@@ -6,4 +6,3 @@ export const TOKEN_EXPIRES_KEY = "tutor_tokenExpires";
 export const LOGIN_KEY = "tutor_login";
 export const USER_TYPE = "tutor_user_type";
 export const REGISTER_STATE = "tutor_register_state";
-export const IS_OPEN_CHAT = "tutor_open_chat";

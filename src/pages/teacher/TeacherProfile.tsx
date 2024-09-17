@@ -4,8 +4,9 @@ import { translate } from "@i18n";
 import user from "@assets/user.svg";
 import StarIcon from "@mui/icons-material/Star";
 import { languageInCases, TLanguages, level, TLevel } from "@utils/listOfLanguagesLevels";
-import { useAppSelector } from "@store/hook";
+import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import "./TeacherPage.scss";
 
 interface ITeacherProfileProps {
@@ -27,6 +28,7 @@ interface ITeacherProfileProps {
 
 const TeacherProfile = ({ teacher_information, teacher_languages }: ITeacherProfileProps) => {
   const { t } = translate("translate", { keyPrefix: "teacherPage" });
+  const dispatch = useAppDispatch();
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
 
@@ -48,6 +50,9 @@ const TeacherProfile = ({ teacher_information, teacher_languages }: ITeacherProf
 
   const handleWriteTeacher = () => {
     console.log("write", teacher_information.id);
+    const mockTeacherID = "e98da685-3e77-4394-ba55-81176a7faedb";
+    dispatch(setOpponentId(mockTeacherID));
+    dispatch(changeOpenChat(true));
   };
 
   return (

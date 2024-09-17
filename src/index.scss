@@ -3,6 +3,13 @@
 body {
   margin: 0;
   background-color: map-get($theme-colors, "white");
+  overflow: auto;
+}
+
+body.stopScroll {
+  @media all and (max-width: 40em) {
+    overflow: hidden;
+  }
 }
 
 .notificationToast {
@@ -30,6 +37,87 @@ body {
       width: 6px;
       transform: none !important;
       opacity: 1 !important;
+    }
+  }
+}
+
+.tutorChatBox {
+  width: 100%;
+  height: 100%;
+  max-width: 440px;
+  max-height: 550px;
+  z-index: 20;
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: map-get($theme-colors, "gray-2");
+  }
+  ::-webkit-scrollbar-thumb {
+    background: map-get($theme-colors, "main-blue");
+  }
+  @media all and (max-width: 40em) {
+    max-width: 100%;
+    max-height: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .chatWrapper {
+    height: 100%;
+    .tutorChatHeader {
+      background-color: map-get($theme-colors, "white");
+      .extendedChatHeader {
+        padding: 10px 0 0 0;
+        .userAndStatusWrapper {
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+      .tutorChatMessages {
+        background-color: map-get($theme-colors, "white-blue");
+        .chatMessageWrapper {
+          position: relative;
+          width: 100%;
+          justify-content: flex-end;
+          .message {
+            background-color: map-get($theme-colors, "main-blue");
+            color: map-get($theme-colors, "white");
+          }
+          .contextMenuWrapper {
+            position: absolute;
+            right: 10px !important;
+            top: 20px !important;
+            left: auto !important;
+            padding: 0;
+            max-width: 40px;
+          }
+        }
+        .chatMessageWrapper.chatLeft {
+          position: relative;
+          justify-content: flex-start;
+          .message {
+            background-color: map-get($theme-colors, "white");
+            color: map-get($theme-colors, "black");
+          }
+          .contextMenuWrapper {
+            position: absolute;
+            top: 20px !important;
+            left: 20px !important;
+            right: 0 !important;
+          }
+        }
+      }
+    }
+    .chatInputWrapper {
+      padding: 12px;
     }
   }
 }
