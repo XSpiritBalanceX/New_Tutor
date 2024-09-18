@@ -4,6 +4,7 @@ body {
   margin: 0;
   background-color: map-get($theme-colors, "white");
   overflow: auto;
+  overflow-x: hidden;
 }
 
 body.stopScroll {

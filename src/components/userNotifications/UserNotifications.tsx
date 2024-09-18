@@ -5,6 +5,7 @@ import { translate } from "@i18n";
 import user from "@assets/user.svg";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import moment from "moment";
+import "animate.css";
 import "./UserNotifications.scss";
 
 interface IUserNotificationsProps {
@@ -134,7 +135,7 @@ const UserNotifications = ({ cbHandleCloseNotification }: IUserNotificationsProp
   };
 
   return (
-    <Box className="userNotificationsBox">
+    <Box className="userNotificationsBox animate__animated animate__slideInRight">
       <Box className="firstRowNotifications">
         <p>{t("notifications")}</p>
         <Button type="button" onClick={handleCloseNotifications}>

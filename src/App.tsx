@@ -17,6 +17,7 @@ import { Chat, LS_TOKEN_KEY } from "chat-frontend-library";
 import { AxiosError } from "axios";
 import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
 import "./index.scss";
 
 axiosAPI.setGetItem((key) => localStorage.getItem(key));
@@ -102,7 +103,7 @@ const App = () => {
         <WrapperHeader />
         <RouterComponent />
         {isOpenChat && (
-          <Box className="tutorChatBox">
+          <Box className="tutorChatBox animate__animated animate__slideInUp">
             <Chat
               opponent_id={currentOpponentId}
               user_locale={locale}
