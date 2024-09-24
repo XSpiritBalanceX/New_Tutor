@@ -520,7 +520,7 @@
     },
     "videoLessonPage": {
       "videoLesson": "Video lesson",
-      "timeToLesson": "{{time}} left until class"
+      "timeToLesson": "Left until lesson: {{day}}d {{hour}}h {{min}}min {{sec}}sec"
     }
   }
 }

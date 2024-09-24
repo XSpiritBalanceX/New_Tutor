@@ -520,7 +520,7 @@
     },
     "videoLessonPage": {
       "videoLesson": "Видеоурок",
-      "timeToLesson": "До урока осталось: {{time}}"
+      "timeToLesson": "До урока осталось: {{day}}д {{hour}}ч {{min}}мин {{sec}}сек"
     }
   }
 }
