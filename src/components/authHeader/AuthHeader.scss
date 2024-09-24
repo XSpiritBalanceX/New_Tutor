@@ -33,30 +33,6 @@
         flex-direction: row;
         align-items: center;
         position: relative;
-        .buttonLesson {
-          text-transform: none;
-          @extend %text-main;
-          margin-right: 20px;
-          padding: 0;
-          color: map-get($theme-colors, "black");
-        }
-        .menuLessonsBox {
-          position: absolute;
-          left: 0;
-          top: 30px;
-          display: flex;
-          flex-direction: column;
-          padding: 30px 100px 30px 30px;
-          z-index: 1;
-          background-color: map-get($theme-colors, "white");
-          box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
-          a {
-            text-decoration: none;
-            @extend %text-main;
-            color: map-get($theme-colors, "black");
-            margin-bottom: 6px;
-          }
-        }
         .nav-link {
           text-decoration: none;
           @extend %text-main;

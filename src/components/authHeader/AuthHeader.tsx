@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Button, TextField, MenuItem } from "@mui/material";
+import { Box, TextField, MenuItem } from "@mui/material";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "@assets/logo.svg";
 import { translate } from "@i18n";
@@ -7,8 +7,6 @@ import * as tutorSelectors from "@store/selectors";
 import { useAppSelector, useAppDispatch } from "@store/hook";
 import { changeLocale } from "@store/tutorSlice";
 import Balance from "./Balance";
-import classNames from "classnames";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PersonalControls from "./PersonalControls";
 import { USER_TYPE } from "@utils/appConsts";
 import "./AuthHeader.scss";
@@ -45,14 +43,6 @@ const AuthHeader = () => {
     dispatch(changeLocale(e.target.value));
   };
 
-  const handleOpenMenuLessons = () => {
-    setIsOpenLessonMenu(!isOpenLessonMenu);
-  };
-
-  const classBoxButtonLesson: string = classNames("buttonLesson", {
-    openMenu: isOpenLessonMenu,
-  });
-
   return (
     <Box className="authHeaderContainer">
       <Box className="firstColHeader">
@@ -62,16 +52,9 @@ const AuthHeader = () => {
         <Box className="balanceLinksBox">
           <Balance />
           <Box className="linksAuthHeaderBox">
-            <Button type="button" onClick={handleOpenMenuLessons} className={classBoxButtonLesson}>
+            <NavLink to={"/lessons/1"} className="nav-link">
               {t("myLessons")}
-              <ExpandMoreIcon />
-            </Button>
-            {isOpenLessonMenu && (
-              <Box className="menuLessonsBox">
-                <NavLink to={"/lessons/1"}>{t("allLessons")}</NavLink>
-                <NavLink to={"/"}>{t("videoLesson")}</NavLink>
-              </Box>
-            )}
+            </NavLink>
             {isStudent && (
               <NavLink to={"/search/1"} className="nav-link">
                 {t("findTeacher")}

@@ -16,6 +16,7 @@ import ReviewPage from "@pages/review/ReviewPage";
 import TermsPage from "@pages/terms/TermsPage";
 import PolicyPage from "@pages/policy/PolicyPage";
 import ResetPasswordPage from "@pages/resetPassword/ResetPasswordPage";
+import VideoLessonPage from "@pages/videoLesson/VideoLessonPage";
 
 const RouterComponent = () => {
   const unprotectedRoutes = [
@@ -43,6 +44,7 @@ const RouterComponent = () => {
     { path: "/student/:id", element: <StudentPage /> },
     { path: "/invitation", element: <InviteFriendPage /> },
     { path: "/review", element: <ReviewPage /> },
+    { path: "/video_lesson/:room_id/:lesson_time", element: <VideoLessonPage /> },
   ];
 
   return (
