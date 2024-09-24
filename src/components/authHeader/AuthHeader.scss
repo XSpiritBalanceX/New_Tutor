@@ -204,7 +204,7 @@
         display: flex;
         flex-direction: column;
         padding: 30px 60px 30px 30px;
-        width: 100%;
+        width: 260px;
         @media all and (max-width: 55em) {
           display: none;
         }
@@ -235,6 +235,93 @@
           text-transform: none;
           justify-content: flex-start;
           border-radius: 0;
+        }
+      }
+      .tutorChatListWrapper {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        z-index: 2;
+        width: 100%;
+        max-width: 440px;
+        width: 440px;
+        height: 100%;
+        max-height: 400px;
+        min-height: 400px;
+        background-color: map-get($theme-colors, "white");
+        box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+        overflow-y: auto;
+        @media all and (max-width: 40em) {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          max-width: 100%;
+          max-height: 100%;
+        }
+        .wrapperChatList {
+          height: 100%;
+          padding-top: 24px;
+        }
+        .activeSectionWrapper.tutorChatList {
+          height: 100%;
+          max-height: 375px;
+          min-height: 375px;
+          background-color: map-get($theme-colors, "white");
+          overflow-y: auto;
+          .activeSectionInner {
+            padding: 0 20px;
+            .activeSectionTop {
+              div:first-child {
+                display: none;
+              }
+              .title {
+                text-align: start;
+                width: 10%;
+                @extend %h2;
+              }
+            }
+            .searchBar {
+              border: solid 1px map-get($theme-colors, "gray");
+              border-radius: 5px;
+              .inputBase {
+                height: 40px;
+                border-radius: 5px;
+                @extend %text-main;
+              }
+            }
+          }
+          .chatsList {
+            .activeChatUserWrapper.activeChat {
+              background-color: map-get($theme-colors, "main-blue");
+              position: relative;
+              .contextMenuWrapper {
+                left: 80px !important;
+                top: 30px !important;
+              }
+            }
+            .avatar {
+              width: 50px;
+              height: 50px;
+            }
+            .chatMessage {
+              .topSection {
+                .fromUser {
+                  @extend %text-main;
+                }
+                .messageStatusAndTime {
+                  @extend %text-small;
+                  color: map-get($theme-colors, "gray");
+                }
+              }
+              .lastMessageSection {
+                @extend %text-small;
+                color: map-get($theme-colors, "gray");
+              }
+            }
+          }
         }
       }
     }

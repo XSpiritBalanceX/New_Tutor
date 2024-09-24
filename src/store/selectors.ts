@@ -3,6 +3,10 @@ import { IProfileInformation, IUserInformation, TTeacherLanguage, ISchedule } fr
 
 export const localeSelect = (state: RootState) => state.tutor.locale;
 
+export const currentOpponentIDSelect = (state: RootState) => state.tutor.currentOpponentID;
+
+export const isOpenChatSelect = (state: RootState) => state.tutor.isOpenChat;
+
 export const isLoginSelect = (state: RootState) => state.tutor.isLogin;
 
 export const studentInformationSelect = (state: RootState) =>

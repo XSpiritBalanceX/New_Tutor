@@ -9,7 +9,7 @@ import { IStudentFormInformation } from "./TypesStudentForm";
 import StudentRow from "@components/studentRow/StudentRow";
 import AddIcon from "@mui/icons-material/Add";
 import UserAvatar from "@components/avatar/UserAvatar";
-import { USER_TYPE, REGISTER_STATE } from "@axiosApi/axiosAPI";
+import { USER_TYPE, REGISTER_STATE } from "@utils/appConsts";
 import { useNavigate } from "react-router-dom";
 import { createStudentLanguages } from "@api/student/createStudentLanguages";
 import { toast } from "react-toastify";

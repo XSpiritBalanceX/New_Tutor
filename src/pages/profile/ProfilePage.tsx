@@ -7,7 +7,7 @@ import ProfileMenu from "./ProfileMenu";
 import ProfileSettings from "@components/profileSettings/ProfileSettings";
 import { useGetProfileQuery } from "@store/requestApi/profileApi";
 import Loader from "@components/loader/Loader";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import CustomError from "@components/error/CustomError";
 import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";

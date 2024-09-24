@@ -4,8 +4,9 @@ import { translate } from "@i18n";
 import { ITeacherInfo } from "@store/requestApi/searchApi";
 import user from "@assets/user.svg";
 import { languageInCases, TLanguages, level, TLevel } from "@utils/listOfLanguagesLevels";
-import { useAppSelector } from "@store/hook";
+import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import StarIcon from "@mui/icons-material/Star";
 import { useNavigate } from "react-router-dom";
 import "./CardTeacher.scss";
@@ -16,6 +17,7 @@ interface ICardTeacherProps {
 
 const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
   const { t } = translate("translate", { keyPrefix: "searchPage" });
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
@@ -31,7 +33,10 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
   const shortDescription = info_teacher.languages.length ? info_teacher.languages[0].description.slice(0, 125) : "";
 
   const handleWrite = () => {
-    console.log("write");
+    console.log("write", info_teacher.id);
+    const mockTeacherID = "e98da685-3e77-4394-ba55-81176a7faedb";
+    dispatch(setOpponentId(mockTeacherID));
+    dispatch(changeOpenChat(true));
   };
 
   const handleFullShortDescription = () => {

@@ -1,10 +1,12 @@
 import { Box, Button, Avatar } from "@mui/material";
 import { translate } from "@i18n";
 import { ILesson } from "@store/requestApi/lessonsApi";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import moment from "moment";
 import user from "@assets/user.svg";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "@store/hook";
+import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import "./CardLesson.scss";
 
 interface ICardLessonProps {
@@ -15,6 +17,8 @@ interface ICardLessonProps {
 const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
+  const dispatch = useAppDispatch();
+
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const navigate = useNavigate();
@@ -24,7 +28,10 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
   };
 
   const handleOpenChat = () => {
-    console.log("open chat");
+    console.log("open chat", lesson_information.teacher_id);
+    const mockTeacherID = "e98da685-3e77-4394-ba55-81176a7faedb";
+    dispatch(setOpponentId(mockTeacherID));
+    dispatch(changeOpenChat(true));
   };
 
   const handleCancelLesson = () => {

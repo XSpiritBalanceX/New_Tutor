@@ -3,7 +3,7 @@ import { Container, Box, Pagination } from "@mui/material";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { useParams, useNavigate } from "react-router-dom";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
 import { useGetLessonsQuery, useCancelLessonMutation } from "@store/requestApi/lessonsApi";

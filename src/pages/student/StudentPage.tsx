@@ -5,8 +5,9 @@ import { useParams, NavLink } from "react-router-dom";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import user from "@assets/user.svg";
 import { languageInCases, TLanguages, level, TLevel } from "@utils/listOfLanguagesLevels";
-import { useAppSelector } from "@store/hook";
+import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import "./StudentPage.scss";
 
 const mockData = {
@@ -42,6 +43,7 @@ const StudentPage = () => {
   const { t } = translate("translate", { keyPrefix: "studentPage" });
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
+  const dispatch = useAppDispatch();
 
   const { id } = useParams();
 
@@ -62,7 +64,10 @@ const StudentPage = () => {
   const averageLevel = [3, 4];
 
   const handleShowChat = () => {
-    console.log("show chat");
+    console.log("show chat", id);
+    const mockTeacherID = "e98da685-3e77-4394-ba55-81176a7faedb";
+    dispatch(setOpponentId(mockTeacherID));
+    dispatch(changeOpenChat(true));
   };
 
   return (

@@ -10,7 +10,7 @@ import AddIcon from "@mui/icons-material/Add";
 import TeacherRow from "@components/teacherRow/TeacherRow";
 import UserAvatar from "@components/avatar/UserAvatar";
 import TeacherSchedule from "./TeacherSchedule";
-import { USER_TYPE, REGISTER_STATE, TOKEN_KEY, TOKEN_EXPIRES_KEY } from "@axiosApi/axiosAPI";
+import { USER_TYPE, REGISTER_STATE, TOKEN_KEY, TOKEN_EXPIRES_KEY } from "@utils/appConsts";
 import { createTeacherLanguages } from "@api/teacher/createTeacherLanguages";
 import { uploadTeacherDocs } from "@api/teacher/uploadTeacherDocs";
 import { refreshToken } from "@api/auth/refreshToken";

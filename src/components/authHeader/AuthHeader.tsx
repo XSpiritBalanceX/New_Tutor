@@ -10,7 +10,7 @@ import Balance from "./Balance";
 import classNames from "classnames";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PersonalControls from "./PersonalControls";
-import { USER_TYPE } from "@axiosApi/axiosAPI";
+import { USER_TYPE } from "@utils/appConsts";
 import "./AuthHeader.scss";
 
 const AuthHeader = () => {
