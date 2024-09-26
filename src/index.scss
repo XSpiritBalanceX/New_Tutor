@@ -119,6 +119,24 @@ body.stopScroll {
     }
     .chatInputWrapper {
       padding: 12px;
+      .fileAttachmentBox {
+        label {
+          svg {
+            path {
+              fill: map-get($theme-colors, "main-blue");
+            }
+          }
+        }
+      }
+      .audioAttachment {
+        button {
+          svg {
+            rect {
+              fill: map-get($theme-colors, "main-blue");
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -86,7 +86,9 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
       time_end: foundLesson?.time_end ?? "",
     };
     const copyData = selectedLessons.slice();
-    const index = copyData.findIndex((el) => el.schedule_id === lesson.schedule_id && el.day === lesson.day);
+    const index = copyData.findIndex(
+      (el) => el.schedule_id === lesson.schedule_id && el.day === lesson.day && el.date === lesson.date,
+    );
     if (index !== -1) {
       copyData.splice(index, 1);
     } else {

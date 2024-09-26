@@ -19,7 +19,7 @@ import "animate.css";
 import "./AuthHeader.scss";
 
 const mockChatToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2NjU3MjUyLCJpYXQiOjE3MjY1NzA4NTIsImp0aSI6IjdlMGY2MDc0MzQ3NzQ3NWRiOTMzYjNhNWNkZGJlY2RkIiwidXNlcl9pZCI6ImYxOGQzZGRmLTllZDgtNGNiMi1hZDYyLThmNzk1Y2FhZThhMCJ9.-vHUrQj2ZaFL6nlBuumXK6V25piFZX1ylo0Fp5QZCIk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3NDQwMzY2LCJpYXQiOjE3MjczNTM5NjYsImp0aSI6IjBiMmY5YTQyMDEzZDQzZDg4NzI4MThjMWRlNWZhNzkyIiwidXNlcl9pZCI6IjlmYzhjN2E5LTMyZGMtNDAwZS04NTQxLTUzODQyMmM2ZjRkMiJ9.e333KbLQjbTC3jp6i1EzGlymYlrW07CQ5eZPugwCtZA";
 
 const PersonalControls = () => {
   const { t } = translate("translate", { keyPrefix: "header" });

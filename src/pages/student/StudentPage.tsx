@@ -65,7 +65,7 @@ const StudentPage = () => {
 
   const handleShowChat = () => {
     console.log("show chat", id);
-    const mockTeacherID = "e98da685-3e77-4394-ba55-81176a7faedb";
+    const mockTeacherID = "31cbfe87-d1d0-49de-ae14-167adfcfa277";
     dispatch(setOpponentId(mockTeacherID));
     dispatch(changeOpenChat(true));
   };
