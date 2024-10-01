@@ -24,7 +24,7 @@ axiosAPI.setGetItem((key) => localStorage.getItem(key));
 axiosAPI.setSetItem((key, value) => localStorage.setItem(key, value));
 
 const mockChatToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2NjU3MjUyLCJpYXQiOjE3MjY1NzA4NTIsImp0aSI6IjdlMGY2MDc0MzQ3NzQ3NWRiOTMzYjNhNWNkZGJlY2RkIiwidXNlcl9pZCI6ImYxOGQzZGRmLTllZDgtNGNiMi1hZDYyLThmNzk1Y2FhZThhMCJ9.-vHUrQj2ZaFL6nlBuumXK6V25piFZX1ylo0Fp5QZCIk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3ODU5MzIxLCJpYXQiOjE3Mjc3NzI5MjEsImp0aSI6IjYzODFkNDFhZmYyZDQzZTE5MDJjNzdhZWEyMGQzZjRjIiwidXNlcl9pZCI6IjlmYzhjN2E5LTMyZGMtNDAwZS04NTQxLTUzODQyMmM2ZjRkMiJ9.rZqmSImnpJT2t5eWI5bOeDLi7tPp0eqyLN3BlSaC9RU";
 
 const App = () => {
   const { i18n } = translate();

@@ -44,7 +44,8 @@ const RouterComponent = () => {
     { path: "/student/:id", element: <StudentPage /> },
     { path: "/invitation", element: <InviteFriendPage /> },
     { path: "/review", element: <ReviewPage /> },
-    { path: "/video_lesson/:room_id/:lesson_time", element: <VideoLessonPage /> },
+    { path: "/video_lesson/:lesson_time", element: <VideoLessonPage /> },
+    { path: "/video_lesson/:lesson_time/:room_id", element: <VideoLessonPage /> },
   ];
 
   return (

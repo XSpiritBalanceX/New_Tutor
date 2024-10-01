@@ -9,6 +9,8 @@ import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import "./VideoLesson.scss";
 
+const mockRoomId = "68263a7d-220a-4c8e-883f-669d78758b99";
+
 const VideoLessonPage = () => {
   const { t } = translate("translate", { keyPrefix: "videoLessonPage" });
 
@@ -21,8 +23,10 @@ const VideoLessonPage = () => {
     seconds: 0,
   });
   const [isDisableJoinButton, setIsDisableJoinButton] = useState(true);
+  const [roomId, setRoomId] = useState("");
+  const [isShowVideo, setIsShowVideo] = useState(true);
 
-  const { room_id, lesson_time } = useParams();
+  const { lesson_time } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,11 +41,7 @@ const VideoLessonPage = () => {
     const timer = setInterval(() => {
       const now = moment();
       const duration = moment.duration(targetDate.diff(now));
-      if (duration.asMilliseconds() <= 0) {
-        clearInterval(timer);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        setIsDisableJoinButton(false);
-      } else {
+      if (duration.asMinutes() > 5) {
         setTimeLeft({
           days: Math.floor(duration.asDays()),
           hours: duration.hours(),
@@ -49,6 +49,20 @@ const VideoLessonPage = () => {
           seconds: duration.seconds(),
         });
         setIsDisableJoinButton(true);
+      } else if (duration.asMinutes() >= 0 && duration.asMinutes() <= 5 && mockRoomId) {
+        setTimeLeft({
+          days: Math.floor(duration.asDays()),
+          hours: duration.hours(),
+          minutes: duration.minutes(),
+          seconds: duration.seconds(),
+        });
+        setIsDisableJoinButton(false);
+        setRoomId(mockRoomId);
+      } else if (duration.asMinutes() < -15) {
+        clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setIsDisableJoinButton(true);
+        setRoomId("");
       }
     }, 1000);
     return () => clearInterval(timer);
@@ -56,6 +70,7 @@ const VideoLessonPage = () => {
   }, [lesson_time]);
 
   const handleCloseVideo = () => {
+    setIsShowVideo(false);
     navigate("/review");
   };
 
@@ -78,13 +93,15 @@ const VideoLessonPage = () => {
           })}
         </p>
       </Box>
-      <VideoChat
-        roomId={room_id || ""}
-        handleClose={handleCloseVideo}
-        handleError={handleRefreshToken}
-        user_locale={locale}
-        isDisabledButtonJoin={isDisableJoinButton}
-      />
+      {isShowVideo && (
+        <VideoChat
+          roomId={roomId}
+          handleClose={handleCloseVideo}
+          handleError={handleRefreshToken}
+          user_locale={locale}
+          isDisabledButtonJoin={isDisableJoinButton}
+        />
+      )}
     </Container>
   );
 };

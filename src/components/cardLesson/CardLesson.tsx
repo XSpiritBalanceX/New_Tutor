@@ -24,12 +24,10 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
   const navigate = useNavigate();
 
   const handleStartLesson = () => {
-    //TODO:add real logic for getting room id from server
-    const mockRoomId = "68263a7d-220a-4c8e-883f-669d78758b99";
     const timeLesson = moment(`${lesson_information.date} ${lesson_information.time_start}`, "YYYY-MM-DD HH:mm").format(
       "DD-MM-YYYY-HH-mm",
     );
-    navigate(`/video_lesson/${mockRoomId}/${timeLesson}`);
+    navigate(`/video_lesson/${timeLesson}`);
   };
 
   const handleOpenChat = () => {
