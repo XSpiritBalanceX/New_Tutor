@@ -34,7 +34,7 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
 
   const handleWrite = () => {
     console.log("write", info_teacher.id);
-    const mockTeacherID = "e98da685-3e77-4394-ba55-81176a7faedb";
+    const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
     dispatch(setOpponentId(mockTeacherID));
     dispatch(changeOpenChat(true));
   };

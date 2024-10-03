@@ -347,7 +347,7 @@
       "writeTeacher": "Write to the teacher",
       "writeStudent": "Write to the student",
       "cancelLesson": "Cancel lesson",
-      "startLesson": "Start lesson",
+      "startLesson": "Go to lesson",
       "pastLessons": "Past Lessons",
       "paid": "Paid",
       "notPayed": "Not paid",
@@ -517,6 +517,10 @@
       "seeAll": "See all",
       "collapse": "Collapse",
       "emptyNotifications": "It's empty here yet"
+    },
+    "videoLessonPage": {
+      "videoLesson": "Video lesson",
+      "timeToLesson": "Left until lesson: {{day}}d {{hour}}h {{min}}min {{sec}}sec"
     }
   }
 }

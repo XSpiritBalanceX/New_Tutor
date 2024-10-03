@@ -347,7 +347,7 @@
       "writeTeacher": "Написать преподавателю",
       "writeStudent": "Написать ученику",
       "cancelLesson": "Отменить урок",
-      "startLesson": "Начать урок",
+      "startLesson": "Перейти к уроку",
       "pastLessons": "Прошедшие уроки",
       "paid": "Оплачено",
       "notPayed": "Не оплачено",
@@ -517,6 +517,10 @@
       "seeAll": "Смотреть все",
       "collapse": "Свернуть",
       "emptyNotifications": "Здесь пока пусто"
+    },
+    "videoLessonPage": {
+      "videoLesson": "Видеоурок",
+      "timeToLesson": "До урока осталось: {{day}}д {{hour}}ч {{min}}мин {{sec}}сек"
     }
   }
 }
