@@ -9,7 +9,7 @@ import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import "./VideoLesson.scss";
 
-const mockRoomId = "68263a7d-220a-4c8e-883f-669d78758b99";
+const mockRoomId = "1337a10a-edd5-4fc5-b2f6-c437c2e33673";
 
 const VideoLessonPage = () => {
   const { t } = translate("translate", { keyPrefix: "videoLessonPage" });

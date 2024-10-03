@@ -32,7 +32,7 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
 
   const handleOpenChat = () => {
     console.log("open chat", lesson_information.teacher_id);
-    const mockTeacherID = "31cbfe87-d1d0-49de-ae14-167adfcfa277";
+    const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
     dispatch(setOpponentId(mockTeacherID));
     dispatch(changeOpenChat(true));
   };
