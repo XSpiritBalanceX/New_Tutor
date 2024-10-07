@@ -522,6 +522,21 @@
     "videoLessonPage": {
       "videoLesson": "Видеоурок",
       "timeToLesson": "До урока осталось: {{day}}д {{hour}}ч {{min}}мин {{sec}}сек"
+    },
+    "dictionaryPage": {
+      "main": "Главная",
+      "dictionary": "Словарь",
+      "enterWord": "Введите слово",
+      "allWords": "Все слова",
+      "inStudying": "В изучении",
+      "learned": "Выучено",
+      "addNewWord": "Добавить новое слово",
+      "favorites": "Избранное",
+      "addNewFolder": "Добавить новую папку",
+      "word": "Слово",
+      "translation": "Перевод",
+      "addDescription": "Добавить описание",
+      "save": "Сохранить"
     }
   }
 }

@@ -522,6 +522,21 @@
     "videoLessonPage": {
       "videoLesson": "Video lesson",
       "timeToLesson": "Left until lesson: {{day}}d {{hour}}h {{min}}min {{sec}}sec"
+    },
+    "dictionaryPage": {
+      "main": "Main",
+      "dictionary": "Dictionary",
+      "enterWord": "Enter a word",
+      "allWords": "All words",
+      "inStudying": "In studying",
+      "learned": "Learned",
+      "addNewWord": "Add a new word",
+      "favorites": "Favorites",
+      "addNewFolder": "Add a new folder",
+      "word": "Word",
+      "translation": "Translation",
+      "addDescription": "Add a description",
+      "save": "Save"
     }
   }
 }
