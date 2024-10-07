@@ -10,6 +10,7 @@ import calendar from "@assets/calendar.svg";
 import CardLesson from "@components/cardLesson/CardLesson";
 import ModalCancelLesson from "@components/modal/ModalCancelLesson";
 import { ILesson } from "@store/requestApi/lessonsApi";
+import { useGetListLessonsQuery } from "@store/requestApi/bookingApi";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
@@ -27,6 +28,13 @@ const AllLessonsPage = () => {
 
   const { data, error, isFetching } = useGetLessonsQuery({ countLessons: itemPerPage, currentPage: Number(page) });
   const [, { isLoading }] = useCancelLessonMutation();
+
+  const { data: dataList, error: err } = useGetListLessonsQuery({
+    limit: itemPerPage,
+    offset: Number(page),
+    isStudent: isStudent,
+  });
+  console.log(dataList, err);
 
   useEffect(() => {
     if (data) {

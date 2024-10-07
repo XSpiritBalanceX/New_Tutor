@@ -6,6 +6,7 @@ import { teacherApi } from "./requestApi/teacherApi";
 import { lessonsApi } from "./requestApi/lessonsApi";
 import { chatApi, chatAppSlice, holaApi } from "chat-frontend-library";
 import tutorSlice from "./tutorSlice";
+import { bookingApi } from "./requestApi/bookingApi";
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     [holaApi.reducerPath]: holaApi.reducer,
     [chatApi.reducerPath]: chatApi.reducer,
     [chatAppSlice.name]: chatAppSlice.reducer,
+    [bookingApi.reducerPath]: bookingApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -26,6 +28,7 @@ export const store = configureStore({
       lessonsApi.middleware,
       holaApi.middleware,
       chatApi.middleware,
+      bookingApi.middleware,
     ),
 });
 
