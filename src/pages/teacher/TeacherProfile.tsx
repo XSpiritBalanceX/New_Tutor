@@ -7,6 +7,7 @@ import { languageInCases, TLanguages, level, TLevel } from "@utils/listOfLanguag
 import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
+import { useNavigate } from "react-router-dom";
 import "./TeacherPage.scss";
 
 interface ITeacherProfileProps {
@@ -30,7 +31,10 @@ const TeacherProfile = ({ teacher_information, teacher_languages }: ITeacherProf
   const { t } = translate("translate", { keyPrefix: "teacherPage" });
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const locale = useAppSelector(tutorSelectors.localeSelect);
+  const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
   const [languagesList, setLanguagesList] = useState(teacher_languages);
   const [isFullList, setIsFullList] = useState(false);
@@ -50,9 +54,13 @@ const TeacherProfile = ({ teacher_information, teacher_languages }: ITeacherProf
 
   const handleWriteTeacher = () => {
     console.log("write", teacher_information.id);
-    const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
-    dispatch(setOpponentId(mockTeacherID));
-    dispatch(changeOpenChat(true));
+    if (isLogin) {
+      const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
+      dispatch(setOpponentId(mockTeacherID));
+      dispatch(changeOpenChat(true));
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
