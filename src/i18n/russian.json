@@ -19,7 +19,8 @@
       "changePassword": "Изменение пароля",
       "payments": "Оплаты/подписки",
       "logOut": "Выйти",
-      "balanceMobile": "Баланс"
+      "balanceMobile": "Баланс",
+      "dictionary": "Словарь"
     },
     "footer": {
       "aboutCompany": "О компании",

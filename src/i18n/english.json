@@ -19,7 +19,8 @@
       "changePassword": "Change password",
       "payments": "Payments/subscriptions",
       "logOut": "Log out",
-      "balanceMobile": "Balance"
+      "balanceMobile": "Balance",
+      "dictionary": "Dictionary"
     },
     "footer": {
       "aboutCompany": "About company",
