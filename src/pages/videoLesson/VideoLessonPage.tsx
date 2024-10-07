@@ -95,11 +95,11 @@ const VideoLessonPage = () => {
       </Box>
       {isShowVideo && (
         <VideoChat
-          roomId={roomId}
+          roomId={mockRoomId}
           handleClose={handleCloseVideo}
           handleError={handleRefreshToken}
           user_locale={locale}
-          isDisabledButtonJoin={isDisableJoinButton}
+          isDisabledButtonJoin={false}
         />
       )}
     </Container>

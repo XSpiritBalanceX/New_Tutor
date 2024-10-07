@@ -56,9 +56,14 @@ const AuthHeader = () => {
               {t("myLessons")}
             </NavLink>
             {isStudent && (
-              <NavLink to={"/search/1"} className="nav-link">
-                {t("findTeacher")}
-              </NavLink>
+              <>
+                <NavLink to={"/dictionary"} className="nav-link">
+                  {t("dictionary")}
+                </NavLink>
+                <NavLink to={"/search/1"} className="nav-link">
+                  {t("findTeacher")}
+                </NavLink>
+              </>
             )}
             <NavLink to={"/invitation"} className="nav-link">
               {t("inviteFriend")}
