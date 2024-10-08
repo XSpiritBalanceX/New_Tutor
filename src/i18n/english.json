@@ -536,7 +536,9 @@
       "word": "Word",
       "translation": "Translation",
       "addDescription": "Add a description",
-      "save": "Save"
+      "save": "Save",
+      "errReqField": "Fill in the field",
+      "errWordType": "Indicate the part of speech"
     }
   }
 }
