@@ -25,4 +25,136 @@
     margin: 0 0 15px 0;
     @extend %h1;
   }
+  .contentDictionaryPage {
+    border: solid 1px red;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    .controlsDictionary {
+      max-width: 580px;
+      width: 100%;
+      margin: 0 20px 0 0;
+      .searchStatisticBox {
+        margin: 0 0 15px 0;
+        .searchWordField {
+          width: 100%;
+          .MuiInputBase-root.MuiInputBase-formControl {
+            height: 50px;
+            border-radius: 30px;
+            @extend %text-main;
+            input {
+              height: 50px;
+              padding: 0 15px;
+              color: map-get($theme-colors, "black");
+            }
+            fieldset {
+              border: solid 1px map-get($theme-colors, "gray");
+            }
+          }
+          .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+            border: none;
+            fieldset {
+              border: solid 2px map-get($theme-colors, "main-blue");
+            }
+          }
+        }
+        .statisticLinkBox {
+          margin: 15px 0 0 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .statisticBox {
+            display: flex;
+            flex-direction: row;
+            margin: 0 0 15px 0;
+            .itemStatisticBox {
+              margin: 0 10px 0 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .dataText {
+                @extend %h1;
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 37px;
+                color: map-get($theme-colors, "main-blue");
+                margin: 0 0 5px 0;
+              }
+              .labelText {
+                margin: 0;
+                @extend %text-small;
+                font-weight: 500;
+                color: map-deep-get($theme-colors, "text", "grey");
+              }
+            }
+            .itemStatisticBox:last-child {
+              margin-right: 0;
+            }
+          }
+          a {
+            @extend %text-main;
+            @extend %button-1;
+            height: 44px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            max-width: 300px;
+            width: 100%;
+          }
+        }
+      }
+      .folderLinksBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .folderLink {
+          width: 100%;
+          margin: 0 0 10px 0;
+          height: 82px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          border-radius: 30px;
+          padding: 0 30px;
+          @extend %h3;
+          font-size: 18px;
+          box-shadow: map-deep-get($theme-colors, "box-shadow", "item");
+          span {
+            @extend %text-small;
+            color: map-deep-get($theme-colors, "text", "grey");
+            margin: 0 0 0 5px;
+          }
+        }
+        .nav-link.active {
+          background-color: map-get($theme-colors, "main-blue");
+          color: map-get($theme-colors, "white");
+          span {
+            color: map-get($theme-colors, "white");
+          }
+        }
+        .newFolderLink {
+          display: flex;
+          align-items: center;
+          @extend %text-main;
+          color: map-get($theme-colors, "main-blue");
+          margin: 5px 0 0 0;
+          span {
+            background-color: map-get($theme-colors, "main-blue");
+            color: map-get($theme-colors, "white");
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            margin: 0 10px 0 0;
+          }
+        }
+      }
+    }
+  }
 }
