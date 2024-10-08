@@ -50,7 +50,7 @@ const RouterComponent = () => {
     { path: "/dictionary", element: <DictionaryPage /> },
     { path: "/dictionary/new_word", element: <DictionaryPage /> },
     { path: "/dictionary/new_folder", element: <DictionaryPage /> },
-    { path: "/dictionary/:name_folder", element: <DictionaryPage /> },
+    { path: "/dictionary/:name_folder/:page", element: <DictionaryPage /> },
   ];
 
   return (

@@ -7,10 +7,12 @@ export enum WordsTypes {
 }
 
 export type TWord = {
+  id: number;
   word: string;
   type: number;
   translation: string;
   status: number;
+  is_favorite: boolean;
 };
 
 export interface IWords {

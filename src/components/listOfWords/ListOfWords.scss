@@ -1,0 +1,102 @@
+@import "../../variables";
+
+.listContentBox {
+  width: calc(100% - 600px);
+  .titleButtonBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 10px 0;
+    p {
+      @extend %h2;
+      margin: 0 20px 0 0;
+    }
+    button {
+      width: 22px;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      padding: 0;
+      @extend %button-1;
+      svg {
+        font-size: 15px;
+      }
+    }
+  }
+  .listWordsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .itemListWords {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      box-shadow: map-deep-get($theme-colors, "box-shadow", "item");
+      border-radius: 20px;
+      button {
+        width: 23px;
+        min-width: 23px;
+        height: 23px;
+        padding: 0;
+        .markedIcon {
+          fill: map-get($theme-colors, "main-blue");
+        }
+      }
+      .itemWordBox {
+        width: calc(100% - 66px);
+        .word {
+          margin: 0 0 3px 0;
+          @extend %text-main;
+          font-weight: 600;
+        }
+        .translation {
+          margin: 0;
+          @extend %text-main;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .paginationBox {
+    width: 100%;
+    margin-top: 20px;
+    .searchPagination {
+      margin: 0 auto;
+      .MuiPagination-ul {
+        justify-content: center;
+        li {
+          .MuiButtonBase-root {
+            border: solid 1px map-get($theme-colors, "white-gray");
+            width: 44px;
+            height: 44px;
+            border-radius: 100%;
+            @extend %text-main;
+            svg {
+              font-size: 28px;
+            }
+          }
+          .MuiButtonBase-root.Mui-selected,
+          .MuiButtonBase-root.MuiPaginationItem-previousNext {
+            background-color: map-get($theme-colors, "main-blue");
+            color: map-get($theme-colors, "white");
+            border: solid 1px map-get($theme-colors, "main-blue");
+          }
+          .MuiButtonBase-root.Mui-disabled {
+            background-color: map-deep-get($theme-colors, "border", "disable");
+            color: map-get($theme-colors, "white");
+            opacity: 1;
+            border: solid 1px map-deep-get($theme-colors, "border", "disable");
+          }
+        }
+        li:first-child {
+          margin-right: 15px;
+        }
+        li:last-child {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
