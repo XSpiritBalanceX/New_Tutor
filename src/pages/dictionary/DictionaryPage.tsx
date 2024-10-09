@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Container, Box, TextField, InputAdornment } from "@mui/material";
 import { translate } from "@i18n";
 import { NavLink, useParams, useLocation, useNavigate } from "react-router-dom";
-import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import { USER_TYPE } from "@utils/appConsts";
 import SearchIcon from "@mui/icons-material/Search";
@@ -11,6 +10,7 @@ import { capitalizeFirstLetter } from "@utils/dictionaryFunctions";
 import ListOfWords from "@components/listOfWords/ListOfWords";
 import NewWord from "@components/dictionaryItems/NewWord";
 import NewFolder from "@components/dictionaryItems/NewFolder";
+import DictionaryNavigation from "./DictionaryNavigation";
 import "./DictionaryPage.scss";
 
 const mockData: IWords = {
@@ -123,11 +123,7 @@ const DictionaryPage = () => {
 
   return (
     <Container className="dictionaryPageContainer">
-      <Box className="locationDictionaryPage">
-        <NavLink to={"/"}>{t("main")}</NavLink>
-        <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
-        <p>{t("dictionary")}</p>
-      </Box>
+      <DictionaryNavigation />
       <p className="titlePage">{t("dictionary")}</p>
       <Box className="contentDictionaryPage">
         <Box className="controlsDictionary">
