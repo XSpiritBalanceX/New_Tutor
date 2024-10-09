@@ -10,6 +10,7 @@ import { IWords, TWord } from "./TypesDictionary";
 import { capitalizeFirstLetter } from "@utils/dictionaryFunctions";
 import ListOfWords from "@components/listOfWords/ListOfWords";
 import NewWord from "@components/dictionaryItems/NewWord";
+import NewFolder from "@components/dictionaryItems/NewFolder";
 import "./DictionaryPage.scss";
 
 const mockData: IWords = {
@@ -191,6 +192,7 @@ const DictionaryPage = () => {
           />
         )}
         {!name_folder && pathname === "/dictionary/new_word" && <NewWord folders={Object.keys(mockData)} />}
+        {!name_folder && pathname === "/dictionary/new_folder" && <NewFolder listOfWords={mockData.all_words} />}
       </Box>
     </Container>
   );

@@ -538,7 +538,9 @@
       "addDescription": "Add a description",
       "save": "Save",
       "errReqField": "Fill in the field",
-      "errWordType": "Indicate the part of speech"
+      "errWordType": "Indicate the part of speech",
+      "namePlaceholder": "Name folder",
+      "chooseWords": "Choose words"
     }
   }
 }

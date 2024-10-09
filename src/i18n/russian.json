@@ -538,7 +538,9 @@
       "addDescription": "Добавить описание",
       "save": "Сохранить",
       "errReqField": "Заполните поле",
-      "errWordType": "Укажите часть речи"
+      "errWordType": "Укажите часть речи",
+      "namePlaceholder": "Название",
+      "chooseWords": "Выберите слова"
     }
   }
 }

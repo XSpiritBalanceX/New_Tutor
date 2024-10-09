@@ -101,3 +101,111 @@
     }
   }
 }
+
+.newFolderBox {
+  box-shadow: map-deep-get($theme-colors, "box-shadow", "item");
+  width: calc(100% - 600px);
+  border-radius: 20px;
+  padding: 15px;
+  .controlBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 15px 0;
+    p {
+      @extend %h2;
+    }
+    button {
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+      padding: 0;
+      color: map-get($theme-colors, "black");
+    }
+  }
+  .folderNameField {
+    border-radius: 30px;
+    height: 52px;
+    width: 100%;
+    .MuiInputBase-root.MuiInputBase-formControl {
+      height: 52px;
+      border-radius: 30px;
+      fieldset {
+        border: solid 1px map-get($theme-colors, "gray");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-error {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "red");
+      }
+    }
+    .MuiInputBase-root.MuiInputBase-formControl.Mui-focused {
+      border: none;
+      fieldset {
+        border: solid 2px map-get($theme-colors, "main-blue");
+      }
+    }
+  }
+  .chooseWords {
+    @extend %text-main;
+    font-weight: 600;
+    margin: 15px 0 10px 0;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: map-get($theme-colors, "white-blue");
+    border-radius: 30px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: map-get($theme-colors, "main-blue");
+    border-radius: 30px;
+  }
+  .containerListOfWords {
+    max-height: 730px;
+    overflow-y: auto;
+    .itemListBox {
+      padding: 0 10px 0 0;
+      .controlWord {
+        width: 100%;
+        margin: 0 0 10px 0;
+        .checkBoxWord {
+          padding: 0;
+          margin: 0 5px 0 0;
+          width: 21px;
+          height: 21px;
+          svg {
+            fill: map-get($theme-colors, "main-blue");
+          }
+        }
+        .MuiTypography-root {
+          width: 100%;
+          box-shadow: map-deep-get($theme-colors, "box-shadow", "item");
+          border-radius: 20px;
+          padding: 10px 15px;
+          .word {
+            margin: 0 0 5px 0;
+            @extend %text-small;
+            font-weight: 600;
+          }
+          .translation {
+            margin: 0;
+            @extend %text-small;
+          }
+        }
+      }
+    }
+  }
+  .saveFolderButton {
+    text-transform: none;
+    @extend %text-main;
+    @extend %button-1;
+    width: 100%;
+    height: 54px;
+    border-radius: 30px;
+    margin: 15px 0 0 0;
+  }
+}
