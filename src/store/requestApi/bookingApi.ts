@@ -1,12 +1,13 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { bookingRequestHandler } from "@store/bookingRequestHandler";
 
-interface ILessonUser {
+export interface ILessonUser {
   id: number;
   teacher_id?: number;
   student_id?: number;
   first_name: string;
   last_name: string;
+  avatar: string | null;
   teacher_schedule_id: number;
   date: string;
   time: string;

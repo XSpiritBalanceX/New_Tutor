@@ -33,7 +33,6 @@ const AllLessonsPage = () => {
     offset: (Number(page) - 1) * itemPerPage,
     isStudent: isStudent,
   });
-  console.log(data, error);
 
   useEffect(() => {
     if (data) {
@@ -80,9 +79,9 @@ const AllLessonsPage = () => {
           {data.items.length !== 0 && (
             <Box className="lessonsContainer">
               <p className="titleLessons">{t("upcomingLessons")}</p>
-              {/*  {data.items.map((el, ind) => (
+              {data.items.map((el, ind) => (
                 <CardLesson key={ind} lesson_information={el} cbShowModal={handleShowModal} />
-              ))} */}
+              ))}
             </Box>
           )}
           {pagesPagination > 0 && (
