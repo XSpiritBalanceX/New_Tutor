@@ -53,8 +53,8 @@ const tutorSlice = createSlice({
         localStorage.setItem(USER_TYPE, String(action.payload.user_type));
         localStorage.setItem(REGISTER_STATE, action.payload.register_state);
         //TODO:replace real token
-        localStorage.setItem(LS_TOKEN_KEY, mockChatToken);
-        localStorage.setItem(LS_WEBRTK_TOKEN_KEY, mockVideoToken);
+        localStorage.setItem(LS_TOKEN_KEY, action.payload.token);
+        localStorage.setItem(LS_WEBRTK_TOKEN_KEY, action.payload.token);
       } else {
         localStorage.removeItem(TOKEN_KEY);
         localStorage.removeItem(REFRESH_TOKEN_KEY);

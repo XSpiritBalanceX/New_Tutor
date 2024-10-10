@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { requestHandler } from "@store/requestHandler";
+import { bookingRequestHandler } from "@store/bookingRequestHandler";
 
 interface ILesson {
   id: number;
@@ -8,12 +8,18 @@ interface ILesson {
   date: string;
 }
 
+interface IListLessons {
+  count: number;
+  all_items_count: number;
+  items: ILesson[];
+}
+
 export const bookingApi = createApi({
   reducerPath: "bookingApi",
-  baseQuery: requestHandler,
+  baseQuery: bookingRequestHandler,
   tagTypes: ["LessonsList"],
   endpoints: (builder) => ({
-    getListLessons: builder.query<ILesson[], { limit: number; offset: number; isStudent: boolean }>({
+    getListLessons: builder.query<IListLessons, { limit: number; offset: number; isStudent: boolean }>({
       query: ({ limit, offset, isStudent }) => {
         const url = isStudent ? `/student/booking` : `/teacher/booking`;
         return `${url}/?limit=${limit}&offset=${offset}`;

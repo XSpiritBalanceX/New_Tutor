@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { USER_TYPE } from "@utils/appConsts";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
-import { useGetLessonsQuery, useCancelLessonMutation } from "@store/requestApi/lessonsApi";
+import { useCancelLessonMutation } from "@store/requestApi/lessonsApi";
 import calendar from "@assets/calendar.svg";
 import CardLesson from "@components/cardLesson/CardLesson";
 import ModalCancelLesson from "@components/modal/ModalCancelLesson";
@@ -26,15 +26,14 @@ const AllLessonsPage = () => {
   const [selectedLesson, setSelectedLesson] = useState<ILesson | null>(null);
   const [pagesPagination, setPagesPagination] = useState(0);
 
-  const { data, error, isFetching } = useGetLessonsQuery({ countLessons: itemPerPage, currentPage: Number(page) });
   const [, { isLoading }] = useCancelLessonMutation();
 
-  const { data: dataList, error: err } = useGetListLessonsQuery({
+  const { data, error, isFetching } = useGetListLessonsQuery({
     limit: itemPerPage,
     offset: Number(page),
     isStudent: isStudent,
   });
-  console.log(dataList, err);
+  console.log(data, error);
 
   useEffect(() => {
     if (data) {
@@ -57,7 +56,7 @@ const AllLessonsPage = () => {
     const lesson = data?.items.find((el) => el.id === id);
     if (lesson) {
       setIsOpenModal(true);
-      setSelectedLesson(lesson);
+      //setSelectedLesson(lesson);
     }
   };
 
@@ -81,9 +80,9 @@ const AllLessonsPage = () => {
           {data.items.length !== 0 && (
             <Box className="lessonsContainer">
               <p className="titleLessons">{t("upcomingLessons")}</p>
-              {data.items.map((el, ind) => (
+              {/*  {data.items.map((el, ind) => (
                 <CardLesson key={ind} lesson_information={el} cbShowModal={handleShowModal} />
-              ))}
+              ))} */}
             </Box>
           )}
           {pagesPagination > 0 && (
