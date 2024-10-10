@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { axiosRequestHandler } from "@store/axiosRequestHandler";
+import { requestHandler } from "@store/requestHandler";
 
 interface ILesson {
   id: number;
@@ -10,7 +10,7 @@ interface ILesson {
 
 export const bookingApi = createApi({
   reducerPath: "bookingApi",
-  baseQuery: axiosRequestHandler,
+  baseQuery: requestHandler,
   tagTypes: ["LessonsList"],
   endpoints: (builder) => ({
     getListLessons: builder.query<ILesson[], { limit: number; offset: number; isStudent: boolean }>({
