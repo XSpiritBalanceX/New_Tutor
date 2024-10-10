@@ -21,3 +21,9 @@ export const teacherLanguagesSelect = (state: RootState) =>
 
 export const teacherScheduleSelect = (state: RootState) =>
   (state.profileApi.queries['getProfile({"isStudent":false})']?.data as IProfileInformation)?.schedules as ISchedule[];
+
+export const studentProfileError = (state: RootState) =>
+  state.profileApi.queries['getProfile({"isStudent":true})']?.error;
+
+export const teacherProfileError = (state: RootState) =>
+  state.profileApi.queries['getProfile({"isStudent":false})']?.error;

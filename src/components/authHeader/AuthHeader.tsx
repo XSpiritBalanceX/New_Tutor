@@ -9,6 +9,8 @@ import { changeLocale } from "@store/tutorSlice";
 import Balance from "./Balance";
 import PersonalControls from "./PersonalControls";
 import { USER_TYPE } from "@utils/appConsts";
+import { useGetProfileQuery } from "@store/requestApi/profileApi";
+import Loader from "@components/loader/Loader";
 import "./AuthHeader.scss";
 
 const AuthHeader = () => {
@@ -28,6 +30,8 @@ const AuthHeader = () => {
   const locale = useAppSelector(tutorSelectors.localeSelect);
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
+  const { isLoading } = useGetProfileQuery({ isStudent });
+
   const languagesApp = [
     {
       label: "RU",
@@ -44,44 +48,47 @@ const AuthHeader = () => {
   };
 
   return (
-    <Box className="authHeaderContainer">
-      <Box className="firstColHeader">
-        <NavLink to={"/"}>
-          <img src={logo} alt="logo" />
-        </NavLink>
-        <Box className="balanceLinksBox">
-          <Balance />
-          <Box className="linksAuthHeaderBox">
-            <NavLink to={"/lessons/1"} className="nav-link">
-              {t("myLessons")}
-            </NavLink>
-            {isStudent && (
-              <>
-                <NavLink to={"/dictionary"} className="nav-link">
-                  {t("dictionary")}
-                </NavLink>
-                <NavLink to={"/search/1"} className="nav-link">
-                  {t("findTeacher")}
-                </NavLink>
-              </>
-            )}
-            <NavLink to={"/invitation"} className="nav-link">
-              {t("inviteFriend")}
-            </NavLink>
+    <>
+      {isLoading && <Loader />}
+      <Box className="authHeaderContainer">
+        <Box className="firstColHeader">
+          <NavLink to={"/"}>
+            <img src={logo} alt="logo" />
+          </NavLink>
+          <Box className="balanceLinksBox">
+            <Balance />
+            <Box className="linksAuthHeaderBox">
+              <NavLink to={"/lessons/1"} className="nav-link">
+                {t("myLessons")}
+              </NavLink>
+              {isStudent && (
+                <>
+                  <NavLink to={"/dictionary"} className="nav-link">
+                    {t("dictionary")}
+                  </NavLink>
+                  <NavLink to={"/search/1"} className="nav-link">
+                    {t("findTeacher")}
+                  </NavLink>
+                </>
+              )}
+              <NavLink to={"/invitation"} className="nav-link">
+                {t("inviteFriend")}
+              </NavLink>
+            </Box>
           </Box>
         </Box>
+        <Box className="secondColHeader">
+          <TextField select={true} value={locale} onChange={handleChangeLocale} className="languageField">
+            {languagesApp.map((el, ind) => (
+              <MenuItem key={ind} value={el.value}>
+                {el.label}
+              </MenuItem>
+            ))}
+          </TextField>
+          <PersonalControls />
+        </Box>
       </Box>
-      <Box className="secondColHeader">
-        <TextField select={true} value={locale} onChange={handleChangeLocale} className="languageField">
-          {languagesApp.map((el, ind) => (
-            <MenuItem key={ind} value={el.value}>
-              {el.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <PersonalControls />
-      </Box>
-    </Box>
+    </>
   );
 };
 
