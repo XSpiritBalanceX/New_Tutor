@@ -30,7 +30,7 @@ const AllLessonsPage = () => {
 
   const { data, error, isFetching } = useGetListLessonsQuery({
     limit: itemPerPage,
-    offset: Number(page),
+    offset: (Number(page) - 1) * itemPerPage,
     isStudent: isStudent,
   });
   console.log(data, error);

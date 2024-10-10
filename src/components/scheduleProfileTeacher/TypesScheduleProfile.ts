@@ -64,3 +64,7 @@ export interface IMobileScheduleProfileTeacherProps {
   cbHandleBookLessons: (id: number, date: string) => void;
   selectedTimeZone: string;
 }
+
+export interface IErrorBusyDate {
+  busy_date: { date: string; day: string; time: string };
+}

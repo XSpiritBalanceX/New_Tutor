@@ -30,12 +30,6 @@ interface IResponseTeacher {
   schedules: ITeacherLesson[];
 }
 
-interface ILesson {
-  teacher_id: number;
-  schedule_id: number;
-  date: string;
-}
-
 export const teacherApi = createApi({
   reducerPath: "teacherApi",
   baseQuery: requestHandler,
@@ -48,14 +42,7 @@ export const teacherApi = createApi({
       }),
       providesTags: ["Teacher"],
     }),
-    bookLessons: builder.mutation<void, { booked_lessons: ILesson[] }>({
-      query: ({ booked_lessons }) => ({
-        url: "/book",
-        method: "POST",
-        body: { lessons: booked_lessons },
-      }),
-    }),
   }),
 });
 
-export const { useGetTeacherQuery, useBookLessonsMutation } = teacherApi;
+export const { useGetTeacherQuery } = teacherApi;
