@@ -34,10 +34,8 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
   const shortDescription = info_teacher.languages.length ? info_teacher.languages[0].description.slice(0, 125) : "";
 
   const handleWrite = () => {
-    console.log("write", info_teacher.id);
     if (isLogin) {
-      const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
-      dispatch(setOpponentId(mockTeacherID));
+      dispatch(setOpponentId(info_teacher.id.toString()));
       dispatch(changeOpenChat(true));
     } else {
       navigate("/login");

@@ -53,10 +53,8 @@ const TeacherProfile = ({ teacher_information, teacher_languages }: ITeacherProf
   const averageLevel = [3, 4];
 
   const handleWriteTeacher = () => {
-    console.log("write", teacher_information.id);
     if (isLogin) {
-      const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
-      dispatch(setOpponentId(mockTeacherID));
+      dispatch(setOpponentId(teacher_information.id.toString()));
       dispatch(changeOpenChat(true));
     } else {
       navigate("/login");
