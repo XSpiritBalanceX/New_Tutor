@@ -73,6 +73,11 @@ body.stopScroll {
     height: 100%;
     .tutorChatHeader {
       background-color: map-get($theme-colors, "white");
+      max-height: 480px;
+      height: 100%;
+      @media all and (max-width: 40em) {
+        max-height: 91%;
+      }
       .extendedChatHeader {
         padding: 10px 0 0 0;
         .userAndStatusWrapper {
@@ -84,6 +89,7 @@ body.stopScroll {
       }
       .tutorChatMessages {
         background-color: map-get($theme-colors, "white-blue");
+        height: 100%;
         .chatMessageWrapper {
           position: relative;
           width: 100%;

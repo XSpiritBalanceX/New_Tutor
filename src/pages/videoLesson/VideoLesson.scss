@@ -158,7 +158,7 @@
           video {
             max-height: 600px;
             height: 100%;
-            z-index: 5 !important;
+            z-index: 3 !important;
             @media all and (max-width: 40em) {
               height: 350px;
             }
@@ -224,6 +224,12 @@
       height: 100%;
       max-width: 100%;
       margin: 0 0 10px 0;
+    }
+    .chatWrapper {
+      height: 100%;
+      .tutorChatHeader {
+        max-height: 400px;
+      }
     }
   }
 }

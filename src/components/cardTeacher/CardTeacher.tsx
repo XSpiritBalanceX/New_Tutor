@@ -37,6 +37,7 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
     if (isLogin) {
       dispatch(setOpponentId(info_teacher.id.toString()));
       dispatch(changeOpenChat(true));
+      console.log(info_teacher.id);
     } else {
       navigate("/login");
     }
