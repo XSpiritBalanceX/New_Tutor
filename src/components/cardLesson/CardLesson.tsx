@@ -1,16 +1,16 @@
 import { Box, Button, Avatar } from "@mui/material";
 import { translate } from "@i18n";
-import { ILesson } from "@store/requestApi/lessonsApi";
 import { USER_TYPE } from "@utils/appConsts";
 import moment from "moment";
 import user from "@assets/user.svg";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@store/hook";
 import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
+import { ILessonUser } from "@store/requestApi/bookingApi";
 import "./CardLesson.scss";
 
 interface ICardLessonProps {
-  lesson_information: ILesson;
+  lesson_information: ILessonUser;
   cbShowModal: (id: number) => void;
 }
 
@@ -24,16 +24,15 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
   const navigate = useNavigate();
 
   const handleStartLesson = () => {
-    const timeLesson = moment(`${lesson_information.date} ${lesson_information.time_start}`, "YYYY-MM-DD HH:mm").format(
+    const timeLesson = moment(`${lesson_information.date} ${lesson_information.time}`, "YYYY-MM-DD HH:mm").format(
       "DD-MM-YYYY-HH-mm",
     );
     navigate(`/video_lesson/${timeLesson}`);
   };
 
   const handleOpenChat = () => {
-    console.log("open chat", lesson_information.teacher_id);
-    const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
-    dispatch(setOpponentId(mockTeacherID));
+    const userId = (isStudent ? lesson_information.teacher_id : lesson_information.student_id) as number;
+    dispatch(setOpponentId(userId.toString()));
     dispatch(changeOpenChat(true));
   };
 
@@ -43,26 +42,25 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
 
   const handleShowUserPage = () => {
     isStudent && navigate(`/teacher/${lesson_information.teacher_id}`);
-    !isStudent && navigate(`/student/${lesson_information.teacher_id}`);
+    !isStudent && navigate(`/student/${lesson_information.student_id}`);
   };
 
   return (
     <Box className="lessonBox">
       <p className="dateOfLesson">{`${moment(lesson_information.date, "YYYY-MM-DD").format("MMMM, DD")}, ${moment(
-        lesson_information.time_start,
+        lesson_information.time,
         "HH:mm",
       )
         .add(moment().utcOffset(), "minutes")
-        .format("HH:mm")} - ${moment(lesson_information.time_end, "HH:mm")
+        .format("HH:mm")} - ${moment(lesson_information.time, "HH:mm")
+        .add(55, "minutes")
         .add(moment().utcOffset(), "minutes")
         .format("HH:mm")}`}</p>
       <Box className="lessonContent">
         <Box className="userInformationBox">
-          <Avatar src={lesson_information.photo || user} className="userAvatar" onClick={handleShowUserPage} />
+          <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
-            <p
-              onClick={handleShowUserPage}
-            >{`${lesson_information.teacher_first_name} ${lesson_information.teacher_last_name}`}</p>
+            <p onClick={handleShowUserPage}>{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
             <Button type="button" onClick={handleStartLesson}>
               {t("startLesson")}
             </Button>

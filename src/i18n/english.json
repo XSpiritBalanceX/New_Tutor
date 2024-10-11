@@ -19,7 +19,8 @@
       "changePassword": "Change password",
       "payments": "Payments/subscriptions",
       "logOut": "Log out",
-      "balanceMobile": "Balance"
+      "balanceMobile": "Balance",
+      "dictionary": "Dictionary"
     },
     "footer": {
       "aboutCompany": "About company",
@@ -333,7 +334,7 @@
       "seeMore": "See more",
       "collapse": "Collapse",
       "errorRequest": "An unexpected error occurred",
-      "errBusyTime": "An error has occurred. Lesson is already booked",
+      "errBusyTime": "You already have lessons booked on {{date}}",
       "overallRating": "Overall rating: {{rating}}",
       "pros": "Advantages:",
       "cons": "Disadvantages:",
@@ -521,6 +522,25 @@
     "videoLessonPage": {
       "videoLesson": "Video lesson",
       "timeToLesson": "Left until lesson: {{day}}d {{hour}}h {{min}}min {{sec}}sec"
+    },
+    "dictionaryPage": {
+      "main": "Main",
+      "dictionary": "Dictionary",
+      "enterWord": "Enter a word",
+      "allWords": "All words",
+      "inStudying": "In studying",
+      "learned": "Learned",
+      "addNewWord": "Add a new word",
+      "favorites": "Favorites",
+      "addNewFolder": "Add a new folder",
+      "word": "Word",
+      "translation": "Translation",
+      "addDescription": "Add a description",
+      "save": "Save",
+      "errReqField": "Fill in the field",
+      "errWordType": "Indicate the part of speech",
+      "namePlaceholder": "Name folder",
+      "chooseWords": "Choose words"
     }
   }
 }

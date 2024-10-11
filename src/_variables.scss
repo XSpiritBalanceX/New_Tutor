@@ -6,6 +6,7 @@ $theme-colors: (
   "white": #fefeff,
   "black": #161618,
   "gray": #a2a2a2,
+  "gray-1": #f4f4f4,
   "white-gray": #b6b6bb,
   "light-gray": #f5f5f5,
   "red": red,
@@ -38,6 +39,9 @@ $theme-colors: (
     "form": (
       0px 12px 24px rgba(129, 137, 197, 0.2),
     ),
+    "item": (
+      0px 5px 20px rgba(0, 0, 0, 0.1),
+    ),
   ),
   "gradient": linear-gradient(111deg, #3642a6 0%, #c3caff 96.4%),
 );
@@ -60,6 +64,11 @@ $theme-colors: (
   &:active {
     border: solid 1px #2c3475;
     background-color: #2c3475;
+  }
+  &:disabled {
+    border: solid 1px #9098d9;
+    background-color: #9098d9;
+    color: #fefeff;
   }
 }
 

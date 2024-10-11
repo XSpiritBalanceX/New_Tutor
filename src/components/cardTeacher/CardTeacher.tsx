@@ -22,6 +22,7 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
   const navigate = useNavigate();
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
+  const isLogin = useAppSelector(tutorSelectors.isLoginSelect);
 
   const [isFullDescription, setIsFullDescription] = useState(false);
 
@@ -33,10 +34,12 @@ const CardTeacher = ({ info_teacher }: ICardTeacherProps) => {
   const shortDescription = info_teacher.languages.length ? info_teacher.languages[0].description.slice(0, 125) : "";
 
   const handleWrite = () => {
-    console.log("write", info_teacher.id);
-    const mockTeacherID = "d5b56da0-b25f-4eec-9501-f9462dcaa195";
-    dispatch(setOpponentId(mockTeacherID));
-    dispatch(changeOpenChat(true));
+    if (isLogin) {
+      dispatch(setOpponentId(info_teacher.id.toString()));
+      dispatch(changeOpenChat(true));
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleFullShortDescription = () => {
