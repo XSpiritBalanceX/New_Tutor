@@ -23,11 +23,11 @@ const VideoLessonPage = () => {
     minutes: 0,
     seconds: 0,
   });
-
   const [isDisableJoinButton, setIsDisableJoinButton] = useState(true);
   const [roomId, setRoomId] = useState("");
   const [isShowVideo, setIsShowVideo] = useState(true);
   const [isPreJoinPage, setIsPreJoinPage] = useState(true);
+  const [timerVideo, setTimerVideo] = useState(0);
 
   const isOpenChat = useAppSelector(tutorSelectors.isOpenChatSelect);
 
@@ -75,6 +75,17 @@ const VideoLessonPage = () => {
     return () => clearInterval(timer);
     // eslint-disable-next-line
   }, [lesson_time]);
+
+  useEffect(() => {
+    if (!isPreJoinPage) {
+      const timer = setInterval(() => {
+        setTimerVideo((prevTime) => prevTime + 1);
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+    // eslint-disable-next-line
+  }, [isPreJoinPage]);
 
   useEffect(() => {
     const getCurrentElement = () => {
@@ -125,10 +136,18 @@ const VideoLessonPage = () => {
     dispatch(changeOpenChat(true));
   };
 
+  const minutes = Math.floor(timerVideo / 60);
+  const seconds = timerVideo % 60;
+
   return (
     <Container className="newVideoLessonContainer">
       <Box className={`titleAndButtonBox ${isPreJoinPage ? "preJoinBoxData" : "videoBoxData"}`}>
-        <p className="titleVideoPage">{t("videoLesson")}</p>
+        <Box className="titleAndTimer">
+          <p className="titleVideoPage">{t("videoLesson")}</p>
+          {!isPreJoinPage && (
+            <p className="videoTimer">{`${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`}</p>
+          )}
+        </Box>
         {!isPreJoinPage && (
           <Box className="chatButtonBox">
             {!isOpenChat && (

@@ -20,9 +20,18 @@
       flex-direction: column;
       align-items: flex-start;
     }
-    .titleVideoPage {
-      @extend %h1;
-      margin: 0;
+    .titleAndTimer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .titleVideoPage {
+        @extend %h1;
+        margin: 0 10px 0 0;
+      }
+      .videoTimer {
+        margin: 0;
+        @extend %text-main;
+      }
     }
     .chatButtonBox {
       @media all and (max-width: 40em) {
