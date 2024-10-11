@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Button } from "@mui/material";
 import { translate } from "@i18n";
 import { useParams, useNavigate } from "react-router-dom";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
 import { VideoChat } from "webrtc-frontend-library";
-import { useAppSelector } from "@store/hook";
+import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import { changeOpenChat } from "@store/tutorSlice";
 import "./VideoLesson.scss";
 
-const mockRoomId = "1337a10a-edd5-4fc5-b2f6-c437c2e33673";
+const mockRoomId = "00e46ff4-c459-425d-91d9-61b5ef5bdb8f";
 
 const VideoLessonPage = () => {
   const { t } = translate("translate", { keyPrefix: "videoLessonPage" });
@@ -22,9 +23,15 @@ const VideoLessonPage = () => {
     minutes: 0,
     seconds: 0,
   });
+
   const [isDisableJoinButton, setIsDisableJoinButton] = useState(true);
   const [roomId, setRoomId] = useState("");
   const [isShowVideo, setIsShowVideo] = useState(true);
+  const [isPreJoinPage, setIsPreJoinPage] = useState(true);
+
+  const isOpenChat = useAppSelector(tutorSelectors.isOpenChatSelect);
+
+  const dispatch = useAppDispatch();
 
   const { lesson_time } = useParams();
   const navigate = useNavigate();
@@ -69,6 +76,40 @@ const VideoLessonPage = () => {
     // eslint-disable-next-line
   }, [lesson_time]);
 
+  useEffect(() => {
+    const getCurrentElement = () => {
+      const videoElement = document.querySelector(".roomWrapper");
+      const preJoinElement = document.querySelector(".containerPrejoinPage");
+
+      if (videoElement) {
+        setIsPreJoinPage(false);
+      } else if (preJoinElement) {
+        setIsPreJoinPage(true);
+      }
+    };
+
+    getCurrentElement();
+
+    const observer = new MutationObserver(getCurrentElement);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      dispatch(changeOpenChat(false));
+    };
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const videoElement = document.querySelector(".roomWrapper");
+    if (videoElement && isOpenChat) {
+      videoElement.scrollIntoView({ behavior: "smooth" });
+      const chat = document.querySelector(".tutorChatBox ");
+      chat && chat.classList.remove("animate__animated");
+    }
+    // eslint-disable-next-line
+  }, [isOpenChat]);
+
   const handleCloseVideo = () => {
     setIsShowVideo(false);
     navigate("/review");
@@ -77,21 +118,38 @@ const VideoLessonPage = () => {
   const handleRefreshToken = async () => {
     //TODO: added real logic for refreshing user token
     console.log("refresh token");
-    return "";
+    return localStorage.getItem("webrtkuniq_access_token");
+  };
+
+  const handleOpenChat = () => {
+    dispatch(changeOpenChat(true));
   };
 
   return (
     <Container className="newVideoLessonContainer">
-      <p className="titleVideoPage">{t("videoLesson")}</p>
-      <Box className="timerBox">
-        <p>
-          {t("timeToLesson", {
-            day: timeLeft.days,
-            hour: timeLeft.hours,
-            min: timeLeft.minutes,
-            sec: timeLeft.seconds,
-          })}
-        </p>
+      <Box className={`titleAndButtonBox ${isPreJoinPage ? "preJoinBoxData" : "videoBoxData"}`}>
+        <p className="titleVideoPage">{t("videoLesson")}</p>
+        {!isPreJoinPage && (
+          <Box className="chatButtonBox">
+            {!isOpenChat && (
+              <Button type="button" onClick={handleOpenChat}>
+                {t("openChat")}
+              </Button>
+            )}
+          </Box>
+        )}
+        {isPreJoinPage && (
+          <Box className="timerBox">
+            <p>
+              {t("timeToLesson", {
+                day: timeLeft.days,
+                hour: timeLeft.hours,
+                min: timeLeft.minutes,
+                sec: timeLeft.seconds,
+              })}
+            </p>
+          </Box>
+        )}
       </Box>
       {isShowVideo && (
         <VideoChat

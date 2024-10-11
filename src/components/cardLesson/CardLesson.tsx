@@ -24,10 +24,12 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
   const navigate = useNavigate();
 
   const handleStartLesson = () => {
+    const userId = (isStudent ? lesson_information.teacher_id : lesson_information.student_id) as number;
     const timeLesson = moment(`${lesson_information.date} ${lesson_information.time}`, "YYYY-MM-DD HH:mm").format(
       "DD-MM-YYYY-HH-mm",
     );
     navigate(`/video_lesson/${timeLesson}`);
+    dispatch(setOpponentId(userId.toString()));
   };
 
   const handleOpenChat = () => {

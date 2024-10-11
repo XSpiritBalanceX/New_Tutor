@@ -15,6 +15,7 @@ import ErrorBoundary from "@components/error/ErrorBoundary";
 import CookiesModal from "@components/modal/CookiesModal";
 import { Chat, LS_TOKEN_KEY } from "chat-frontend-library";
 import { AxiosError } from "axios";
+import { useLocation } from "react-router-dom";
 import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
 import "animate.css";
@@ -34,6 +35,8 @@ const App = () => {
   const isOpenChat = useAppSelector(tutorSelectors.isOpenChatSelect);
 
   const dispatch = useAppDispatch();
+
+  const { pathname } = useLocation();
 
   moment.locale(locale);
 
@@ -101,20 +104,22 @@ const App = () => {
         />
         <ScrollToTop />
         <WrapperHeader />
-        <RouterComponent />
-        {isOpenChat && (
-          <Box className="tutorChatBox animate__animated animate__slideInUp">
-            <Chat
-              opponent_id={currentOpponentId}
-              user_locale={locale}
-              isOnlyChat={true}
-              cbHandleCloseChat={handleCloseChat}
-              handleRefreshToken={handleRefreshToken}
-              classHeader="tutorChatHeader"
-              classMessages="tutorChatMessages"
-            />
-          </Box>
-        )}
+        <Box className={`${isOpenChat && pathname.includes("video_lesson") ? "wrappedBox" : ""}`}>
+          <RouterComponent />
+          {isOpenChat && (
+            <Box className="tutorChatBox animate__animated animate__slideInUp">
+              <Chat
+                opponent_id={currentOpponentId}
+                user_locale={locale}
+                isOnlyChat={true}
+                cbHandleCloseChat={handleCloseChat}
+                handleRefreshToken={handleRefreshToken}
+                classHeader="tutorChatHeader"
+                classMessages="tutorChatMessages"
+              />
+            </Box>
+          )}
+        </Box>
         <CookiesModal />
       </Box>
       <Footer />
