@@ -31,7 +31,7 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
   };
 
   const handleOpenChat = () => {
-    const userId = (isStudent ? lesson_information.student_id : lesson_information.teacher_id) as number;
+    const userId = (isStudent ? lesson_information.teacher_id : lesson_information.student_id) as number;
     dispatch(setOpponentId(userId.toString()));
     dispatch(changeOpenChat(true));
   };

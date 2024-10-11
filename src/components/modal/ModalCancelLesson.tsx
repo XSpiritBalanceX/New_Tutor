@@ -2,22 +2,24 @@ import { useState } from "react";
 import { Modal, Button, Box } from "@mui/material";
 import { translate } from "@i18n";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { ILesson } from "@store/requestApi/lessonsApi";
-import { useCancelLessonMutation } from "@store/requestApi/lessonsApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDeleteBookedLessonMutation } from "@store/requestApi/bookingApi";
+import { USER_TYPE } from "@utils/appConsts";
 import "./Modal.scss";
 
 interface IModalCancelLessonProps {
   isOpen: boolean;
   cbCloseModal: () => void;
-  lesson: ILesson;
+  lesson_id: number;
 }
 
-const ModalCancelLesson = ({ isOpen, cbCloseModal, lesson }: IModalCancelLessonProps) => {
+const ModalCancelLesson = ({ isOpen, cbCloseModal, lesson_id }: IModalCancelLessonProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
-  const [cancelLesson] = useCancelLessonMutation();
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
+
+  const [deleteBookedLesson] = useDeleteBookedLessonMutation();
 
   const navigate = useNavigate();
 
@@ -37,7 +39,7 @@ const ModalCancelLesson = ({ isOpen, cbCloseModal, lesson }: IModalCancelLessonP
     if (!reason) {
       setErrorMessage(t("errorReason"));
     } else {
-      cancelLesson([{ lesson_id: lesson.id, reason: reason }])
+      deleteBookedLesson({ lesson_id: lesson_id, isStudent: isStudent })
         .unwrap()
         .then(() => {
           toast.success(t("sucRequest"));

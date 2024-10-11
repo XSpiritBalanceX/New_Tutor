@@ -45,7 +45,14 @@ export const bookingApi = createApi({
         body: new_lessons,
       }),
     }),
+    deleteBookedLesson: builder.mutation<void, { lesson_id: number; isStudent: boolean }>({
+      query: ({ lesson_id, isStudent }) => ({
+        url: `/${isStudent ? "student/booking" : "teacher/booking"}/${lesson_id}/`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["LessonsList"],
+    }),
   }),
 });
 
-export const { useGetListLessonsQuery, useBookNewLessonsMutation } = bookingApi;
+export const { useGetListLessonsQuery, useBookNewLessonsMutation, useDeleteBookedLessonMutation } = bookingApi;

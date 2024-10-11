@@ -5,12 +5,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { USER_TYPE } from "@utils/appConsts";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
-import { useCancelLessonMutation } from "@store/requestApi/lessonsApi";
 import calendar from "@assets/calendar.svg";
 import CardLesson from "@components/cardLesson/CardLesson";
 import ModalCancelLesson from "@components/modal/ModalCancelLesson";
-import { ILesson } from "@store/requestApi/lessonsApi";
-import { useGetListLessonsQuery } from "@store/requestApi/bookingApi";
+import { useGetListLessonsQuery, useDeleteBookedLessonMutation } from "@store/requestApi/bookingApi";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
@@ -23,10 +21,10 @@ const AllLessonsPage = () => {
 
   const [itemPerPage] = useState(5);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [selectedLesson, setSelectedLesson] = useState<ILesson | null>(null);
+  const [deleteLessonId, setDeleteLessonId] = useState<null | number>(null);
   const [pagesPagination, setPagesPagination] = useState(0);
 
-  const [, { isLoading }] = useCancelLessonMutation();
+  const [, { isLoading }] = useDeleteBookedLessonMutation();
 
   const { data, error, isFetching } = useGetListLessonsQuery({
     limit: itemPerPage,
@@ -48,14 +46,14 @@ const AllLessonsPage = () => {
 
   const handleCloseModal = () => {
     setIsOpenModal(false);
-    selectedLesson && setSelectedLesson(null);
+    deleteLessonId && setDeleteLessonId(null);
   };
 
   const handleShowModal = (id: number) => {
     const lesson = data?.items.find((el) => el.id === id);
     if (lesson) {
       setIsOpenModal(true);
-      //setSelectedLesson(lesson);
+      setDeleteLessonId(lesson.id);
     }
   };
 
@@ -64,8 +62,8 @@ const AllLessonsPage = () => {
   ) : (
     <Container className="allLessonsPageContainer">
       {(isFetching || isLoading) && <Loader />}
-      {selectedLesson && (
-        <ModalCancelLesson isOpen={isOpenModal} cbCloseModal={handleCloseModal} lesson={selectedLesson} />
+      {deleteLessonId && (
+        <ModalCancelLesson isOpen={isOpenModal} cbCloseModal={handleCloseModal} lesson_id={deleteLessonId} />
       )}
       <p className="titleAllLessons">{t("allLessons")}</p>
       {data && (
