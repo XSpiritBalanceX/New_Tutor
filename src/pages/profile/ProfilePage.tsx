@@ -5,10 +5,7 @@ import LocationElement from "./LocationElement";
 import { useParams } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
 import ProfileSettings from "@components/profileSettings/ProfileSettings";
-import { useGetProfileQuery } from "@store/requestApi/profileApi";
 import Loader from "@components/loader/Loader";
-import { USER_TYPE } from "@utils/appConsts";
-import CustomError from "@components/error/CustomError";
 import { useDeleteStudentLanguageMutation, useDeleteTeacherLanguageMutation } from "@store/requestApi/profileApi";
 import SettingTeacherLanguages from "@components/settingTeacherLanguages/SettingTeacherLanguages";
 import SettingTeacherSchedule from "@components/settingTeacherSchedule/SettingTeacherSchedule";
@@ -31,9 +28,6 @@ const ProfilePage = () => {
 
   const { element } = useParams();
 
-  const isStudent = localStorage.getItem(USER_TYPE) === "0";
-
-  const { error, isLoading } = useGetProfileQuery({ isStudent });
   const [, { isLoading: loadingDeleteLangStudent }] = useDeleteStudentLanguageMutation();
   const [, { isLoading: loadingDeleteLangTeacher }] = useDeleteTeacherLanguageMutation();
 
@@ -46,11 +40,9 @@ const ProfilePage = () => {
     payment: <SettingPayments />,
   };
 
-  return error ? (
-    <CustomError />
-  ) : (
+  return (
     <Container className="profilePageContainer">
-      {(isLoading || loadingDeleteLangStudent || loadingDeleteLangTeacher) && <Loader />}
+      {(loadingDeleteLangStudent || loadingDeleteLangTeacher) && <Loader />}
       <Box className="locationBox">
         <p className="myProfile">{t("myProfile")}</p>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

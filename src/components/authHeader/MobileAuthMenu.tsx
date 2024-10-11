@@ -18,6 +18,7 @@ import { useAppSelector, useAppDispatch } from "@store/hook";
 import { changeLocale } from "@store/tutorSlice";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Balance from "./Balance";
+import { USER_TYPE } from "@utils/appConsts";
 import "./AuthHeader.scss";
 
 interface IMobileAuthMenuProps {
@@ -27,6 +28,8 @@ interface IMobileAuthMenuProps {
 
 const MobileAuthMenu = ({ isOpen, cbHandleCloseMenu }: IMobileAuthMenuProps) => {
   const { t } = translate("translate", { keyPrefix: "header" });
+
+  const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const dispatch = useAppDispatch();
   const locale = useAppSelector(tutorSelectors.localeSelect);
@@ -78,15 +81,19 @@ const MobileAuthMenu = ({ isOpen, cbHandleCloseMenu }: IMobileAuthMenuProps) => 
           <Balance />
         </AccordionDetails>
       </Accordion>
-      <Accordion className="itemAccordionMobileHeader">
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} className="itemAccordionSumMobileHeader">
-          <Typography>{t("myLessons")}</Typography>
-        </AccordionSummary>
-        <AccordionDetails className="accordionMobileDetailsLessons">
-          <NavLink to={"/lessons/1"}>{t("allLessons")}</NavLink>
-          <NavLink to={"/"}>{t("videoLesson")}</NavLink>
-        </AccordionDetails>
-      </Accordion>
+      {isStudent && (
+        <>
+          <NavLink to={"/dictionary"} className="nav-link">
+            {t("dictionary")}
+          </NavLink>
+          <NavLink to={"/search/1"} className="nav-link">
+            {t("findTeacher")}
+          </NavLink>
+        </>
+      )}
+      <NavLink to={"/lessons/1"} className="nav-link">
+        {t("myLessons")}
+      </NavLink>
       <NavLink to={"/invitation"} className="nav-link">
         {t("inviteFriend")}
       </NavLink>

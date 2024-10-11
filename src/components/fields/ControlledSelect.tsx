@@ -12,6 +12,7 @@ interface IControlledSelectProps<T extends FieldValues> {
   error: React.ReactNode;
   classNameField?: string;
   options: string[];
+  defaultOption?: string;
 }
 
 const ControlledSelect = <T extends FieldValues>({
@@ -22,6 +23,7 @@ const ControlledSelect = <T extends FieldValues>({
   error,
   classNameField,
   options,
+  defaultOption,
 }: IControlledSelectProps<T>) => {
   const classBoxInput: string = classNames("controlledFieldBox", {
     errorField: error,
@@ -31,7 +33,7 @@ const ControlledSelect = <T extends FieldValues>({
     <Controller
       name={name as Path<T>}
       control={control}
-      defaultValue={"" as PathValue<T, Path<T>>}
+      defaultValue={(defaultOption || "") as PathValue<T, Path<T>>}
       render={({ field }) => {
         return (
           <Box className={classBoxInput}>

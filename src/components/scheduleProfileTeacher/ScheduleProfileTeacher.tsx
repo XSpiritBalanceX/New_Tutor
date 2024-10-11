@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, RadioGroup, FormControlLabel, Radio, Button } from "@mui/material";
-import { IScheduleProfileTeacherProps, ISelectedLesson, IWeekDaysResult } from "./TypesScheduleProfile";
+import { IScheduleProfileTeacherProps, ISelectedLesson, IWeekDaysResult, IErrorBusyDate } from "./TypesScheduleProfile";
 import { translate } from "@i18n";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
@@ -13,7 +13,7 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import ButtonTime from "./ButtonTime";
 import MessageAboutBook from "./MessageAboutBook";
 import ModalBookLessons from "@components/modal/ModalBookLessons";
-import { useBookLessonsMutation } from "@store/requestApi/teacherApi";
+import { useBookNewLessonsMutation } from "@store/requestApi/bookingApi";
 import { toast } from "react-toastify";
 import MobileScheduleProfileTeacher from "./MobileScheduleProfileTeacher";
 import "./ScheduleProfileTeacher.scss";
@@ -27,7 +27,7 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
   const [selectedLessons, setSelectedLessons] = useState<ISelectedLesson[]>([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
 
-  const [bookLessons] = useBookLessonsMutation();
+  const [bookNewLessons] = useBookNewLessonsMutation();
 
   const currentWeek = moment().week();
 
@@ -106,17 +106,25 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
   const handleBookLessons = () => {
     localStorage.removeItem("tutor_skip_auth");
     const mappedLessons = selectedLessons.map((el) => {
-      return { teacher_id: el.teacher_id, schedule_id: el.schedule_id, date: el.date };
+      return { teacher_id: el.teacher_id, teacher_schedule_id: el.schedule_id, date: el.date };
     });
-    bookLessons({ booked_lessons: mappedLessons })
+    bookNewLessons({ new_lessons: mappedLessons })
       .unwrap()
       .then(() => {
         localStorage.setItem("tutor_skip_auth", "true");
         setIsOpenModal(true);
       })
       .catch((err) => {
-        if (err.data.type === "CannotCreatePlannedLessonException") {
-          toast.error(t("errBusyTime"));
+        if (err.status === 400 && "busy_date" in err.data[0]) {
+          const busyTimes = err.data
+            .map(
+              (el: IErrorBusyDate) =>
+                `${moment(el.busy_date.date, "YYYY-MM-DD").format("DD MMMM")} ${moment(el.busy_date.time, "HH:mm")
+                  .add(momentTimeZone.tz(selectedTimeZone).utcOffset(), "minutes")
+                  .format("HH:mm")}`,
+            )
+            .join("; ");
+          toast.error(t("errBusyTime", { date: busyTimes }));
         } else {
           toast.error(t("errorRequest"));
         }
