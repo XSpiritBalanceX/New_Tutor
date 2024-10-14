@@ -5,6 +5,7 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import calendar from "@assets/calendar.svg";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
+import { useNavigate } from "react-router-dom";
 import "./Modal.scss";
 
 interface IModalBookLessonsProps {
@@ -24,8 +25,14 @@ const ModalBookLessons = ({
 }: IModalBookLessonsProps) => {
   const { t } = translate("translate", { keyPrefix: "notification.bookLessons" });
 
+  const navigate = useNavigate();
+
   const handleCloseModal = () => {
     cbCloseModal();
+  };
+
+  const handleNavigateLessons = () => {
+    navigate("/lessons/1");
   };
 
   return (
@@ -57,6 +64,11 @@ const ModalBookLessons = ({
         </Box>
         <Box className="imageBox">
           <img src={calendar} alt="calendar" />
+        </Box>
+        <Box className="navigateButtonBox">
+          <Button type="button" onClick={handleNavigateLessons}>
+            {t("navigateToLessons")}
+          </Button>
         </Box>
       </Box>
     </Modal>

@@ -223,7 +223,8 @@
       "bookLessons": {
         "youBookedLessons": "Вы записались на урок",
         "youBookedWithTeacher": "Вы записались на уроки с преподавателем {{name}}",
-        "onLesson": "на {{date}}"
+        "onLesson": "на {{date}}",
+        "navigateToLessons": "Перейти к урокам"
       },
       "cookies": {
         "text": "Мы используем файлы cookie для улучшения работы сайта.  Узнать больше вы можете перейдя по ",

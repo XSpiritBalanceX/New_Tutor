@@ -517,7 +517,8 @@
       "markAsRead": "Mark as read",
       "seeAll": "See all",
       "collapse": "Collapse",
-      "emptyNotifications": "It's empty here yet"
+      "emptyNotifications": "It's empty here yet",
+      "navigateToLessons": "Go to lessons"
     },
     "videoLessonPage": {
       "videoLesson": "Video lesson",
