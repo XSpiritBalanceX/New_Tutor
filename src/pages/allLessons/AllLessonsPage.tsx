@@ -9,6 +9,8 @@ import calendar from "@assets/calendar.svg";
 import CardLesson from "@components/cardLesson/CardLesson";
 import ModalCancelLesson from "@components/modal/ModalCancelLesson";
 import { useGetListLessonsQuery, useDeleteBookedLessonMutation } from "@store/requestApi/bookingApi";
+import moment from "moment";
+import * as momentTimeZone from "moment-timezone";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
@@ -23,14 +25,51 @@ const AllLessonsPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [deleteLessonId, setDeleteLessonId] = useState<null | number>(null);
   const [pagesPagination, setPagesPagination] = useState(0);
+  const [canceledLesson, setCanceledLesson] = useState<number[]>([]);
 
   const [, { isLoading }] = useDeleteBookedLessonMutation();
 
-  const { data, error, isFetching } = useGetListLessonsQuery({
+  const { data, error, isFetching, refetch } = useGetListLessonsQuery({
     limit: itemPerPage,
     offset: (Number(page) - 1) * itemPerPage,
     isStudent: isStudent,
   });
+
+  useEffect(() => {
+    const processedLessons = new Set();
+    const lessonsClosed: number[] = [];
+
+    const checkUpcomingLessons = () => {
+      if (data && data.items.length > 0) {
+        const now = moment();
+        const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
+
+        data.items.forEach((lesson) => {
+          const lessonTime = moment(`${lesson.date} ${lesson.time}`, "YYYY-MM-DD HH:mm").add(
+            userTimeZoneOffset,
+            "minutes",
+          );
+
+          const isToday = lessonTime.isSame(now, "day");
+          const difference = lessonTime.diff(now, "minutes");
+
+          if (isToday && difference <= 10 && difference >= -13 && !processedLessons.has(lesson.id)) {
+            refetch();
+            processedLessons.add(lesson.id);
+          }
+
+          if (difference < -14) {
+            lessonsClosed.push(lesson.id);
+          }
+        });
+        setCanceledLesson(lessonsClosed);
+      }
+    };
+
+    const intervalId = setInterval(checkUpcomingLessons, 60 * 1000);
+
+    return () => clearInterval(intervalId);
+  }, [data, refetch]);
 
   useEffect(() => {
     if (data) {
@@ -77,9 +116,32 @@ const AllLessonsPage = () => {
           {data.items.length !== 0 && (
             <Box className="lessonsContainer">
               <p className="titleLessons">{t("upcomingLessons")}</p>
-              {data.items.map((el, ind) => (
-                <CardLesson key={ind} lesson_information={el} cbShowModal={handleShowModal} />
-              ))}
+              {data.items.map((el, ind) => {
+                const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
+                const now = moment();
+                const lessonDate = moment(`${el.date} ${el.time}`, "YYYY-MM-DD HH:mm").add(
+                  userTimeZoneOffset,
+                  "minutes",
+                );
+                const isToday = lessonDate.isSame(now, "day");
+                const difference = lessonDate.diff(now, "minutes");
+                const isHideButton = canceledLesson.includes(el.id)
+                  ? true
+                  : isToday && difference >= -14
+                  ? false
+                  : true;
+                const isDisabledJoinButton =
+                  isToday && difference <= 10 && difference >= -14 && el.video_room_id ? false : true;
+                return (
+                  <CardLesson
+                    key={ind}
+                    lesson_information={el}
+                    cbShowModal={handleShowModal}
+                    isHideButton={isHideButton}
+                    isDisabledJoin={isDisabledJoinButton}
+                  />
+                );
+              })}
             </Box>
           )}
           {pagesPagination > 0 && (

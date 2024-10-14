@@ -15,9 +15,7 @@ const VideoLessonPage = () => {
 
   const locale = useAppSelector(tutorSelectors.localeSelect);
 
-  const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number }>({
-    days: 0,
-    hours: 0,
+  const [timeLeft, setTimeLeft] = useState<{ minutes: number; seconds: number }>({
     minutes: 0,
     seconds: 0,
   });
@@ -48,16 +46,12 @@ const VideoLessonPage = () => {
       const duration = moment.duration(targetDate.diff(now));
       if (duration.asMinutes() > 5) {
         setTimeLeft({
-          days: Math.floor(duration.asDays()),
-          hours: duration.hours(),
           minutes: duration.minutes(),
           seconds: duration.seconds(),
         });
         setIsDisableJoinButton(true);
       } else if (duration.asMinutes() >= 0 && duration.asMinutes() <= 5 && room_id) {
         setTimeLeft({
-          days: Math.floor(duration.asDays()),
-          hours: duration.hours(),
           minutes: duration.minutes(),
           seconds: duration.seconds(),
         });
@@ -65,7 +59,7 @@ const VideoLessonPage = () => {
         setRoomId(room_id);
       } else if (duration.asMinutes() < -15) {
         clearInterval(timer);
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTimeLeft({ minutes: 0, seconds: 0 });
         setIsDisableJoinButton(true);
         setRoomId("");
       }
@@ -159,8 +153,6 @@ const VideoLessonPage = () => {
           <Box className="timerBox">
             <p>
               {t("timeToLesson", {
-                day: timeLeft.days,
-                hour: timeLeft.hours,
                 min: timeLeft.minutes,
                 sec: timeLeft.seconds,
               })}

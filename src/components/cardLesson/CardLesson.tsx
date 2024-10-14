@@ -7,15 +7,16 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@store/hook";
 import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import { ILessonUser } from "@store/requestApi/bookingApi";
-import momentTimeZone from "moment-timezone";
 import "./CardLesson.scss";
 
 interface ICardLessonProps {
   lesson_information: ILessonUser;
   cbShowModal: (id: number) => void;
+  isHideButton: boolean;
+  isDisabledJoin: boolean;
 }
 
-const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
+const CardLesson = ({ lesson_information, cbShowModal, isHideButton, isDisabledJoin }: ICardLessonProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
   const dispatch = useAppDispatch();
@@ -49,20 +50,6 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
     isStudent && navigate(`/teacher/${lesson_information.teacher_id}`);
     !isStudent && navigate(`/student/${lesson_information.student_id}`);
   };
-
-  const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
-  const lessonDate = moment(`${lesson_information.date} ${lesson_information.time}`, "YYYY-MM-DD HH:mm").add(
-    userTimeZoneOffset,
-    "minutes",
-  );
-  const now = moment();
-
-  const isDisabledJoin =
-    !lesson_information.video_room_id ||
-    now.isAfter(lessonDate.subtract(15, "minutes")) ||
-    now.isAfter(lessonDate, "day");
-
-  const isHideButton = now.isAfter(lessonDate.subtract(15, "minutes")) || now.isAfter(lessonDate, "day");
 
   return (
     <Box className="lessonBox">

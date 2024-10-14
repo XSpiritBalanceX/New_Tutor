@@ -521,7 +521,7 @@
     },
     "videoLessonPage": {
       "videoLesson": "Video lesson",
-      "timeToLesson": "Left until lesson: {{day}}d {{hour}}h {{min}}min {{sec}}sec",
+      "timeToLesson": "Left until lesson: {{min}}min {{sec}}sec",
       "openChat": "Open chat"
     },
     "dictionaryPage": {
