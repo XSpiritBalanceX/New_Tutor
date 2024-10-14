@@ -164,6 +164,13 @@
             }
           }
         }
+        .videoWrapper.fullVideo {
+          max-height: 100vh;
+          border-radius: 0;
+        }
+      }
+      .videoElements.fullVideo {
+        z-index: 2;
       }
       .controls {
         position: relative;
@@ -174,6 +181,10 @@
             top: 35px;
           }
         }
+      }
+      .controls.fullVideo {
+        position: fixed;
+        z-index: 3;
       }
     }
   }

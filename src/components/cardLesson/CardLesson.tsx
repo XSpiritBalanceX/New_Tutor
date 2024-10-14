@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@store/hook";
 import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import { ILessonUser } from "@store/requestApi/bookingApi";
+import momentTimeZone from "moment-timezone";
 import "./CardLesson.scss";
 
 interface ICardLessonProps {
@@ -28,8 +29,10 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
     const timeLesson = moment(`${lesson_information.date} ${lesson_information.time}`, "YYYY-MM-DD HH:mm").format(
       "DD-MM-YYYY-HH-mm",
     );
-    navigate(`/video_lesson/${timeLesson}`);
-    dispatch(setOpponentId(userId.toString()));
+    if (lesson_information.video_room_id) {
+      navigate(`/video_lesson/${timeLesson}/${lesson_information.video_room_id}`);
+      dispatch(setOpponentId(userId.toString()));
+    }
   };
 
   const handleOpenChat = () => {
@@ -47,6 +50,20 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
     !isStudent && navigate(`/student/${lesson_information.student_id}`);
   };
 
+  const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
+  const lessonDate = moment(`${lesson_information.date} ${lesson_information.time}`, "YYYY-MM-DD HH:mm").add(
+    userTimeZoneOffset,
+    "minutes",
+  );
+  const now = moment();
+
+  const isDisabledJoin =
+    !lesson_information.video_room_id ||
+    now.isAfter(lessonDate.subtract(15, "minutes")) ||
+    now.isAfter(lessonDate, "day");
+
+  const isHideButton = now.isAfter(lessonDate.subtract(15, "minutes")) || now.isAfter(lessonDate, "day");
+
   return (
     <Box className="lessonBox">
       <p className="dateOfLesson">{`${moment(lesson_information.date, "YYYY-MM-DD").format("MMMM, DD")}, ${moment(
@@ -63,18 +80,22 @@ const CardLesson = ({ lesson_information, cbShowModal }: ICardLessonProps) => {
           <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
             <p onClick={handleShowUserPage}>{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
-            <Button type="button" onClick={handleStartLesson}>
-              {t("startLesson")}
-            </Button>
+            {!isHideButton && (
+              <Button type="button" onClick={handleStartLesson} disabled={isDisabledJoin}>
+                {t("startLesson")}
+              </Button>
+            )}
           </Box>
         </Box>
         <Box className="controlsLessonBox">
           <Button type="button" onClick={handleOpenChat} className="writeButton">
             {t(isStudent ? "writeTeacher" : "writeStudent")}
           </Button>
-          <Button type="button" onClick={handleCancelLesson} className="cancelButton">
-            {t("cancelLesson")}
-          </Button>
+          {!isHideButton && (
+            <Button type="button" onClick={handleCancelLesson} className="cancelButton">
+              {t("cancelLesson")}
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>
