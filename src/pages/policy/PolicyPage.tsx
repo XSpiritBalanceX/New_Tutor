@@ -1,9 +1,10 @@
-import { Container, Box } from "@mui/material";
+import { Container, Box, List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import "./PolicyPage.scss";
 
 const PolicyPage = () => {
@@ -41,26 +42,41 @@ const PolicyPage = () => {
       <Box className="rowWithUlPolicy">
         <p>{t("basesProcessing")}</p>
         <p>{t("basesProcessingText1")}</p>
-        <ul>
-          {basesForProcessingFirst.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listPolicy">
+          {basesForProcessingFirst.map((el, ind) => (
+            <ListItem key={ind} className="listPolicyItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
         <p>{t("basesProcessingText5")}</p>
-        <ul>
-          {basesForProcessingSecond.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listPolicy">
+          {basesForProcessingSecond.map((el, ind) => (
+            <ListItem key={ind} className="listPolicyItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
       </Box>
       <Box className="rowWithUlPolicy">
         <p>{t("registrationAndAccounts")}</p>
         <p>{t("registrationAndAccountsText1")}</p>
-        <ul>
-          {registrationAndAccountsFirst.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listPolicy">
+          {registrationAndAccountsFirst.map((el, ind) => (
+            <ListItem key={ind} className="listPolicyItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
       </Box>
       <Box className="rowDataCollectPolicy">
         {dataWeCollect.map((el, ind) => {
