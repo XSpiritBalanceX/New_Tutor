@@ -343,14 +343,15 @@
       "close": "Закрыть"
     },
     "allLessonsPage": {
+      "main": "Главная",
       "myLessons": "Мои уроки",
       "allLessons": "Все уроки",
-      "upcomingLessons": "Ближайшие уроки",
+      "upcomingLessons": "Ближайшие",
       "writeTeacher": "Написать преподавателю",
       "writeStudent": "Написать ученику",
       "cancelLesson": "Отменить урок",
       "startLesson": "Перейти к уроку",
-      "pastLessons": "Прошедшие уроки",
+      "pastLessons": "Прошедшие",
       "paid": "Оплачено",
       "notPayed": "Не оплачено",
       "lessonCanceled": "Урок отменен",

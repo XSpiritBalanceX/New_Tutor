@@ -342,14 +342,15 @@
       "close": "Close"
     },
     "allLessonsPage": {
+      "main": "Main",
       "myLessons": "My lessons",
       "allLessons": "All lessons",
-      "upcomingLessons": "Upcoming lessons",
+      "upcomingLessons": "Upcoming",
       "writeTeacher": "Write to the teacher",
       "writeStudent": "Write to the student",
       "cancelLesson": "Cancel lesson",
       "startLesson": "Go to lesson",
-      "pastLessons": "Past Lessons",
+      "pastLessons": "Past",
       "paid": "Paid",
       "notPayed": "Not paid",
       "lessonCanceled": "Lesson canceled",

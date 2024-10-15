@@ -12,6 +12,7 @@ import { useGetListLessonsQuery, useDeleteBookedLessonMutation } from "@store/re
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
 import CustomPagination from "@components/customPagination/CustomPagination";
+import NavigationLessons from "@components/navigation/NavigationLessons";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
@@ -110,7 +111,7 @@ const AllLessonsPage = () => {
     }
   };
 
-  return error ? (
+  /*  return error ? (
     <CustomError />
   ) : (
     <Container className="allLessonsPageContainer">
@@ -157,6 +158,15 @@ const AllLessonsPage = () => {
           <CustomPagination pagesPagination={pagesPagination} currentPage={Number(page)} url="/lessons" />
         </>
       )}
+    </Container>
+  ); */
+  return (
+    <Container className="allLessonsPageContainer">
+      {(isFetching || isLoading) && <Loader />}
+      {deleteLessonId && (
+        <ModalCancelLesson isOpen={isOpenModal} cbCloseModal={handleCloseModal} lesson_id={deleteLessonId} />
+      )}
+      <NavigationLessons />
     </Container>
   );
 };
