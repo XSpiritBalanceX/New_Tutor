@@ -43,7 +43,7 @@ const ModalCancelLesson = ({ isOpen, cbCloseModal, lesson_id }: IModalCancelLess
         .unwrap()
         .then(() => {
           toast.success(t("sucRequest"));
-          navigate("/lessons/1");
+          navigate("/upcoming_lessons/1");
           cbCloseModal();
         })
         .catch(() => {

@@ -59,7 +59,7 @@ const ReviewPage = () => {
           {t("main")}
         </NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
-        <NavLink to={"/lessons/1"} className={"grayText"}>
+        <NavLink to={"/upcoming_lessons/1"} className={"grayText"}>
           {t("myLessons")}
         </NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />

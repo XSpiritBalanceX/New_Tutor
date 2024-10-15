@@ -32,7 +32,7 @@ const ModalBookLessons = ({
   };
 
   const handleNavigateLessons = () => {
-    navigate("/lessons/1");
+    navigate("/upcoming_lessons/1");
   };
 
   return (
