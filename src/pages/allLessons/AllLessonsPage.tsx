@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container, Box, Pagination } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { translate } from "@i18n";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { USER_TYPE } from "@utils/appConsts";
 import CustomError from "@components/error/CustomError";
 import Loader from "@components/loader/Loader";
@@ -11,13 +11,13 @@ import ModalCancelLesson from "@components/modal/ModalCancelLesson";
 import { useGetListLessonsQuery, useDeleteBookedLessonMutation } from "@store/requestApi/bookingApi";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
+import CustomPagination from "@components/customPagination/CustomPagination";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
   const { page } = useParams();
-  const navigate = useNavigate();
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
@@ -29,16 +29,16 @@ const AllLessonsPage = () => {
 
   const [, { isLoading }] = useDeleteBookedLessonMutation();
 
-  const { data, error, isFetching, refetch } = useGetListLessonsQuery({
-    limit: itemPerPage,
-    offset: (Number(page) - 1) * itemPerPage,
-    isStudent: isStudent,
-  });
+  const { data, error, isFetching, refetch } = useGetListLessonsQuery(
+    {
+      limit: itemPerPage,
+      offset: (Number(page) - 1) * itemPerPage,
+      isStudent: isStudent,
+    },
+    { refetchOnMountOrArgChange: true },
+  );
 
   useEffect(() => {
-    const processedLessons = new Set();
-    const lessonsClosed: number[] = [];
-
     const checkUpcomingLessons = () => {
       if (data && data.items.length > 0) {
         const now = moment();
@@ -53,16 +53,10 @@ const AllLessonsPage = () => {
           const isToday = lessonTime.isSame(now, "day");
           const difference = lessonTime.diff(now, "minutes");
 
-          if (isToday && difference <= 10 && difference >= -13 && !processedLessons.has(lesson.id)) {
+          if (isToday && difference <= 10 && difference >= -13 && !lesson.video_room_id) {
             refetch();
-            processedLessons.add(lesson.id);
-          }
-
-          if (difference < -14) {
-            lessonsClosed.push(lesson.id);
           }
         });
-        setCanceledLesson(lessonsClosed);
       }
     };
 
@@ -72,16 +66,36 @@ const AllLessonsPage = () => {
   }, [data, refetch]);
 
   useEffect(() => {
-    if (data) {
-      const pages = Math.ceil(data.all_items_count / itemPerPage);
-      pages > 1 && setPagesPagination(pages);
+    const lessonsClosed: number[] = [];
+
+    if (data && data.items.length > 0) {
+      const now = moment();
+      const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
+      data.items.forEach((lesson) => {
+        const lessonTime = moment(`${lesson.date} ${lesson.time}`, "YYYY-MM-DD HH:mm").add(
+          userTimeZoneOffset,
+          "minutes",
+        );
+        const isToday = lessonTime.isSame(now, "day");
+        const difference = lessonTime.diff(now, "minutes");
+        if (!isToday) {
+          lessonsClosed.push(lesson.id);
+        } else if (isToday && difference < -14) {
+          lessonsClosed.push(lesson.id);
+        }
+      });
+      setCanceledLesson(lessonsClosed);
     }
     // eslint-disable-next-line
   }, [data]);
 
-  const handleChangePage = (_: React.ChangeEvent<unknown>, value: number) => {
-    navigate(`/lessons/${value}`);
-  };
+  useEffect(() => {
+    if (data) {
+      const pages = Math.ceil(data.all_items_count / itemPerPage);
+      setPagesPagination(pages);
+    }
+    // eslint-disable-next-line
+  }, [data]);
 
   const handleCloseModal = () => {
     setIsOpenModal(false);
@@ -125,11 +139,7 @@ const AllLessonsPage = () => {
                 );
                 const isToday = lessonDate.isSame(now, "day");
                 const difference = lessonDate.diff(now, "minutes");
-                const isHideButton = canceledLesson.includes(el.id)
-                  ? true
-                  : isToday && difference >= -14
-                  ? false
-                  : true;
+                const isHideButton = canceledLesson.includes(el.id) ? true : false;
                 const isDisabledJoinButton =
                   isToday && difference <= 10 && difference >= -14 && el.video_room_id ? false : true;
                 return (
@@ -144,16 +154,7 @@ const AllLessonsPage = () => {
               })}
             </Box>
           )}
-          {pagesPagination > 0 && (
-            <Box className="paginationBox">
-              <Pagination
-                count={pagesPagination}
-                page={Number(page)}
-                onChange={handleChangePage}
-                className="searchPagination"
-              />
-            </Box>
-          )}
+          <CustomPagination pagesPagination={pagesPagination} currentPage={Number(page)} url="/lessons" />
         </>
       )}
     </Container>

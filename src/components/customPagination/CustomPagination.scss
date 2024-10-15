@@ -1,0 +1,39 @@
+@import "../../variables";
+
+.paginationBox {
+  width: 100%;
+  .customPagination {
+    margin: 0 auto;
+    .MuiPagination-ul {
+      justify-content: center;
+      li {
+        .MuiButtonBase-root {
+          width: 30px;
+          height: 30px;
+          border-radius: 5px;
+          @extend %text-main;
+          svg {
+            font-size: 30px;
+          }
+        }
+        .MuiButtonBase-root.Mui-selected {
+          background-color: map-get($theme-colors, "main-blue");
+          color: map-get($theme-colors, "white");
+        }
+        .MuiButtonBase-root.MuiPaginationItem-previousNext {
+          color: map-get($theme-colors, "main-blue");
+        }
+        .MuiButtonBase-root.Mui-disabled {
+          color: map-get($theme-colors, "gray");
+          opacity: 1;
+        }
+      }
+      li:first-child {
+        margin-right: 15px;
+      }
+      li:last-child {
+        margin-left: 15px;
+      }
+    }
+  }
+}
