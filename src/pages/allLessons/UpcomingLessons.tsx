@@ -7,7 +7,7 @@ import Loader from "@components/loader/Loader";
 import calendar from "@assets/calendar.svg";
 import CardLesson from "@components/cardLesson/CardLesson";
 import ModalCancelLesson from "@components/modal/ModalCancelLesson";
-import { useGetListLessonsQuery, useDeleteBookedLessonMutation } from "@store/requestApi/bookingApi";
+import { useGetListLessonsQuery, useCancelBookedLessonMutation } from "@store/requestApi/bookingApi";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
 import CustomPagination from "@components/customPagination/CustomPagination";
@@ -30,7 +30,7 @@ const UpcomingLessons = ({ setError }: IUpcomingLessonsProps) => {
   const [pagesPagination, setPagesPagination] = useState(0);
   const [canceledLesson, setCanceledLesson] = useState<number[]>([]);
 
-  const [, { isLoading }] = useDeleteBookedLessonMutation();
+  const [, { isLoading }] = useCancelBookedLessonMutation();
 
   const { data, error, isFetching, refetch } = useGetListLessonsQuery(
     {
