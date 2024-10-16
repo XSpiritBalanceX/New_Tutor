@@ -31,10 +31,13 @@ export const bookingApi = createApi({
   baseQuery: bookingRequestHandler,
   tagTypes: ["LessonsList"],
   endpoints: (builder) => ({
-    getListLessons: builder.query<IListLessons, { limit: number; offset: number; isStudent: boolean }>({
-      query: ({ limit, offset, isStudent }) => {
+    getListLessons: builder.query<
+      IListLessons,
+      { limit: number; offset: number; isStudent: boolean; lessons_type: string }
+    >({
+      query: ({ limit, offset, isStudent, lessons_type }) => {
         const url = isStudent ? `/student/booking` : `/teacher/booking`;
-        return `${url}/?limit=${limit}&offset=${offset}`;
+        return `${url}/?limit=${limit}&offset=${offset}&lesson_type=${lessons_type}`;
       },
       providesTags: ["LessonsList"],
     }),

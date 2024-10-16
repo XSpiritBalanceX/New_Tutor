@@ -37,18 +37,19 @@ const UpcomingLessons = ({ setError }: IUpcomingLessonsProps) => {
       limit: itemPerPage,
       offset: (Number(page) - 1) * itemPerPage,
       isStudent: isStudent,
+      lessons_type: "upcoming",
     },
     { refetchOnMountOrArgChange: true },
   );
 
   useEffect(() => {
-    if (error) {
+    if (error && !data) {
       setError(error);
-    } else {
+    } else if (data && !error) {
       setError(null);
     }
     // eslint-disable-next-line
-  }, [error]);
+  }, [error, data]);
 
   useEffect(() => {
     const checkUpcomingLessons = () => {
