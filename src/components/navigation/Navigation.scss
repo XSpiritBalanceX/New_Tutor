@@ -1,26 +1,11 @@
 @import "../../variables";
 
 .navigationLessonsBox {
-  .locationAllLessons {
-    margin: 0 0 30px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    @extend %text-small;
-    .mainLink,
-    .arrowIcon {
-      color: map-get($theme-colors, "gray");
-      margin: 0;
-    }
-    .myLessons {
-      margin: 0;
-    }
-  }
   .titleAllLessons {
     margin: 0 0 20px 0;
     @extend %h1;
     @media all and (max-width: 45em) {
-      margin: 0 0 30px 0;
+      margin: 0 0 15px 0;
     }
   }
   .lessonsLinksBox {

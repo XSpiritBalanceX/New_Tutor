@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CustomError from "@components/error/CustomError";
 import NavigationLessons from "@components/navigation/NavigationLessons";
@@ -9,6 +9,8 @@ import PastLessons from "@components/lessons/PastLessons";
 import { useGetListLessonsQuery, useCancelBookedLessonMutation } from "@store/requestApi/bookingApi";
 import Loader from "@components/loader/Loader";
 import { USER_TYPE } from "@utils/appConsts";
+import communication from "@assets/communication.svg";
+import gadgets from "@assets/gadgets.svg";
 import "./AllLessonsPage.scss";
 
 const AllLessonsPage = () => {
@@ -36,20 +38,27 @@ const AllLessonsPage = () => {
     <Container className="allLessonsPageContainer">
       {(isFetching || isLoading) && <Loader />}
       <NavigationLessons />
-      {lessons_type === "upcoming" && (
-        <UpcomingLessons
-          lessons_information={data}
-          refetch={refetch}
-          currentPage={Number(page)}
-          itemPerPage={itemPerPage}
-        />
-      )}
-      {lessons_type === "past" && (
-        <PastLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
-      )}
-      {lessons_type === "canceled" && (
-        <CanceledLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
-      )}
+      <Box className="contentLessonsPage">
+        {lessons_type === "upcoming" && (
+          <UpcomingLessons
+            lessons_information={data}
+            refetch={refetch}
+            currentPage={Number(page)}
+            itemPerPage={itemPerPage}
+          />
+        )}
+        {lessons_type === "past" && (
+          <PastLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
+        )}
+        {lessons_type === "canceled" && (
+          <CanceledLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
+        )}
+        {data && data.items.length !== 0 && (
+          <Box className="pictureLessonsBox">
+            <img src={isStudent ? communication : gadgets} alt="lessons" />
+          </Box>
+        )}
+      </Box>
     </Container>
   );
 };

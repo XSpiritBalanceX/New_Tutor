@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { NavLink, useLocation } from "react-router-dom";
 import { translate } from "@i18n";
-import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import "./Navigation.scss";
 
 const NavigationLessons = () => {
@@ -11,13 +10,6 @@ const NavigationLessons = () => {
 
   return (
     <Box className="navigationLessonsBox">
-      <Box className="locationAllLessons">
-        <NavLink to={"/"} className={"mainLink"}>
-          {t("main")}
-        </NavLink>
-        <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
-        <p className="myLessons">{t("myLessons")}</p>
-      </Box>
       <p className="titleAllLessons">{t("myLessons")}</p>
       <Box className="lessonsLinksBox">
         <NavLink

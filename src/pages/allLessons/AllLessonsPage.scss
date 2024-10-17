@@ -1,10 +1,31 @@
 @import "../../variables";
 
 .allLessonsPageContainer {
-  padding: 30px 0 100px 0 !important;
+  padding: 30px 20px 15px 20px !important;
   position: relative;
-  min-height: 700px;
-  @media all and (max-width: 78em) {
-    padding: 30px 20px 100px 20px !important;
+  min-height: 804px;
+  max-width: 1660px !important;
+  @media all and (max-width: 45em) {
+    padding: 20px 20px 30px 20px !important;
+  }
+  .contentLessonsPage {
+    display: flex;
+    flex-direction: row;
+    .pictureLessonsBox {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media all and (max-width: 70em) {
+        display: none;
+      }
+      img {
+        max-width: 574px;
+        width: 100%;
+        @media all and (max-width: 75em) {
+          max-width: 450px;
+        }
+      }
+    }
   }
 }

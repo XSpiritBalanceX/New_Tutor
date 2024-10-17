@@ -30,12 +30,13 @@
 
 .lessonsContainer {
   max-width: 680px;
+  width: 100%;
   .titleLessons {
     @extend %h2;
     margin: 0 0 10px 0;
   }
 }
 .paginationBox {
-  margin-top: 60px;
+  margin-top: 5px;
   max-width: 680px;
 }

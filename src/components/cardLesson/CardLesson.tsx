@@ -66,7 +66,10 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
         <Box className="userInformationBox">
           <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
-            <p onClick={handleShowUserPage}>{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
+            <p
+              onClick={handleShowUserPage}
+              className="nameUser"
+            >{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
             {lesson_information.is_canceled && (
               <Box className="reasonCancelBox">
                 <p className="canceledWhom">
