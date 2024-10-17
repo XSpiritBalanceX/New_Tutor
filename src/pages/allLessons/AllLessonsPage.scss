@@ -7,27 +7,4 @@
   @media all and (max-width: 78em) {
     padding: 30px 20px 100px 20px !important;
   }
-  .emptyDataBox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    p {
-      margin: 0;
-      @extend %h2;
-      @media all and (max-width: 40em) {
-        text-align: center;
-      }
-    }
-  }
-  .lessonsContainer {
-    max-width: 680px;
-    .titleLessons {
-      @extend %h2;
-      margin: 0 0 10px 0;
-    }
-  }
-  .paginationBox {
-    margin-top: 60px;
-    max-width: 680px;
-  }
 }

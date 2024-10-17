@@ -3,7 +3,8 @@ import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CustomError from "@components/error/CustomError";
 import NavigationLessons from "@components/navigation/NavigationLessons";
-import UpcomingLessons from "./UpcomingLessons";
+import UpcomingLessons from "../../components/lessons/UpcomingLessons";
+import PastLessons from "@components/lessons/PastLessons";
 import { useGetListLessonsQuery, useCancelBookedLessonMutation } from "@store/requestApi/bookingApi";
 import Loader from "@components/loader/Loader";
 import { USER_TYPE } from "@utils/appConsts";
@@ -35,7 +36,15 @@ const AllLessonsPage = () => {
       {(isFetching || isLoading) && <Loader />}
       <NavigationLessons />
       {lessons_type === "upcoming" && (
-        <UpcomingLessons lessons_information={data} refetch={refetch} currentPage={Number(page)} />
+        <UpcomingLessons
+          lessons_information={data}
+          refetch={refetch}
+          currentPage={Number(page)}
+          itemPerPage={itemPerPage}
+        />
+      )}
+      {lessons_type === "past" && (
+        <PastLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
       )}
     </Container>
   );

@@ -362,9 +362,15 @@
       "close": "Close",
       "sucRequest": "Your lesson has been successfully cancelled.",
       "errRequest": "An unexpected error occurred",
-      "noOneLessons": "You haven't booked any lessons",
-      "noOneLessonsTeacher": "You have no lessons booked",
-      "errorReason": "Please indicate the reason for canceling the lesson"
+      "noOneLessons": "You have no booked lessons",
+      "noOneLessonsTeacher": "You have no lessons booked.",
+      "errorReason": "Please indicate the reason for canceling the lesson",
+      "emptyBookedLessonsStudent": "Once you book a lesson, it will appear here.",
+      "emptyBookedLessonsTeacher": "Once a student books a lesson with you, they will appear here.",
+      "findTeacher": "Find a teacher",
+      "noPastLessons": "You have no past lessons.",
+      "emptyDataPastLessonsStudent": "Once you complete the first lesson, it will appear here.",
+      "emptyDataPastLessonsTeacher": "Once you complete your first lesson, it will appear here."
     },
     "studentPage": {
       "main": "Main",

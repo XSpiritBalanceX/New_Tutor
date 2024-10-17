@@ -56,6 +56,10 @@ const tutorSlice = createSlice({
         localStorage.removeItem(REGISTER_STATE);
         localStorage.removeItem(LS_TOKEN_KEY);
         localStorage.removeItem(LS_WEBRTK_TOKEN_KEY);
+        localStorage.removeItem("chat_active_id");
+        localStorage.removeItem("chat_opponent_id");
+        localStorage.removeItem("chat_rsa_private");
+        localStorage.removeItem("chat_rsa_public");
       }
     },
     setOpponentId(state, action: PayloadAction<string>) {

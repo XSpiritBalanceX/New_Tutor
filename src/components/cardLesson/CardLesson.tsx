@@ -11,11 +11,12 @@ import "./CardLesson.scss";
 
 interface ICardLessonProps {
   lesson_information: ILessonUser;
-  cbShowModal: (id: number) => void;
+  cbShowModal?: (id: number) => void;
   isDisabledJoin: boolean;
+  isHideButtons?: boolean;
 }
 
-const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin }: ICardLessonProps) => {
+const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideButtons }: ICardLessonProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
   const dispatch = useAppDispatch();
@@ -42,7 +43,7 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin }: ICardLe
   };
 
   const handleCancelLesson = () => {
-    cbShowModal(lesson_information.id);
+    cbShowModal && cbShowModal(lesson_information.id);
   };
 
   const handleShowUserPage = () => {
@@ -66,18 +67,22 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin }: ICardLe
           <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
             <p onClick={handleShowUserPage}>{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
-            <Button type="button" onClick={handleStartLesson} disabled={isDisabledJoin}>
-              {t("startLesson")}
-            </Button>
+            {!isHideButtons && (
+              <Button type="button" onClick={handleStartLesson} disabled={isDisabledJoin}>
+                {t("startLesson")}
+              </Button>
+            )}
           </Box>
         </Box>
         <Box className="controlsLessonBox">
           <Button type="button" onClick={handleOpenChat} className="writeButton">
             {t(isStudent ? "writeTeacher" : "writeStudent")}
           </Button>
-          <Button type="button" onClick={handleCancelLesson} className="cancelButton">
-            {t("cancelLesson")}
-          </Button>
+          {!isHideButtons && (
+            <Button type="button" onClick={handleCancelLesson} className="cancelButton">
+              {t("cancelLesson")}
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>

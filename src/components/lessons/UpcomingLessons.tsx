@@ -9,20 +9,21 @@ import { ILessonsInformation } from "@store/requestApi/bookingApi";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
 import CustomPagination from "@components/customPagination/CustomPagination";
-import "./AllLessonsPage.scss";
+import { NavLink } from "react-router-dom";
+import "./Lessons.scss";
 
 interface IUpcomingLessonsProps {
   lessons_information: ILessonsInformation | undefined;
   refetch: () => void;
   currentPage: number;
+  itemPerPage: number;
 }
 
-const UpcomingLessons = ({ lessons_information, refetch, currentPage }: IUpcomingLessonsProps) => {
+const UpcomingLessons = ({ lessons_information, refetch, currentPage, itemPerPage }: IUpcomingLessonsProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
-  const [itemPerPage] = useState(5);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [deleteLessonId, setDeleteLessonId] = useState<null | number>(null);
   const [pagesPagination, setPagesPagination] = useState(0);
@@ -84,8 +85,10 @@ const UpcomingLessons = ({ lessons_information, refetch, currentPage }: IUpcomin
         <>
           {lessons_information.items.length === 0 && (
             <Box className="emptyDataBox">
-              <p>{t(isStudent ? "noOneLessons" : "noOneLessonsTeacher")}</p>
               <img src={calendar} alt="calendar" />
+              <p className="noOneLessons">{t("noOneLessons")}</p>
+              <p>{t(isStudent ? "emptyBookedLessonsStudent" : "emptyBookedLessonsTeacher")}</p>
+              {isStudent && <NavLink to={"/search/1"}>{t("findTeacher")}</NavLink>}
             </Box>
           )}
           {lessons_information.items.length !== 0 && (
