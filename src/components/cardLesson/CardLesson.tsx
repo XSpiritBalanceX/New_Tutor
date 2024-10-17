@@ -12,11 +12,10 @@ import "./CardLesson.scss";
 interface ICardLessonProps {
   lesson_information: ILessonUser;
   cbShowModal: (id: number) => void;
-  isHideButton: boolean;
   isDisabledJoin: boolean;
 }
 
-const CardLesson = ({ lesson_information, cbShowModal, isHideButton, isDisabledJoin }: ICardLessonProps) => {
+const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin }: ICardLessonProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
 
   const dispatch = useAppDispatch();
@@ -67,22 +66,18 @@ const CardLesson = ({ lesson_information, cbShowModal, isHideButton, isDisabledJ
           <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
             <p onClick={handleShowUserPage}>{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
-            {!isHideButton && (
-              <Button type="button" onClick={handleStartLesson} disabled={isDisabledJoin}>
-                {t("startLesson")}
-              </Button>
-            )}
+            <Button type="button" onClick={handleStartLesson} disabled={isDisabledJoin}>
+              {t("startLesson")}
+            </Button>
           </Box>
         </Box>
         <Box className="controlsLessonBox">
           <Button type="button" onClick={handleOpenChat} className="writeButton">
             {t(isStudent ? "writeTeacher" : "writeStudent")}
           </Button>
-          {!isHideButton && (
-            <Button type="button" onClick={handleCancelLesson} className="cancelButton">
-              {t("cancelLesson")}
-            </Button>
-          )}
+          <Button type="button" onClick={handleCancelLesson} className="cancelButton">
+            {t("cancelLesson")}
+          </Button>
         </Box>
       </Box>
     </Box>
