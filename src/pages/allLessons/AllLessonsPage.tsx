@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import CustomError from "@components/error/CustomError";
 import NavigationLessons from "@components/navigation/NavigationLessons";
 import UpcomingLessons from "../../components/lessons/UpcomingLessons";
+import CanceledLessons from "@components/lessons/CanceledLessons";
 import PastLessons from "@components/lessons/PastLessons";
 import { useGetListLessonsQuery, useCancelBookedLessonMutation } from "@store/requestApi/bookingApi";
 import Loader from "@components/loader/Loader";
@@ -45,6 +46,9 @@ const AllLessonsPage = () => {
       )}
       {lessons_type === "past" && (
         <PastLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
+      )}
+      {lessons_type === "canceled" && (
+        <CanceledLessons lessons_information={data} currentPage={Number(page)} itemPerPage={itemPerPage} />
       )}
     </Container>
   );

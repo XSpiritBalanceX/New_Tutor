@@ -67,6 +67,20 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
           <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
             <p onClick={handleShowUserPage}>{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
+            {lesson_information.is_canceled && (
+              <Box className="reasonCancelBox">
+                <p className="canceledWhom">
+                  {(isStudent && lesson_information.student_id) || (!isStudent && lesson_information.teacher_id)
+                    ? t("canceledYou")
+                    : lesson_information.teacher_id
+                    ? t("canceledTeacher")
+                    : lesson_information.student_id
+                    ? t("canceledStudent")
+                    : t("canceledAut")}
+                </p>
+                <p className="reasonText">{lesson_information.reason || t("reasonAuthCanceled")}</p>
+              </Box>
+            )}
             {!isHideButtons && (
               <Button type="button" onClick={handleStartLesson} disabled={isDisabledJoin}>
                 {t("startLesson")}

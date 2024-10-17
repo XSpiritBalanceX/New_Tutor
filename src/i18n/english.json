@@ -370,7 +370,14 @@
       "findTeacher": "Find a teacher",
       "noPastLessons": "You have no past lessons.",
       "emptyDataPastLessonsStudent": "Once you complete the first lesson, it will appear here.",
-      "emptyDataPastLessonsTeacher": "Once you complete your first lesson, it will appear here."
+      "emptyDataPastLessonsTeacher": "Once you complete your first lesson, it will appear here.",
+      "noOneCanceledLessons": "You have no canceled lessons.",
+      "emptyDataCanceled": "Once you cancel the lesson, it will appear here.",
+      "canceledTeacher": "The lesson was canceled by the teacher",
+      "canceledStudent": "Lesson was canceled by student",
+      "canceledYou": "The lesson was canceled by you",
+      "canceledAut": "The lesson was canceled automatically",
+      "reasonAuthCanceled": "You are late for lesson"
     },
     "studentPage": {
       "main": "Main",

@@ -371,7 +371,14 @@
       "findTeacher": "Найти преподавателя",
       "noPastLessons": "У вас нет прошедших уроков.",
       "emptyDataPastLessonsStudent": "Как только вы завершите первый урок, он появится здесь.",
-      "emptyDataPastLessonsTeacher": "Как только вы проведёте первый урок, он появится здесь."
+      "emptyDataPastLessonsTeacher": "Как только вы проведёте первый урок, он появится здесь.",
+      "noOneCanceledLessons": "У вас нет отменённых уроков.",
+      "emptyDataCanceled": "Как только вы отмените урок, он появится здесь.",
+      "canceledTeacher": "Урок был отменён преподавателем",
+      "canceledStudent": "Урок был отменён учеником",
+      "canceledYou": "Урок был отменен Вами",
+      "canceledAut": "Урок был отменён автоматически",
+      "reasonAuthCanceled": "Вы опоздали на урок"
     },
     "studentPage": {
       "main": "Главная",

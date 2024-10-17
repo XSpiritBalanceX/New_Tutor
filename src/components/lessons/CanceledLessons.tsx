@@ -1,24 +1,20 @@
 import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import { translate } from "@i18n";
-import { USER_TYPE } from "@utils/appConsts";
 import calendar from "@assets/calendar.svg";
 import CardLesson from "@components/cardLesson/CardLesson";
 import { ILessonsInformation } from "@store/requestApi/bookingApi";
 import CustomPagination from "@components/customPagination/CustomPagination";
-import { NavLink } from "react-router-dom";
 import "./Lessons.scss";
 
-interface IPastLessonsProps {
+interface ICanceledLessonsProps {
   lessons_information: ILessonsInformation | undefined;
   currentPage: number;
   itemPerPage: number;
 }
 
-const PastLessons = ({ lessons_information, currentPage, itemPerPage }: IPastLessonsProps) => {
+const CanceledLessons = ({ lessons_information, currentPage, itemPerPage }: ICanceledLessonsProps) => {
   const { t } = translate("translate", { keyPrefix: "allLessonsPage" });
-
-  const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const [pagesPagination, setPagesPagination] = useState(0);
 
@@ -37,9 +33,8 @@ const PastLessons = ({ lessons_information, currentPage, itemPerPage }: IPastLes
           {lessons_information.items.length === 0 && (
             <Box className="emptyDataBox">
               <img src={calendar} alt="calendar" />
-              <p className="noOneLessons">{t("noPastLessons")}</p>
-              <p>{t(isStudent ? "emptyDataPastLessonsStudent" : "emptyDataPastLessonsTeacher")}</p>
-              {isStudent && <NavLink to={"/search/1"}>{t("findTeacher")}</NavLink>}
+              <p className="noOneLessons">{t("noOneCanceledLessons")}</p>
+              <p>{t("emptyDataCanceled")}</p>
             </Box>
           )}
           {lessons_information.items.length !== 0 && (
@@ -49,11 +44,11 @@ const PastLessons = ({ lessons_information, currentPage, itemPerPage }: IPastLes
               ))}
             </Box>
           )}
+          <CustomPagination pagesPagination={pagesPagination} currentPage={currentPage} url="/lessons/canceled" />
         </>
       )}
-      <CustomPagination pagesPagination={pagesPagination} currentPage={currentPage} url="/lessons/past" />
     </>
   );
 };
 
-export default PastLessons;
+export default CanceledLessons;

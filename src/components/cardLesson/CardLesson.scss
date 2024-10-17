@@ -78,6 +78,17 @@
             margin: 10px 0 0 0;
           }
         }
+        .reasonCancelBox {
+          .canceledWhom {
+            color: map-get($theme-colors, "red");
+            @extend %text-main;
+            margin: 0 0 5px 0;
+          }
+          .reasonText {
+            margin: 0;
+            @extend %text-main;
+          }
+        }
       }
     }
     .controlsLessonBox {
