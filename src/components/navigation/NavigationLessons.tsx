@@ -21,20 +21,28 @@ const NavigationLessons = () => {
       <p className="titleAllLessons">{t("myLessons")}</p>
       <Box className="lessonsLinksBox">
         <NavLink
-          to={"/upcoming_lessons/1"}
+          to={"/lessons/upcoming/1"}
           className={({ isActive }) =>
-            isActive || pathname.startsWith("/upcoming_lessons") ? "nav-link active" : "nav-link"
+            isActive || pathname.startsWith("/lessons/upcoming") ? "nav-link active" : "nav-link"
           }
         >
           {t("upcomingLessons")}
         </NavLink>
         <NavLink
-          to={"/past_lessons/1"}
+          to={"/lessons/past/1"}
           className={({ isActive }) =>
-            isActive || pathname.startsWith("/past_lessons") ? "nav-link active" : "nav-link"
+            isActive || pathname.startsWith("/lessons/past") ? "nav-link active" : "nav-link"
           }
         >
           {t("pastLessons")}
+        </NavLink>
+        <NavLink
+          to={"/lessons/canceled/1"}
+          className={({ isActive }) =>
+            isActive || pathname.startsWith("/lessons/canceled") ? "nav-link active" : "nav-link"
+          }
+        >
+          {t("canceledLessons")}
         </NavLink>
       </Box>
     </Box>

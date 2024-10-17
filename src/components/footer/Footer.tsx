@@ -29,7 +29,7 @@ const Footer = () => {
             </NavLink>
           ))}
           {isLogin && (
-            <NavLink to={"/invitation"} className={"logoLink"}>
+            <NavLink to={"/invitation"} className="nav-link">
               {t("inviteFriend")}
             </NavLink>
           )}
