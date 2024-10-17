@@ -58,7 +58,7 @@ const AuthHeader = () => {
           <Box className="balanceLinksBox">
             <Balance />
             <Box className="linksAuthHeaderBox">
-              <NavLink to={"/upcoming_lessons/1"} className="nav-link">
+              <NavLink to={"/lessons/upcoming/1"} className="nav-link">
                 {t("myLessons")}
               </NavLink>
               {isStudent && (

@@ -163,7 +163,7 @@ const UpcomingLessons = ({ setError }: IUpcomingLessonsProps) => {
               })}
             </Box>
           )}
-          <CustomPagination pagesPagination={pagesPagination} currentPage={Number(page)} url="/upcoming_lessons" />
+          <CustomPagination pagesPagination={pagesPagination} currentPage={Number(page)} url="/lessons/upcoming" />
         </>
       )}
     </>

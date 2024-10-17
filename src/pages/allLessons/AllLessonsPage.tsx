@@ -16,7 +16,7 @@ const AllLessonsPage = () => {
   ) : (
     <Container className="allLessonsPageContainer">
       <NavigationLessons />
-      {pathname.includes("upcoming_lessons") && <UpcomingLessons setError={setReqError} />}
+      {pathname.includes("/lessons/upcoming") && <UpcomingLessons setError={setReqError} />}
     </Container>
   );
 };
