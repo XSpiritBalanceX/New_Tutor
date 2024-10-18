@@ -223,8 +223,9 @@
       },
       "bookLessons": {
         "youBookedLessons": "You have booked a lesson",
-        "youBookedWithTeacher": "You have booked lessons with teacher {{name}}",
-        "onLesson": "on {{date}}"
+        "youBookedWithTeacher": "You have booked lesson(s) with teacher {{name}}",
+        "onLesson": "on {{date}}",
+        "notificationLesson": "Please note that if you are late for a lesson by more than 15 minutes, the full cost of the lesson will be debited from your account."
       },
       "cookies": {
         "text": "We use cookies to improve your website experience.  You can find out more by going to ",
