@@ -31,7 +31,7 @@
       margin-right: 70px;
     }
     .nav-link {
-      @extend %text-main;
+      @extend %h4;
       color: map-get($theme-colors, "black");
       @media all and (max-width: 60em) {
         display: none;
@@ -57,6 +57,8 @@
         }
         .MuiSelect-select {
           @extend %text-small;
+          font-size: 18px;
+          line-height: 130%;
           padding-top: 5px;
           padding-bottom: 0;
           color: map-get($theme-colors, "gray");
@@ -64,7 +66,7 @@
       }
     }
     .nav-link {
-      @extend %text-main;
+      @extend %h4;
       padding: 10px 20px;
       border-radius: 100px;
     }
@@ -74,7 +76,7 @@
       @media all and (max-width: 45em) {
         position: absolute;
         bottom: -55px;
-        left: 0;
+        left: 20px;
         margin: 0;
       }
     }
@@ -84,7 +86,7 @@
       @media all and (max-width: 45em) {
         position: absolute;
         bottom: -55px;
-        right: 0;
+        right: 20px;
       }
     }
     .buttonMobileMenu {
