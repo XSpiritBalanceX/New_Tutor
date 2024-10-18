@@ -53,7 +53,7 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
 
   return (
     <Box className="lessonBox">
-      <p className="dateOfLesson">{`${moment(lesson_information.date, "YYYY-MM-DD").format("MMMM, DD")}, ${moment(
+      <p className="dateOfLesson">{`${moment(lesson_information.date, "YYYY-MM-DD").format("DD MMMM")} ${moment(
         lesson_information.time,
         "HH:mm",
       )

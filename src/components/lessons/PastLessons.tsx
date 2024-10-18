@@ -43,15 +43,17 @@ const PastLessons = ({ lessons_information, currentPage, itemPerPage }: IPastLes
             </Box>
           )}
           {lessons_information.items.length !== 0 && (
-            <Box className="lessonsContainer">
-              {lessons_information.items.map((el, ind) => (
-                <CardLesson key={ind} lesson_information={el} isDisabledJoin={true} isHideButtons={true} />
-              ))}
+            <Box className="fullContentLessonsBox">
+              <Box className="lessonsContainer">
+                {lessons_information.items.map((el, ind) => (
+                  <CardLesson key={ind} lesson_information={el} isDisabledJoin={true} isHideButtons={true} />
+                ))}
+              </Box>
+              <CustomPagination pagesPagination={pagesPagination} currentPage={currentPage} url="/lessons/past" />
             </Box>
           )}
         </>
       )}
-      <CustomPagination pagesPagination={pagesPagination} currentPage={currentPage} url="/lessons/past" />
     </>
   );
 };

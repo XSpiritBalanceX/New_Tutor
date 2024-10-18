@@ -92,30 +92,32 @@ const UpcomingLessons = ({ lessons_information, refetch, currentPage, itemPerPag
             </Box>
           )}
           {lessons_information.items.length !== 0 && (
-            <Box className="lessonsContainer">
-              {lessons_information.items.map((el, ind) => {
-                const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
-                const now = moment();
-                const lessonDate = moment(`${el.date} ${el.time}`, "YYYY-MM-DD HH:mm").add(
-                  userTimeZoneOffset,
-                  "minutes",
-                );
-                const isToday = lessonDate.isSame(now, "day");
-                const difference = lessonDate.diff(now, "minutes");
-                const isDisabledJoinButton =
-                  isToday && difference <= 10 && difference >= -14 && el.video_room_id ? false : true;
-                return (
-                  <CardLesson
-                    key={ind}
-                    lesson_information={el}
-                    cbShowModal={handleShowModal}
-                    isDisabledJoin={isDisabledJoinButton}
-                  />
-                );
-              })}
+            <Box className="fullContentLessonsBox">
+              <Box className="lessonsContainer">
+                {lessons_information.items.map((el, ind) => {
+                  const userTimeZoneOffset = momentTimeZone.tz(momentTimeZone.tz.guess()).utcOffset();
+                  const now = moment();
+                  const lessonDate = moment(`${el.date} ${el.time}`, "YYYY-MM-DD HH:mm").add(
+                    userTimeZoneOffset,
+                    "minutes",
+                  );
+                  const isToday = lessonDate.isSame(now, "day");
+                  const difference = lessonDate.diff(now, "minutes");
+                  const isDisabledJoinButton =
+                    isToday && difference <= 10 && difference >= -14 && el.video_room_id ? false : true;
+                  return (
+                    <CardLesson
+                      key={ind}
+                      lesson_information={el}
+                      cbShowModal={handleShowModal}
+                      isDisabledJoin={isDisabledJoinButton}
+                    />
+                  );
+                })}
+              </Box>
+              <CustomPagination pagesPagination={pagesPagination} currentPage={currentPage} url="/lessons/upcoming" />
             </Box>
           )}
-          <CustomPagination pagesPagination={pagesPagination} currentPage={currentPage} url="/lessons/upcoming" />
         </>
       )}
     </>
