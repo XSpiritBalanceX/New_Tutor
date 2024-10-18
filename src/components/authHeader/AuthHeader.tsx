@@ -52,7 +52,7 @@ const AuthHeader = () => {
       {isLoading && <Loader />}
       <Box className="authHeaderContainer">
         <Box className="firstColHeader">
-          <NavLink to={"/"}>
+          <NavLink to={"/"} className={"logoLink"}>
             <img src={logo} alt="logo" />
           </NavLink>
           <Box className="balanceLinksBox">
