@@ -108,11 +108,10 @@ $theme-colors: (
 }
 
 %h3 {
-  font-family: "Montserrat";
-  font-style: normal;
+  font-family: "Montserrat", "Rubik", sans-serif;
   font-weight: 600;
   font-size: 16px;
-  line-height: 19.2px;
+  line-height: 20px;
 }
 
 %h4 {
@@ -131,8 +130,7 @@ $theme-colors: (
 
 %text-small {
   font-family: "Montserrat", "Rubik", sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 15.4px;
+  line-height: 19px;
 }

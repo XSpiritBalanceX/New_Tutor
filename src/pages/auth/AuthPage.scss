@@ -36,8 +36,6 @@
     .title {
       margin: 0;
       @extend %h1;
-      font-size: 28px;
-      line-height: 120%;
       color: map-get($theme-colors, "main-blue");
       span {
         padding: 4px 15px;
@@ -54,7 +52,7 @@
       border-radius: 4px;
       @extend %text-main;
       padding: 10px 20px;
-      max-width: 270px;
+      max-width: 320px;
       position: absolute;
     }
     .firstTag {

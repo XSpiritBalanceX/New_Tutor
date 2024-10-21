@@ -34,7 +34,7 @@
   }
   .buttonSubmit {
     text-transform: none;
-    @extend %text-main;
+    @extend %h4;
     @extend %button-1;
     height: 40px;
     width: 100%;
