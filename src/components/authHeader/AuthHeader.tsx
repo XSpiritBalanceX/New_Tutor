@@ -71,9 +71,6 @@ const AuthHeader = () => {
                   </NavLink>
                 </>
               )}
-              <NavLink to={"/invitation"} className="nav-link">
-                {t("inviteFriend")}
-              </NavLink>
             </Box>
           </Box>
         </Box>
