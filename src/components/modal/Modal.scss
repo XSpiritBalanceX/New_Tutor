@@ -32,7 +32,7 @@
         color: map-get($theme-colors, "black");
       }
       .timeLesson {
-        @extend %h1;
+        @extend %h2;
         font-size: 18px;
         color: map-get($theme-colors, "black");
       }
@@ -65,7 +65,7 @@
         text-align: center;
         color: map-get($theme-colors, "main-blue");
         margin: 5px 0 0 0;
-        @extend %text-main;
+        @extend %text-small;
       }
     }
     .navigateButtonBox {
@@ -74,7 +74,7 @@
       justify-content: center;
       button {
         @extend %button-1;
-        @extend %text-main;
+        @extend %h4;
         text-transform: none;
         border-radius: 100px;
         max-width: 320px;
@@ -114,10 +114,16 @@
     display: flex;
     flex-direction: row;
     margin: 0 0 20px 0;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+    }
     .titleDescription {
       @extend %h3;
       margin: 0 5px 0 0;
       color: map-deep-get($theme-colors, "text", "dark-gray");
+      @media all and (max-width: 40em) {
+        margin: 0 0 10px 0;
+      }
     }
     .textDescription {
       margin: 0;
@@ -138,7 +144,7 @@
   .actionsBox {
     button {
       text-transform: none;
-      @extend %text-main;
+      @extend %h4;
       @extend %button-1;
       border-radius: 100px;
       padding: 10px 20px;
@@ -177,7 +183,7 @@
         @extend %h2;
       }
       .reasonModal {
-        @extend %text-main;
+        @extend %text-small;
       }
       .fieldReason {
         all: unset;
@@ -196,7 +202,7 @@
       }
       .errorMessage {
         margin: 0;
-        @extend %text-main;
+        @extend %text-small;
         color: map-get($theme-colors, "red");
       }
       .controlsModalBox {
@@ -206,7 +212,7 @@
         margin: 30px 0 0 0;
         button {
           text-transform: none;
-          @extend %text-main;
+          @extend %h4;
           border-radius: 100px;
           padding: 10px 20px;
         }

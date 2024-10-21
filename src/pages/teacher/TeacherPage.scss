@@ -60,6 +60,8 @@
             position: absolute;
             left: 160px;
             top: 0;
+            font-size: 16px;
+            line-height: 20px;
           }
         }
         .teacherRatingBox {
@@ -75,10 +77,12 @@
           }
           .countOfFeedback {
             @extend %text-main;
-            color: map-get($theme-colors, "main-blue");
+            color: map-deep-get($theme-colors, "text", "grey");
             margin: 0 0 0 10px;
             @media all and (max-width: 40em) {
               margin: 0;
+              font-size: 14px;
+              line-height: 19px;
             }
           }
           .MuiRating-root {
@@ -116,7 +120,13 @@
           }
           .MuiTypography-root {
             @extend %text-main;
-            color: map-deep-get($theme-colors, "text", "dark-gray");
+            font-weight: 500;
+            line-height: 20px;
+            color: map-get($theme-colors, "main-blue");
+            @media all and (max-width: 40em) {
+              font-size: 12px;
+              line-height: 15px;
+            }
           }
         }
         .languageBox {
@@ -127,19 +137,39 @@
           .levelOfLanguage,
           .countOfStudent,
           .costPerHour {
+            @extend %text-main;
+            @media all and (max-width: 40em) {
+              font-size: 14px;
+              line-height: 19px;
+            }
+          }
+          .levelOfLanguage {
             margin: 0 0 20px 0;
-            @extend %h3;
-            word-break: break-all;
+            @media all and (max-width: 40em) {
+              margin: 0 0 5px 0;
+            }
+          }
+          .costPerHour {
+            margin: 10px 0 0 0;
+            @media all and (max-width: 40em) {
+              margin: 5px 0 0 0;
+            }
           }
           .levelOfLanguage {
             .lowLevel,
             .averageLevel,
             .highLevel {
               @extend %text-small;
+              font-weight: 500;
+              line-height: 17px;
               padding: 5px 10px;
               border-radius: 100px;
               margin-left: 10px;
               display: inline-block;
+              @media all and (max-width: 40em) {
+                font-size: 12px;
+                line-height: 15px;
+              }
             }
             .lowLevel {
               background-color: map-get($theme-colors, "light-red");
@@ -155,19 +185,27 @@
             }
           }
           .countOfStudent {
+            margin: 0 0 0 0;
             .newTeacher {
               @extend %text-small;
+              font-weight: 500;
+              line-height: 17px;
               padding: 5px 10px;
               border-radius: 100px;
               margin-left: 10px;
               display: inline-block;
               background-color: map-get($theme-colors, "light-green");
               color: map-get($theme-colors, "green");
+              @media all and (max-width: 40em) {
+                font-size: 12px;
+                line-height: 15px;
+              }
             }
           }
           .costPerHour {
             span {
               color: map-get($theme-colors, "main-blue");
+              font-weight: 600;
             }
           }
         }
@@ -182,7 +220,11 @@
             padding: 0;
             text-transform: none;
             color: map-get($theme-colors, "main-blue");
-            @extend %text-main;
+            @extend %h3;
+            @media all and (max-width: 40em) {
+              font-size: 14px;
+              line-height: 19px;
+            }
           }
         }
         .writeButtonBox {
@@ -190,7 +232,7 @@
           margin-top: 20px;
           button {
             width: 100%;
-            @extend %text-main;
+            @extend %h4;
             @extend %button-1;
             padding: 10px 20px;
             text-transform: none;
