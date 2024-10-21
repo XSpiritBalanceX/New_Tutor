@@ -7,15 +7,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 15px;
   @media all and (max-width: 47em) {
-    padding: 20px 0;
+    padding: 15px 0;
   }
   .dateOfLesson {
     @extend %text-main;
-    color: map-deep-get($theme-colors, "text", "dark-gray");
+    color: map-get($theme-colors, "main-blue");
+    font-weight: 600;
     margin: 0;
     @media all and (max-width: 47em) {
-      margin: 0 20px;
+      margin: 0 15px;
     }
   }
   .lessonContent {
@@ -25,7 +27,7 @@
     justify-content: space-between;
     align-items: flex-start;
     @media all and (max-width: 47em) {
-      margin: 10px 20px 0 20px;
+      margin: 10px 10px 0 10px;
     }
     @media all and (max-width: 40em) {
       flex-direction: column;
@@ -54,7 +56,7 @@
         @media all and (max-width: 40em) {
           width: 100%;
         }
-        p {
+        .nameUser {
           margin: 0 0 10px 0;
           @extend %h3;
           &:hover {
@@ -72,10 +74,24 @@
           @extend %button-1;
           text-transform: none;
           padding: 10px 20px;
-          border-radius: 100px;
+          border-radius: 30px;
           @media all and (max-width: 40em) {
             width: 100%;
             margin: 10px 0 0 0;
+          }
+        }
+        .reasonCancelBox {
+          @media all and (max-width: 40em) {
+            margin: 10px 0 0 0;
+          }
+          .canceledWhom {
+            color: map-get($theme-colors, "red");
+            @extend %text-main;
+            margin: 0 0 5px 0;
+          }
+          .reasonText {
+            margin: 0;
+            @extend %text-main;
           }
         }
       }
@@ -85,9 +101,7 @@
       flex-direction: column;
       align-items: flex-start;
       @media all and (max-width: 40em) {
-        position: absolute;
-        top: 30px;
-        left: 90px;
+        width: 100%;
       }
       button {
         text-transform: none;
@@ -97,9 +111,30 @@
       .writeButton {
         margin: 0 0 10px 0;
         color: map-get($theme-colors, "main-blue");
+        @media all and (max-width: 40em) {
+          margin: 10px 0 0 0;
+          background-color: map-get($theme-colors, "white");
+          color: map-get($theme-colors, "main-blue");
+          border: solid 2px map-get($theme-colors, "main-blue");
+          border-radius: 30px;
+          width: 100%;
+          padding: 10px 20px;
+          &:hover {
+            border: solid 2px map-deep-get($theme-colors, "border", "hover");
+            color: map-deep-get($theme-colors, "border", "hover");
+          }
+          &:active {
+            border: solid 2px map-deep-get($theme-colors, "border", "pressed");
+            color: map-deep-get($theme-colors, "border", "pressed");
+          }
+        }
       }
       .cancelButton {
         color: map-get($theme-colors, "red");
+        @media all and (max-width: 40em) {
+          margin: 10px 0 0 0;
+          width: 100%;
+        }
       }
     }
   }

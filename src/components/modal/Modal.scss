@@ -23,26 +23,64 @@
     .bookingInformation {
       padding: 0 35px;
       .youBooked,
-      .withTeacher,
       .timeLesson {
         margin: 0 0 10px 0;
         text-align: center;
       }
       .youBooked {
         @extend %h2;
-      }
-      .withTeacher {
-        @extend %text-main;
+        color: map-get($theme-colors, "black");
       }
       .timeLesson {
         @extend %h1;
         font-size: 18px;
+        color: map-get($theme-colors, "black");
       }
     }
     .imageBox {
       display: flex;
       align-items: center;
       justify-content: center;
+      img {
+        max-width: 157px;
+        max-height: 157px;
+        @media all and (max-width: 40em) {
+          max-width: 116px;
+          max-height: 116px;
+        }
+      }
+    }
+    .notificationLessonBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 0 15px 0;
+      background-color: map-get($theme-colors, "white-blue");
+      border-radius: 15px;
+      padding: 12px 10px;
+      svg {
+        fill: map-get($theme-colors, "main-blue");
+      }
+      p {
+        text-align: center;
+        color: map-get($theme-colors, "main-blue");
+        margin: 5px 0 0 0;
+        @extend %text-main;
+      }
+    }
+    .navigateButtonBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        @extend %button-1;
+        @extend %text-main;
+        text-transform: none;
+        border-radius: 100px;
+        max-width: 320px;
+        width: 100%;
+        height: 40px;
+      }
     }
   }
 }

@@ -181,9 +181,9 @@ const PersonalControls = () => {
           <NavLink to={"/profile/payment"} className="nav-link">
             {t("payments")}
           </NavLink>
-          <Button type="button" onClick={handleLogOut} className="logOutButton">
+          <Box onClick={handleLogOut} className="logOutBox">
             {t("logOut")}
-          </Button>
+          </Box>
         </Box>
       )}
     </Box>

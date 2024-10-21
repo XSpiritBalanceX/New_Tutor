@@ -119,7 +119,8 @@ const ScheduleProfileTeacher = ({ schedule, languages, teacher_name, teacher_id 
           const busyTimes = err.data
             .map(
               (el: IErrorBusyDate) =>
-                `${moment(el.busy_date.date, "YYYY-MM-DD").format("DD MMMM")} ${moment(el.busy_date.time, "HH:mm")
+                el.busy_date &&
+                `${moment(el.busy_date?.date, "YYYY-MM-DD").format("DD MMMM")} ${moment(el.busy_date?.time, "HH:mm")
                   .add(momentTimeZone.tz(selectedTimeZone).utcOffset(), "minutes")
                   .format("HH:mm")}`,
             )

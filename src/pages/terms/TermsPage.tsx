@@ -1,9 +1,10 @@
-import { Container, Box } from "@mui/material";
+import { Container, Box, List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
 import { translate } from "@i18n";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import "./TermsPage.scss";
 
 const TermsPage = () => {
@@ -48,18 +49,28 @@ const TermsPage = () => {
       <Box className="rowWithUlTerms">
         <p>{t("tutorTerms")}</p>
         <p>{t("tutorTermsText1")}</p>
-        <ul>
-          {tutorTermsList.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listTerms">
+          {tutorTermsList.map((el, ind) => (
+            <ListItem key={ind} className="listTermsItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
         {tutorTermsText.map((el, ind) => {
           return <p key={ind}>{t(el)}</p>;
         })}
         <p>{t("tutorTermsText9")}</p>
-        <ul>
-          <li>{t("tutorTermsText10")}</li>
-        </ul>
+        <List className="listTerms">
+          <ListItem className="listTermsItem">
+            <ListItemIcon className="listIcon">
+              <FiberManualRecordIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText className="listText">{t("tutorTermsText10")}</ListItemText>
+          </ListItem>
+        </List>
       </Box>
       <Box className="rowWithoutUlTerms">
         {amendmentsTerms.map((el, ind) => {
@@ -74,41 +85,66 @@ const TermsPage = () => {
       <Box className="rowWithUlTerms">
         <p>{t("directInteraction")}</p>
         <p>{t("directInteractionText1")}</p>
-        <ul>
-          {directInteraction.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listTerms">
+          {directInteraction.map((el, ind) => (
+            <ListItem key={ind} className="listTermsItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
         <p>{t("directInteractionText4")}</p>
       </Box>
       <Box className="sevenRowTerms">
         <p>{t("representationAnsWarr")}</p>
         <p>{t("tutorRepresentations")}</p>
-        <ul>
-          {tutorRepresentations.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listTerms">
+          {tutorRepresentations.map((el, ind) => (
+            <ListItem key={ind} className="listTermsItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
         <p>{t("studentRepresentations")}</p>
         <p>{t("studentRepresentationsText1")}</p>
-        <ul>
-          {studentRepresentations.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listTerms">
+          {studentRepresentations.map((el, ind) => (
+            <ListItem key={ind} className="listTermsItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
       </Box>
       <Box className="sevenRowTerms">
         <p>{t("paymentsAndReturns")}</p>
         <p>{t("paymentsAndReturnsStudent")}</p>
-        <ul>
-          {studentPaymentsAnsReturns.map((el, ind) => {
-            return <li key={ind}>{t(el)}</li>;
-          })}
-        </ul>
+        <List className="listTerms">
+          {studentPaymentsAnsReturns.map((el, ind) => (
+            <ListItem key={ind} className="listTermsItem">
+              <ListItemIcon className="listIcon">
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText className="listText">{t(el)}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
         <p>{t("paymentsAndReturnsTeacher")}</p>
-        <ul>
-          <li>{t("paymentsAndReturnsTeacherText1")}</li>
-        </ul>
+        <List className="listTerms">
+          <ListItem className="listTermsItem">
+            <ListItemIcon className="listIcon">
+              <FiberManualRecordIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText className="listText">{t("paymentsAndReturnsTeacherText1")}</ListItemText>
+          </ListItem>
+        </List>
       </Box>
     </Container>
   );

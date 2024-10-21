@@ -4,7 +4,7 @@ import { translate } from "@i18n";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useDeleteBookedLessonMutation } from "@store/requestApi/bookingApi";
+import { useCancelBookedLessonMutation } from "@store/requestApi/bookingApi";
 import { USER_TYPE } from "@utils/appConsts";
 import "./Modal.scss";
 
@@ -19,7 +19,7 @@ const ModalCancelLesson = ({ isOpen, cbCloseModal, lesson_id }: IModalCancelLess
 
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
-  const [deleteBookedLesson] = useDeleteBookedLessonMutation();
+  const [cancelBookedLesson] = useCancelBookedLessonMutation();
 
   const navigate = useNavigate();
 
@@ -39,11 +39,11 @@ const ModalCancelLesson = ({ isOpen, cbCloseModal, lesson_id }: IModalCancelLess
     if (!reason) {
       setErrorMessage(t("errorReason"));
     } else {
-      deleteBookedLesson({ lesson_id: lesson_id, isStudent: isStudent })
+      cancelBookedLesson({ lesson_id: lesson_id, isStudent: isStudent, reason: reason })
         .unwrap()
         .then(() => {
           toast.success(t("sucRequest"));
-          navigate("/lessons/1");
+          navigate("/lessons/upcoming/1");
           cbCloseModal();
         })
         .catch(() => {

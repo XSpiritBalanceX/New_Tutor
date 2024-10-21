@@ -15,7 +15,7 @@ const AuthPage = () => {
     <Container className="containerAuthPage">
       <Box className="titleBox">
         <p className="title">
-          <span>TUTOR</span> &mdash; {t("title")}
+          <span>MOVA</span> &mdash; {t("title")}
         </p>
         <p className="firstTag">{t("taglineOne")}</p>
         <p className="secondTag">{t("taglineTwo")}</p>

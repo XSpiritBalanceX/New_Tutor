@@ -2,188 +2,63 @@
 
 .wrapperFooterBox {
   background-color: map-get($theme-colors, "main-blue");
+  display: flex;
+  justify-content: center;
 }
 
-.footerContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 15px 30px 15px;
+.footerContentBox {
+  max-width: 1660px;
+  width: 100%;
+  padding: 30px 20px;
   display: flex;
-  flex-direction: column;
-  @media all and (max-width: 53em) {
-    padding: 40px 20px 30px 20px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  @media all and (max-width: 50em) {
+    flex-direction: column;
   }
-  .firstRowFooter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 40px;
-    @media all and (max-width: 53em) {
-      flex-direction: column;
-    }
-    .titleColumn {
-      margin: 0 0 15px 0;
-      color: map-get($theme-colors, "white");
-      @extend %h2;
-    }
-    .columnFooter {
-      display: flex;
-      flex-direction: column;
-      .contactInformation {
-        margin: 0;
-        @extend %text-main;
-        color: map-get($theme-colors, "white");
-      }
-      .nav-link {
-        @extend %text-main;
-        color: map-get($theme-colors, "white");
-        text-decoration: none;
-        margin-bottom: 10px;
-      }
-      .tutorsLinksBox {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        .columnTutorsBox {
-          display: flex;
-          flex-direction: column;
-        }
-        .firstColumnTutorBox {
-          margin-right: 30px;
-        }
-        .buttonMoreBox {
-          width: 100%;
-          display: flex;
-          justify-content: flex-end;
-          button {
-            min-width: 28px;
-            width: 28px;
-            height: 15px;
-            padding: 0;
-            color: map-get($theme-colors, "white");
-            text-transform: none;
-            @extend %text-small;
-          }
-        }
-      }
-    }
-    .aboutCompanyColumn,
-    .tutorsColumn {
-      @media all and (max-width: 53em) {
-        display: none;
-      }
-    }
-    .mobileCompanyTeachersBox {
-      margin: 20px 0 15px 0;
-      width: 100%;
-      display: none;
-      @media all and (max-width: 53em) {
-        display: block;
-      }
-      .itemAccordionMobile {
-        width: 100%;
-        background-color: map-get($theme-colors, "main-blue");
-        border: none;
-        box-shadow: none;
-        &::before {
-          display: none;
-        }
-        .itemAccordionSumMobile {
-          padding: 0;
-          svg {
-            fill: map-get($theme-colors, "white");
-          }
-          .MuiAccordionSummary-content {
-            p {
-              @extend %h2;
-              color: map-get($theme-colors, "white");
-            }
-          }
-        }
-        .accordionMobileDetailsCompany {
-          display: flex;
-          flex-direction: column;
-          padding: 0;
-          .nav-link {
-            @extend %text-main;
-            color: map-get($theme-colors, "white");
-            text-decoration: none;
-            margin-bottom: 10px;
-          }
-        }
-        .accordionMobileDetailsTeachers {
-          display: flex;
-          flex-direction: row;
-          padding: 0;
-          .columnTutorsBox {
-            display: flex;
-            flex-direction: column;
-            .nav-link {
-              @extend %text-main;
-              color: map-get($theme-colors, "white");
-              text-decoration: none;
-              margin-bottom: 10px;
-            }
-          }
-          .firstColumnTutorBox {
-            margin-right: 40px;
-          }
-          .buttonMoreBox {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            button {
-              min-width: 28px;
-              width: 28px;
-              height: 15px;
-              padding: 0;
-              color: map-get($theme-colors, "white");
-              text-transform: none;
-              @extend %text-small;
-            }
-          }
-        }
-      }
+  .logoLink {
+    @media all and (max-width: 50em) {
+      margin: 0 0 20px 0;
     }
   }
-  .secondRowFooter {
+  .footerColumnBox {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    @media all and (max-width: 53em) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .emptyBox {
-      width: 100px;
-      @media all and (max-width: 53em) {
-        display: none;
-      }
-    }
+    flex-direction: column;
     .nav-link {
+      @extend %h5;
       color: map-get($theme-colors, "white");
-      text-decoration: none;
-      @extend %text-small;
-      @media all and (max-width: 53em) {
-        margin: 10px 0 0 0;
+      margin: 0 0 10px 0;
+    }
+    .nav-link:last-child {
+      margin-bottom: 0;
+      @media all and (max-width: 50em) {
+        margin: 0 0 10px 0;
       }
+    }
+    .titleColumn,
+    .contactInformation,
+    .copyInformation {
+      @extend %h5;
+      margin: 0 0 5px 0;
+      color: map-get($theme-colors, "white");
+    }
+    .contactInformation {
+      margin: 0;
     }
     .copyInformation {
-      margin: 0;
-      @extend %text-small;
-      color: map-get($theme-colors, "white");
       display: flex;
       align-items: center;
-      margin-left: 10px;
-      @media all and (max-width: 53em) {
-        margin: 10px 0 0 0;
-      }
+      margin: 0;
       svg {
         font-size: 15px;
-        margin-right: 5px;
+        margin: 0 5px 0 0;
       }
+    }
+  }
+  .policyTermsBox {
+    @media all and (max-width: 50em) {
+      margin: 30px 0 0 0;
     }
   }
 }
