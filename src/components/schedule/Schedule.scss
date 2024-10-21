@@ -16,6 +16,7 @@
     padding: 10px 20px;
     border-radius: 100px;
     margin: 40px 0 0 0;
+    @extend %h4;
     @media all and (max-width: 40em) {
       width: 100%;
     }
@@ -92,7 +93,7 @@
         flex-direction: row;
         justify-content: space-between;
         margin: 0 0 10px 0;
-        max-width: 605px;
+        max-width: 540px;
         .dayBox {
           width: 60px;
           display: flex;
