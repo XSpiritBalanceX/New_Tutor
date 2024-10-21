@@ -67,7 +67,7 @@
     justify-content: flex-end;
     button {
       text-transform: none;
-      @extend %text-main;
+      @extend %h4;
       @extend %button-1;
       border-radius: 100px;
       padding: 10px 20px;

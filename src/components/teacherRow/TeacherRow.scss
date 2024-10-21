@@ -52,9 +52,12 @@
       color: map-get($theme-colors, "black");
     }
     .hintCoast {
-      margin: -5px 0 0 0;
+      margin: -5px -30px 0 0;
       @extend %text-small;
       color: map-deep-get($theme-colors, "text", "dark-gray");
+      @media all and (max-width: 60em) {
+        margin: -5px 0 0 0;
+      }
     }
   }
   .descriptionBox {
@@ -86,7 +89,7 @@
   .deleteLanguageBox {
     button {
       text-transform: none;
-      @extend %text-main;
+      @extend %h4;
       @extend %button-2;
       border-radius: 100px;
       padding: 10px 20px;
