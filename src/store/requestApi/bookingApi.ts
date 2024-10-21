@@ -12,9 +12,11 @@ export interface ILessonUser {
   date: string;
   time: string;
   video_room_id: null | string;
+  is_canceled: boolean;
+  reason: null | string;
 }
 
-interface IListLessons {
+export interface ILessonsInformation {
   count: number;
   all_items_count: number;
   items: ILessonUser[];
@@ -31,10 +33,13 @@ export const bookingApi = createApi({
   baseQuery: bookingRequestHandler,
   tagTypes: ["LessonsList"],
   endpoints: (builder) => ({
-    getListLessons: builder.query<IListLessons, { limit: number; offset: number; isStudent: boolean }>({
-      query: ({ limit, offset, isStudent }) => {
+    getListLessons: builder.query<
+      ILessonsInformation,
+      { limit: number; offset: number; isStudent: boolean; lessons_type: string }
+    >({
+      query: ({ limit, offset, isStudent, lessons_type }) => {
         const url = isStudent ? `/student/booking` : `/teacher/booking`;
-        return `${url}/?limit=${limit}&offset=${offset}`;
+        return `${url}/?limit=${limit}&offset=${offset}&lesson_type=${lessons_type}`;
       },
       providesTags: ["LessonsList"],
     }),
@@ -52,7 +57,20 @@ export const bookingApi = createApi({
       }),
       invalidatesTags: ["LessonsList"],
     }),
+    cancelBookedLesson: builder.mutation<void, { lesson_id: number; isStudent: boolean; reason: string }>({
+      query: ({ lesson_id, isStudent, reason }) => ({
+        url: `/${isStudent ? "student/booking" : "teacher/booking"}/${lesson_id}/cancel/`,
+        method: "POST",
+        body: { reason },
+      }),
+      invalidatesTags: ["LessonsList"],
+    }),
   }),
 });
 
-export const { useGetListLessonsQuery, useBookNewLessonsMutation, useDeleteBookedLessonMutation } = bookingApi;
+export const {
+  useGetListLessonsQuery,
+  useBookNewLessonsMutation,
+  useDeleteBookedLessonMutation,
+  useCancelBookedLessonMutation,
+} = bookingApi;

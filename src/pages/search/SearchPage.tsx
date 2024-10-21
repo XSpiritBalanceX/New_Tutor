@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container, Box, TextField, MenuItem, Pagination, Button } from "@mui/material";
+import { Container, Box, TextField, MenuItem, Button } from "@mui/material";
 import { translate } from "@i18n";
-import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { useGetTeachersListQuery } from "@store/requestApi/searchApi";
 import CustomError from "@components/error/CustomError";
@@ -11,13 +11,13 @@ import EmptySearch from "./EmptySearch";
 import CardTeacher from "@components/cardTeacher/CardTeacher";
 import TuneIcon from "@mui/icons-material/Tune";
 import MobileSearchFilter from "@components/searchFilter/MobileSearchFilter";
+import CustomPagination from "@components/customPagination/CustomPagination";
 import "./SearchPage.scss";
 
 const SearchPage = () => {
   const { t } = translate("translate", { keyPrefix: "searchPage" });
 
   const { page } = useParams();
-  const navigate = useNavigate();
 
   const [itemPerPage] = useState(4);
   const [sortFilter, setSortFilter] = useState("");
@@ -32,7 +32,7 @@ const SearchPage = () => {
   useEffect(() => {
     if (data) {
       const pages = Math.ceil(data.all_items_count / itemPerPage);
-      pages > 1 && setPagesPagination(pages);
+      setPagesPagination(pages);
     }
     // eslint-disable-next-line
   }, [data]);
@@ -41,10 +41,6 @@ const SearchPage = () => {
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSortFilter(e.target.value);
-  };
-
-  const handleChangePage = (_: React.ChangeEvent<unknown>, value: number) => {
-    navigate(`/search/${value}`);
   };
 
   const handleOpenMobileFilter = () => {
@@ -90,16 +86,7 @@ const SearchPage = () => {
                 {data.items.map((el, ind) => (
                   <CardTeacher key={ind} info_teacher={el} />
                 ))}
-                {pagesPagination > 0 && (
-                  <Box className="paginationBox">
-                    <Pagination
-                      count={pagesPagination}
-                      page={Number(page)}
-                      onChange={handleChangePage}
-                      className="searchPagination"
-                    />
-                  </Box>
-                )}
+                <CustomPagination pagesPagination={pagesPagination} currentPage={Number(page)} url="/search" />
               </Box>
             )}
           </Box>

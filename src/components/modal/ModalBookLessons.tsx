@@ -5,6 +5,8 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import calendar from "@assets/calendar.svg";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
+import { useNavigate } from "react-router-dom";
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 import "./Modal.scss";
 
 interface IModalBookLessonsProps {
@@ -24,8 +26,14 @@ const ModalBookLessons = ({
 }: IModalBookLessonsProps) => {
   const { t } = translate("translate", { keyPrefix: "notification.bookLessons" });
 
+  const navigate = useNavigate();
+
   const handleCloseModal = () => {
     cbCloseModal();
+  };
+
+  const handleNavigateLessons = () => {
+    navigate("/lessons/upcoming/1");
   };
 
   return (
@@ -37,8 +45,7 @@ const ModalBookLessons = ({
           </Button>
         </Box>
         <Box className="bookingInformation">
-          <p className="youBooked">{t("youBookedLessons")}</p>
-          <p className="withTeacher">{t("youBookedWithTeacher", { name: teacher_name })}</p>
+          <p className="youBooked">{t("youBookedWithTeacher", { name: teacher_name })}</p>
           {selectedLessons
             .sort((a, b) => {
               return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
@@ -57,6 +64,15 @@ const ModalBookLessons = ({
         </Box>
         <Box className="imageBox">
           <img src={calendar} alt="calendar" />
+        </Box>
+        <Box className="notificationLessonBox">
+          <ErrorOutlineOutlinedIcon />
+          <p>{t("notificationLesson")}</p>
+        </Box>
+        <Box className="navigateButtonBox">
+          <Button type="button" onClick={handleNavigateLessons}>
+            {t("navigateToLessons")}
+          </Button>
         </Box>
       </Box>
     </Modal>

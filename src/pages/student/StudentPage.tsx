@@ -75,7 +75,7 @@ const StudentPage = () => {
       <Box className="locationStudentPage">
         <NavLink to={"/"}>{t("main")}</NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
-        <NavLink to={"/lessons/1"}>{t("myLessons")}</NavLink>
+        <NavLink to={"/lessons/upcoming/1"}>{t("myLessons")}</NavLink>
         <KeyboardArrowRightOutlinedIcon className="arrowIcon" />
         <p>{t("profileStudent")}</p>
       </Box>

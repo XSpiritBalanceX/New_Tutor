@@ -66,5 +66,5 @@ export interface IMobileScheduleProfileTeacherProps {
 }
 
 export interface IErrorBusyDate {
-  busy_date: { date: string; day: string; time: string };
+  busy_date?: { date: string; day: string; time: string };
 }

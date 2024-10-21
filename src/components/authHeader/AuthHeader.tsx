@@ -52,13 +52,13 @@ const AuthHeader = () => {
       {isLoading && <Loader />}
       <Box className="authHeaderContainer">
         <Box className="firstColHeader">
-          <NavLink to={"/"}>
+          <NavLink to={"/"} className={"logoLink"}>
             <img src={logo} alt="logo" />
           </NavLink>
           <Box className="balanceLinksBox">
             <Balance />
             <Box className="linksAuthHeaderBox">
-              <NavLink to={"/lessons/1"} className="nav-link">
+              <NavLink to={"/lessons/upcoming/1"} className="nav-link">
                 {t("myLessons")}
               </NavLink>
               {isStudent && (

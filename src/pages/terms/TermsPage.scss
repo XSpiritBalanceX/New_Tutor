@@ -57,10 +57,23 @@
     p {
       @extend %text-main;
     }
-    ul {
-      padding-left: 35px;
-      li {
-        @extend %text-main;
+    .listTerms {
+      padding-left: 15px;
+      .listTermsItem {
+        padding: 0;
+        align-items: baseline;
+        .listIcon {
+          width: 20px;
+          min-width: 20px;
+          svg {
+            fill: map-get($theme-colors, "black");
+            font-size: 10px;
+          }
+        }
+        .listText {
+          @extend %text-main;
+          margin: 0;
+        }
       }
     }
   }

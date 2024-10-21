@@ -1,7 +1,7 @@
 @import "../../variables";
 
 .authHeaderContainer {
-  max-width: 1200px;
+  max-width: 1660px;
   padding: 10px 20px 20px 20px;
   width: 100%;
   margin: 0 auto;
@@ -9,23 +9,28 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  @media all and (max-width: 80em) {
-    width: calc(100% - 40px);
-    padding: 10px 0 20px 0;
-  }
-  @media all and (max-width: 55em) {
-    padding: 10px 0;
+  height: 100px;
+  @media all and (max-width: 58em) {
+    padding: 0 20px;
+    height: 64px;
   }
   .firstColHeader {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    max-width: 654px;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
+    .logoLink {
+      min-width: 125px;
+      margin: 0 75px 0 0;
+      @media all and (max-width: 58em) {
+        margin: 0;
+      }
+    }
     .balanceLinksBox {
       display: flex;
       flex-direction: column;
-      @media all and (max-width: 55em) {
+      @media all and (max-width: 58em) {
         display: none;
       }
       .linksAuthHeaderBox {
@@ -105,14 +110,14 @@
     justify-content: flex-end;
     align-items: flex-end;
     height: 78px;
-    @media all and (max-width: 55em) {
+    @media all and (max-width: 58em) {
       justify-content: flex-start;
       height: 40px;
     }
     .languageField {
       height: 25px;
       width: 70px;
-      @media all and (max-width: 55em) {
+      @media all and (max-width: 58em) {
         display: none;
       }
       .MuiInputBase-root {
@@ -155,7 +160,7 @@
         min-width: 32px;
         color: map-get($theme-colors, "main-blue");
         display: none;
-        @media all and (max-width: 55em) {
+        @media all and (max-width: 58em) {
           display: flex;
         }
       }
@@ -174,14 +179,14 @@
         position: absolute;
         top: 35px;
         right: 20px;
-        z-index: 1;
+        z-index: 5;
         background-color: map-get($theme-colors, "white");
         box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
         display: flex;
         flex-direction: column;
         padding: 30px 60px 30px 30px;
         width: 260px;
-        @media all and (max-width: 55em) {
+        @media all and (max-width: 58em) {
           display: none;
         }
         .closeButtonBox {
@@ -212,12 +217,19 @@
           justify-content: flex-start;
           border-radius: 0;
         }
+        .logOutBox {
+          @extend %text-main;
+          color: map-get($theme-colors, "black");
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
       .tutorChatListWrapper {
         position: absolute;
         top: 50px;
         right: 10px;
-        z-index: 2;
+        z-index: 12;
         width: 100%;
         max-width: 440px;
         width: 440px;
@@ -439,7 +451,7 @@
 
 .mobilePersonalMenuContainer {
   display: none;
-  @media all and (max-width: 55em) {
+  @media all and (max-width: 58em) {
     display: flex;
   }
   .MuiPaper-root {

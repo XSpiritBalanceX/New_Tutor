@@ -43,7 +43,7 @@ const MainPage = () => {
         <Container className="mainPageContainer">
           <Box className="firstMainPageBox">
             <p className="titleFirstBox">
-              <span>TUTOR</span> &mdash; {t("title")}
+              <span>MOVA</span> &mdash; {t("title")}
             </p>
             <img src={mainPicture} alt="main" className="mainPicture" />
             <p className="titleWords">{t("titleWords")}</p>
