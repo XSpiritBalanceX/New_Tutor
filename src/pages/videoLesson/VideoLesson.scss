@@ -1,25 +1,17 @@
 @import "../../variables";
 
 .newVideoLessonContainer {
-  padding: 30px 0 100px 0 !important;
-  @media all and (max-width: 78em) {
-    padding: 30px 20px 120px 20px !important;
-  }
-  @media all and (max-width: 50em) {
-    padding: 30px 20px 80px 20px !important;
-  }
+  max-width: 1660px !important;
+  padding: 30px 20px 30px 20px !important;
+  min-height: min-content;
   @media all and (max-width: 40em) {
-    padding: 30px 20px 80px 20px !important;
+    padding: 15px 20px 0 20px !important;
   }
   .titleAndButtonBox {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 0 0 30px 0;
-    @media all and (max-width: 40em) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
     .titleAndTimer {
       display: flex;
       flex-direction: row;
@@ -34,16 +26,35 @@
       }
     }
     .chatButtonBox {
-      @media all and (max-width: 40em) {
-        margin: 10px 0 0 0;
-      }
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
       button {
         @extend %text-main;
         text-transform: none;
         @extend %button-1;
         border-radius: 30px;
-        padding: 0 20px;
+        padding: 0;
         height: 40px;
+        margin-left: 10px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media all and (max-width: 45em) {
+          border-radius: 100%;
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+          padding: 0;
+        }
+        span {
+          margin: 0 0 0 5px;
+          @media all and (max-width: 45em) {
+            display: none;
+          }
+        }
       }
     }
     .timerBox {
@@ -54,6 +65,9 @@
         margin: 0;
         @extend %h2;
         color: map-get($theme-colors, "main-blue");
+        @media all and (max-width: 40em) {
+          font-size: 18px;
+        }
       }
     }
   }
@@ -65,6 +79,11 @@
   }
   .videoBoxData {
     justify-content: space-between;
+    @media all and (max-width: 50em) {
+      flex-direction: row;
+      align-items: center;
+      margin: 0 0 15px 0;
+    }
   }
 
   .webrtkLibRoot {
@@ -73,6 +92,8 @@
     .containerPrejoinPage {
       padding: 0;
       justify-content: flex-start;
+      margin: 0;
+      height: auto;
       @media all and (max-width: 65em) {
         width: 100%;
       }
@@ -80,11 +101,15 @@
         height: 100%;
       }
       .row {
-        @media all and (max-width: 60em) {
+        width: 100%;
+        @media all and (max-width: 63em) {
           display: flex;
           flex-direction: column;
         }
-        @media all and (max-width: 47em) {
+        .streamContainer {
+          width: 100%;
+        }
+        video {
           width: 100%;
         }
         .videoStream {
@@ -94,32 +119,35 @@
           }
         }
         .colWithPreviewButtons {
-          @media all and (max-width: 60em) {
+          @media all and (max-width: 63em) {
             order: -1;
           }
           p {
             @extend %h2;
           }
           .buttonsPreview {
-            @media all and (max-width: 65em) {
+            @media all and (max-width: 68em) {
               display: flex;
               flex-direction: column;
             }
-            @media all and (max-width: 65em) {
+            @media all and (max-width: 63em) {
               flex-direction: row;
             }
             @media all and (max-width: 40em) {
               flex-direction: column;
             }
             button {
-              @extend %text-main;
-              @extend %button-1;
+              @extend %h4;
               &:disabled {
-                background-color: map-deep-get($theme-colors, "border", "disable");
-                border: solid 1px map-deep-get($theme-colors, "border", "disable");
-                color: map-deep-get($theme-colors, "text", "light");
                 cursor: wait;
               }
+            }
+            button:first-child {
+              @extend %button-1;
+            }
+            button:last-child {
+              @extend %button-2;
+              background-color: map-get($theme-colors, "white");
             }
           }
         }
@@ -142,6 +170,7 @@
         max-height: 100vh;
       }
       .videoElements {
+        width: 100%;
         @media all and (max-width: 50em) {
           max-height: 100vh;
           flex-direction: column-reverse;
@@ -159,6 +188,10 @@
             max-height: 600px;
             height: 100%;
             z-index: 3 !important;
+            @media all and (max-width: 50em) {
+              max-height: none;
+              height: 300px !important;
+            }
             @media all and (max-width: 40em) {
               height: 350px;
             }
@@ -195,37 +228,35 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 20px 0 0;
+  max-width: 1660px;
+  margin: 0 auto;
   @media all and (max-width: 70em) {
-    padding: 20px;
-  }
-  @media all and (max-width: 65em) {
     flex-direction: column;
+    padding-bottom: 15px;
   }
   .newVideoLessonContainer {
     width: calc(100% - 390px) !important;
     margin: 0 !important;
-    @media all and (max-width: 65em) {
+    @media all and (max-width: 70em) {
       padding: 0 !important;
       width: 100% !important;
+      min-height: min-content;
     }
   }
   .tutorChatBox {
     position: relative !important;
     right: 0;
+    bottom: 0;
     width: 100%;
     max-width: 380px;
     height: 470px;
-    @media all and (max-width: 65em) {
+    @media all and (max-width: 70em) {
       top: 20px;
       max-width: 100%;
       margin: 0 0 20px 0;
     }
     @media all and (max-width: 50em) {
-      top: 0;
-      margin: 70px 0 20px 0;
-    }
-    @media all and (max-width: 40em) {
       position: fixed !important;
       top: 0;
       left: 0;
@@ -238,8 +269,14 @@
     }
     .chatWrapper {
       height: 100%;
+      @media all and (max-width: 50em) {
+        height: 100vh;
+      }
       .tutorChatHeader {
         max-height: 400px;
+        @media all and (max-width: 50em) {
+          max-height: calc(100vh - 60px);
+        }
       }
     }
   }

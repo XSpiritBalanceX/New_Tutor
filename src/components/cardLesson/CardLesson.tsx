@@ -32,7 +32,11 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
       "DD-MM-YYYY-HH-mm",
     );
     if (lesson_information.video_room_id) {
-      navigate(`/video_lesson/${timeLesson}/${lesson_information.video_room_id}`);
+      navigate(
+        `/video_lesson/${timeLesson}/${lesson_information.video_room_id}/${
+          isStudent ? lesson_information.teacher_id : lesson_information.student_id
+        }`,
+      );
       dispatch(setOpponentId(userId.toString()));
     }
   };

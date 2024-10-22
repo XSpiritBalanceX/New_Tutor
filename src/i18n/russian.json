@@ -541,7 +541,8 @@
     "videoLessonPage": {
       "videoLesson": "Видеоурок",
       "timeToLesson": "До урока осталось: {{min}}мин {{sec}}сек",
-      "openChat": "Открыть чат"
+      "openChat": "Открыть чат",
+      "sendAssignment": "Отправить задание"
     },
     "dictionaryPage": {
       "main": "Главная",

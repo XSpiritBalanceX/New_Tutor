@@ -7,7 +7,9 @@ import * as momentTimeZone from "moment-timezone";
 import { VideoChat } from "webrtc-frontend-library";
 import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
-import { changeOpenChat } from "@store/tutorSlice";
+import { changeOpenChat, setOpponentId } from "@store/tutorSlice";
+import ChatIcon from "@components/icons/ChatIcon";
+import TaskIcon from "@components/icons/TaskIcon";
 import "./VideoLesson.scss";
 
 const VideoLessonPage = () => {
@@ -29,7 +31,7 @@ const VideoLessonPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const { lesson_time, room_id } = useParams();
+  const { lesson_time, room_id, opponent_id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -115,7 +117,11 @@ const VideoLessonPage = () => {
 
   const handleCloseVideo = () => {
     setIsShowVideo(false);
-    navigate("/review");
+    if (isPreJoinPage) {
+      navigate("/lessons/upcoming/1");
+    } else {
+      navigate("/review");
+    }
   };
 
   const handleRefreshToken = async () => {
@@ -126,6 +132,7 @@ const VideoLessonPage = () => {
 
   const handleOpenChat = () => {
     dispatch(changeOpenChat(true));
+    dispatch(setOpponentId(opponent_id as string));
   };
 
   const minutes = Math.floor(timerVideo / 60);
@@ -142,9 +149,12 @@ const VideoLessonPage = () => {
         </Box>
         {!isPreJoinPage && (
           <Box className="chatButtonBox">
+            <Button type="button">
+              <TaskIcon fill="#FFFFFF" /> <span>{t("sendAssignment")}</span>
+            </Button>
             {!isOpenChat && (
               <Button type="button" onClick={handleOpenChat}>
-                {t("openChat")}
+                <ChatIcon fill="#FFFFFF" /> <span>{t("openChat")}</span>
               </Button>
             )}
           </Box>
