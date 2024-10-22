@@ -45,6 +45,7 @@
     .text {
       @extend %text-main;
       margin: 0 0 15px 0;
+      color: map-deep-get($theme-colors, "text", "grey");
       @media all and (max-width: 65em) {
         max-width: 560px;
         text-align: center;
@@ -55,7 +56,7 @@
       }
     }
     .navigationButton {
-      @extend %text-main;
+      @extend %h4;
       @extend %button-1;
       text-transform: none;
       padding: 10px 20px;
