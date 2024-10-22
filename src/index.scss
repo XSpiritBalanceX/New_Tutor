@@ -46,12 +46,13 @@ body.stopScroll {
   width: 100%;
   height: 100%;
   max-width: 440px;
-  max-height: 550px;
+  max-height: 600px;
   z-index: 20;
   position: fixed;
   right: 40px;
   bottom: 20px;
   box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
+  border-radius: 15px;
   ::-webkit-scrollbar {
     width: 4px;
   }
@@ -71,25 +72,42 @@ body.stopScroll {
   }
   .chatWrapper {
     height: 100%;
+    border-radius: 15px;
     .tutorChatHeader {
       background-color: map-get($theme-colors, "white");
-      max-height: 480px;
+      max-height: calc(100% - 60px);
       height: 100%;
+      border-radius: 15px 15px 0 0;
       @media all and (max-width: 40em) {
         max-height: 91%;
       }
       .extendedChatHeader {
         padding: 10px 0 0 0;
         .userAndStatusWrapper {
-          .MuiAvatar-root {
+          width: 100%;
+          .MuiAvatar-root,
+          .emptyAvatar {
             width: 50px;
             height: 50px;
+          }
+          .emptyAvatar {
+            background-color: map-get($theme-colors, "main-blue");
+          }
+          .userInfo {
+            .userName {
+              @extend %h3;
+            }
           }
         }
       }
       .tutorChatMessages {
-        background-color: map-get($theme-colors, "white-blue");
+        background-color: map-get($theme-colors, "light-blue-1");
         height: 100%;
+        border-radius: 0;
+        .messageDate {
+          @extend %h5;
+          color: map-get($theme-colors, "main-blue");
+        }
         .chatMessageWrapper {
           position: relative;
           width: 100%;
@@ -97,6 +115,14 @@ body.stopScroll {
           .message {
             background-color: map-get($theme-colors, "main-blue");
             color: map-get($theme-colors, "white");
+            .content {
+              @extend %text-small;
+            }
+            .messageTime {
+              @extend %text-small;
+              font-size: 10px;
+              line-height: 125%;
+            }
           }
           .contextMenuWrapper {
             position: absolute;
@@ -113,6 +139,14 @@ body.stopScroll {
           .message {
             background-color: map-get($theme-colors, "white");
             color: map-get($theme-colors, "black");
+            .content {
+              @extend %text-small;
+            }
+            .messageTime {
+              @extend %text-small;
+              font-size: 10px;
+              line-height: 125%;
+            }
           }
           .contextMenuWrapper {
             position: absolute;
@@ -124,7 +158,19 @@ body.stopScroll {
       }
     }
     .chatInputWrapper {
-      padding: 12px;
+      padding: 10px;
+      border-radius: 0 0 15px 15px;
+      @media all and (max-width: 40em) {
+        border-radius: 0;
+      }
+      .customInput {
+        background-color: map-get($theme-colors, "gray-2");
+        @extend %text-small;
+        padding: 10px 7px;
+        &::placeholder {
+          color: map-deep-get($theme-colors, "text", "grey");
+        }
+      }
       .fileAttachmentBox {
         label {
           svg {
