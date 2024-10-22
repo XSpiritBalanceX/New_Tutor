@@ -90,6 +90,31 @@ const App = () => {
     dispatch(changeOpenChat(false));
   };
 
+  const routesWithFooter = [
+    "/login",
+    "/registration",
+    "/search",
+    "/teacher",
+    "/student",
+    "/",
+    "/invitation",
+    "/forgotpassword",
+    "/resetpassword",
+    "/aboutus",
+    "/askquestion",
+    "/terms",
+    "/policy",
+  ];
+
+  const shouldDisplayFooter = (path: string) => {
+    if (routesWithFooter.includes(path)) {
+      return true;
+    }
+
+    const dynamicRoutes = [/^\/search\/\d+$/, /^\/teacher\/\d+$/, /^\/student\/\d+$/];
+    return dynamicRoutes.some((route) => route.test(path));
+  };
+
   return (
     <ErrorBoundary>
       <Box position={"relative"}>
@@ -122,7 +147,7 @@ const App = () => {
         </Box>
         <CookiesModal />
       </Box>
-      <Footer />
+      {shouldDisplayFooter(pathname) && <Footer />}
     </ErrorBoundary>
   );
 };
