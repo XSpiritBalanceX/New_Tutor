@@ -12,13 +12,16 @@
     padding: 15px 0;
   }
   .dateOfLesson {
-    @extend %text-main;
+    @extend %h3;
     color: map-get($theme-colors, "main-blue");
     font-weight: 600;
     margin: 0;
     @media all and (max-width: 47em) {
       margin: 0 15px;
     }
+  }
+  .dateOfLesson.canceledDate {
+    color: map-deep-get($theme-colors, "text", "grey");
   }
   .lessonContent {
     margin: 10px 0 0 0;
@@ -41,6 +44,8 @@
         flex-wrap: wrap;
         position: relative;
         width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
       }
       .userAvatar {
         width: 80px;
@@ -53,30 +58,56 @@
       .userNameButtonBox {
         display: flex;
         flex-direction: column;
+        max-width: 326px;
+        @media all and (max-width: 85em) {
+          max-width: 320px;
+        }
+        @media all and (max-width: 70em) {
+          max-width: 326px;
+        }
+        @media all and (max-width: 43em) {
+          max-width: 310px;
+        }
         @media all and (max-width: 40em) {
+          max-width: 100%;
           width: 100%;
         }
-        .nameUser {
-          margin: 0 0 10px 0;
-          @extend %h3;
-          &:hover {
-            cursor: pointer;
-            color: map-get($theme-colors, "main-blue");
-          }
+        .nameThemeBox {
           @media all and (max-width: 40em) {
             position: absolute;
             top: 0;
             left: 90px;
+            right: 0;
+            height: 80px;
+          }
+          .nameUser {
+            margin: 0;
+            @extend %h3;
+            &:hover {
+              cursor: pointer;
+              color: map-get($theme-colors, "main-blue");
+            }
+          }
+          .themeLesson {
+            @extend %text-small;
+            margin: 5px 0 0 0;
+          }
+          .nameUser.canceledName,
+          .themeLesson.canceledTheme {
+            color: map-deep-get($theme-colors, "text", "grey");
           }
         }
         button {
-          @extend %text-main;
+          @extend %h4;
           @extend %button-1;
           text-transform: none;
-          padding: 10px 20px;
+          padding: 0;
           border-radius: 30px;
+          margin: 5px 0 0 0;
+          max-width: 182px;
+          height: 40px;
           @media all and (max-width: 40em) {
-            width: 100%;
+            max-width: 100%;
             margin: 10px 0 0 0;
           }
         }
@@ -86,12 +117,20 @@
           }
           .canceledWhom {
             color: map-get($theme-colors, "red");
-            @extend %text-main;
+            @extend %h5;
             margin: 0 0 5px 0;
+            @media all and (max-width: 40em) {
+              font-size: 16px;
+              line-height: 20px;
+            }
           }
           .reasonText {
             margin: 0;
-            @extend %text-main;
+            @extend %text-small;
+            @media all and (max-width: 40em) {
+              font-size: 16px;
+              line-height: 22px;
+            }
           }
         }
       }
@@ -106,7 +145,14 @@
       button {
         text-transform: none;
         padding: 0;
-        @extend %text-main;
+        @extend %h5;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+        @media all and (max-width: 40em) {
+          justify-content: center;
+        }
       }
       .writeButton {
         margin: 0 0 10px 0;

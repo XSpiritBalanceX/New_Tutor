@@ -12,13 +12,21 @@
     display: flex;
     flex-direction: row;
     margin: 0 0 20px 0;
+    @media all and (max-width: 40em) {
+      margin: 0 -3px 20px -3px;
+    }
     .nav-link {
-      @extend %text-main;
+      @extend %h3;
       margin: 0 10px 0 0;
       padding: 8px 10px;
       color: map-get($theme-colors, "main-blue");
       background-color: map-get($theme-colors, "white-blue");
       border-radius: 30px;
+      @media all and (max-width: 40em) {
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0 5px 0 0;
+      }
     }
     .nav-link.active {
       background-color: map-get($theme-colors, "main-blue");

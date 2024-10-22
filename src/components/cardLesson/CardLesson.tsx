@@ -3,7 +3,7 @@ import { translate } from "@i18n";
 import { USER_TYPE } from "@utils/appConsts";
 import moment from "moment";
 import user from "@assets/user.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "@store/hook";
 import { setOpponentId, changeOpenChat } from "@store/tutorSlice";
 import { ILessonUser } from "@store/requestApi/bookingApi";
@@ -24,6 +24,7 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
   const isStudent = localStorage.getItem(USER_TYPE) === "0";
 
   const navigate = useNavigate();
+  const { lessons_type } = useParams();
 
   const handleStartLesson = () => {
     const userId = (isStudent ? lesson_information.teacher_id : lesson_information.student_id) as number;
@@ -53,10 +54,10 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
 
   return (
     <Box className="lessonBox">
-      <p className="dateOfLesson">{`${moment(lesson_information.date, "YYYY-MM-DD").format("DD MMMM")} ${moment(
-        lesson_information.time,
-        "HH:mm",
-      )
+      <p className={`dateOfLesson ${lessons_type === "canceled" ? "canceledDate" : ""}`}>{`${moment(
+        lesson_information.date,
+        "YYYY-MM-DD",
+      ).format("DD MMMM")} ${moment(lesson_information.time, "HH:mm")
         .add(moment().utcOffset(), "minutes")
         .format("HH:mm")} - ${moment(lesson_information.time, "HH:mm")
         .add(55, "minutes")
@@ -66,10 +67,15 @@ const CardLesson = ({ lesson_information, cbShowModal, isDisabledJoin, isHideBut
         <Box className="userInformationBox">
           <Avatar src={lesson_information.avatar || user} className="userAvatar" onClick={handleShowUserPage} />
           <Box className="userNameButtonBox">
-            <p
-              onClick={handleShowUserPage}
-              className="nameUser"
-            >{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
+            <Box className="nameThemeBox">
+              <p
+                onClick={handleShowUserPage}
+                className={`nameUser ${lessons_type === "canceled" ? "canceledName" : ""}`}
+              >{`${lesson_information.first_name} ${lesson_information.last_name}`}</p>
+              <p className={`themeLesson ${lessons_type === "canceled" ? "canceledTheme" : ""}`}>
+                {"Business English: Effective Communication in the Workplace"}
+              </p>
+            </Box>
             {lesson_information.is_canceled && (
               <Box className="reasonCancelBox">
                 <p className="canceledWhom">

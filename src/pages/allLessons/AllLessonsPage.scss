@@ -11,11 +11,15 @@
   .contentLessonsPage {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     .pictureLessonsBox {
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      @media all and (max-width: 85em) {
+        max-width: 450px;
+      }
       @media all and (max-width: 70em) {
         display: none;
       }
