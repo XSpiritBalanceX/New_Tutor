@@ -120,6 +120,26 @@
         }
         .streamContainer {
           width: 100%;
+          .controlButtons {
+            .btn {
+              border-radius: 50%;
+              width: 44px;
+              height: 44px;
+            }
+            .videoBtn,
+            .microBtn {
+              background-color: map-get($theme-colors, "red");
+            }
+            .btn.activeVideo,
+            .btn.activeMicro {
+              background-color: map-get($theme-colors, "white");
+              svg {
+                path {
+                  fill: map-get($theme-colors, "black");
+                }
+              }
+            }
+          }
         }
         video {
           width: 100%;
@@ -260,9 +280,64 @@
           @media all and (max-width: 50em) {
             top: 35px;
           }
-          button {
+          .btn {
+            border-radius: 50%;
             width: 44px;
             height: 44px;
+            .menu {
+              outline: 1px solid map-get($theme-colors, "black");
+            }
+          }
+          .btn:last-child {
+            svg {
+              rect {
+                fill: map-get($theme-colors, "red");
+              }
+            }
+          }
+          .videoBtn,
+          .microBtn {
+            background-color: map-get($theme-colors, "red");
+          }
+          .btn.activeVideo,
+          .btn.activeMicro {
+            background-color: map-get($theme-colors, "white");
+            svg {
+              path {
+                fill: map-get($theme-colors, "black");
+              }
+            }
+          }
+          .screenShareBtn {
+            background-color: map-get($theme-colors, "white");
+            svg {
+              path {
+                stroke: map-get($theme-colors, "black");
+              }
+            }
+          }
+          .activeScreenShare {
+            background-color: map-get($theme-colors, "white");
+            svg {
+              path {
+                stroke: map-get($theme-colors, "main-blue");
+              }
+            }
+          }
+          .extendVideoBtn {
+            svg {
+              path {
+                fill: map-get($theme-colors, "black");
+              }
+            }
+          }
+          .activeExtendVideo {
+            background-color: map-get($theme-colors, "white");
+            svg {
+              path {
+                fill: map-get($theme-colors, "main-blue");
+              }
+            }
           }
           .deviceList {
             @media all and (max-width: 68em) {

@@ -188,6 +188,7 @@ const VideoLessonPage = () => {
           handleError={handleRefreshToken}
           user_locale={locale}
           isDisabledButtonJoin={isDisableJoinButton}
+          iconsWithBg={false}
         />
       )}
     </Container>
