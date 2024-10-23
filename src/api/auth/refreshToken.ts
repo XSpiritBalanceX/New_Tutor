@@ -2,6 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { BASE_URL } from "@utils/appConsts";
 import { IToken } from "@axiosApi/TypesAPI";
+import { TOKEN_EXPIRES_KEY } from "@utils/appConsts";
 
 export const refreshToken = async (): Promise<string> => {
   try {
@@ -21,7 +22,7 @@ export const refreshToken = async (): Promise<string> => {
     const decodeToken: IToken = jwtDecode(result.data.access_token);
     const newAccessToken = result.data.access_token;
 
-    localStorage.setItem("tutor_tokenExpires", decodeToken.exp.toString());
+    localStorage.setItem(TOKEN_EXPIRES_KEY, decodeToken.exp.toString());
     return newAccessToken;
   } catch (err: any) {
     if (err.response.status === 401) {

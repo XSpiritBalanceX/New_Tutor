@@ -16,6 +16,9 @@ import CookiesModal from "@components/modal/CookiesModal";
 import { Chat, LS_TOKEN_KEY } from "chat-frontend-library";
 import { AxiosError } from "axios";
 import { useLocation } from "react-router-dom";
+import { TOKEN_KEY } from "@utils/appConsts";
+import { LS_WEBRTK_TOKEN_KEY } from "webrtc-frontend-library";
+import { refreshToken } from "@api/auth/refreshToken";
 import "moment/locale/ru";
 import "react-toastify/dist/ReactToastify.css";
 import "animate.css";
@@ -23,9 +26,6 @@ import "./index.scss";
 
 axiosAPI.setGetItem((key) => localStorage.getItem(key));
 axiosAPI.setSetItem((key, value) => localStorage.setItem(key, value));
-
-const mockChatToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI3OTUwNjk2LCJpYXQiOjE3Mjc4NjQyOTYsImp0aSI6IjZjZjkzOTEyMGZmMzQxN2ViN2I3OWI4NjY0MmQzM2M3IiwidXNlcl9pZCI6ImQ5ZjgzNTNkLTlhZGItNDA1ZC04ZTllLTcwMmY4YzFlMTJkYiJ9.CzsPxgi3oTSGwYptbdHBD3xEAxl65f5PbgfQKpkAz-c";
 
 const App = () => {
   const { i18n } = translate();
@@ -72,16 +72,13 @@ const App = () => {
   }, [isOpenChat]);
 
   const handleRefreshToken = async (err: AxiosError) => {
-    console.log("ERR CHAT HERE", err.response?.status);
     if (err.response?.status === 401) {
-      console.log("Token is expired, refreshing...");
-      const newToken = await new Promise((resolve) => {
-        setTimeout(() => {
-          localStorage.setItem(LS_TOKEN_KEY, mockChatToken);
-          resolve(mockChatToken);
-        }, 5000);
-      });
-      console.log("New token received:", newToken);
+      const newToken = await refreshToken();
+      if (newToken) {
+        localStorage.setItem(TOKEN_KEY, newToken);
+        localStorage.setItem(LS_TOKEN_KEY, newToken);
+        localStorage.setItem(LS_WEBRTK_TOKEN_KEY, newToken);
+      }
       return newToken;
     }
   };

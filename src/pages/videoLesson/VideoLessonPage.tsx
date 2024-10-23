@@ -4,12 +4,15 @@ import { translate } from "@i18n";
 import { useParams, useNavigate } from "react-router-dom";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
-import { VideoChat } from "webrtc-frontend-library";
+import { VideoChat, LS_WEBRTK_TOKEN_KEY } from "webrtc-frontend-library";
 import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
 import { changeOpenChat, setOpponentId } from "@store/tutorSlice";
 import ChatIcon from "@components/icons/ChatIcon";
 import TaskIcon from "@components/icons/TaskIcon";
+import { refreshToken } from "@api/auth/refreshToken";
+import { LS_TOKEN_KEY } from "chat-frontend-library";
+import { TOKEN_KEY } from "@utils/appConsts";
 import "./VideoLesson.scss";
 
 const VideoLessonPage = () => {
@@ -129,9 +132,13 @@ const VideoLessonPage = () => {
   };
 
   const handleRefreshToken = async () => {
-    //TODO: added real logic for refreshing user token
-    console.log("refresh token");
-    return localStorage.getItem("webrtkuniq_access_token");
+    const newToken = await refreshToken();
+    if (newToken) {
+      localStorage.setItem(TOKEN_KEY, newToken);
+      localStorage.setItem(LS_TOKEN_KEY, newToken);
+      localStorage.setItem(LS_WEBRTK_TOKEN_KEY, newToken);
+    }
+    return newToken;
   };
 
   const handleOpenChat = () => {
