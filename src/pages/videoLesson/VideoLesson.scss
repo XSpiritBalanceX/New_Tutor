@@ -73,8 +73,16 @@
   }
   .preJoinBoxData {
     justify-content: flex-start;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0 0 15px 0;
+    }
     .titleVideoPage {
       margin: 0 20px 0 0;
+      @media all and (max-width: 40em) {
+        margin: 0 0 5px 0;
+      }
     }
   }
   .videoBoxData {
@@ -98,7 +106,8 @@
         width: 100%;
       }
       @media all and (max-width: 40em) {
-        height: 100%;
+        height: calc(100vh - 147px);
+        margin: 0 0 15px 0;
       }
       .row {
         width: 100%;
@@ -106,11 +115,17 @@
           display: flex;
           flex-direction: column;
         }
+        @media all and (max-width: 40em) {
+          height: calc(100vh - 250px);
+        }
         .streamContainer {
           width: 100%;
         }
         video {
           width: 100%;
+          @media all and (max-width: 40em) {
+            height: calc(100vh - 270px);
+          }
         }
         .videoStream {
           @media all and (max-width: 47em) {
@@ -122,8 +137,17 @@
           @media all and (max-width: 63em) {
             order: -1;
           }
+          @media all and (max-width: 40em) {
+            position: absolute;
+            bottom: 210px;
+            left: 40px;
+            right: 40px;
+          }
           p {
             @extend %h2;
+            @media all and (max-width: 40em) {
+              color: map-get($theme-colors, "white");
+            }
           }
           .buttonsPreview {
             @media all and (max-width: 68em) {
@@ -200,6 +224,27 @@
         .videoWrapper.fullVideo {
           max-height: 100vh;
           border-radius: 0;
+          video {
+            @media all and (max-width: 50em) {
+              height: 100% !important;
+            }
+          }
+        }
+        .videoWrapper.smallVideo {
+          border-radius: 15px;
+          @media all and (max-width: 50em) {
+            width: 30% !important;
+            right: 10px;
+          }
+          @media all and (max-width: 40em) {
+            width: 50% !important;
+            bottom: 80px;
+          }
+          video {
+            @media all and (max-width: 50em) {
+              height: 100% !important;
+            }
+          }
         }
       }
       .videoElements.fullVideo {
@@ -212,6 +257,52 @@
           top: -70px;
           @media all and (max-width: 50em) {
             top: 35px;
+          }
+          button {
+            width: 44px;
+            height: 44px;
+          }
+          .deviceList {
+            @media all and (max-width: 68em) {
+              flex-direction: column;
+            }
+            @media all and (max-width: 45em) {
+              right: 0;
+              transform: translateX(75%);
+            }
+            .group {
+              @media all and (max-width: 45em) {
+                width: auto;
+                max-width: 300px;
+              }
+              .device {
+                @extend %text-small;
+                color: map-get($theme-colors, "main-blue");
+              }
+              .imageList {
+                .imgSection {
+                  @media all and (max-width: 45em) {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 10px;
+                  }
+                }
+              }
+              .btnWrapper {
+                .btn1 {
+                  @extend %button-1;
+                  @extend %h4;
+                  height: 40px;
+                  padding: 0 20px;
+                }
+              }
+              .content {
+                .device {
+                  @extend %text-small;
+                  color: map-get($theme-colors, "main-blue");
+                }
+              }
+            }
           }
         }
       }
@@ -233,7 +324,7 @@
   margin: 0 auto;
   @media all and (max-width: 70em) {
     flex-direction: column;
-    padding-bottom: 15px;
+    padding: 0 20px 15px 20px;
   }
   .newVideoLessonContainer {
     width: calc(100% - 390px) !important;

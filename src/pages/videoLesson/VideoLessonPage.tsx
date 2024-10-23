@@ -46,24 +46,28 @@ const VideoLessonPage = () => {
     const timer = setInterval(() => {
       const now = moment();
       const duration = moment.duration(targetDate.diff(now));
-      if (duration.asMinutes() > 5) {
+      const minutesLeft = duration.asMinutes();
+
+      if (minutesLeft > 10) {
+        setIsDisableJoinButton(true);
+      } else if (minutesLeft >= 0 && minutesLeft <= 10) {
         setTimeLeft({
           minutes: duration.minutes(),
           seconds: duration.seconds(),
         });
         setIsDisableJoinButton(true);
-      } else if (duration.asMinutes() >= 0 && duration.asMinutes() <= 5 && room_id) {
+      } else if (minutesLeft > -15 && minutesLeft < 0 && room_id) {
         setTimeLeft({
           minutes: duration.minutes(),
           seconds: duration.seconds(),
         });
         setIsDisableJoinButton(false);
         setRoomId(room_id);
-      } else if (duration.asMinutes() < -15) {
+      } else if (minutesLeft < -15) {
         clearInterval(timer);
         setTimeLeft({ minutes: 0, seconds: 0 });
         setIsDisableJoinButton(true);
-        setRoomId("");
+        setRoomId(room_id as string);
       }
     }, 1000);
     return () => clearInterval(timer);
