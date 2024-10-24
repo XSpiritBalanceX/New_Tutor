@@ -40,7 +40,7 @@
         position: relative;
         .nav-link {
           text-decoration: none;
-          @extend %text-main;
+          @extend %h4;
           margin-right: 20px;
           color: map-get($theme-colors, "black");
         }
@@ -88,8 +88,9 @@
             }
             .MuiSelect-select {
               @extend %text-main;
-              padding-top: 5px;
-              padding-bottom: 0;
+              font-size: 18px;
+              line-height: 130%;
+              padding: 5px 30px 0 0;
               color: map-get($theme-colors, "gray");
             }
           }
@@ -99,7 +100,7 @@
           text-transform: none;
           border-radius: 100px;
           padding: 10px 20px;
-          @extend %text-main;
+          @extend %h4;
         }
       }
     }
@@ -122,13 +123,15 @@
       }
       .MuiInputBase-root {
         height: 25px;
+        width: 60px;
         fieldset {
           display: none;
         }
         .MuiSelect-select {
           @extend %text-main;
-          padding-top: 5px;
-          padding-bottom: 0;
+          font-size: 18px;
+          line-height: 130%;
+          padding: 5px 0 0 0;
           color: map-get($theme-colors, "gray");
         }
       }
@@ -202,7 +205,7 @@
         }
         .nav-link {
           text-decoration: none;
-          @extend %text-main;
+          @extend %h4;
           color: map-get($theme-colors, "black");
           margin-bottom: 10px;
         }
@@ -210,7 +213,7 @@
           color: map-get($theme-colors, "main-blue");
         }
         .logOutButton {
-          @extend %text-main;
+          @extend %h4;
           color: map-get($theme-colors, "black");
           padding: 0;
           text-transform: none;
@@ -218,7 +221,7 @@
           border-radius: 0;
         }
         .logOutBox {
-          @extend %text-main;
+          @extend %h4;
           color: map-get($theme-colors, "black");
           &:hover {
             cursor: pointer;
@@ -227,7 +230,7 @@
       }
       .tutorChatListWrapper {
         position: absolute;
-        top: 50px;
+        top: 40px;
         right: 10px;
         z-index: 12;
         width: 100%;
@@ -239,6 +242,7 @@
         background-color: map-get($theme-colors, "white");
         box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
         overflow-y: auto;
+        border-radius: 0 0 15px 15px;
         @media all and (max-width: 40em) {
           position: fixed;
           top: 0;
@@ -259,6 +263,7 @@
           min-height: 375px;
           background-color: map-get($theme-colors, "white");
           overflow-y: auto;
+          border-radius: 0 0 15px 15px;
           .activeSectionInner {
             padding: 0 20px;
             .activeSectionTop {
@@ -272,41 +277,74 @@
               }
             }
             .searchBar {
-              border: solid 1px map-get($theme-colors, "gray");
-              border-radius: 5px;
+              border: solid 1px map-deep-get($theme-colors, "text", "grey");
+              border-radius: 30px;
               .inputBase {
                 height: 40px;
                 border-radius: 5px;
-                @extend %text-main;
+                @extend %text-small;
+                input {
+                  @extend %text-small;
+                  &::placeholder {
+                    color: map-deep-get($theme-colors, "text", "grey");
+                    opacity: 1;
+                  }
+                }
               }
             }
           }
           .chatsList {
             .activeChatUserWrapper.activeChat {
-              background-color: map-get($theme-colors, "main-blue");
+              background-color: map-get($theme-colors, "light-blue");
               position: relative;
               .contextMenuWrapper {
                 left: 80px !important;
                 top: 30px !important;
               }
+              .emptyAvatar {
+                background-color: map-get($theme-colors, "main-blue");
+              }
+              .chatMessage {
+                .topSection {
+                  .fromUser {
+                    color: map-get($theme-colors, "black");
+                  }
+                }
+              }
             }
-            .avatar {
+            .activeChatUserWrapper {
+              position: relative;
+              .contextMenuWrapper {
+                position: absolute;
+                top: 20px !important;
+                left: 60% !important;
+                right: 0 !important;
+              }
+            }
+            .avatar,
+            .emptyAvatar {
               width: 50px;
               height: 50px;
+            }
+            .emptyAvatar {
+              background-color: map-get($theme-colors, "main-blue");
             }
             .chatMessage {
               .topSection {
                 .fromUser {
-                  @extend %text-main;
+                  @extend %h3;
+                }
+                .unreadedMessagesCounter {
+                  background-color: map-get($theme-colors, "red");
                 }
                 .messageStatusAndTime {
                   @extend %text-small;
-                  color: map-get($theme-colors, "gray");
+                  color: map-deep-get($theme-colors, "text", "grey");
                 }
               }
               .lastMessageSection {
                 @extend %text-small;
-                color: map-get($theme-colors, "gray");
+                color: map-deep-get($theme-colors, "text", "grey");
               }
             }
           }
@@ -342,8 +380,9 @@
           }
           .MuiSelect-select {
             @extend %text-main;
-            padding-top: 5px;
-            padding-bottom: 0;
+            font-size: 18px;
+            line-height: 130%;
+            padding: 5px 0 0 0;
             color: map-get($theme-colors, "gray");
           }
         }
@@ -417,8 +456,9 @@
               }
               .MuiSelect-select {
                 @extend %text-main;
-                padding-top: 5px;
-                padding-bottom: 0;
+                font-size: 18px;
+                line-height: 130%;
+                padding: 5px 30px 0 0;
                 color: map-get($theme-colors, "gray");
               }
             }
@@ -428,7 +468,7 @@
             text-transform: none;
             border-radius: 100px;
             padding: 10px 20px;
-            @extend %text-main;
+            @extend %h4;
             margin: 20px 0 0 0;
             width: 100%;
           }

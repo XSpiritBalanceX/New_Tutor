@@ -29,7 +29,7 @@
     }
     .uploadAvatar,
     .deleteAvatar {
-      @extend %text-main;
+      @extend %h4;
       padding: 10px 20px;
       border-radius: 100px;
     }

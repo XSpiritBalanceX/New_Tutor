@@ -58,8 +58,9 @@
         }
         .MuiSelect-select {
           @extend %text-main;
-          padding-top: 5px;
-          padding-bottom: 0;
+          font-size: 18px;
+          line-height: 130%;
+          padding: 5px 30px 0 0;
           color: map-get($theme-colors, "gray");
         }
       }
@@ -69,7 +70,7 @@
       text-transform: none;
       border-radius: 100px;
       padding: 10px 20px;
-      @extend %text-main;
+      @extend %h4;
       @media all and (max-width: 40em) {
         width: 100%;
         margin: 20px 0 0 0;
@@ -169,7 +170,7 @@
       flex-direction: column;
       margin-top: 5px;
       .newCardLabel {
-        @extend %text-main;
+        @extend %text-small;
         margin: 0 0 5px 0;
         color: map-get($theme-colors, "white");
       }
@@ -222,7 +223,7 @@
         margin: 0;
         border-radius: 10px;
         width: 380px;
-        height: 240px;
+        height: auto;
         box-shadow: map-deep-get($theme-colors, "box-shadow", "shadow");
         background: map-get($theme-colors, "gradient");
         @media all and (max-width: 40em) {
@@ -329,7 +330,7 @@
     margin-top: 20px;
     button {
       @extend %button-1;
-      @extend %text-main;
+      @extend %h4;
       text-transform: none;
       padding: 10px 20px;
       border-radius: 100px;

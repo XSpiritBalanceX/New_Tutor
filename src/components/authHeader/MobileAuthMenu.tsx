@@ -94,9 +94,6 @@ const MobileAuthMenu = ({ isOpen, cbHandleCloseMenu }: IMobileAuthMenuProps) => 
       <NavLink to={"/lessons/upcoming/1"} className="nav-link">
         {t("myLessons")}
       </NavLink>
-      <NavLink to={"/invitation"} className="nav-link">
-        {t("inviteFriend")}
-      </NavLink>
     </Drawer>
   );
 };

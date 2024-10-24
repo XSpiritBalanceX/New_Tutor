@@ -389,7 +389,8 @@
       "showMore": "Показать еще",
       "collapse": "Скрыть",
       "writeMe": "Написать мне",
-      "goal": "Цель изучения языков:"
+      "goal": "Цель изучения языков:",
+      "back": "Назад"
     },
     "aboutUsPage": {
       "main": "Главная",
@@ -540,7 +541,8 @@
     "videoLessonPage": {
       "videoLesson": "Видеоурок",
       "timeToLesson": "До урока осталось: {{min}}мин {{sec}}сек",
-      "openChat": "Открыть чат"
+      "openChat": "Открыть чат",
+      "sendAssignment": "Отправить задание"
     },
     "dictionaryPage": {
       "main": "Главная",

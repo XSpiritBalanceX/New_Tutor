@@ -7,9 +7,16 @@
     flex-direction: row;
     align-items: center;
     margin: 0 0 30px 0;
+    @media all and (max-width: 40em) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .title {
       @extend %h2;
       margin: 0 10px 0 0;
+      @media all and (max-width: 40em) {
+        margin: 0 0 10px 0;
+      }
     }
     .averageRating {
       @extend %text-small;
@@ -36,7 +43,7 @@
         max-width: 100%;
       }
       @media all and (max-width: 40em) {
-        height: 520px;
+        height: 560px;
       }
       .ratingReview {
         margin: 35px auto 10px auto;
@@ -52,11 +59,25 @@
           fill: map-get($theme-colors, "white-blue");
         }
       }
-      .titleReview {
+      .titleReview,
+      .mobileTitle {
         margin: 0 30px 10px 30px;
         text-align: center;
         @extend %h2;
         color: map-get($theme-colors, "main-blue");
+      }
+      .titleReview {
+        @media all and (max-width: 40em) {
+          display: none;
+        }
+      }
+      .mobileTitle {
+        display: none;
+        @extend %h3;
+        @media all and (max-width: 40em) {
+          display: inline;
+          text-align: left;
+        }
       }
       .descriptionReview {
         display: flex;
@@ -64,12 +85,15 @@
         margin: 0 30px 10px 30px;
         min-height: 50px;
         @media all and (max-width: 40em) {
-          min-height: fit-content;
+          flex-direction: column;
         }
         .titleDescription {
           @extend %h3;
           margin: 0 5px 0 0;
           color: map-deep-get($theme-colors, "text", "dark-gray");
+          @media all and (max-width: 40em) {
+            margin: 0 0 10px 0;
+          }
         }
         .textDescription {
           margin: 0;
@@ -118,7 +142,7 @@
     align-items: center;
     margin: 30px 0 0 0;
     @media all and (max-width: 40em) {
-      justify-content: flex-end;
+      justify-content: center;
     }
     button {
       @extend %button-1;

@@ -70,6 +70,10 @@ const StudentPage = () => {
     dispatch(changeOpenChat(true));
   };
 
+  const handleNavigate = () => {
+    window.history.back();
+  };
+
   return (
     <Container className="studentPageContainer">
       <Box className="locationStudentPage">
@@ -118,6 +122,11 @@ const StudentPage = () => {
             <p key={ind}>{el.description}</p>
           ))}
         </Box>
+      </Box>
+      <Box className="backButtonBox">
+        <Button type="button" onClick={handleNavigate}>
+          {t("back")}
+        </Button>
       </Box>
     </Container>
   );

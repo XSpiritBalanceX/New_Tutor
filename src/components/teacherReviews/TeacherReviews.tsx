@@ -153,6 +153,7 @@ const TeacherReviews = () => {
               className="ratingReview"
             />
             <p className="titleReview">{el.title}</p>
+            <p className="mobileTitle">{el.title.length > 52 ? `${el.title.slice(0, 52)}...` : el.title}</p>
             <Box className="descriptionReview">
               <p className="titleDescription">{t("pros")}</p>
               <p className="textDescription">

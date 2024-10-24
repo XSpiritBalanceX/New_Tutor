@@ -388,7 +388,8 @@
       "showMore": "Show more",
       "collapse": "Hide",
       "writeMe": "Write me",
-      "goal": "The purpose of learning languages:"
+      "goal": "The purpose of learning languages:",
+      "back": "Back"
     },
     "aboutUsPage": {
       "main": "Main",
@@ -540,7 +541,8 @@
     "videoLessonPage": {
       "videoLesson": "Video lesson",
       "timeToLesson": "Left until lesson: {{min}}min {{sec}}sec",
-      "openChat": "Open chat"
+      "openChat": "Open chat",
+      "sendAssignment": "Send assignment"
     },
     "dictionaryPage": {
       "main": "Main",

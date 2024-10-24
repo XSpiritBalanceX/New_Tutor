@@ -7,6 +7,9 @@
   @media all and (max-width: 78em) {
     padding: 30px 20px 150px 20px !important;
   }
+  @media all and (max-width: 40em) {
+    padding: 30px 20px 50px 20px !important;
+  }
   .locationStudentPage {
     display: flex;
     flex-direction: row;
@@ -54,19 +57,29 @@
           position: absolute;
           top: 0;
           left: 160px;
+          font-size: 16px;
+          line-height: 20px;
         }
       }
       .studentLanguage {
         margin: 0 0 15px 0;
-        @extend %h3;
+        @extend %text-main;
+        @media all and (max-width: 40em) {
+          font-size: 14px;
+          line-height: 22px;
+        }
         .lowLevel,
         .averageLevel,
         .highLevel {
-          @extend %text-small;
+          @extend %h5;
           padding: 5px 10px;
           border-radius: 100px;
           margin-left: 10px;
           display: inline-block;
+          @media all and (max-width: 40em) {
+            font-size: 12px;
+            line-height: 15px;
+          }
         }
         .lowLevel {
           background-color: map-get($theme-colors, "light-red");
@@ -89,13 +102,17 @@
           padding: 0;
           text-transform: none;
           color: map-get($theme-colors, "main-blue");
-          @extend %text-small;
+          @extend %h3;
+          @media all and (max-width: 40em) {
+            font-size: 14px;
+            line-height: 19px;
+          }
         }
       }
       .chatButton {
         text-transform: none;
         padding: 10px 20px;
-        @extend %text-main;
+        @extend %h4;
         @extend %button-1;
         border-radius: 100px;
       }
@@ -125,6 +142,23 @@
       p {
         margin: 0;
         @extend %text-main;
+      }
+    }
+  }
+  .backButtonBox {
+    display: none;
+    @media all and (max-width: 40em) {
+      display: flex;
+      margin: 15px 0 0 0;
+    }
+    button {
+      text-transform: none;
+      padding: 10px 20px;
+      @extend %h4;
+      @extend %button-1;
+      border-radius: 100px;
+      @media all and (max-width: 40em) {
+        width: 100%;
       }
     }
   }

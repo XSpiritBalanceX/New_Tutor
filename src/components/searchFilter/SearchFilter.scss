@@ -1,7 +1,6 @@
 @import "../../variables";
 
 .mobileSearchFilterContainer {
-  border: solid 1px red;
   .MuiPaper-root {
     padding: 20px;
     .closeButtonBox {
@@ -48,8 +47,7 @@
     }
     .MuiFormLabel-root.MuiFormLabel-filled.Mui-focused,
     .MuiFormLabel-root.Mui-focused {
-      color: map-get($theme-colors, "main-blue");
-      @extend %text-main;
+      display: none;
     }
     .MuiInputBase-root.MuiInputBase-formControl {
       height: 40px;
@@ -137,10 +135,12 @@
   .partsOfDayBox {
     margin: 20px 0;
     .partOfDayField {
-      margin: 0;
+      margin: 10px 0 0 0;
+      padding: 0 !important;
       .MuiCheckbox-root {
         color: map-get($theme-colors, "main-blue");
-        padding-left: 0;
+        border-radius: 0;
+        padding: 0 3px 0 0;
       }
       .MuiTypography-root {
         @extend %text-main;
@@ -148,7 +148,7 @@
     }
   }
   .buttonApply {
-    @extend %text-main;
+    @extend %h4;
     @extend %button-1;
     padding: 10px 20px;
     border-radius: 100px;

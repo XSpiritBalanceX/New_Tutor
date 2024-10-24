@@ -56,7 +56,7 @@
       background-color: map-get($theme-colors, "white");
       border-radius: 5px;
       .MuiFormLabel-root {
-        margin-top: -7px;
+        margin-top: -8px;
         @extend %text-main;
         color: map-get($theme-colors, "black");
       }

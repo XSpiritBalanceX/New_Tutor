@@ -45,6 +45,8 @@
           position: absolute;
           top: 0;
           left: 100px;
+          font-size: 16px;
+          line-height: 20px;
         }
       }
       .teacherRatingBox {
@@ -58,7 +60,7 @@
         }
         .countOfFeedback {
           @extend %text-small;
-          color: map-get($theme-colors, "main-blue");
+          color: map-deep-get($theme-colors, "text", "grey");
           margin: 0 0 0 10px;
         }
         .MuiRating-root {
@@ -91,22 +93,35 @@
           }
         }
         .MuiTypography-root {
-          @extend %text-small;
-          color: map-deep-get($theme-colors, "text", "dark-gray");
+          @extend %h4;
+          color: map-get($theme-colors, "main-blue");
+          @media all and (max-width: 40em) {
+            font-size: 14px;
+            line-height: 19px;
+          }
         }
       }
       .teacherLevelLanguage {
         margin: 0 0 5px 0;
-        @extend %h3;
-        word-break: break-all;
+        @extend %text-main;
+        @media all and (max-width: 40em) {
+          font-size: 14px;
+          line-height: 19px;
+          margin: 5px 0 5px 0;
+        }
         .lowLevel,
         .averageLevel,
         .highLevel {
-          @extend %text-small;
+          @extend %h5;
           padding: 5px 10px;
           border-radius: 100px;
           margin-left: 10px;
-          display: inline-block;
+          display: inline;
+          @media all and (max-width: 40em) {
+            font-size: 12px;
+            line-height: 15px;
+            word-break: break-all;
+          }
         }
         .lowLevel {
           background-color: map-get($theme-colors, "light-red");
@@ -129,10 +144,20 @@
         }
         .countStudent,
         .priceText {
-          @extend %h3;
+          @extend %text-main;
+          @media all and (max-width: 40em) {
+            font-size: 14px;
+            line-height: 19px;
+          }
           span {
             color: map-get($theme-colors, "main-blue");
             margin-left: 3px;
+            font-weight: 600;
+            line-height: 20px;
+            @media all and (max-width: 40em) {
+              font-size: 14px;
+              line-height: 17px;
+            }
           }
         }
         .countStudent {
@@ -150,7 +175,7 @@
       width: 100%;
       button {
         text-transform: none;
-        @extend %text-main;
+        @extend %h4;
         @extend %button-2;
         border-radius: 100px;
         padding: 10px;
@@ -170,7 +195,7 @@
     .descriptionText {
       margin: 0 0 5px 0;
       @extend %text-main;
-      color: map-deep-get($theme-colors, "text", "dark-gray");
+      color: map-deep-get($theme-colors, "text", "grey");
     }
     .seeDetailButtonBox {
       display: flex;

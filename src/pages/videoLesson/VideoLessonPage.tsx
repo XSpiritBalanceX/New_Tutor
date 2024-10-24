@@ -4,10 +4,15 @@ import { translate } from "@i18n";
 import { useParams, useNavigate } from "react-router-dom";
 import moment from "moment";
 import * as momentTimeZone from "moment-timezone";
-import { VideoChat } from "webrtc-frontend-library";
+import { VideoChat, LS_WEBRTK_TOKEN_KEY } from "webrtc-frontend-library";
 import { useAppSelector, useAppDispatch } from "@store/hook";
 import * as tutorSelectors from "@store/selectors";
-import { changeOpenChat } from "@store/tutorSlice";
+import { changeOpenChat, setOpponentId } from "@store/tutorSlice";
+import ChatIcon from "@components/icons/ChatIcon";
+import TaskIcon from "@components/icons/TaskIcon";
+import { refreshToken } from "@api/auth/refreshToken";
+import { LS_TOKEN_KEY } from "chat-frontend-library";
+import { TOKEN_KEY } from "@utils/appConsts";
 import "./VideoLesson.scss";
 
 const VideoLessonPage = () => {
@@ -29,7 +34,7 @@ const VideoLessonPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const { lesson_time, room_id } = useParams();
+  const { lesson_time, room_id, opponent_id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,24 +49,28 @@ const VideoLessonPage = () => {
     const timer = setInterval(() => {
       const now = moment();
       const duration = moment.duration(targetDate.diff(now));
-      if (duration.asMinutes() > 5) {
+      const minutesLeft = duration.asMinutes();
+
+      if (minutesLeft > 10) {
+        setIsDisableJoinButton(true);
+      } else if (minutesLeft >= 0 && minutesLeft <= 10) {
         setTimeLeft({
           minutes: duration.minutes(),
           seconds: duration.seconds(),
         });
         setIsDisableJoinButton(true);
-      } else if (duration.asMinutes() >= 0 && duration.asMinutes() <= 5 && room_id) {
+      } else if (minutesLeft > -15 && minutesLeft < 0 && room_id) {
         setTimeLeft({
           minutes: duration.minutes(),
           seconds: duration.seconds(),
         });
         setIsDisableJoinButton(false);
         setRoomId(room_id);
-      } else if (duration.asMinutes() < -15) {
+      } else if (minutesLeft < -15) {
         clearInterval(timer);
         setTimeLeft({ minutes: 0, seconds: 0 });
         setIsDisableJoinButton(true);
-        setRoomId("");
+        setRoomId(room_id as string);
       }
     }, 1000);
     return () => clearInterval(timer);
@@ -115,17 +124,26 @@ const VideoLessonPage = () => {
 
   const handleCloseVideo = () => {
     setIsShowVideo(false);
-    navigate("/review");
+    if (isPreJoinPage) {
+      navigate("/lessons/upcoming/1");
+    } else {
+      navigate("/review");
+    }
   };
 
   const handleRefreshToken = async () => {
-    //TODO: added real logic for refreshing user token
-    console.log("refresh token");
-    return localStorage.getItem("webrtkuniq_access_token");
+    const newToken = await refreshToken();
+    if (newToken) {
+      localStorage.setItem(TOKEN_KEY, newToken);
+      localStorage.setItem(LS_TOKEN_KEY, newToken);
+      localStorage.setItem(LS_WEBRTK_TOKEN_KEY, newToken);
+    }
+    return newToken;
   };
 
   const handleOpenChat = () => {
     dispatch(changeOpenChat(true));
+    dispatch(setOpponentId(opponent_id as string));
   };
 
   const minutes = Math.floor(timerVideo / 60);
@@ -142,9 +160,12 @@ const VideoLessonPage = () => {
         </Box>
         {!isPreJoinPage && (
           <Box className="chatButtonBox">
+            <Button type="button">
+              <TaskIcon fill="#FFFFFF" /> <span>{t("sendAssignment")}</span>
+            </Button>
             {!isOpenChat && (
               <Button type="button" onClick={handleOpenChat}>
-                {t("openChat")}
+                <ChatIcon fill="#FFFFFF" /> <span>{t("openChat")}</span>
               </Button>
             )}
           </Box>
@@ -167,6 +188,7 @@ const VideoLessonPage = () => {
           handleError={handleRefreshToken}
           user_locale={locale}
           isDisabledButtonJoin={isDisableJoinButton}
+          iconsWithBg={false}
         />
       )}
     </Container>
